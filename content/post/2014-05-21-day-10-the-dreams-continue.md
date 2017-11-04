@@ -4,6 +4,7 @@ date: 2014-05-21 08:02:38 -0400
 categories: 
 - Code
 - Launch Academy
+slug: "/blog/2014/05/21/day-10-the-dreams-continue/"
 ---
 It happened again.
 

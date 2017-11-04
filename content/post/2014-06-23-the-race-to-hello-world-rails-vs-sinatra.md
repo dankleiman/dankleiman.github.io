@@ -6,6 +6,7 @@ categories:
 - Code
 - Rails
 - Sinatra
+slug: "/blog/2014/06/23/the-race-to-hello-world-rails-vs-sinatra/"
 ---
 
 Earlier, I explained how I built [my personalized url shortner](/blog/2014/05/30/buying-a-mongolian-website/) in Sinatra.
