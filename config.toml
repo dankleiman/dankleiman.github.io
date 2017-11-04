@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "dankleiman.github.io/"
 languageCode = "en-us"
 title = "Dan Kleiman"
 theme = "hugo-future-imperfect"
@@ -7,6 +7,7 @@ paginate = 8
 disqusShortname = ""
 googleAnalytics = ""
 pluralizeListTitles = false
+publishDir = "docs"
 
 [params]
   # Sets the meta tag description
