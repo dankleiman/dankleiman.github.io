@@ -73,14 +73,16 @@ pluralizeListTitles = false
     circle    = true
     # Sets Image to be Future Imperfect's hexagon
     imperfect = false
-    width     = "100"
+    width     = "150"
     alt       = "Dan Kleiman"
 
 [params.postAmount]
 # Sets the number of recent posts to show in the sidebar. The default value is 5.
     sidebar = 5
 [permalinks]
-  post = "/:year/:month/:day/:title/"
+  post = "/:year/:month/:day/:title"
+  page = "/:title"
+
 # Sets the menu items in the navigation bar
 # Identifier prepends a Font Awesome icon to the menu item
 [[menu.main]]
