@@ -1,8 +1,9 @@
 ---
 title: "Don't Blow Your BigQuery Budget on Unknown Data!"
 date: 2017-10-06 14:55:37 -0400
-comments: true
-author: Dan Kleiman
+categories: 
+- Code
+- BigQuery
 ---
 It's easy to blow your BigQuery budget when you are exploring a new data set. Because you're billed for the amount of data scanned, not the ultimate result set, when you don't know what you're looking  for, you can end up with wasteful queries.
 

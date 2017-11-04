@@ -1,9 +1,10 @@
 ---
 title: "Rails Security Exercises from Bearclaw"
 date: 2016-09-24 06:05:49 -0400
-comments: true
-categories:
-author: Dan
+categories: 
+- Code
+- Rails
+- Security
 ---
 In this post, I'm going to tell you what I learned doing a series of Rails security exercises developed by [Bearclaw](https://www.gobearclaw.com/), a Rails security consultancy.
 

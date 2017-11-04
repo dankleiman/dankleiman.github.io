@@ -1,9 +1,9 @@
 ---
-
 title: "Migrating from Wordpress to Jekyll"
 date: 2016-03-09 13:09:18 -0500
-comments: true
-categories:
+categories: 
+- Code
+- Static Sites
 ---
 
 So, I've decided to migrate my [Tai Chi site at dankleiman.com](http://dankleiman.com) from Wordpress to a new static site using Jekyll.

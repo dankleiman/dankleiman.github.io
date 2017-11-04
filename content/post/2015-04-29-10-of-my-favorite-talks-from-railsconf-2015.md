@@ -1,10 +1,9 @@
 ---
-
 title: "10 of My Favorite Talks from RailsConf 2015"
 date: 2015-04-29 20:47:31 -0400
-comments: true
-author: Dan Kleiman
-categories:
+categories: 
+- Code
+- RailsConf
 ---
 
 RailsConf 2015 was a blast. There were talks on a such a wide range of topics, that I wanted to capture some of my favorites here.

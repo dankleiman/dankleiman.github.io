@@ -1,10 +1,9 @@
 ---
-
 title: "Asking Questions: The Holy Grail of OOP"
 date: 2014-06-08 20:32:17 -0400
-comments: true
-categories:
-author: Dan Kleiman
+categories: 
+- Code
+- Launch Academy
 ---
 
 This week at Launch Academy, we started working on Object Oriented Programming (OOP).

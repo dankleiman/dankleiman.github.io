@@ -2,7 +2,7 @@
 
 title: "Learning more about Octopress"
 date: 2014-03-19 18:46:22 -0400
-comments: true
+
 categories: 
 ---
 

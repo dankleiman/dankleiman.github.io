@@ -1,10 +1,9 @@
 ---
-
 title: "Day 10: The Dreams Continue"
 date: 2014-05-21 08:02:38 -0400
-comments: true
-categories:
-author: Dan Kleiman
+categories: 
+- Code
+- Launch Academy
 ---
 It happened again.
 

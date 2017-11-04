@@ -1,10 +1,10 @@
 ---
-
 title: "Launching Datastroyer"
 date: 2014-07-02 21:29:17 -0400
-comments: true
-categories:
-author: Dan Kleiman
+
+categories: 
+- Code
+- Launch Academy
 ---
 
 I'm very excited to announce that [Craig McGinley](https://github.com/craigmcginley) and I have launched [Datastroyer](http://datastroyer.herokuapp.com/).

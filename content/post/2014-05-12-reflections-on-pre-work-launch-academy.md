@@ -1,10 +1,9 @@
 ---
-
 title: "Reflections on Launch Academy Prep: Balancing Theory and Practice"
 date: 2014-05-12 14:36:53 -0400
-comments: true
-categories:
-author: Dan Kleiman
+categories: 
+- Code
+- Launch Academy
 ---
 
 Preparing for [Launch Academy](http://www.launchacademy.com) while finishing up work as the director [Brookline Tai Chi](http://www.brooklinetaichi.org) has been a massive exercise in balancing "theory and practice."

@@ -1,8 +1,9 @@
 ---
 title: My 5 Strategies for Learning Go in 2017
 date: 2016-12-29 09:29:22 -0500
-comments: true
-author: Dan Kleiman
+categories: 
+- Code
+- Golang
 ---
 Over the past couple of years, one thing I've become more and more aware of is the unease and uncertainty of diving into a new project. Not matter what the new X is, I find I always go through the same set of uncomfortable feelings on my initial approach. 
 

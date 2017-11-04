@@ -1,10 +1,9 @@
 ---
-
 title: "Buying a Mongolian Website for my URL Shortner"
 date: 2014-05-30 09:17:22 -0400
-comments: true
-author: Dan Kleiman
-categories:
+categories: 
+- Code
+- Launch Academy
 ---
 
 Ok, so technically I just purchased a Mongolian domain name: [klei.mn](http://klei.mn).

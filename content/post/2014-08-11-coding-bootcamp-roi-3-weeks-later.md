@@ -1,10 +1,9 @@
 ---
-
 title: "Coding Bootcamp ROI 3 Weeks Later"
-date: 2014-08-11 10:39:58 -0400
-comments: true
-categories:
-author: Dan Kleiman
+date: 2014-08-11
+categories: 
+- Code
+- Launch Academy
 ---
 
 It's been 3 weeks since I graduated from [Launch Academy](http://www.launchacademy.com) and I start work at a new job on Wednesday as a software developer.

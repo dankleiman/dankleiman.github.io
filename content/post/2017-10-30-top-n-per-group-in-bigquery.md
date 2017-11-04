@@ -1,8 +1,9 @@
 ---
 title: "Top N Per Group in BigQuery"
 date: 2017-10-30 19:29:32 -0400
-comments: true
 categories: 
+- Code
+- BigQuery
 ---
 In this post, we are going to explore a strategy for collecting the **Top N results per Group** over a mixed dataset, all in a single query.
 

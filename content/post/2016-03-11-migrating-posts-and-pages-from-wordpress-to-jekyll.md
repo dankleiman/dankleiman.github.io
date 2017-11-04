@@ -2,8 +2,9 @@
 layout: post
 title: "Migrating Posts and Pages from Wordpress to Jekyll"
 date: 2016-03-11 13:55:15 -0500
-comments: true
-categories:
+categories: 
+- Code
+- Static Sites
 ---
 
 <em>This is Part 1 in a series on [Migrating from Wordpress to Jekyll](/blog/2016/03/09/migrating-from-wordpress-to-jekyll/).</em>

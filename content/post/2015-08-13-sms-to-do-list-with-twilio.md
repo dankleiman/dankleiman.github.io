@@ -1,9 +1,9 @@
 ---
-
 title: "SMS To Do List with Twilio"
 date: 2015-08-13 19:45:40 -0400
-comments: true
-author: Dan Kleiman
+categories: 
+- Code
+- Twilio
 ---
 The other day, I had the pleasure of talking to someone who builds mobile apps with people in developing countries so that community health workers can deliver medical information and collect data.
 

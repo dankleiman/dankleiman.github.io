@@ -1,10 +1,8 @@
 ---
-
 title: "Parachuting into Unfamilar Code"
 date: 2015-01-11 20:15:27 -0500
-comments: true
-categories:
-author: Dan Kleiman
+categories: 
+- Code
 ---
 We have hundreds of models in our codebase at [TrialNetworks](http://www.trialnetworks.com).
 

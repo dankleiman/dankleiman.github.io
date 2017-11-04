@@ -1,10 +1,11 @@
 ---
-
 title: "The Race to Hello World: Rails vs. Sinatra"
 date: 2014-06-23 08:11:28 -0400
-comments: true
-categories:
-author: Dan Kleiman
+
+categories: 
+- Code
+- Rails
+- Sinatra
 ---
 
 Earlier, I explained how I built [my personalized url shortner](/blog/2014/05/30/buying-a-mongolian-website/) in Sinatra.

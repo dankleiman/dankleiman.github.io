@@ -1,9 +1,9 @@
 ---
-
 title: "Launch Academy: Week 1 Reflections"
 date: 2014-05-17 09:32:59 -0400
-comments: true
-categories:
+categories: 
+- Code
+- Launch Academy
 ---
 
 So, all this week, I've been experiencing the Tetris effect and I've come to appreciate the beauty, and the painlessness, of learning how to break down a problem.

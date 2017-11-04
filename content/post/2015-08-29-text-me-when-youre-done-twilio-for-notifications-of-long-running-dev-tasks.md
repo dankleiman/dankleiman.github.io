@@ -1,9 +1,9 @@
 ---
-
 title: "Text Me When You're Done: Twilio for Notifications of Long-Running Dev Tasks"
 date: 2015-08-29 10:33:48 -0400
-comments: true
-author: Dan Kleiman
+categories: 
+- Code
+- Twilio
 ---
 
 This week at work, we ran into a slight hiccup with one of our larger third-party data syncs. Without going into too much detail, to fix the issue, we had to carefully reproduce data in various states and test fixes that would transform that data back to the correct state -- or for the purpose of this post, *I spent a lot of time this week setting things up and waiting for them to run*.

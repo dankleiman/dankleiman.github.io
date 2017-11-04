@@ -2,7 +2,7 @@
 
 title: "Getting a Feel For It"
 date: 2014-03-20 08:59:31 -0400
-comments: true
+
 categories: 
 ---
 

@@ -1,10 +1,10 @@
 ---
-
 title: "Launch Academy: 5 Weeks In or 5 Weeks Left?"
 date: 2014-06-15 18:05:41 -0400
-comments: true
-categories:
-author: Dan Kleiman
+
+categories: 
+- Code
+- Launch Academy
 ---
 This past week marks the end of Week 5 at Launch Academy.
 
