@@ -1,7 +1,7 @@
 baseurl = "dankleiman.github.io/"
 languageCode = "en-us"
 title = "Dan Kleiman"
-theme = "hugo-future-imperfect"
+theme = "future-imperfect"
 preserveTaxonomyNames = true
 paginate = 8
 disqusShortname = ""
