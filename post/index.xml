@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Dan Kleiman</title>
-    <link>/dankleiman.github.io/post/index.xml</link>
+    <link>/post/index.xml</link>
     <description>Recent content in Post on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Oct 2017 19:29:32 -0400</lastBuildDate>
-    <atom:link href="/dankleiman.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Top N Per Group in BigQuery</title>
-      <link>/dankleiman.github.io/2017/10/30/top-n-per-group-in-bigquery</link>
+      <link>/2017/10/30/top-n-per-group-in-bigquery</link>
       <pubDate>Mon, 30 Oct 2017 19:29:32 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2017/10/30/top-n-per-group-in-bigquery</guid>
+      <guid>/2017/10/30/top-n-per-group-in-bigquery</guid>
       <description>&lt;p&gt;In this post, we are going to explore a strategy for collecting the &lt;strong&gt;Top N results per Group&lt;/strong&gt; over a mixed dataset, all in a single query.&lt;/p&gt;
 
 &lt;p&gt;I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a &lt;code&gt;WHERE&lt;/code&gt; clause limiting the whole data set to a single group and combine with &lt;code&gt;ORDER BY&lt;/code&gt; and &lt;code&gt;LIMIT&lt;/code&gt; clauses.&lt;/p&gt;
@@ -143,10 +143,10 @@ ORDER BY
     
     <item>
       <title>Don&#39;t Blow Your BigQuery Budget on Unknown Data!</title>
-      <link>/dankleiman.github.io/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
+      <link>/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
       <pubDate>Fri, 06 Oct 2017 14:55:37 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
+      <guid>/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
       <description>&lt;p&gt;It&amp;rsquo;s easy to blow your BigQuery budget when you are exploring a new data set. Because you&amp;rsquo;re billed for the amount of data scanned, not the ultimate result set, when you don&amp;rsquo;t know what you&amp;rsquo;re looking  for, you can end up with wasteful queries.&lt;/p&gt;
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to share some tips for more efficiently scanning data in BigQuery when you don&amp;rsquo;t quite know what you need.
@@ -180,7 +180,7 @@ ORDER BY
 
 &lt;p&gt;If you need to explore an unknown data set, you can still get a feel for what&amp;rsquo;s in each column and the different characteristics of the data by using BigQuery&amp;rsquo;s built in &amp;ldquo;preview&amp;rdquo; function.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_preview_mode.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_preview_mode.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m using &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_01?tab=preview&#34;&gt;this publicly available dump of Reddit comments&lt;/a&gt; for all the screenshots in this post.&lt;/p&gt;
 
@@ -192,7 +192,7 @@ ORDER BY
 
 &lt;p&gt;Once you&amp;rsquo;ve identified the columns and clauses you need, run the &amp;ldquo;big query&amp;rdquo; once and store it to a temp table.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_temp_table.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_temp_table.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, instead of querying against billions of rows each time, you will be working with a subset of data. Even if it&amp;rsquo;s a few million rows, it will still be more efficient.&lt;/p&gt;
 
@@ -202,7 +202,7 @@ ORDER BY
 
 &lt;p&gt;Instead, you can import data into BigQuery as a temp table and use the auto-detect schema feature. BigQuery will build you a temp table with all the columns and rows from your spreadsheet.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_import_data.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_import_data.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can use your temp table or any other data set to write SQL against your external data. You can even join data across BigQuery projects &amp;ndash; the project name is just part of the namespace that identifies each table.&lt;/p&gt;
 
@@ -215,11 +215,11 @@ ORDER BY
     
     <item>
       <title>GoBridge with Bill Kennedy</title>
-      <link>/dankleiman.github.io/2017/02/12/gobridge-with-bill-kennedy</link>
+      <link>/2017/02/12/gobridge-with-bill-kennedy</link>
       <pubDate>Sun, 12 Feb 2017 15:18:04 -0500</pubDate>
       
-      <guid>/dankleiman.github.io/2017/02/12/gobridge-with-bill-kennedy</guid>
-      <description>&lt;p&gt;Last weekend, I had the chance to volunteer at a GoBridge event taught by Bill Kennedy of Ardan Labs. I&amp;rsquo;m trying to make &lt;a href=&#34;dankleiman.github.io/blog/2016/12/29/my-5-strategies-for-learning-go-in-2017/&#34;&gt;2017 my year of learning Go&lt;/a&gt;, so helping out at the event felt like a natural extension and a great way to connect with more people in the Go community.&lt;/p&gt;
+      <guid>/2017/02/12/gobridge-with-bill-kennedy</guid>
+      <description>&lt;p&gt;Last weekend, I had the chance to volunteer at a GoBridge event taught by Bill Kennedy of Ardan Labs. I&amp;rsquo;m trying to make &lt;a href=&#34;/blog/2016/12/29/my-5-strategies-for-learning-go-in-2017/&#34;&gt;2017 my year of learning Go&lt;/a&gt;, so helping out at the event felt like a natural extension and a great way to connect with more people in the Go community.&lt;/p&gt;
 
 &lt;p&gt;Going in with Ruby as my first language, I braced myself for static typing and wanted concurrent programming to bend my brain, but that&amp;rsquo;s not really what happened at all.&lt;/p&gt;
 
@@ -398,10 +398,10 @@ func main() {
     
     <item>
       <title>My 5 Strategies for Learning Go in 2017</title>
-      <link>/dankleiman.github.io/2016/12/29/my-5-strategies-for-learning-go-in-2017</link>
+      <link>/2016/12/29/my-5-strategies-for-learning-go-in-2017</link>
       <pubDate>Thu, 29 Dec 2016 09:29:22 -0500</pubDate>
       
-      <guid>/dankleiman.github.io/2016/12/29/my-5-strategies-for-learning-go-in-2017</guid>
+      <guid>/2016/12/29/my-5-strategies-for-learning-go-in-2017</guid>
       <description>&lt;p&gt;Over the past couple of years, one thing I&amp;rsquo;ve become more and more aware of is the unease and uncertainty of diving into a new project. Not matter what the new X is, I find I always go through the same set of uncomfortable feelings on my initial approach.&lt;/p&gt;
 
 &lt;p&gt;Now, though, I&amp;rsquo;m starting to become familiar enough with this process that &amp;ndash; even though the discomfort doesn&amp;rsquo;t go away in the initial learning stages &amp;ndash; I can embrace it, coexist with it, and forge ahead in learning, because of the strategies I&amp;rsquo;m going to lay out here.&lt;/p&gt;
@@ -494,10 +494,10 @@ func main() {
     
     <item>
       <title>Rails Security Exercises from Bearclaw</title>
-      <link>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</link>
+      <link>/2016/09/24/rails-security-exercises-from-bearclaw</link>
       <pubDate>Sat, 24 Sep 2016 06:05:49 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</guid>
+      <guid>/2016/09/24/rails-security-exercises-from-bearclaw</guid>
       <description>
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to tell you what I learned doing a series of Rails security exercises developed by &lt;a href=&#34;https://www.gobearclaw.com/&#34;&gt;Bearclaw&lt;/a&gt;, a Rails security consultancy.&lt;/p&gt;
@@ -639,10 +639,10 @@ func main() {
     
     <item>
       <title>Nice Try, NilClass</title>
-      <link>/dankleiman.github.io/2016/04/10/nice-try-nilclass</link>
+      <link>/2016/04/10/nice-try-nilclass</link>
       <pubDate>Sun, 10 Apr 2016 07:13:27 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2016/04/10/nice-try-nilclass</guid>
+      <guid>/2016/04/10/nice-try-nilclass</guid>
       <description>
 
 &lt;p&gt;I love that feeling when a new concept starts to come together in your mind and you can point to all the converging sources of insight.&lt;/p&gt;
@@ -752,11 +752,11 @@ end
     
     <item>
       <title>Migrating Posts and Pages from Wordpress to Jekyll</title>
-      <link>/dankleiman.github.io/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</link>
+      <link>/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</link>
       <pubDate>Fri, 11 Mar 2016 13:55:15 -0500</pubDate>
       
-      <guid>/dankleiman.github.io/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is Part 1 in a series on &lt;a href=&#34;dankleiman.github.io/blog/2016/03/09/migrating-from-wordpress-to-jekyll/&#34;&gt;Migrating from Wordpress to Jekyll&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+      <guid>/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is Part 1 in a series on &lt;a href=&#34;/blog/2016/03/09/migrating-from-wordpress-to-jekyll/&#34;&gt;Migrating from Wordpress to Jekyll&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The documentation for &lt;a href=&#34;https://jekyllrb.com/docs/quickstart/&#34;&gt;getting started with Jekyll&lt;/a&gt; is great. I&amp;rsquo;m not going to rehash everything that&amp;rsquo;s covered there.&lt;/p&gt;
 
@@ -810,10 +810,10 @@ end
     
     <item>
       <title>Migrating from Wordpress to Jekyll</title>
-      <link>/dankleiman.github.io/2016/03/09/migrating-from-wordpress-to-jekyll</link>
+      <link>/2016/03/09/migrating-from-wordpress-to-jekyll</link>
       <pubDate>Wed, 09 Mar 2016 13:09:18 -0500</pubDate>
       
-      <guid>/dankleiman.github.io/2016/03/09/migrating-from-wordpress-to-jekyll</guid>
+      <guid>/2016/03/09/migrating-from-wordpress-to-jekyll</guid>
       <description>&lt;p&gt;So, I&amp;rsquo;ve decided to migrate my &lt;a href=&#34;http://dankleiman.com&#34;&gt;Tai Chi site at dankleiman.com&lt;/a&gt; from Wordpress to a new static site using Jekyll.&lt;/p&gt;
 
 &lt;p&gt;Since I haven&amp;rsquo;t posted there in almost two years, but I get a steady stream of new subscribers who want to learn about Tai Chi, qigong, and meditation, I thought it would be good to give the 300+ pages and posts a more evergreen feel.&lt;/p&gt;
@@ -831,7 +831,7 @@ end
 &lt;p&gt;As I begin to play with the different components for the migration from Wordpress to Jekyll, it seems like the project will break down into the following areas:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;dankleiman.github.io/blog/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll/&#34;&gt;Migrating Posts and Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/blog/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll/&#34;&gt;Migrating Posts and Pages&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Migrating Assets&lt;/li&gt;
 &lt;li&gt;Grooming/Revisiting Existing Content&lt;/li&gt;
 &lt;li&gt;Site Look and Feel&lt;/li&gt;
@@ -844,10 +844,10 @@ end
     
     <item>
       <title>I Hate Voicemail: Straight to SMS with Twilio</title>
-      <link>/dankleiman.github.io/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</link>
+      <link>/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</link>
       <pubDate>Tue, 15 Sep 2015 08:02:19 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</guid>
+      <guid>/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</guid>
       <description>&lt;p&gt;I hate checking my voicemail. I hate the nagging voicemail icon on my phone that won&amp;rsquo;t be dismissed unless I actually check my voicemail. I hate how listening to a voicemail, capturing relevant information from it, and calling someone back breaks up the normal flow of how I communicate with people all day long: asynchronously, via written communication like email or text.&lt;/p&gt;
 
 &lt;p&gt;These days, when I want to talk to someone, we plan a time to talk and that&amp;rsquo;s fine. But some people still call and leave me a black-box-of-a-voicemail that I have to wade into.&lt;/p&gt;
@@ -874,7 +874,7 @@ end
 
 &lt;h2 id=&#34;twilio-and-sinatra-for-message-flow&#34;&gt;Twilio and Sinatra for Message Flow&lt;/h2&gt;
 
-&lt;p&gt;To code this up, I used a similar set up to the &lt;a href=&#34;dankleiman.github.io/blog/2015/08/13/sms-to-do-list-with-twilio/&#34;&gt;To Do List app&lt;/a&gt; I built earlier.&lt;/p&gt;
+&lt;p&gt;To code this up, I used a similar set up to the &lt;a href=&#34;/blog/2015/08/13/sms-to-do-list-with-twilio/&#34;&gt;To Do List app&lt;/a&gt; I built earlier.&lt;/p&gt;
 
 &lt;p&gt;There are three main controller actions in the Sinatra app that the handle an incoming call, record the message, and then send it to me as a text:&lt;/p&gt;
 
@@ -974,10 +974,10 @@ end
     
     <item>
       <title>Text Me When You&#39;re Done: Twilio for Notifications of Long-Running Dev Tasks</title>
-      <link>/dankleiman.github.io/2015/08/29/text-me-when-youre-done-twilio-for-notifications-of-long-running-dev-tasks</link>
+      <link>/2015/08/29/text-me-when-youre-done-twilio-for-notifications-of-long-running-dev-tasks</link>
       <pubDate>Sat, 29 Aug 2015 10:33:48 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2015/08/29/text-me-when-youre-done-twilio-for-notifications-of-long-running-dev-tasks</guid>
+      <guid>/2015/08/29/text-me-when-youre-done-twilio-for-notifications-of-long-running-dev-tasks</guid>
       <description>&lt;p&gt;This week at work, we ran into a slight hiccup with one of our larger third-party data syncs. Without going into too much detail, to fix the issue, we had to carefully reproduce data in various states and test fixes that would transform that data back to the correct state &amp;ndash; or for the purpose of this post, &lt;em&gt;I spent a lot of time this week setting things up and waiting for them to run&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Outside of work I&amp;rsquo;ve been continuing to play with Twilio and this morning, with hours of data prep still in front of me, I stumbled across this article on &lt;a href=&#34;https://www.twilio.com/labs/bash/sms&#34;&gt;Sending a Twilio SMS from the Shell&lt;/a&gt;.&lt;/p&gt;
@@ -1038,10 +1038,10 @@ end
     
     <item>
       <title>SMS To Do List with Twilio</title>
-      <link>/dankleiman.github.io/2015/08/13/sms-to-do-list-with-twilio</link>
+      <link>/2015/08/13/sms-to-do-list-with-twilio</link>
       <pubDate>Thu, 13 Aug 2015 19:45:40 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2015/08/13/sms-to-do-list-with-twilio</guid>
+      <guid>/2015/08/13/sms-to-do-list-with-twilio</guid>
       <description>&lt;p&gt;The other day, I had the pleasure of talking to someone who builds mobile apps with people in developing countries so that community health workers can deliver medical information and collect data.&lt;/p&gt;
 
 &lt;p&gt;As were talking about the technical challenges and logistical challenges (provisioning hundreds of mobile phones and numbers in one go in a country where you have no presence, e.g.), I have a pretty clear mental model of a basic CRUD app distilled down to Android&amp;hellip;and then he said something that changed how I thought about the entire problem:&lt;/p&gt;
@@ -1217,10 +1217,10 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
     
     <item>
       <title>10 of My Favorite Talks from RailsConf 2015</title>
-      <link>/dankleiman.github.io/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</link>
+      <link>/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</link>
       <pubDate>Wed, 29 Apr 2015 20:47:31 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</guid>
+      <guid>/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</guid>
       <description>&lt;p&gt;RailsConf 2015 was a blast. There were talks on a such a wide range of topics, that I wanted to capture some of my favorites here.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;rsquo;s my Top 10 Countdown from the conference:&lt;/p&gt;
@@ -1304,10 +1304,10 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
     
     <item>
       <title>Parachuting into Unfamilar Code</title>
-      <link>/dankleiman.github.io/2015/01/11/parachuting-into-unfamilar-code</link>
+      <link>/2015/01/11/parachuting-into-unfamilar-code</link>
       <pubDate>Sun, 11 Jan 2015 20:15:27 -0500</pubDate>
       
-      <guid>/dankleiman.github.io/2015/01/11/parachuting-into-unfamilar-code</guid>
+      <guid>/2015/01/11/parachuting-into-unfamilar-code</guid>
       <description>&lt;p&gt;We have hundreds of models in our codebase at &lt;a href=&#34;http://www.trialnetworks.com&#34;&gt;TrialNetworks&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a new developer, the first 12 features I was asked to work on didn’t touch the same parts of the code. In terms of learning our product, I think that was good, but without some serious “orienteering” practice, it was also confusing and frustrating.&lt;/p&gt;
@@ -1385,10 +1385,10 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
     
     <item>
       <title>Coding Bootcamp ROI 3 Weeks Later</title>
-      <link>/dankleiman.github.io/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
+      <link>/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/dankleiman.github.io/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
+      <guid>/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been 3 weeks since I graduated from &lt;a href=&#34;http://www.launchacademy.com&#34;&gt;Launch Academy&lt;/a&gt; and I start work at a new job on Wednesday as a software developer.&lt;/p&gt;
 
 &lt;p&gt;Obviously, I&amp;rsquo;m thrilled with this whirlwind process, and coming off almost ten years in my last job, the pace of all this change is a little hard to grasp.&lt;/p&gt;
@@ -1459,7 +1459,7 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
 
 &lt;p&gt;Between live meetings, a google group, and twitter, you can get all kinds of help, recommendations, and keep track of new developments if you want to lurk like I did.&lt;/p&gt;
 
-&lt;p&gt;I &lt;em&gt;thought&lt;/em&gt; I was lucky to be in Boston, but it turns out, I was lucky to find Ruby&amp;hellip;where tons of interested people from all over want to make programming interesting and enjoyable. Case in point: my recent experience at &lt;a href=&#34;dankleiman.github.io/blog/2014/08/03/burlington-ruby-conference-2014/&#34;&gt;Burlington Ruby Conference&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;thought&lt;/em&gt; I was lucky to be in Boston, but it turns out, I was lucky to find Ruby&amp;hellip;where tons of interested people from all over want to make programming interesting and enjoyable. Case in point: my recent experience at &lt;a href=&#34;/blog/2014/08/03/burlington-ruby-conference-2014/&#34;&gt;Burlington Ruby Conference&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;7. Established Network&lt;/strong&gt;&lt;/p&gt;
 
@@ -1482,10 +1482,10 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
     
     <item>
       <title>Burlington Ruby Conference 2014</title>
-      <link>/dankleiman.github.io/2014/08/03/burlington-ruby-conference-2014</link>
+      <link>/2014/08/03/burlington-ruby-conference-2014</link>
       <pubDate>Sun, 03 Aug 2014 06:24:53 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2014/08/03/burlington-ruby-conference-2014</guid>
+      <guid>/2014/08/03/burlington-ruby-conference-2014</guid>
       <description>
 
 &lt;p&gt;It&amp;rsquo;s 6:23 on Sunday morning, day 2 at &lt;a href=&#34;http://burlingtonrubyconference.com/&#34;&gt;Burlington Ruby&lt;/a&gt;, so I thought I&amp;rsquo;d take a few minutes and recap some of what I saw and learned yesterday.&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rails on Dan Kleiman</title>
-    <link>/dankleiman.github.io/categories/rails/index.xml</link>
+    <link>/categories/rails/index.xml</link>
     <description>Recent content in rails on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/categories/rails/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/rails/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Rails Security Exercises from Bearclaw</title>
-      <link>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</link>
+      <link>/2016/09/24/rails-security-exercises-from-bearclaw</link>
       <pubDate>Sat, 24 Sep 2016 06:05:49 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</guid>
+      <guid>/2016/09/24/rails-security-exercises-from-bearclaw</guid>
       <description>
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to tell you what I learned doing a series of Rails security exercises developed by &lt;a href=&#34;https://www.gobearclaw.com/&#34;&gt;Bearclaw&lt;/a&gt;, a Rails security consultancy.&lt;/p&gt;
@@ -155,13 +155,13 @@
     
     <item>
       <title>The Race to Hello World: Rails vs. Sinatra</title>
-      <link>/dankleiman.github.io/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</link>
+      <link>/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</link>
       <pubDate>Mon, 23 Jun 2014 08:11:28 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</guid>
+      <guid>/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</guid>
       <description>
 
-&lt;p&gt;Earlier, I explained how I built &lt;a href=&#34;dankleiman.github.io/blog/2014/05/30/buying-a-mongolian-website/&#34;&gt;my personalized url shortner&lt;/a&gt; in Sinatra.&lt;/p&gt;
+&lt;p&gt;Earlier, I explained how I built &lt;a href=&#34;/blog/2014/05/30/buying-a-mongolian-website/&#34;&gt;my personalized url shortner&lt;/a&gt; in Sinatra.&lt;/p&gt;
 
 &lt;p&gt;This past week, we&amp;rsquo;ve been spinning up demo apps in Rails instead, so I wanted to walk through a little comparison of the two frameworks.&lt;/p&gt;
 

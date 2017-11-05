@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>learning on Dan Kleiman</title>
-    <link>/dankleiman.github.io/categories/learning/index.xml</link>
+    <link>/categories/learning/index.xml</link>
     <description>Recent content in learning on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/categories/learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/learning/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting a Feel For It</title>
-      <link>/dankleiman.github.io/2014/03/20/getting-a-feel-for-it</link>
+      <link>/2014/03/20/getting-a-feel-for-it</link>
       <pubDate>Thu, 20 Mar 2014 08:59:31 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2014/03/20/getting-a-feel-for-it</guid>
+      <guid>/2014/03/20/getting-a-feel-for-it</guid>
       <description>
 
 &lt;p&gt;&amp;ldquo;I just want to get a feel for what I can change/do&amp;hellip;&amp;rdquo;&lt;/p&gt;

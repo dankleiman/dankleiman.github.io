@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruby on Dan Kleiman</title>
-    <link>/dankleiman.github.io/categories/ruby/index.xml</link>
+    <link>/categories/ruby/index.xml</link>
     <description>Recent content in ruby on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Nice Try, NilClass</title>
-      <link>/dankleiman.github.io/2016/04/10/nice-try-nilclass</link>
+      <link>/2016/04/10/nice-try-nilclass</link>
       <pubDate>Sun, 10 Apr 2016 07:13:27 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2016/04/10/nice-try-nilclass</guid>
+      <guid>/2016/04/10/nice-try-nilclass</guid>
       <description>
 
 &lt;p&gt;I love that feeling when a new concept starts to come together in your mind and you can point to all the converging sources of insight.&lt;/p&gt;
@@ -123,10 +123,10 @@ end
     
     <item>
       <title>Burlington Ruby Conference 2014</title>
-      <link>/dankleiman.github.io/2014/08/03/burlington-ruby-conference-2014</link>
+      <link>/2014/08/03/burlington-ruby-conference-2014</link>
       <pubDate>Sun, 03 Aug 2014 06:24:53 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2014/08/03/burlington-ruby-conference-2014</guid>
+      <guid>/2014/08/03/burlington-ruby-conference-2014</guid>
       <description>
 
 &lt;p&gt;It&amp;rsquo;s 6:23 on Sunday morning, day 2 at &lt;a href=&#34;http://burlingtonrubyconference.com/&#34;&gt;Burlington Ruby&lt;/a&gt;, so I thought I&amp;rsquo;d take a few minutes and recap some of what I saw and learned yesterday.&lt;/p&gt;

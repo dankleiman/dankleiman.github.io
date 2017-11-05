@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>security on Dan Kleiman</title>
-    <link>/dankleiman.github.io/categories/security/index.xml</link>
+    <link>/categories/security/index.xml</link>
     <description>Recent content in security on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/security/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Rails Security Exercises from Bearclaw</title>
-      <link>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</link>
+      <link>/2016/09/24/rails-security-exercises-from-bearclaw</link>
       <pubDate>Sat, 24 Sep 2016 06:05:49 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2016/09/24/rails-security-exercises-from-bearclaw</guid>
+      <guid>/2016/09/24/rails-security-exercises-from-bearclaw</guid>
       <description>
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to tell you what I learned doing a series of Rails security exercises developed by &lt;a href=&#34;https://www.gobearclaw.com/&#34;&gt;Bearclaw&lt;/a&gt;, a Rails security consultancy.&lt;/p&gt;

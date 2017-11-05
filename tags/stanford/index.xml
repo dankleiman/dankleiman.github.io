@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>stanford on Dan Kleiman</title>
-    <link>/dankleiman.github.io/tags/stanford/index.xml</link>
+    <link>/tags/stanford/index.xml</link>
     <description>Recent content in stanford on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/tags/stanford/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/stanford/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Health Month Wrap-Up</title>
-      <link>/dankleiman.github.io/2011/03/29/health-month-wrap-up/</link>
+      <link>/2011/03/29/health-month-wrap-up/</link>
       <pubDate>Tue, 29 Mar 2011 14:48:03 +0000</pubDate>
       
-      <guid>/dankleiman.github.io/2011/03/29/health-month-wrap-up/</guid>
+      <guid>/2011/03/29/health-month-wrap-up/</guid>
       <description>&lt;p&gt;As March comes to an end, I&#39;m wrapping up playing &lt;a href=&#34;http://healthmonth.com&#34;&gt;Health Month&lt;/a&gt;, an online game that helps you integrate new habits and change behavior. Here&#39;s my review of Health Month and a recap of what I experienced. I have to say, I don&#39;t think I really explored it to the fullest, but there were a couple of things I really liked about it and a couple of things I didn&#39;t connect with in the design.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-789&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;First, what didn&#39;t really work for me, then what I really like about this tool.&lt;/p&gt;
 &lt;h2&gt;The Point System&lt;/h2&gt;&lt;br /&gt;
@@ -37,10 +37,10 @@ There was something that really clicked for me about formulating my Health Month
     
     <item>
       <title>Teaching Cycles</title>
-      <link>/dankleiman.github.io/2011/01/31/teaching-cycles/</link>
+      <link>/2011/01/31/teaching-cycles/</link>
       <pubDate>Mon, 31 Jan 2011 14:31:55 +0000</pubDate>
       
-      <guid>/dankleiman.github.io/2011/01/31/teaching-cycles/</guid>
+      <guid>/2011/01/31/teaching-cycles/</guid>
       <description>&lt;p&gt;I&#39;m coming to another big teaching cycle in Trainerfly and I think this short clip of David Heinemeier Hansson speaking at Stanford&#39;s Entrepreneurship Corner is really useful to frame the mindset:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-574&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;object id=&#34;single&#34; classid=&#34;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&#34; width=&#34;500&#34; height=&#34;302&#34; codebase=&#34;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0&#34;&gt;&lt;param name=&#34;flashvars&#34; value=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34; /&gt;&lt;param name=&#34;src&#34; value=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; /&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34; /&gt;&lt;embed id=&#34;single&#34; type=&#34;application/x-shockwave-flash&#34; width=&#34;500&#34; height=&#34;302&#34; src=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; allowfullscreen=&#34;true&#34; flashvars=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
 &lt;p&gt;I know the point in the clip above is more about a strategy to take when you look at the &#34;big guys&#34;, but I really feel like the alternating cycles of &#34;spending&#34; and &#34;teaching&#34; are relevant here. We just went through a &#34;spending&#34; period where we were building out the technology behind Trainerfly. That was only possible because we went through a &#34;teaching&#34; period initially, where I learned what problems I wanted to solve with a software application.&lt;/p&gt;

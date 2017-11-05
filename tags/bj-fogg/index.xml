@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bj-fogg on Dan Kleiman</title>
-    <link>/dankleiman.github.io/tags/bj-fogg/index.xml</link>
+    <link>/tags/bj-fogg/index.xml</link>
     <description>Recent content in bj-fogg on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/tags/bj-fogg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/bj-fogg/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Health Month Wrap-Up</title>
-      <link>/dankleiman.github.io/2011/03/29/health-month-wrap-up/</link>
+      <link>/2011/03/29/health-month-wrap-up/</link>
       <pubDate>Tue, 29 Mar 2011 14:48:03 +0000</pubDate>
       
-      <guid>/dankleiman.github.io/2011/03/29/health-month-wrap-up/</guid>
+      <guid>/2011/03/29/health-month-wrap-up/</guid>
       <description>&lt;p&gt;As March comes to an end, I&#39;m wrapping up playing &lt;a href=&#34;http://healthmonth.com&#34;&gt;Health Month&lt;/a&gt;, an online game that helps you integrate new habits and change behavior. Here&#39;s my review of Health Month and a recap of what I experienced. I have to say, I don&#39;t think I really explored it to the fullest, but there were a couple of things I really liked about it and a couple of things I didn&#39;t connect with in the design.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-789&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;First, what didn&#39;t really work for me, then what I really like about this tool.&lt;/p&gt;
 &lt;h2&gt;The Point System&lt;/h2&gt;&lt;br /&gt;
@@ -37,10 +37,10 @@ There was something that really clicked for me about formulating my Health Month
     
     <item>
       <title>Simplicity, Persuasion and Technology</title>
-      <link>/dankleiman.github.io/2011/01/20/simplicity-persuasion-and-technology/</link>
+      <link>/2011/01/20/simplicity-persuasion-and-technology/</link>
       <pubDate>Thu, 20 Jan 2011 08:37:29 +0000</pubDate>
       
-      <guid>/dankleiman.github.io/2011/01/20/simplicity-persuasion-and-technology/</guid>
+      <guid>/2011/01/20/simplicity-persuasion-and-technology/</guid>
       <description>&lt;p&gt;I&#39;ve been reading/watching a lot of BJ Fogg&#39;s work lately. He studies &lt;a href=&#34;http://captology.stanford.edu/&#34;&gt;the persuasive power of technology for positive behavior change&lt;/a&gt;. You&#39;ll recognize my interest here if you read some of my recent posts on game design mechanics and the potential to integrate technology into real world learning. &lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-557&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;(Check out his &lt;a href=&#34;http://www.youtube.com/bjfogg&#34;&gt;Youtube channel&lt;/a&gt; for some shorter videos that explain facets of his work &#34;in 60 seconds&#34;)&lt;/p&gt;
 &lt;p&gt;Here&#39;s Dr. Fogg on simplicity:&lt;/p&gt;

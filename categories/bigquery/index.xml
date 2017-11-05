@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bigquery on Dan Kleiman</title>
-    <link>/dankleiman.github.io/categories/bigquery/index.xml</link>
+    <link>/categories/bigquery/index.xml</link>
     <description>Recent content in bigquery on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/dankleiman.github.io/categories/bigquery/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/bigquery/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Top N Per Group in BigQuery</title>
-      <link>/dankleiman.github.io/2017/10/30/top-n-per-group-in-bigquery</link>
+      <link>/2017/10/30/top-n-per-group-in-bigquery</link>
       <pubDate>Mon, 30 Oct 2017 19:29:32 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2017/10/30/top-n-per-group-in-bigquery</guid>
+      <guid>/2017/10/30/top-n-per-group-in-bigquery</guid>
       <description>&lt;p&gt;In this post, we are going to explore a strategy for collecting the &lt;strong&gt;Top N results per Group&lt;/strong&gt; over a mixed dataset, all in a single query.&lt;/p&gt;
 
 &lt;p&gt;I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a &lt;code&gt;WHERE&lt;/code&gt; clause limiting the whole data set to a single group and combine with &lt;code&gt;ORDER BY&lt;/code&gt; and &lt;code&gt;LIMIT&lt;/code&gt; clauses.&lt;/p&gt;
@@ -142,10 +142,10 @@ ORDER BY
     
     <item>
       <title>Don&#39;t Blow Your BigQuery Budget on Unknown Data!</title>
-      <link>/dankleiman.github.io/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
+      <link>/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
       <pubDate>Fri, 06 Oct 2017 14:55:37 -0400</pubDate>
       
-      <guid>/dankleiman.github.io/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
+      <guid>/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
       <description>&lt;p&gt;It&amp;rsquo;s easy to blow your BigQuery budget when you are exploring a new data set. Because you&amp;rsquo;re billed for the amount of data scanned, not the ultimate result set, when you don&amp;rsquo;t know what you&amp;rsquo;re looking  for, you can end up with wasteful queries.&lt;/p&gt;
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to share some tips for more efficiently scanning data in BigQuery when you don&amp;rsquo;t quite know what you need.
@@ -179,7 +179,7 @@ ORDER BY
 
 &lt;p&gt;If you need to explore an unknown data set, you can still get a feel for what&amp;rsquo;s in each column and the different characteristics of the data by using BigQuery&amp;rsquo;s built in &amp;ldquo;preview&amp;rdquo; function.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_preview_mode.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_preview_mode.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m using &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_01?tab=preview&#34;&gt;this publicly available dump of Reddit comments&lt;/a&gt; for all the screenshots in this post.&lt;/p&gt;
 
@@ -191,7 +191,7 @@ ORDER BY
 
 &lt;p&gt;Once you&amp;rsquo;ve identified the columns and clauses you need, run the &amp;ldquo;big query&amp;rdquo; once and store it to a temp table.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_temp_table.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_temp_table.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, instead of querying against billions of rows each time, you will be working with a subset of data. Even if it&amp;rsquo;s a few million rows, it will still be more efficient.&lt;/p&gt;
 
@@ -201,7 +201,7 @@ ORDER BY
 
 &lt;p&gt;Instead, you can import data into BigQuery as a temp table and use the auto-detect schema feature. BigQuery will build you a temp table with all the columns and rows from your spreadsheet.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;dankleiman.github.io/images/bigquery_import_data.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/bigquery_import_data.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can use your temp table or any other data set to write SQL against your external data. You can even join data across BigQuery projects &amp;ndash; the project name is just part of the namespace that identifies each table.&lt;/p&gt;
 
