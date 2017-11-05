@@ -379,8 +379,9 @@
 
 <p>For each group, I would just modify the <code>WHERE</code> clause, rescan all the data, and get new results. I thought there had to be an easier way to get the same ordered subset for any particular group in the data, all at once.</p>
 
-<p>It turns out, there is a much more efficient way to solve this problem.
-</p>
+<p>It turns out, there is a much more efficient way to solve this problem.</p>
+
+<p></p>
 
 <h2 id="reddit-top-10-users-by-comment-score-for-july-2015">Reddit Top 10 Users By Comment Score for July, 2015</h2>
 
@@ -397,7 +398,7 @@ ORDER BY 2 DESC
 LIMIT 10
 </code></pre>
 
-<p>_I&rsquo;m leaving out all query results in this post because it&rsquo;s a <a href="https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_07?tab=preview">public dataset</a> and you should totally go run the queries to see for yourself!_</p>
+<p>I&rsquo;m leaving out all query results in this post because it&rsquo;s a <a href="https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_07?tab=preview">public dataset</a> and you should totally go run the queries to see for yourself!</p>
 
 <p>In the most straightforward way possible, we&rsquo;re summing up the comment score by author, ordering by highest score, and taking the first ten results.</p>
 

@@ -20,8 +20,9 @@
 
 &lt;p&gt;For each group, I would just modify the &lt;code&gt;WHERE&lt;/code&gt; clause, rescan all the data, and get new results. I thought there had to be an easier way to get the same ordered subset for any particular group in the data, all at once.&lt;/p&gt;
 
-&lt;p&gt;It turns out, there is a much more efficient way to solve this problem.
-&lt;/p&gt;
+&lt;p&gt;It turns out, there is a much more efficient way to solve this problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;reddit-top-10-users-by-comment-score-for-july-2015&#34;&gt;Reddit Top 10 Users By Comment Score for July, 2015&lt;/h2&gt;
 
@@ -38,7 +39,7 @@ ORDER BY 2 DESC
 LIMIT 10
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;_I&amp;rsquo;m leaving out all query results in this post because it&amp;rsquo;s a &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_07?tab=preview&#34;&gt;public dataset&lt;/a&gt; and you should totally go run the queries to see for yourself!_&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m leaving out all query results in this post because it&amp;rsquo;s a &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2015_07?tab=preview&#34;&gt;public dataset&lt;/a&gt; and you should totally go run the queries to see for yourself!&lt;/p&gt;
 
 &lt;p&gt;In the most straightforward way possible, we&amp;rsquo;re summing up the comment score by author, ordering by highest score, and taking the first ten results.&lt;/p&gt;
 
