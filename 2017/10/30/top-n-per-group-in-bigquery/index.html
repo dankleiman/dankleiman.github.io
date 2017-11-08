@@ -28,7 +28,9 @@
 
 
 <meta name="twitter:title" content="Top N Per Group in BigQuery"/>
-<meta name="twitter:description" content="In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
+<meta name="twitter:description" content="EDIT: After I posted this initially, I got some great feedback, so I wrote a follow-up post here.
+
+In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
 
 I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a WHERE clause limiting the whole data set to a single group and combine with ORDER BY and LIMIT clauses.
 
@@ -41,7 +43,9 @@ It turns out, there is a much more efficient way to solve this problem.
 
 
         <meta property="og:title" content="Top N Per Group in BigQuery" />
-<meta property="og:description" content="In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
+<meta property="og:description" content="EDIT: After I posted this initially, I got some great feedback, so I wrote a follow-up post here.
+
+In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
 
 I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a WHERE clause limiting the whole data set to a single group and combine with ORDER BY and LIMIT clauses.
 
@@ -70,7 +74,9 @@ It turns out, there is a much more efficient way to solve this problem.
 
         
 <meta itemprop="name" content="Top N Per Group in BigQuery">
-<meta itemprop="description" content="In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
+<meta itemprop="description" content="EDIT: After I posted this initially, I got some great feedback, so I wrote a follow-up post here.
+
+In this post, we are going to explore a strategy for collecting the Top N results per Group over a mixed dataset, all in a single query.
 
 I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a WHERE clause limiting the whole data set to a single group and combine with ORDER BY and LIMIT clauses.
 
@@ -82,7 +88,7 @@ It turns out, there is a much more efficient way to solve this problem.
 
 
 <meta itemprop="dateModified" content="2017-10-30T19:29:32-04:00" />
-<meta itemprop="wordCount" content="919">
+<meta itemprop="wordCount" content="937">
 
 
 
@@ -251,6 +257,18 @@ ga('send', 'pageview');
                 
                         <article class="mini-post">
                             <header>
+                                <h3><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-07'>
+                                    November 7, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
                                 <h3><a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h3>
                                 
                                 <time class="published" datetime=
@@ -292,18 +310,6 @@ ga('send', 'pageview');
                                 <time class="published" datetime=
                                     '2016-12-29'>
                                     December 29, 2016</time>
-                            </header>
-                            
-
-                        </article>
-                
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="/2016/09/24/rails-security-exercises-from-bearclaw">Rails Security Exercises from Bearclaw</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2016-09-24'>
-                                    September 24, 2016</time>
                             </header>
                             
 
@@ -504,7 +510,9 @@ ga('send', 'pageview');
   
 
   <div id="content">
-    <p>In this post, we are going to explore a strategy for collecting the <strong>Top N results per Group</strong> over a mixed dataset, all in a single query.</p>
+    <p><strong>EDIT:</strong> After I posted this initially, I got some <a href="https://twitter.com/Dan_Kleiman/status/925921880397287425">great</a> <a href="https://www.reddit.com/r/bigquery/comments/7aecfe/top_n_per_group_in_bigquery/">feedback</a>, so I wrote a follow-up post <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem/">here</a>.</p>
+
+<p>In this post, we are going to explore a strategy for collecting the <strong>Top N results per Group</strong> over a mixed dataset, all in a single query.</p>
 
 <p>I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a <code>WHERE</code> clause limiting the whole data set to a single group and combine with <code>ORDER BY</code> and <code>LIMIT</code> clauses.</p>
 
@@ -677,6 +685,9 @@ ORDER BY
     
 
     
+        <li><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem"
+                class="button big next">More Efficient Solutions to the Top N per Group Problem</a></li>
+    
 </ul>
 
 
@@ -806,6 +817,20 @@ ORDER BY
           <article class="mini-post">
             <header>
               <h3>
+                <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-07'>
+                November 7, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
                 <a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a>
               </h3>
               
@@ -853,20 +878,6 @@ ORDER BY
               
               <time class="published" datetime='2016-12-29'>
                 December 29, 2016
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="/2016/09/24/rails-security-exercises-from-bearclaw">Rails Security Exercises from Bearclaw</a>
-              </h3>
-              
-              <time class="published" datetime='2016-09-24'>
-                September 24, 2016
               </time>
             </header>
             
@@ -938,7 +949,7 @@ ORDER BY
             <header>
               
                 <a href="/categories/code/">Code</a>
-                <span style="float:right;">27</span>
+                <span style="float:right;">28</span>
               
             </header>
           </article>
@@ -1058,6 +1069,17 @@ ORDER BY
           <article>
             <header>
               
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
                 <a href="/categories/energy-arts/">Energy Arts</a>
                 <span style="float:right;">3</span>
               
@@ -1071,17 +1093,6 @@ ORDER BY
               
                 <a href="/categories/twilio/">Twilio</a>
                 <span style="float:right;">3</span>
-              
-            </header>
-          </article>
-        </p>
-        
-        <p>
-          <article>
-            <header>
-              
-                <a href="/categories/bigquery/">BigQuery</a>
-                <span style="float:right;">2</span>
               
             </header>
           </article>

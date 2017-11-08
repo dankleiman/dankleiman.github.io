@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</loc>
+    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2017/10/30/top-n-per-group-in-bigquery</loc>
     <lastmod>2017-10-30T19:29:32-04:00</lastmod>
   </url>
@@ -2265,7 +2270,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-10-30T19:29:32-04:00</lastmod>
+    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2281,7 +2286,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-10-30T19:29:32-04:00</lastmod>
+    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2344,7 +2349,7 @@
   
   <url>
     <loc>/categories/bigquery/</loc>
-    <lastmod>2017-10-30T19:29:32-04:00</lastmod>
+    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2464,7 +2469,7 @@
   
   <url>
     <loc>/categories/code/</loc>
-    <lastmod>2017-10-30T19:29:32-04:00</lastmod>
+    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2583,14 +2588,14 @@
   </url>
   
   <url>
-    <loc>/tags/energy-arts/</loc>
-    <lastmod>2013-10-31T11:44:02+00:00</lastmod>
+    <loc>/categories/energy-arts/</loc>
+    <lastmod>2011-02-17T09:11:10+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/energy-arts/</loc>
-    <lastmod>2011-02-17T09:11:10+00:00</lastmod>
+    <loc>/tags/energy-arts/</loc>
+    <lastmod>2013-10-31T11:44:02+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2775,14 +2780,14 @@
   </url>
   
   <url>
-    <loc>/tags/inner-form/</loc>
-    <lastmod>2011-11-21T08:14:02+00:00</lastmod>
+    <loc>/categories/inner-form/</loc>
+    <lastmod>2012-03-19T10:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/inner-form/</loc>
-    <lastmod>2012-03-19T10:00:00+00:00</lastmod>
+    <loc>/tags/inner-form/</loc>
+    <lastmod>2011-11-21T08:14:02+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2853,14 +2858,14 @@
   </url>
   
   <url>
-    <loc>/tags/learning/</loc>
-    <lastmod>2014-04-18T09:33:25+00:00</lastmod>
+    <loc>/categories/learning/</loc>
+    <lastmod>2014-03-20T08:59:31-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/learning/</loc>
-    <lastmod>2014-03-20T08:59:31-04:00</lastmod>
+    <loc>/tags/learning/</loc>
+    <lastmod>2014-04-18T09:33:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2913,14 +2918,14 @@
   </url>
   
   <url>
-    <loc>/tags/meditation/</loc>
-    <lastmod>2013-06-07T08:59:30+00:00</lastmod>
+    <loc>/categories/meditation/</loc>
+    <lastmod>2013-05-29T11:57:43+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/meditation/</loc>
-    <lastmod>2013-05-29T11:57:43+00:00</lastmod>
+    <loc>/tags/meditation/</loc>
+    <lastmod>2013-06-07T08:59:30+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3111,13 +3116,13 @@
   </url>
   
   <url>
-    <loc>/tags/qigong/</loc>
+    <loc>/categories/qigong/</loc>
     <lastmod>2014-05-06T11:52:13+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/qigong/</loc>
+    <loc>/tags/qigong/</loc>
     <lastmod>2014-05-06T11:52:13+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -3369,14 +3374,14 @@
   </url>
   
   <url>
-    <loc>/tags/tai-chi/</loc>
-    <lastmod>2014-05-02T09:08:00+00:00</lastmod>
+    <loc>/categories/tai-chi/</loc>
+    <lastmod>2014-04-01T18:11:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/tai-chi/</loc>
-    <lastmod>2014-04-01T18:11:40+00:00</lastmod>
+    <loc>/tags/tai-chi/</loc>
+    <lastmod>2014-05-02T09:08:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

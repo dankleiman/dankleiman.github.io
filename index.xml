@@ -6,8 +6,200 @@
     <description>Recent content on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Oct 2017 19:29:32 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 07 Nov 2017 20:46:05 -0500</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>More Efficient Solutions to the Top N per Group Problem</title>
+      <link>/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</link>
+      <pubDate>Tue, 07 Nov 2017 20:46:05 -0500</pubDate>
+      
+      <guid>/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</guid>
+      <description>&lt;p&gt;In my last post, I tried to tackle getting &lt;a href=&#34;/blog/2017/10/30/top-n-per-group-in-bigquery/&#34;&gt;the Top N Results per Group&lt;/a&gt; from a BigQuery dataset.&lt;/p&gt;
+
+&lt;p&gt;When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand &lt;em&gt;why&lt;/em&gt; the alternatives are more efficient.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;first-attempt-using-row-number&#34;&gt;First Attempt using ROW_NUMBER&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the initial query I was using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+  subreddit,
+  author,
+  author_count,
+  total_score,
+  comment_rank
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    ROW_NUMBER() OVER (PARTITION BY subreddit ORDER BY SUM(score) DESC) AS comment_rank,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN (&#39;[deleted]&#39;,
+      &#39;AutoModerator&#39;)
+  GROUP BY
+    1,
+    2 )
+WHERE
+  comment_rank &amp;lt;= 10
+  AND author_count &amp;gt; 9
+ORDER BY
+  1,
+  5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the Top N problem, the key is computing the rank of each author&amp;rsquo;s scores, relative to the others in any particular group. In the query above, that&amp;rsquo;s this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ROW_NUMBER() OVER (PARTITION BY subreddit ORDER BY SUM(score) DESC) AS comment_rank,
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The partition isolates the group, in this case a single subreddit. Then, you can order the authors by score within each group. The &lt;code&gt;ROW_NUMBER&lt;/code&gt; function is a way to capture an ordered list of those partitioned ranks.&lt;/p&gt;
+
+&lt;p&gt;We use the ordered list position later in the main select as part of the &lt;code&gt;WHERE&lt;/code&gt; clause to only take author&amp;rsquo;s whose subreddit-specific comment rank is in the top 10.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what the query plan looks like for our &lt;code&gt;ROW_NUMBER&lt;/code&gt; query:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/row_number_query_plan.png&#34; alt=&#34;BigQuery ROW_NUMBER query plan&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;using-array-agg&#34;&gt;USING ARRAY_AGG&lt;/h2&gt;
+
+&lt;p&gt;The next query that I wanted to try was suggested by &lt;a href=&#34;https://twitter.com/ElliottBrossard&#34;&gt;Elliot Brossard&lt;/a&gt; who actually works on BigQuery at Google. And, if I had been paying better attention when I pulled my first pass solution from StackOverflow, I would have seen that he also made &lt;a href=&#34;https://stackoverflow.com/a/44680685&#34;&gt;this suggestion on the original post&lt;/a&gt;. Thanks for your patience, Elliot!&lt;/p&gt;
+
+&lt;p&gt;Elliot suggests using &lt;code&gt;ARRAY_AGG&lt;/code&gt; with a limit to get a set of ranked results instead of using the &lt;code&gt;ROW_NUMBER&lt;/code&gt; function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+  subreddit,
+  ARRAY_AGG(STRUCT(author,
+      total_score)
+  ORDER BY
+    total_score DESC
+  LIMIT
+    10) AS top_authors
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN (&#39;[deleted]&#39;,
+      &#39;AutoModerator&#39;)
+  GROUP BY
+    1,
+    2 )
+WHERE
+  author_count &amp;gt; 9
+GROUP BY
+  subreddit
+ORDER BY
+  1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#array_agg&#34;&gt;ARRAY_AGG&lt;/a&gt; gives you a ton of power to condense parts of what we did in the first query.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can pull a subset of data into a single array, in this case &lt;code&gt;STRUCT(author, total_score)&lt;/code&gt;, which gives you pretty much what we used &lt;code&gt;PARTITION&lt;/code&gt; for in the first query&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ARRAY_AGG&lt;/code&gt; takes &lt;code&gt;ORDER BY&lt;/code&gt; and &lt;code&gt;LIMIT&lt;/code&gt; clauses, which together gives us the &amp;ldquo;top N&amp;rdquo; piece&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Not only that, but the result set is reduced by an order of magnitude. The first query returns 196,970 results, or 10 rows per subreddit. But the &lt;code&gt;ARRAY_AGG&lt;/code&gt; query only has 19,697 results because we only need one row per subreddit &amp;ndash; the authors and there comment scores, per the &lt;code&gt;STRUCT&lt;/code&gt; we defined in the &lt;code&gt;SELECT&lt;/code&gt; statement are a single array value column.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Results using ROW_NUMBER&lt;/strong&gt;
+&lt;img src=&#34;/img/row_number_rows.png&#34; alt=&#34;BigQuery ROW_NUMBER results&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Results using ARRAY_AGG&lt;/strong&gt;
+&lt;img src=&#34;/img/array_agg_rows.png&#34; alt=&#34;BigQuery ARRAY_AGG results&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;And check out the query plan for the &lt;code&gt;ARRAY_AGG&lt;/code&gt; query:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/array_agg_query_plan.png&#34; alt=&#34;BigQuery ARRAY_AGG query plan&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, the first 3 stages look pretty similar in terms of row input/output sizes and distribution of wait/read/compute/write. Both plans are working on the sub-select at this point, doing the sum of author comments, grouped by subreddit.&lt;/p&gt;
+
+&lt;p&gt;Stage 4 gets really interesting. The &lt;code&gt;ARRAY_AGG&lt;/code&gt; query takes an row size input of 11.0 M and reduces the output to 19.7K.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/array_agg_stage_4.png&#34; alt=&#34;BigQuery ARRAY_AGG query plan stage 4&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;In contrast, the &lt;code&gt;ROW_NUMBER&lt;/code&gt; query does a bunch of compute on stage 4, but doesn&amp;rsquo;t reduce the output at all. It&amp;rsquo;s not until the &lt;code&gt;FILTER&lt;/code&gt; in the next stage that we&amp;rsquo;ve cut down on the number of rows in the output (which we already know will still be 10x the &lt;code&gt;ARRAY_AGG&lt;/code&gt; size).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/row_number_stage_4.png&#34; alt=&#34;BigQuery ROW_NUMBER query plan stage 4&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks like using &lt;code&gt;ROW_NUMBER&lt;/code&gt; forces us to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;run over all the data again to generate our &amp;ldquo;ordered list&amp;rdquo; of comment rankings&lt;/li&gt;
+&lt;li&gt;rank everything before we filter out subsets of results we don&amp;rsquo;t ultimately want&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In contrast to the other query strategies, this is starting to seem like wasted compute effort.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-approx-top-sum&#34;&gt;USING APPROX_TOP_SUM&lt;/h2&gt;
+
+&lt;p&gt;One more suggestion I got was to use the &lt;code&gt;APPROX_TOP_&lt;/code&gt; functions. In this case &lt;code&gt;APPROX_TOP_SUM&lt;/code&gt; seemed to do the trick:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+  subreddit,
+  APPROX_TOP_SUM(author,
+    total_score,
+    10) AS top_scores
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN (&#39;[deleted]&#39;,
+      &#39;AutoModerator&#39;)
+  GROUP BY
+    1,
+    2
+  HAVING
+    SUM(score) &amp;gt; 0 )
+WHERE
+  author_count &amp;gt; 9
+GROUP BY
+  1
+ORDER BY
+  1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;a href=&#34;https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_top_sum&#34;&gt;the BigQuery documentation for this function&lt;/a&gt; it says that &lt;code&gt;APPROX_TOP_SUM&lt;/code&gt; &amp;ldquo;returns the approximate top elements of &lt;code&gt;expression&lt;/code&gt;, based on the sum of an assigned &lt;code&gt;weight&lt;/code&gt;. The &lt;code&gt;number&lt;/code&gt; parameter specifies the number of elements returned.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;If the weight input is negative or NaN, this function returns an error.&lt;/strong&gt;&amp;ldquo;&lt;/p&gt;
+
+&lt;p&gt;Emphasis added to point out that, of course, since we&amp;rsquo;re dealing with reddit comments, some of them have been downvoted to hell. Negative comment scores will actually break the &lt;code&gt;APPROX_TOP_SUM&lt;/code&gt; function in this case.&lt;/p&gt;
+
+&lt;p&gt;There are over 200 subreddits in this dataset where the top-ranked commenters couldn&amp;rsquo;t break into positive comment counts. I had to add a &lt;code&gt;HAVING&lt;/code&gt; clause to only grab total scores above 0.&lt;/p&gt;
+
+&lt;p&gt;You can see that filter getting applied in stage 3:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/approx_top_sum_stage_3.png&#34; alt=&#34;BigQuery APPROX_TOP_SUM query plan stage 3&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Compare that to the previous queries and you can see that stage 3 is where the total amount of data shrinks, thanks to those negative-ranked comments. But even with that caveat, it looks like
+&lt;code&gt;APPROX_TOP_SUM&lt;/code&gt; performs similarly to &lt;code&gt;ARRAY_AGG&lt;/code&gt;. In fact, I went back to the &lt;code&gt;ARRAY_AGG&lt;/code&gt; query and adding the same filter on &lt;code&gt;SUM(score)&lt;/code&gt; just to be sure that the inputs and outputs would match at each stage for both queries. They do.&lt;/p&gt;
+
+&lt;p&gt;Still, there are a few differences to point out for &lt;code&gt;APPROX_TOP_SUM&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;why there is an additional stage (highlighted in the screenshot below) that seems to just be shuffling or repartitioning based on some kind of metadata?&lt;/li&gt;
+&lt;li&gt;how does the &amp;lsquo;approximate&amp;rsquo; part of &lt;code&gt;APPROX_TOP_SUM&lt;/code&gt; factor into the computation?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/approx_top_sum_query_plan.png&#34; alt=&#34;BigQuery APPROX_TOP_SUM query plan&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Other than that, it seems like both of these options deliver more concise results than the initial &lt;code&gt;ROW_NUMBER&lt;/code&gt; solution. I&amp;rsquo;m looking forward to understanding the query explanation tools even better, so that in the future I can use them to diagnose my less efficient queries!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Top N Per Group in BigQuery</title>
@@ -15,7 +207,9 @@
       <pubDate>Mon, 30 Oct 2017 19:29:32 -0400</pubDate>
       
       <guid>/2017/10/30/top-n-per-group-in-bigquery</guid>
-      <description>&lt;p&gt;In this post, we are going to explore a strategy for collecting the &lt;strong&gt;Top N results per Group&lt;/strong&gt; over a mixed dataset, all in a single query.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; After I posted this initially, I got some &lt;a href=&#34;https://twitter.com/Dan_Kleiman/status/925921880397287425&#34;&gt;great&lt;/a&gt; &lt;a href=&#34;https://www.reddit.com/r/bigquery/comments/7aecfe/top_n_per_group_in_bigquery/&#34;&gt;feedback&lt;/a&gt;, so I wrote a follow-up post &lt;a href=&#34;/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this post, we are going to explore a strategy for collecting the &lt;strong&gt;Top N results per Group&lt;/strong&gt; over a mixed dataset, all in a single query.&lt;/p&gt;
 
 &lt;p&gt;I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a &lt;code&gt;WHERE&lt;/code&gt; clause limiting the whole data set to a single group and combine with &lt;code&gt;ORDER BY&lt;/code&gt; and &lt;code&gt;LIMIT&lt;/code&gt; clauses.&lt;/p&gt;
 
@@ -1479,67 +1673,6 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
 &lt;p&gt;Most of all, though, I&amp;rsquo;m still riding on the wave of being a student. I&amp;rsquo;m in &amp;ldquo;learning mode&amp;rdquo; and I&amp;rsquo;m thrilled to have found somewhere to work where this will be encouraged.&lt;/p&gt;
 
 &lt;p&gt;I hope to report back here and share the upsides of ongoing learning and growth. Thanks for reading!&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Burlington Ruby Conference 2014</title>
-      <link>/2014/08/03/burlington-ruby-conference-2014</link>
-      <pubDate>Sun, 03 Aug 2014 06:24:53 -0400</pubDate>
-      
-      <guid>/2014/08/03/burlington-ruby-conference-2014</guid>
-      <description>
-
-&lt;p&gt;It&amp;rsquo;s 6:23 on Sunday morning, day 2 at &lt;a href=&#34;http://burlingtonrubyconference.com/&#34;&gt;Burlington Ruby&lt;/a&gt;, so I thought I&amp;rsquo;d take a few minutes and recap some of what I saw and learned yesterday.&lt;/p&gt;
-
-&lt;p&gt;Everyone keeps talking about what an amazing community we have in the Ruby world and I guess I&amp;rsquo;m spoiled since I don&amp;rsquo;t have any other software communities to compare it to, but I can tell you that every talk has been thoughtful, curious, and in different ways caring: caring about the future of the language, caring about other people&amp;rsquo;s growth and development, and caring even about novel, smarter, and more refined approaches to getting things done.
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;p&gt;In his keynote to kick off the conference, &lt;a href=&#34;http://erniemiller.org/&#34;&gt;Ernie Miller&lt;/a&gt; did a pretty amazing job capturing these core themes. I don&amp;rsquo;t know how much people realized it, but he subtly set the tone for all the other talks too, both in terms of the human side of software development, but he also gave us context for all the non-Ruby or Ruby-divergent topics people were dying to discuss. Very impressive!&lt;/p&gt;
-
-&lt;p&gt;Here are a few of the ideas from the talks that jumped out at me.&lt;/p&gt;
-
-&lt;h2 id=&#34;how-you-work-with-other-people&#34;&gt;How You Work with Other People&lt;/h2&gt;
-
-&lt;p&gt;Having just come out of Launch Academy, I was really interested to hear what &lt;a href=&#34;http://jennifereliuk.com/about/&#34;&gt;Jennifer Eliuk&lt;/a&gt; had to say about apprenticeships.&lt;/p&gt;
-
-&lt;p&gt;While her talk definitely resonanted with me and helped me see &amp;ldquo;the next step&amp;rdquo; in my coding journey, she made a strong case for the importance of apprenticeships for the community at large.&lt;/p&gt;
-
-&lt;p&gt;Apprenticeships, for code school graduates or self-taught coders, have the potential to become a criticial rung on the software development ladder because:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;companies can groom and develop their junior talent, without all of the performance pressure of the day-to-day job.&lt;/li&gt;
-&lt;li&gt;mentorship and teaching becomes a rewarding way for senior developers to grow in non-technical dimensions.&lt;/li&gt;
-&lt;li&gt;a teaching culture also encourages learning &amp;ndash; she cited cases where she and senior devs would tackle new technologies side by side where everyone was learning together.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;At Launch Academy, the staff and instructors were gradually and deliberately refining each piece of the learning process, not unlike the way they taught us to tackle complex software problems. Jennifer&amp;rsquo;s talk was a perfect example of how to more broadly apply those same principles to the question: &amp;ldquo;how do we cultivate developers.&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;In fact, she argues, now that so much effort is being poured into the initial stage of learning, like code schools and weekend intro events or online curricula, we have to be more thoughtful about the next incremental step between kickoff and a dev career.&lt;/p&gt;
-
-&lt;h2 id=&#34;how-you-write-for-other-people&#34;&gt;How You Write for Other People&lt;/h2&gt;
-
-&lt;p&gt;Along the lines of incremental improvement and developing people, &lt;a href=&#34;http://nicolefenton.com/&#34;&gt;Nicole Fenton&lt;/a&gt; pushed everyone think hard about how their apps get users what they need.&lt;/p&gt;
-
-&lt;p&gt;Specifically, how do the &amp;ldquo;strings&amp;rdquo; or &amp;ldquo;micro-copy&amp;rdquo; or small cues and instructions that guide someone through a piece of software actually help them or are they just robotic, systems-focused, impersonal, confusing signposts.&lt;/p&gt;
-
-&lt;p&gt;One example she shared was from Square, when you send someone money. The confirmation email you receive basically says &amp;ldquo;You sent So-and-So $50.&amp;rdquo; Simple, right?&lt;/p&gt;
-
-&lt;p&gt;Well, she had plenty of counter-examples that would have been equivalent to &amp;ldquo;We have received your request to transfer funds to user XXXX. We are accessing the database to store your request and &amp;hellip;..typically processing time for this request&amp;hellip;.&amp;rdquo; Or something full of jargon and procedures that are necessary from the software&amp;rsquo;s point of view but completely irrelevant to the goal the user is trying to accomplish.&lt;/p&gt;
-
-&lt;p&gt;So, the next time you write copy for a button, an error message, or a confirmation, ask yourself, &amp;ldquo;what was the user trying to do and where do they need/want to go next? Am I helping them along that path in a way they&amp;rsquo;ll understand?&amp;rdquo;&lt;/p&gt;
-
-&lt;h2 id=&#34;how-you-build-for-other-people&#34;&gt;How You Build for Other People&lt;/h2&gt;
-
-&lt;p&gt;Both &lt;a href=&#34;http://danluchi.com/&#34;&gt;Dan Luchi&lt;/a&gt; and &lt;a href=&#34;http://alanpeabody.com/&#34;&gt;Alan Peabody&lt;/a&gt; grappled with what I&amp;rsquo;m coming to understand as the Rails identity crisis: &lt;em&gt;with an increase in mobile usage and connection speeds that enable heavier lifting client-side, what&amp;rsquo;s a server-side web framework to do?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The answer a lot of people are turning to, is that Rails is a powerful way to work with data and serve up an API that any front end view can consume.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve even heard people advocating for further decoupling functionality within Rails apps, so that each service serves its own API to the others, which seems to have advantages for maintainability and deployment.&lt;/p&gt;
-
-&lt;p&gt;In these talks, though, the focus was mostly on getting a Rails backend to support and interact smoothly (and quickly) with whatever frontend &amp;ndash; mobile or web &amp;ndash; the user chooses.&lt;/p&gt;
-
-&lt;p&gt;Alan explained some of the challenges and solutions he&amp;rsquo;s come up with for optimizing these connections and Dan gave us some great guidlines around functionality when deciding the best structure for building an app, like &lt;a href=&#34;http://www.ticketzen.com/&#34;&gt;Ticket Zen&lt;/a&gt;, the parking ticket payment app I hope I never have to use.&lt;/p&gt;
-</description>
     </item>
     
   </channel>

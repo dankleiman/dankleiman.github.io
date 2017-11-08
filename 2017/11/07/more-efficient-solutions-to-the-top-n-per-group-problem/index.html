@@ -1,0 +1,1407 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>More Efficient Solutions to the Top N per Group Problem</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="More Efficient Solutions to the Top N per Group Problem"/>
+<meta name="twitter:description" content="In my last post, I tried to tackle getting the Top N Results per Group from a BigQuery dataset.
+
+When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand why the alternatives are more efficient.
+
+"/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="More Efficient Solutions to the Top N per Group Problem" />
+<meta property="og:description" content="In my last post, I tried to tackle getting the Top N Results per Group from a BigQuery dataset.
+
+When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand why the alternatives are more efficient.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem" />
+
+
+
+<meta property="article:published_time" content="2017-11-07T20:46:05-05:00"/>
+<meta property="article:modified_time" content="2017-11-07T20:46:05-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="More Efficient Solutions to the Top N per Group Problem">
+<meta itemprop="description" content="In my last post, I tried to tackle getting the Top N Results per Group from a BigQuery dataset.
+
+When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand why the alternatives are more efficient.
+
+">
+
+
+<meta itemprop="dateModified" content="2017-11-07T20:46:05-05:00" />
+<meta itemprop="wordCount" content="1040">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Rails,RailsConf,Ruby,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-07'>
+                                    November 7, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-10-30'>
+                                    October 30, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data">Don&#39;t Blow Your BigQuery Budget on Unknown Data!</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-10-06'>
+                                    October 6, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/02/12/gobridge-with-bill-kennedy">GoBridge with Bill Kennedy</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-02-12'>
+                                    February 12, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2016/12/29/my-5-strategies-for-learning-go-in-2017">My 5 Strategies for Learning Go in 2017</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2016-12-29'>
+                                    December 29, 2016</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&text=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&description=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2017-11-07'>
+            November 7, 2017</time>
+        <span class="author"></span>
+        
+            <p>5 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&text=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&title=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem&description=More%20Efficient%20Solutions%20to%20the%20Top%20N%20per%20Group%20Problem" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2017%2f11%2f07%2fmore-efficient-solutions-to-the-top-n-per-group-problem" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    <p>In my last post, I tried to tackle getting <a href="/blog/2017/10/30/top-n-per-group-in-bigquery/">the Top N Results per Group</a> from a BigQuery dataset.</p>
+
+<p>When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand <em>why</em> the alternatives are more efficient.</p>
+
+<p></p>
+
+<h2 id="first-attempt-using-row-number">First Attempt using ROW_NUMBER</h2>
+
+<p>Here&rsquo;s the initial query I was using:</p>
+
+<pre><code>SELECT
+  subreddit,
+  author,
+  author_count,
+  total_score,
+  comment_rank
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    ROW_NUMBER() OVER (PARTITION BY subreddit ORDER BY SUM(score) DESC) AS comment_rank,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN ('[deleted]',
+      'AutoModerator')
+  GROUP BY
+    1,
+    2 )
+WHERE
+  comment_rank &lt;= 10
+  AND author_count &gt; 9
+ORDER BY
+  1,
+  5
+</code></pre>
+
+<p>For the Top N problem, the key is computing the rank of each author&rsquo;s scores, relative to the others in any particular group. In the query above, that&rsquo;s this line:</p>
+
+<pre><code>ROW_NUMBER() OVER (PARTITION BY subreddit ORDER BY SUM(score) DESC) AS comment_rank,
+</code></pre>
+
+<p>The partition isolates the group, in this case a single subreddit. Then, you can order the authors by score within each group. The <code>ROW_NUMBER</code> function is a way to capture an ordered list of those partitioned ranks.</p>
+
+<p>We use the ordered list position later in the main select as part of the <code>WHERE</code> clause to only take author&rsquo;s whose subreddit-specific comment rank is in the top 10.</p>
+
+<p>Here&rsquo;s what the query plan looks like for our <code>ROW_NUMBER</code> query:</p>
+
+<p><img src="/img/row_number_query_plan.png" alt="BigQuery ROW_NUMBER query plan"></p>
+
+<h2 id="using-array-agg">USING ARRAY_AGG</h2>
+
+<p>The next query that I wanted to try was suggested by <a href="https://twitter.com/ElliottBrossard">Elliot Brossard</a> who actually works on BigQuery at Google. And, if I had been paying better attention when I pulled my first pass solution from StackOverflow, I would have seen that he also made <a href="https://stackoverflow.com/a/44680685">this suggestion on the original post</a>. Thanks for your patience, Elliot!</p>
+
+<p>Elliot suggests using <code>ARRAY_AGG</code> with a limit to get a set of ranked results instead of using the <code>ROW_NUMBER</code> function:</p>
+
+<pre><code>SELECT
+  subreddit,
+  ARRAY_AGG(STRUCT(author,
+      total_score)
+  ORDER BY
+    total_score DESC
+  LIMIT
+    10) AS top_authors
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN ('[deleted]',
+      'AutoModerator')
+  GROUP BY
+    1,
+    2 )
+WHERE
+  author_count &gt; 9
+GROUP BY
+  subreddit
+ORDER BY
+  1
+</code></pre>
+
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#array_agg">ARRAY_AGG</a> gives you a ton of power to condense parts of what we did in the first query.</p>
+
+<ul>
+<li>you can pull a subset of data into a single array, in this case <code>STRUCT(author, total_score)</code>, which gives you pretty much what we used <code>PARTITION</code> for in the first query</li>
+<li><code>ARRAY_AGG</code> takes <code>ORDER BY</code> and <code>LIMIT</code> clauses, which together gives us the &ldquo;top N&rdquo; piece</li>
+</ul>
+
+<p>Not only that, but the result set is reduced by an order of magnitude. The first query returns 196,970 results, or 10 rows per subreddit. But the <code>ARRAY_AGG</code> query only has 19,697 results because we only need one row per subreddit &ndash; the authors and there comment scores, per the <code>STRUCT</code> we defined in the <code>SELECT</code> statement are a single array value column.</p>
+
+<p><strong>Results using ROW_NUMBER</strong>
+<img src="/img/row_number_rows.png" alt="BigQuery ROW_NUMBER results"></p>
+
+<p><strong>Results using ARRAY_AGG</strong>
+<img src="/img/array_agg_rows.png" alt="BigQuery ARRAY_AGG results"></p>
+
+<p>And check out the query plan for the <code>ARRAY_AGG</code> query:</p>
+
+<p><img src="/img/array_agg_query_plan.png" alt="BigQuery ARRAY_AGG query plan"></p>
+
+<p>Now, the first 3 stages look pretty similar in terms of row input/output sizes and distribution of wait/read/compute/write. Both plans are working on the sub-select at this point, doing the sum of author comments, grouped by subreddit.</p>
+
+<p>Stage 4 gets really interesting. The <code>ARRAY_AGG</code> query takes an row size input of 11.0 M and reduces the output to 19.7K.</p>
+
+<p><img src="/img/array_agg_stage_4.png" alt="BigQuery ARRAY_AGG query plan stage 4"></p>
+
+<p>In contrast, the <code>ROW_NUMBER</code> query does a bunch of compute on stage 4, but doesn&rsquo;t reduce the output at all. It&rsquo;s not until the <code>FILTER</code> in the next stage that we&rsquo;ve cut down on the number of rows in the output (which we already know will still be 10x the <code>ARRAY_AGG</code> size).</p>
+
+<p><img src="/img/row_number_stage_4.png" alt="BigQuery ROW_NUMBER query plan stage 4"></p>
+
+<p>It looks like using <code>ROW_NUMBER</code> forces us to:</p>
+
+<ul>
+<li>run over all the data again to generate our &ldquo;ordered list&rdquo; of comment rankings</li>
+<li>rank everything before we filter out subsets of results we don&rsquo;t ultimately want</li>
+</ul>
+
+<p>In contrast to the other query strategies, this is starting to seem like wasted compute effort.</p>
+
+<h2 id="using-approx-top-sum">USING APPROX_TOP_SUM</h2>
+
+<p>One more suggestion I got was to use the <code>APPROX_TOP_</code> functions. In this case <code>APPROX_TOP_SUM</code> seemed to do the trick:</p>
+
+<pre><code>SELECT
+  subreddit,
+  APPROX_TOP_SUM(author,
+    total_score,
+    10) AS top_scores
+FROM (
+  SELECT
+    subreddit,
+    author,
+    SUM(score) AS total_score,
+    COUNT(DISTINCT author) OVER (PARTITION BY subreddit) AS author_count
+  FROM
+    `fh-bigquery.reddit_comments.2015_07`
+  WHERE
+    author NOT IN ('[deleted]',
+      'AutoModerator')
+  GROUP BY
+    1,
+    2
+  HAVING
+    SUM(score) &gt; 0 )
+WHERE
+  author_count &gt; 9
+GROUP BY
+  1
+ORDER BY
+  1
+</code></pre>
+
+<p>In <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_top_sum">the BigQuery documentation for this function</a> it says that <code>APPROX_TOP_SUM</code> &ldquo;returns the approximate top elements of <code>expression</code>, based on the sum of an assigned <code>weight</code>. The <code>number</code> parameter specifies the number of elements returned.</p>
+
+<p><strong>If the weight input is negative or NaN, this function returns an error.</strong>&ldquo;</p>
+
+<p>Emphasis added to point out that, of course, since we&rsquo;re dealing with reddit comments, some of them have been downvoted to hell. Negative comment scores will actually break the <code>APPROX_TOP_SUM</code> function in this case.</p>
+
+<p>There are over 200 subreddits in this dataset where the top-ranked commenters couldn&rsquo;t break into positive comment counts. I had to add a <code>HAVING</code> clause to only grab total scores above 0.</p>
+
+<p>You can see that filter getting applied in stage 3:</p>
+
+<p><img src="/img/approx_top_sum_stage_3.png" alt="BigQuery APPROX_TOP_SUM query plan stage 3"></p>
+
+<p>Compare that to the previous queries and you can see that stage 3 is where the total amount of data shrinks, thanks to those negative-ranked comments. But even with that caveat, it looks like
+<code>APPROX_TOP_SUM</code> performs similarly to <code>ARRAY_AGG</code>. In fact, I went back to the <code>ARRAY_AGG</code> query and adding the same filter on <code>SUM(score)</code> just to be sure that the inputs and outputs would match at each stage for both queries. They do.</p>
+
+<p>Still, there are a few differences to point out for <code>APPROX_TOP_SUM</code>:</p>
+
+<ul>
+<li>why there is an additional stage (highlighted in the screenshot below) that seems to just be shuffling or repartitioning based on some kind of metadata?</li>
+<li>how does the &lsquo;approximate&rsquo; part of <code>APPROX_TOP_SUM</code> factor into the computation?</li>
+</ul>
+
+<p><img src="/img/approx_top_sum_query_plan.png" alt="BigQuery APPROX_TOP_SUM query plan"></p>
+
+<p>Other than that, it seems like both of these options deliver more concise results than the initial <code>ROW_NUMBER</code> solution. I&rsquo;m looking forward to understanding the query explanation tools even better, so that in the future I can use them to diagnose my less efficient queries!</p>
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/bigquery'>BigQuery</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/2017/10/30/top-n-per-group-in-bigquery"
+                class="button big previous">Top N Per Group in BigQuery</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-07'>
+                November 7, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a>
+              </h3>
+              
+              <time class="published" datetime='2017-10-30'>
+                October 30, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data">Don&#39;t Blow Your BigQuery Budget on Unknown Data!</a>
+              </h3>
+              
+              <time class="published" datetime='2017-10-06'>
+                October 6, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/02/12/gobridge-with-bill-kennedy">GoBridge with Bill Kennedy</a>
+              </h3>
+              
+              <time class="published" datetime='2017-02-12'>
+                February 12, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2016/12/29/my-5-strategies-for-learning-go-in-2017">My 5 Strategies for Learning Go in 2017</a>
+              </h3>
+              
+              <time class="published" datetime='2016-12-29'>
+                December 29, 2016
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">28</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2017
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
