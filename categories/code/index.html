@@ -37,7 +37,7 @@
 
 
 
-<meta property="article:modified_time" content="2017-11-07T20:46:05-05:00"/>
+<meta property="article:modified_time" content="2018-01-28T22:52:26-05:00"/>
 
 
 
@@ -211,6 +211,42 @@ ga('send', 'pageview');
                 
                         <article class="mini-post">
                             <header>
+                                <h3><a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-28'>
+                                    January 28, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-05'>
+                                    January 5, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-18'>
+                                    November 18, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
                                 <h3><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
                                 
                                 <time class="published" datetime=
@@ -228,42 +264,6 @@ ga('send', 'pageview');
                                 <time class="published" datetime=
                                     '2017-10-30'>
                                     October 30, 2017</time>
-                            </header>
-                            
-
-                        </article>
-                
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data">Don&#39;t Blow Your BigQuery Budget on Unknown Data!</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2017-10-06'>
-                                    October 6, 2017</time>
-                            </header>
-                            
-
-                        </article>
-                
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="/2017/02/12/gobridge-with-bill-kennedy">GoBridge with Bill Kennedy</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2017-02-12'>
-                                    February 12, 2017</time>
-                            </header>
-                            
-
-                        </article>
-                
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="/2016/12/29/my-5-strategies-for-learning-go-in-2017">My 5 Strategies for Learning Go in 2017</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2016-12-29'>
-                                    December 29, 2016</time>
                             </header>
                             
 
@@ -288,6 +288,227 @@ ga('send', 'pageview');
     <div id="main">
         <h1>code</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2018-01-28'>
+            January 28, 2018</time>
+        <span class="author"></span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>The best upgrade I&rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.</p>
+
+<p>Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:</p>
+
+<pre><code>    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+</code></pre>
+
+<p>As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&rsquo;s working.</p>
+
+<p></p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="/2018/01/28/keeping-an-engineering-notebook" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2018-01-05'>
+            January 5, 2018</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.</p>
+
+<p></p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2017-11-18'>
+            November 18, 2017</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Recently, I&rsquo;ve been poking at Reddit datasets on BigQuery and consolidating the code and Tai Chi sections of this site onto a single Hugo site, hosted on Github Pages.
+So I thought, why not come up with a small project that combines them? Well, 40,000 pages later, I sure came up with something.
+Oops!
+We&rsquo;ll look at when went wrong or wasn&rsquo;t exactly convenient about this approach, but first, let&rsquo;s talk about the what the project is and its three main pieces.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/bigquery'>BigQuery</a></li>
+    
+        <li><a href='/categories/hugo'>Hugo</a></li>
+    
+        <li><a href='/categories/github-pages'>github-pages</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -645,219 +866,6 @@ ga('send', 'pageview');
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="/2016/09/24/rails-security-exercises-from-bearclaw">Rails Security Exercises from Bearclaw</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-
-        <time class="published"
-            datetime='2016-09-24'>
-            September 24, 2016</time>
-        <span class="author"></span>
-        
-            <p>9 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>In this post, I&rsquo;m going to tell you what I learned doing a series of Rails security exercises developed by Bearclaw, a Rails security consultancy.
-Before I go into the exercises, though, I want to send a huge thank you to Ali Najaf, founder of Bearclaw. What I&rsquo;ve learned here is due to the thoughtfulness of the exercises he&rsquo;s put together and his willingness to try something new by sharing them with me.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="/2016/09/24/rails-security-exercises-from-bearclaw" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-                        <i class="fa fa-sitemap">&nbsp;</i>
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/code'>Code</a></li>
-    
-        <li><a href='/categories/rails'>Rails</a></li>
-    
-        <li><a href='/categories/security'>Security</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="/2016/04/10/nice-try-nilclass">Nice Try, NilClass</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-
-        <time class="published"
-            datetime='2016-04-10'>
-            April 10, 2016</time>
-        <span class="author"></span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I love that feeling when a new concept starts to come together in your mind and you can point to all the converging sources of insight.
-Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or making my code more readable with this particular concept, but when I put together these three pieces of information, I think I start to see something emerge. I&rsquo;ve been inspired to do some more digging into these kinds of questions lately thanks to the awesome new Ruby Book Club Podcast.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="/2016/04/10/nice-try-nilclass" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-                        <i class="fa fa-sitemap">&nbsp;</i>
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/code'>Code</a></li>
-    
-        <li><a href='/categories/ruby'>Ruby</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll">Migrating Posts and Pages from Wordpress to Jekyll</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-
-        <time class="published"
-            datetime='2016-03-11'>
-            March 11, 2016</time>
-        <span class="author"></span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p><em>This is Part 1 in a series on <a href="/blog/2016/03/09/migrating-from-wordpress-to-jekyll/">Migrating from Wordpress to Jekyll</a>.</em></p>
-
-<p>The documentation for <a href="https://jekyllrb.com/docs/quickstart/">getting started with Jekyll</a> is great. I&rsquo;m not going to rehash everything that&rsquo;s covered there.</p>
-
-<p>Instead, this post and the others in the series will be more like, &ldquo;here&rsquo;s the order I wish I had done things in&rdquo; or &ldquo;here&rsquo;s everything I ended up needing to pull together to get stuff working&rdquo;. I hope it helps you and saves you time if you ever decide to do a similar migration from a self-hosted Wordpress install to Jekyll.</p>
-
-<p>So here we go&hellip;.</p>
-
-<p></p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-                        <i class="fa fa-sitemap">&nbsp;</i>
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/code'>Code</a></li>
-    
-        <li><a href='/categories/static-sites'>Static Sites</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1004,6 +1012,48 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
           <article class="mini-post">
             <header>
               <h3>
+                <a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-28'>
+                January 28, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-05'>
+                January 5, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-18'>
+                November 18, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
                 <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
               </h3>
               
@@ -1023,48 +1073,6 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
               
               <time class="published" datetime='2017-10-30'>
                 October 30, 2017
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data">Don&#39;t Blow Your BigQuery Budget on Unknown Data!</a>
-              </h3>
-              
-              <time class="published" datetime='2017-10-06'>
-                October 6, 2017
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="/2017/02/12/gobridge-with-bill-kennedy">GoBridge with Bill Kennedy</a>
-              </h3>
-              
-              <time class="published" datetime='2017-02-12'>
-                February 12, 2017
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="/2016/12/29/my-5-strategies-for-learning-go-in-2017">My 5 Strategies for Learning Go in 2017</a>
-              </h3>
-              
-              <time class="published" datetime='2016-12-29'>
-                December 29, 2016
               </time>
             </header>
             
@@ -1136,7 +1144,7 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
             <header>
               
                 <a href="/categories/code/">Code</a>
-                <span style="float:right;">28</span>
+                <span style="float:right;">31</span>
               
             </header>
           </article>
@@ -1257,7 +1265,7 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
             <header>
               
                 <a href="/categories/bigquery/">BigQuery</a>
-                <span style="float:right;">3</span>
+                <span style="float:right;">4</span>
               
             </header>
           </article>
@@ -1355,6 +1363,17 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
           <article>
             <header>
               
+                <a href="/categories/hugo/">Hugo</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
                 <a href="/categories/learning/">Learning</a>
                 <span style="float:right;">1</span>
               
@@ -1388,6 +1407,17 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
           <article>
             <header>
               
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
                 <a href="/categories/security/">Security</a>
                 <span style="float:right;">1</span>
               
@@ -1411,6 +1441,17 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
             <header>
               
                 <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/github-pages/">github-pages</a>
                 <span style="float:right;">1</span>
               
             </header>
@@ -1516,7 +1557,7 @@ Right now, I can&rsquo;t tell if I&rsquo;m fooling myself, hiding some logic, or
     
     <p class="copyright">
       
-        &copy; 2017
+        &copy; 2018
         
           Dan Kleiman
         

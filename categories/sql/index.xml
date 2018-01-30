@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on Dan Kleiman</title>
+    <link>/categories/sql/index.xml</link>
+    <description>Recent content in sql on Dan Kleiman</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Use Common Table Expressions for DRYer, Faster Queries</title>
+      <link>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</link>
+      <pubDate>Fri, 05 Jan 2018 12:31:44 -0500</pubDate>
+      
+      <guid>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</guid>
+      <description>&lt;p&gt;Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&amp;rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;A Common Table Expression is a normal SQL SELECT statement that gets evaluated at the beginning of the query execution and stored as a view, or temporary table, that can be referenced over and over throughout the rest of the query.&lt;/p&gt;
+
+&lt;h3 id=&#34;cte-funnel-example&#34;&gt;CTE Funnel Example&lt;/h3&gt;
+
+&lt;p&gt;Use a CTE just like you would a variable that stores the output of an expensive calculation.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with an example. You are running a split test with two groups of users. Each user is assigned to one variant in the test based on some hashing of their user id. The user id and the test variant are stored in a table of user-test-variant mappings. You want to track the variants of this test through a series of events and put together an event funnel for each group.&lt;/p&gt;
+
+&lt;p&gt;You could write the funnel like this:&lt;/p&gt;
+
+&lt;p&gt;SELECT
+    user_test_mappings.variant,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count,
+    event_two_data.event_name,
+    count(event_two_data.event_name) as  event_two_count,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count
+FROM
+    event_one_data
+LEFT OUTER JOIN
+    event_two_data
+ON
+    event_one_data.user_id = event_two_data.user_id
+JOIN
+    user_test_mappings
+ON
+    event_one_data.user_id = user_test_mappings.user_id
+WHERE
+    user_test_mappings.test_name = &amp;lsquo;funnel_test&amp;rsquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WITH experiment AS (
+  SELECT
+    udid,
+    CASE
+      WHEN experiment_variant = &#39;188bf90d-4dcc-4927-bb4a-572d543e4ea7&#39; THEN &#39;native_app_store&#39;
+      ELSE &#39;legacy&#39;
+    END AS variant
+  FROM
+    `tjbigquery.fact.experiment_triggered_201712*`
+  WHERE
+    experiment = &#39;84970291-da6e-496e-b1b1-a6fde2be505e&#39;
+    AND _TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+),
+  clicks AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS clicks
+  FROM
+    `tjbigquery.fact.clicks_201712*` c
+  JOIN
+    experiment
+  ON
+    c.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = c.creative_id
+  WHERE
+    o.item_type = &#39;App&#39;
+    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
+      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
+      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
+    AND path NOT LIKE &#39;%end_card_clicks%&#39;
+    AND c._TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+  GROUP BY
+    1,
+    2),
+  installs AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS installs
+  FROM
+    `tjbigquery.fact.actions_201712*` a
+  JOIN
+    experiment
+  ON
+    a.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = a.creative_id
+  WHERE
+    o.item_type = &#39;App&#39;
+    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
+      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
+      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
+    AND a._TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+  GROUP BY
+    1,
+    2)
+SELECT
+  clicks.creative_experience,
+  clicks.variant,
+  clicks.clicks,
+  COALESCE(installs.installs, 0) AS installs,
+  CASE
+    WHEN COALESCE(installs.installs, 0) = 0 THEN 0
+    ELSE ROUND((installs.installs * 100/clicks.clicks), 5)
+  END AS secondary_cvr
+FROM
+  clicks
+LEFT OUTER JOIN
+  installs
+ON
+  clicks.variant = installs.variant
+  AND clicks.creative_experience = installs.creative_experience
+ORDER BY
+  1,
+  2,3
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

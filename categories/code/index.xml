@@ -9,6 +9,245 @@
     <atom:link href="/categories/code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Keeping an Engineering Notebook</title>
+      <link>/2018/01/28/keeping-an-engineering-notebook</link>
+      <pubDate>Sun, 28 Jan 2018 22:52:26 -0500</pubDate>
+      
+      <guid>/2018/01/28/keeping-an-engineering-notebook</guid>
+      <description>&lt;p&gt;The best upgrade I&amp;rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.&lt;/p&gt;
+
+&lt;p&gt;Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&amp;rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&amp;rsquo;s working.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;less-scattered-more-focused&#34;&gt;Less Scattered, More Focused&lt;/h2&gt;
+
+&lt;p&gt;The first thing I&amp;rsquo;ve noticed is that focusing in on the new problem is easier when I know where I&amp;rsquo;m going to put all the files related to that project.&lt;/p&gt;
+
+&lt;p&gt;With sections for &lt;strong&gt;notes&lt;/strong&gt;, &lt;strong&gt;data&lt;/strong&gt;, and &lt;strong&gt;scripts&lt;/strong&gt;, pretty much anything I touch has a natural home in a project subfolder. I tend to sketch out rough ideas about a particular part of the problem as a markdown file in the notes section. Then, as I develop some test code, I store it as a snippet in the scripts folder. If the script is a query or I have some backing data in an investigation, I can easily drop it into the data folder.&lt;/p&gt;
+
+&lt;p&gt;Not only does having a single folder per project help my workflow during the initial stages of a project, but I can easily come back to the projects months later and find artefacts that are still useful.&lt;/p&gt;
+
+&lt;p&gt;By accruing artefacts along the way to solving each problem, I can reproduce any part of the problem/solution and essentially &amp;ldquo;replay&amp;rdquo; my thinking at any point in time.&lt;/p&gt;
+
+&lt;p&gt;Having all the evidence in one places has also pushed me to be clearer about individual file names. Each file becomes a valuable piece of an audit trail of how I solved the problem.&lt;/p&gt;
+
+&lt;h2 id=&#34;rewriting-and-deleting-to-prune-an-idea&#34;&gt;Rewriting and Deleting to Prune an Idea&lt;/h2&gt;
+
+&lt;p&gt;Initially, I thought the main benefit was going to be that I would declutter my work space and have a somewhat more organized dumping ground for all my files and data.&lt;/p&gt;
+
+&lt;p&gt;But I discovered an even greater benefit by continuously organizing my files and folders: I gained more clarity about the problem every time I would rewrite, rename, or remove files from the notebook &amp;ndash; especially the README &amp;ndash; in a process I know think of as &amp;ldquo;pruning the idea.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Especially with thornier problems, I now see that I go through many stages of thinking that I understand the core issue and developing and testing hypothetical solutions. I use the README in this project set-up to keep track of the current state of hypotheses being proven or having been disproved.&lt;/p&gt;
+
+&lt;p&gt;Ultimately, I want the README to become a document I can share with my co-workers or other stakeholders in the project, so that&amp;rsquo;s what I&amp;rsquo;m writing towards, polishing it a little at a time as I go.&lt;/p&gt;
+
+&lt;p&gt;In contrast, the documents in the &lt;code&gt;notes&lt;/code&gt; section are either much more fragmented or are narrowly focused on one aspect of the project. The README pulls the best findings from the notes.&lt;/p&gt;
+
+&lt;p&gt;Over time, I shape the README into a high-level explanation of the problem, a narrative about the investigation, and the justification for a solution. For many issues, this ends up being a drop-in PR description for my code changes.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-set-up&#34;&gt;Getting Set Up&lt;/h2&gt;
+
+&lt;p&gt;The script I use to generate new project sections &lt;a href=&#34;https://github.com/dankleiman/notebook&#34;&gt;lives here on github&lt;/a&gt;. As I said before, it&amp;rsquo;s pretty simple. You spin up the same set of subfolders and a README each time.&lt;/p&gt;
+
+&lt;p&gt;When you run &lt;code&gt;notebook&lt;/code&gt; there are two flags you can optionally pass:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-notepath string
+    Main notebook directory set by env var NOTEPATH (default &amp;quot;.&amp;quot;)
+-section string
+    Name for new section of this notebook (default &amp;quot;new_section&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By default, &lt;code&gt;notebook&lt;/code&gt; will look for an environment variable called &lt;code&gt;NOTEPATH&lt;/code&gt; that defines your main engineering notebook directory, but you can override this with the &lt;code&gt;notepath&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;p&gt;Use the &lt;code&gt;section&lt;/code&gt; flag to name the section you are creating in a meaningful way for the new project.&lt;/p&gt;
+
+&lt;p&gt;Run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./notebook -section=new_project &amp;amp;&amp;amp; cd $NOTEPATH/new_project &amp;amp;&amp;amp; ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And you will see your new section ready to be filled up with interesting data, scripts, and notes!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use Common Table Expressions for DRYer, Faster Queries</title>
+      <link>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</link>
+      <pubDate>Fri, 05 Jan 2018 12:31:44 -0500</pubDate>
+      
+      <guid>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</guid>
+      <description>&lt;p&gt;Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&amp;rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;A Common Table Expression is a normal SQL SELECT statement that gets evaluated at the beginning of the query execution and stored as a view, or temporary table, that can be referenced over and over throughout the rest of the query.&lt;/p&gt;
+
+&lt;h3 id=&#34;cte-funnel-example&#34;&gt;CTE Funnel Example&lt;/h3&gt;
+
+&lt;p&gt;Use a CTE just like you would a variable that stores the output of an expensive calculation.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with an example. You are running a split test with two groups of users. Each user is assigned to one variant in the test based on some hashing of their user id. The user id and the test variant are stored in a table of user-test-variant mappings. You want to track the variants of this test through a series of events and put together an event funnel for each group.&lt;/p&gt;
+
+&lt;p&gt;You could write the funnel like this:&lt;/p&gt;
+
+&lt;p&gt;SELECT
+    user_test_mappings.variant,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count,
+    event_two_data.event_name,
+    count(event_two_data.event_name) as  event_two_count,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count
+FROM
+    event_one_data
+LEFT OUTER JOIN
+    event_two_data
+ON
+    event_one_data.user_id = event_two_data.user_id
+JOIN
+    user_test_mappings
+ON
+    event_one_data.user_id = user_test_mappings.user_id
+WHERE
+    user_test_mappings.test_name = &amp;lsquo;funnel_test&amp;rsquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WITH experiment AS (
+  SELECT
+    udid,
+    CASE
+      WHEN experiment_variant = &#39;188bf90d-4dcc-4927-bb4a-572d543e4ea7&#39; THEN &#39;native_app_store&#39;
+      ELSE &#39;legacy&#39;
+    END AS variant
+  FROM
+    `tjbigquery.fact.experiment_triggered_201712*`
+  WHERE
+    experiment = &#39;84970291-da6e-496e-b1b1-a6fde2be505e&#39;
+    AND _TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+),
+  clicks AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS clicks
+  FROM
+    `tjbigquery.fact.clicks_201712*` c
+  JOIN
+    experiment
+  ON
+    c.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = c.creative_id
+  WHERE
+    o.item_type = &#39;App&#39;
+    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
+      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
+      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
+    AND path NOT LIKE &#39;%end_card_clicks%&#39;
+    AND c._TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+  GROUP BY
+    1,
+    2),
+  installs AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS installs
+  FROM
+    `tjbigquery.fact.actions_201712*` a
+  JOIN
+    experiment
+  ON
+    a.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = a.creative_id
+  WHERE
+    o.item_type = &#39;App&#39;
+    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
+      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
+      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
+    AND a._TABLE_SUFFIX BETWEEN &#39;12&#39;
+    AND &#39;18&#39;
+  GROUP BY
+    1,
+    2)
+SELECT
+  clicks.creative_experience,
+  clicks.variant,
+  clicks.clicks,
+  COALESCE(installs.installs, 0) AS installs,
+  CASE
+    WHEN COALESCE(installs.installs, 0) = 0 THEN 0
+    ELSE ROUND((installs.installs * 100/clicks.clicks), 5)
+  END AS secondary_cvr
+FROM
+  clicks
+LEFT OUTER JOIN
+  installs
+ON
+  clicks.variant = installs.variant
+  AND clicks.creative_experience = installs.creative_experience
+ORDER BY
+  1,
+  2,3
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</title>
+      <link>/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages</link>
+      <pubDate>Sat, 18 Nov 2017 14:38:49 -0500</pubDate>
+      
+      <guid>/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages</guid>
+      <description>
+
+&lt;p&gt;Recently, I&amp;rsquo;ve been poking at Reddit datasets on &lt;a href=&#34;/categories/bigquery&#34;&gt;BigQuery&lt;/a&gt; and consolidating the &lt;a href=&#34;/categories/code&#34;&gt;code&lt;/a&gt; and &lt;a href=&#34;/categories/tai-chi&#34;&gt;Tai Chi&lt;/a&gt; sections of this site onto a single Hugo site, hosted on Github Pages.&lt;/p&gt;
+
+&lt;p&gt;So I thought, why not come up with a small project that combines them? Well, 40,000 pages later, I sure came up with something.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/too_many_files.png&#34; alt=&#34;Too many files makes Github sad&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Oops!&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ll look at when went wrong or wasn&amp;rsquo;t exactly convenient about this approach, but first, let&amp;rsquo;s talk about the what the project is and its three main pieces.&lt;/p&gt;
+
+&lt;h2 id=&#34;crosslinking-subreddits-on-reddit&#34;&gt;Crosslinking Subreddits on Reddit&lt;/h2&gt;
+
+&lt;p&gt;I had been exploring &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2017_10?tab=preview&#34;&gt;this Reddit comment data&lt;/a&gt;, which includes the actual comment body and which subreddit it was posted in. After a while scrolling through comments, I started thinking about&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>More Efficient Solutions to the Top N per Group Problem</title>
       <link>/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</link>
       <pubDate>Tue, 07 Nov 2017 20:46:05 -0500</pubDate>
@@ -1407,271 +1646,6 @@ class ListCommand &amp;lt; Command&lt;/p&gt;
 &lt;h2 id=&#34;check-out-the-code&#34;&gt;Check out the Code&lt;/h2&gt;
 
 &lt;p&gt;If you want to see more, &lt;a href=&#34;https://github.com/dankleiman/sms_todo&#34;&gt;here&amp;rsquo;s the code&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>10 of My Favorite Talks from RailsConf 2015</title>
-      <link>/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</link>
-      <pubDate>Wed, 29 Apr 2015 20:47:31 -0400</pubDate>
-      
-      <guid>/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</guid>
-      <description>&lt;p&gt;RailsConf 2015 was a blast. There were talks on a such a wide range of topics, that I wanted to capture some of my favorites here.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s my Top 10 Countdown from the conference:&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll try to update as many of these as possible with video if/when they become available. For now, I&amp;rsquo;ve tried to gather as many slide decks as possible.&lt;/p&gt;
-
-&lt;ol reversed&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Designing a Great Ruby API - How We&#39;re Simplifying Rails 5&lt;/strong&gt;
-    &lt;p&gt;At times this one was over my head technically, but it was awesome to see a core contributor breaking down the process of how the inner workings of Rails are built.&lt;/p&gt;
-    &lt;p&gt;Sean is a presenter and was hanging out between talks fielding questions too.&lt;/p&gt;
-    &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;2a56dba370414cd1a48d1aa43d8fffab&#34; data-ratio=&#34;1.77777777777778&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Playing Games in the Clouds&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&#34;https://twitter.com/nodunayo&#34;&gt;Nadia Odunayo&lt;/a&gt; gets my award for Best Explanation by Analogy. Her talk captured at a high level how concepts from Game Theory concepts can be applied to allocating resources in distributed systems&lt;/p&gt;
-    &lt;p&gt;Very cool!&lt;/p&gt;
-    &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;46080b095191416dbc21ba9e9ec8084e&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-     &lt;strong&gt;What&#39;s Happening in Your Rails App?&lt;/strong&gt;
-     &lt;p&gt;Introduction to Introspection Features of Ruby&lt;/p&gt;
-     &lt;p&gt;Koichi Sasada is a member of the Ruby core team and works on &#34;Matz&#39;s Team&#34; at Heroku. He said, &#34;I&#39;m not actually a Rails developer, but my wife is, so she&#39;s my customer.&#34;&lt;/p&gt;
-     &lt;p&gt;This was another talk where the inner workings of technology we use every day are exposed...by the people actively maintaining them. I think that&#39;s so cool to see.&lt;/p&gt;
-     &lt;p&gt;Also, check out his definition of Event Driven Development.&lt;/p&gt;
-     &lt;iframe width=&#34;815&#34; height=&#34;458&#34; src=&#34;https://www.youtube.com/embed/4YtBS0tvkjw&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;The World of Rails Security&lt;/strong&gt;
-    &lt;p&gt;When &lt;a href=&#34;https://twitter.com/presidentbeef&#34;&gt;Justin Collins&lt;/a&gt; broke down Rails security into &#34;What Rails Provides,&#34; &#34;What Rails Doesn&#39;t Provide,&#34; and &#34;What to Do About It.&#34; Security seems like a Rubik&#39;s cube issue. You can look at it, and try to break it, from so many different angles.&lt;/p&gt;
-    &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;05e09bab40404a61a4d6b844109d84f3&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Processes and Threads - Resque vs. Sidekiq&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&#34;http://jdabbs.com/&#34;&gt;James Dabbs&lt;/a&gt; gave an awesome live demo of the internals of Resque vs. Sidekiq. Not only was it a pleasure to watch him fly through the code and take us right in to key points that differentiate these two job enqueing tools, but if you head over to his Gitub, you can actually run the same tests that he demoed in the talk:&lt;/p&gt;
-    &lt;p&gt;&lt;a href=&#34;https://github.com/jamesdabbs/railsconf-2015&#34;&gt;Code&lt;/a&gt;&lt;/p&gt;
-    &lt;p&gt;&lt;a href=&#34;https://github.com/jamesdabbs/railsconf-2015/blob/master/slides.md&#34;&gt;Slides&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Why Your New API Product Will Fail&lt;/strong&gt;
-    &lt;p&gt;Despite evidence to the contrary, this talk was not about writing your API at the last minute:&lt;/p&gt;
-    &lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Probably about time I wrote this talk...&lt;/p&gt;&amp;mdash; Scott Feinberg (@scottefein) &lt;a href=&#34;https://twitter.com/scottefein/status/590878954568974336&#34;&gt;April 22, 2015&lt;/a&gt;&lt;/blockquote&gt;
-  &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-    &lt;p&gt;Update: Here are Scott&#39;s slides:&lt;/p&gt;
-    &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;045b214b36734c1f8d2bd90396059073&#34; data-ratio=&#34;1.29456384323641&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-    &lt;p&gt;The big takeaway from Scott&#39;s talk was very simple: your API is an interface that other developers will use AND so is &lt;strong&gt;your API documentation&lt;/strong&gt;. When these suck, user experience, and user happiness, really suffers too.&lt;/p&gt;
-
-    &lt;p&gt;Scott dove into a lot of the tooling he&#39;s used to automate API documentation, but to think the job is just about tooling is another pitfall. You should care about every place people interact with your application. Even his automated solutions, he said, began with a lot of manual trial and error.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Keynote by Aaron Patterson&lt;/strong&gt;
-    &lt;p&gt;From a man who really doesn&#39;t need an introduction to be worth watching:&lt;/p&gt;
-    &lt;iframe width=&#34;815&#34; height=&#34;458&#34; src=&#34;https://www.youtube.com/embed/B3gYklsN9uc&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-    &lt;p&gt;I just want to know if that part in the middle was staged or not.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Keynote by DHH&lt;/strong&gt;
-    &lt;p&gt;&lt;em&gt;This video is almost 9 hours long, capturing the whole first day of the conference in the main room. Jump to about 24 minutes to catch the beginning of DHH&#39;s Keynote&lt;/em&gt;&lt;/p&gt;
-    &lt;p&gt;What I found most inspiring about this talk was the attitude that Rails can provide leverage. As a framework, a set of tools, individuals and small groups can write applications at web scale that do amazing things.&lt;/p&gt;
-    &lt;iframe width=&#34;815&#34; height=&#34;458&#34; src=&#34;https://www.youtube.com/embed/oMlX9i9Icno&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Voila, Indexes!&lt;/strong&gt;
-    &lt;p&gt;A Look at Some Simple Preventative Magick&lt;/p&gt;
-    &lt;p&gt;This talk is a real treat. Not only does &lt;a href=&#34;https://twitter.com/jamis&#34;&gt;Jamis Buck&lt;/a&gt; explain difficult database concepts in simple language, he does it through telling a story, and illustrates it!&lt;/p&gt;
-    &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;3b907bc997094b91ac9d578c41df8ce7&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;strong&gt;Nothing is Something&lt;/strong&gt;
-
-    &lt;iframe width=&#34;815&#34; height=&#34;458&#34; src=&#34;https://www.youtube.com/embed/OMPfEXIlTVE&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-
-    &lt;p&gt;I had the pleasure of seeing Sandi Metz speak at Burlington Ruby Conference in August, 2014 and I remember leaving pumped and inspired to code for the long haul. This time she was just as inspiring, but she also took us through some core object oriented programming concepts.&lt;/p&gt;
-
-    &lt;p&gt;But what I love about hearing Sandi speak is the way she imbues the teaching in her talks with a sense of purpose and urgency. Like DHH&#39;s talk above, I felt fired up to code. Like Jamis&#39; talk, she made it easy to absorb complex concepts. Most of all, though, she creates this powerful undercurrent of community and warmth that makes you feel like we&#39;re all going to do this together. What an amazing teacher!&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</description>
-    </item>
-    
-    <item>
-      <title>Parachuting into Unfamilar Code</title>
-      <link>/2015/01/11/parachuting-into-unfamilar-code</link>
-      <pubDate>Sun, 11 Jan 2015 20:15:27 -0500</pubDate>
-      
-      <guid>/2015/01/11/parachuting-into-unfamilar-code</guid>
-      <description>&lt;p&gt;We have hundreds of models in our codebase at &lt;a href=&#34;http://www.trialnetworks.com&#34;&gt;TrialNetworks&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As a new developer, the first 12 features I was asked to work on didn’t touch the same parts of the code. In terms of learning our product, I think that was good, but without some serious “orienteering” practice, it was also confusing and frustrating.&lt;/p&gt;
-
-&lt;p&gt;I felt like I was being pushed out of a plane in the middle of the night, with a backpack full of gear, a tiny map, and some night vision goggles, and I was told to rendezvous in 6 hours in a place I’d never heard of before.&lt;/p&gt;
-
-&lt;p&gt;In fact, I still get this feeling, every time I’m asked to work on a new module in our platform.&lt;/p&gt;
-
-&lt;p&gt;So when you jump out of the plane, how do you land, get your bearings, and complete the mission?&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;I’m sure there are other ways to do it, but here’s my current strategy.&lt;/p&gt;
-
-&lt;h2 id=&#34;start-at-the-end&#34;&gt;Start at the End&lt;/h2&gt;
-
-&lt;p&gt;The paratrooper analogy is about to break down on us, but when I’m working on a feature, even if I somewhat understand what the problem is at the database level, or what new controller actions we will most likely create, I’ve found it easiest to get my bearings by &lt;strong&gt;starting with the view&lt;/strong&gt; – or the interaction that the user will have.&lt;/p&gt;
-
-&lt;p&gt;When you start with the view, you can:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;See how the software is currently functioning&lt;/li&gt;
-&lt;li&gt;Note what additional screens, tabs, links, buttons, or data need to be rendered&lt;/li&gt;
-&lt;li&gt;Break open the code and look at how the current interface is being generated&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once you get to the last step, and you’re in the code, exploring how we are rendering something, you start to work up strategies for tackling the problem.&lt;/p&gt;
-
-&lt;p&gt;In an existing codebase, other people have left clues. You see assumptions about how they arrived at generating the current behavior and your next steps are revealed.&lt;/p&gt;
-
-&lt;h2 id=&#34;tracing-someone-else-s-path&#34;&gt;Tracing Someone Else’s Path&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Start tracing the path backwards from the url.&lt;/strong&gt; In Rails, there are strong conventions about which controllers and which actions are generating the view you are looking at.&lt;/p&gt;
-
-&lt;p&gt;Armed with the url, you know which controller is routing data to the view you are working on. As you start to see which models are being used in the view, you can further construct the path.&lt;/p&gt;
-
-&lt;p&gt;At this point, I like to change analogies again.&lt;/p&gt;
-
-&lt;p&gt;Who (which models) showed up to the party (the view), and who’s throwing the party (which controller/action)?&lt;/p&gt;
-
-&lt;p&gt;I build a sort of working guest list for the party and start to think about &lt;strong&gt;who I want to talk to and who I will ignore.&lt;/strong&gt;  Narrowing in on the behavior you are going to modify or figuring out where you want to insert new behavior is like working the room until you find the right place to hang out.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-you-bring-to-the-party&#34;&gt;What You Bring to the Party&lt;/h2&gt;
-
-&lt;p&gt;At this point I really don’t know what analogy to go with, but once I’ve found my spot in the room, I can relax a little.&lt;/p&gt;
-
-&lt;p&gt;See, I know I’ve ruled out 98% of the codebase in terms of things I will have to touch to get this feature done.&lt;/p&gt;
-
-&lt;p&gt;Back when we were jumping out of the plane, I was worried. I didn’t know the terrain at all. Before I looked at the view, it could have been any of the tens of thousands of lines of code that needed to be touched to make it work.&lt;/p&gt;
-
-&lt;p&gt;Now, I know where I am. I’m in the right room, in the right mansion, at the right party…&lt;em&gt;do the analogies hold together better if I had jumped out of the plane in a tuxedo, like some James Bond-esque super spy???&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In any case, now the focus is incredibly narrow. Most of the time, we’re not only in the right controller, but it becomes clear that a specific controller action needs to be tweaked, or a new one needs to be added.&lt;/p&gt;
-
-&lt;p&gt;From here, I like to &lt;strong&gt;pseudo-code the behaviors I want.&lt;/strong&gt; Pseudo-coding, as I learned it, was more or less writing a series of comments that kind of look like code, but act more like a step-by-step guide for what you want to accomplish.&lt;/p&gt;
-
-&lt;p&gt;The benefits of pseudo-coding are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I can write it a lot faster than I can if I’m stopping to check if every line is working&lt;/li&gt;
-&lt;li&gt;I can have a “complete thought” in the pseudo-code without stopping to dig around and see if a similar method has been implemented somewhere else&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bonus:&lt;/strong&gt; completing the thought also acts like a sounding board. It either confirms that I am in the right place, taking the right approach, or gives me new insight into how to create the feature&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;From pseudo-code, you can work out the nuts and bolts of implementing the feature, but the task is pretty well, i.e. narrowly, defined at that point and you usually only end up writing a few lines of code.&lt;/p&gt;
-
-&lt;p&gt;In fact, I think I’m starting to see that if in the end you aren’t writing small amounts of code in a narrowly defined scope, you haven’t worked the room enough to find the right spot…but I have a feeling I’ll be arguing for or against that assertion more in future posts.&lt;/p&gt;
-
-&lt;h2 id=&#34;hoofing-it-back-to-the-rendezvous-point&#34;&gt;Hoofing it back to the Rendezvous Point&lt;/h2&gt;
-
-&lt;p&gt;We got in, completely our mission, and got out. The final (haha!) stage of the process is the extraction moment. As you’re being plucked off the ground and back into the sky, you get a final bird’s-eye view of the code.&lt;/p&gt;
-
-&lt;p&gt;Either this is a moment of satisfaction, as you survey your work, or someone comes along and pushes you out of the plane again, to redo the whole mission.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Coding Bootcamp ROI 3 Weeks Later</title>
-      <link>/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
-      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s been 3 weeks since I graduated from &lt;a href=&#34;http://www.launchacademy.com&#34;&gt;Launch Academy&lt;/a&gt; and I start work at a new job on Wednesday as a software developer.&lt;/p&gt;
-
-&lt;p&gt;Obviously, I&amp;rsquo;m thrilled with this whirlwind process, and coming off almost ten years in my last job, the pace of all this change is a little hard to grasp.&lt;/p&gt;
-
-&lt;p&gt;In this post, I want to tell you why Launch was such a great investment for me. If you&amp;rsquo;re considering doing something similar, I hope you find this helpful.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;First Disclaimer:&lt;/strong&gt; The opinions I am going to share about other bootcamps are all second or third hand accounts. I haven&amp;rsquo;t researched them, but I will share them with as told to me.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Second Disclaimer:&lt;/strong&gt; For perspective, Launch Academy has close to 100% placement rate for job seekers, on a 3-month timescale. I consider myself incredibly fortunate to have landed a job on a &amp;ldquo;best case&amp;rdquo; timeline. YMMV.&lt;/p&gt;
-
-&lt;h2 id=&#34;7-reasons-launch-academy-was-a-great-investment&#34;&gt;7 Reasons Launch Academy was a Great Investment&lt;/h2&gt;
-
-&lt;p&gt;In no particular order, here&amp;rsquo;s why it was a great investment for me to quit my job, change careers, and spend a large chunk of money on a coding bootcamp:&lt;/p&gt;
-
-&lt;p&gt;** 1. Structured Curriculum**&lt;/p&gt;
-
-&lt;p&gt;At every step of the process, the material was laid out incrementally. Nothing was introduced before we needed to use it &amp;ndash; simple tools to match our stage of learning, more complex as the simple tools bumped up against their limitations.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s where some of the rumors come into play. Several of the companies that have repeatedly hired from Launch Academy told me that, compared to other bootcamps they looked at, Launch had the more organized and structured curriculum. As an educator, this was really obvious to me, but if the hiring partners are noticing it too, clearly it has an impact on the skill level of the graduates.&lt;/p&gt;
-
-&lt;p&gt;** 2. Andragogy**&lt;/p&gt;
-
-&lt;p&gt;Pedagogy is for children. Andragogy is learning structured &lt;em&gt;for adults&lt;/em&gt;. Our first books in the pre-work curriculum weren&amp;rsquo;t about code, they were about learning. Studying the way our brain processes information was really informative. But even better than knowing about learning, the day at Launch was strucutured to match the cycles of cognitive work and rest (integration).&lt;/p&gt;
-
-&lt;p&gt;I found just as important as what we were learning.&lt;/p&gt;
-
-&lt;p&gt;** 3. Dedicated Instructors**&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s another one I was baffled by. In some places, the instructors rotate in and out after a single cohort.&lt;/p&gt;
-
-&lt;p&gt;At Launch, the small group of instructors (one for every seven of us) has been together for several iterations and I didn&amp;rsquo;t get the feeling anyone was going anywhere. Not only do they meet daily to reflect, tweak, and refine the curriculum, but there is a clear sense of ownership, from group to group.&lt;/p&gt;
-
-&lt;p&gt;They want to improve how they teach and make the experience better for each group that comes through the program.&lt;/p&gt;
-
-&lt;p&gt;How would you do that if there&amp;rsquo;s constant staff turnover?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. Caring Classmates&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t know if we just got lucky or they have some magical formula for attracting awesome people, but the folks I went through the program with were consistently caring, interested in each other and each other&amp;rsquo;s work, and hardworking.&lt;/p&gt;
-
-&lt;p&gt;Plus, we had a lot of fun!&lt;/p&gt;
-
-&lt;p&gt;There was never a moment was someone was too busy to help someone else or talk an idea through.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s so cool to think about the way I will likely cross paths again and again over the years with these people in the software world. I would work with any of them on tough projects.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5. Killer Career Services&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Part of the business model is to get us jobs. To that end, we got coaching on everything from resumes, to interviews, assessing work culture, shaping our portfolio projects, and honing our presentation skills to become more effective job seekers.&lt;/p&gt;
-
-&lt;p&gt;But that&amp;rsquo;s kind of a narrow description of &amp;ldquo;career services&amp;rdquo; at Launch.&lt;/p&gt;
-
-&lt;p&gt;Remember, coding bootcamps have emerged out of an industry need, in the short term, for junior-level talent.&lt;/p&gt;
-
-&lt;p&gt;At Launch, they take a longer view and realize that they are creating a new pathway, outside of traditional educational models. Obviously that means explaining to hiring partners what graduates can do, but they are also working with companies to reshape how they see the lifetime of their employees&amp;rsquo; education.&lt;/p&gt;
-
-&lt;p&gt;Apprenticeships, for example, are emerging as a natural next step to bootcamp immersion. Launch is actively advising companies about how to implement these kinds of programs.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6. Thriving (and Welcoming) Community&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;For almost a year now, I&amp;rsquo;ve been attending &lt;a href=&#34;http://bostonrb.org&#34;&gt;Boston Ruby&lt;/a&gt; meetings.&lt;/p&gt;
-
-&lt;p&gt;Even before I was involved in Launch Academy, people were friendly and open to meeting someone with zero experience.&lt;/p&gt;
-
-&lt;p&gt;You had to jump on the meetup tickets right away because they often sold out. I don&amp;rsquo;t know how many people are actively involved, but I think they cap most events at 150.&lt;/p&gt;
-
-&lt;p&gt;Between live meetings, a google group, and twitter, you can get all kinds of help, recommendations, and keep track of new developments if you want to lurk like I did.&lt;/p&gt;
-
-&lt;p&gt;I &lt;em&gt;thought&lt;/em&gt; I was lucky to be in Boston, but it turns out, I was lucky to find Ruby&amp;hellip;where tons of interested people from all over want to make programming interesting and enjoyable. Case in point: my recent experience at &lt;a href=&#34;/blog/2014/08/03/burlington-ruby-conference-2014/&#34;&gt;Burlington Ruby Conference&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7. Established Network&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This last one is really a combination of several of the earlier points.&lt;/p&gt;
-
-&lt;p&gt;I was able to get a job right away because of the established network Launch Academy participates in.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s what I mean by &amp;ldquo;established network:&amp;rdquo; The founders are avid Rubyists who worked for years to build the Boston Ruby community. Past alums have thrived in their jobs and companies are eager to hire more from the program. The staff is constantly forging new partnerships (close to 100 companies have hired from Launch at this point). And the instructors care about preparing us and seeing us succeed.&lt;/p&gt;
-
-&lt;p&gt;The &amp;ldquo;network&amp;rdquo; is an ever-evolving, ever-expanding, thriving thing that I&amp;rsquo;m proud to be part of in a whole new way now.&lt;/p&gt;
-
-&lt;h2 id=&#34;multifaceted-roi&#34;&gt;Multifaceted ROI&lt;/h2&gt;
-
-&lt;p&gt;So, like I said at the beginning, I&amp;rsquo;m writing this with a ton of bias, some second or third hand information, and I start my first job in two days. Just by the numbers, I will be earning more than I was before and my potential to earn more has risen dramatically. The ROI on this endeavor is solid.&lt;/p&gt;
-
-&lt;p&gt;Most of all, though, I&amp;rsquo;m still riding on the wave of being a student. I&amp;rsquo;m in &amp;ldquo;learning mode&amp;rdquo; and I&amp;rsquo;m thrilled to have found somewhere to work where this will be encouraged.&lt;/p&gt;
-
-&lt;p&gt;I hope to report back here and share the upsides of ongoing learning and growth. Thanks for reading!&lt;/p&gt;</description>
     </item>
     
   </channel>

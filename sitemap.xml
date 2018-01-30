@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2018/01/28/keeping-an-engineering-notebook</loc>
+    <lastmod>2018-01-28T22:52:26-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</loc>
+    <lastmod>2018-01-05T12:31:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages</loc>
+    <lastmod>2017-11-18T14:38:49-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</loc>
     <lastmod>2017-11-07T20:46:05-05:00</lastmod>
   </url>
@@ -2270,7 +2285,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
+    <lastmod>2018-01-28T22:52:26-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2286,7 +2301,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
+    <lastmod>2018-01-28T22:52:26-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2349,7 +2364,7 @@
   
   <url>
     <loc>/categories/bigquery/</loc>
-    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
+    <lastmod>2017-11-18T14:38:49-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2469,7 +2484,7 @@
   
   <url>
     <loc>/categories/code/</loc>
-    <lastmod>2017-11-07T20:46:05-05:00</lastmod>
+    <lastmod>2018-01-28T22:52:26-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2720,6 +2735,12 @@
   </url>
   
   <url>
+    <loc>/categories/github-pages/</loc>
+    <lastmod>2017-11-18T14:38:49-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/gods-playing-in-the-clouds/</loc>
     <lastmod>2012-04-23T06:27:09+00:00</lastmod>
     <priority>0</priority>
@@ -2764,6 +2785,12 @@
   <url>
     <loc>/tags/hot-triggers/</loc>
     <lastmod>2011-05-16T09:20:57+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/hugo/</loc>
+    <lastmod>2017-11-18T14:38:49-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3298,6 +3325,12 @@
   <url>
     <loc>/tags/spiritual-practice/</loc>
     <lastmod>2013-06-07T08:59:30+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/sql/</loc>
+    <lastmod>2018-01-05T12:31:44-05:00</lastmod>
     <priority>0</priority>
   </url>
   

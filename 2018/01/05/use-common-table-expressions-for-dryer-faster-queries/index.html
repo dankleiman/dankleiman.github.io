@@ -1,0 +1,1396 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Use Common Table Expressions for DRYer, Faster Queries</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Use Common Table Expressions for DRYer, Faster Queries"/>
+<meta name="twitter:description" content="Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.
+
+"/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="Use Common Table Expressions for DRYer, Faster Queries" />
+<meta property="og:description" content="Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries" />
+
+
+
+<meta property="article:published_time" content="2018-01-05T12:31:44-05:00"/>
+<meta property="article:modified_time" content="2018-01-05T12:31:44-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Use Common Table Expressions for DRYer, Faster Queries">
+<meta itemprop="description" content="Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.
+
+">
+
+
+<meta itemprop="dateModified" content="2018-01-05T12:31:44-05:00" />
+<meta itemprop="wordCount" content="427">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Hugo,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,github-pages,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-28'>
+                                    January 28, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-05'>
+                                    January 5, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-18'>
+                                    November 18, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-07'>
+                                    November 7, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-10-30'>
+                                    October 30, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&text=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&description=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2018-01-05'>
+            January 5, 2018</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&text=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&title=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries&description=Use%20Common%20Table%20Expressions%20for%20DRYer%2c%20Faster%20Queries" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2018%2f01%2f05%2fuse-common-table-expressions-for-dryer-faster-queries" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    <p>Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.</p>
+
+<p></p>
+
+<p>A Common Table Expression is a normal SQL SELECT statement that gets evaluated at the beginning of the query execution and stored as a view, or temporary table, that can be referenced over and over throughout the rest of the query.</p>
+
+<h3 id="cte-funnel-example">CTE Funnel Example</h3>
+
+<p>Use a CTE just like you would a variable that stores the output of an expensive calculation.</p>
+
+<p>Let&rsquo;s start with an example. You are running a split test with two groups of users. Each user is assigned to one variant in the test based on some hashing of their user id. The user id and the test variant are stored in a table of user-test-variant mappings. You want to track the variants of this test through a series of events and put together an event funnel for each group.</p>
+
+<p>You could write the funnel like this:</p>
+
+<p>SELECT
+    user_test_mappings.variant,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count,
+    event_two_data.event_name,
+    count(event_two_data.event_name) as  event_two_count,
+    event_one_data.event_name,
+    count(event_one_data.event_name) as  event_one_count
+FROM
+    event_one_data
+LEFT OUTER JOIN
+    event_two_data
+ON
+    event_one_data.user_id = event_two_data.user_id
+JOIN
+    user_test_mappings
+ON
+    event_one_data.user_id = user_test_mappings.user_id
+WHERE
+    user_test_mappings.test_name = &lsquo;funnel_test&rsquo;</p>
+
+<pre><code>WITH experiment AS (
+  SELECT
+    udid,
+    CASE
+      WHEN experiment_variant = '188bf90d-4dcc-4927-bb4a-572d543e4ea7' THEN 'native_app_store'
+      ELSE 'legacy'
+    END AS variant
+  FROM
+    `tjbigquery.fact.experiment_triggered_201712*`
+  WHERE
+    experiment = '84970291-da6e-496e-b1b1-a6fde2be505e'
+    AND _TABLE_SUFFIX BETWEEN '12'
+    AND '18'
+),
+  clicks AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS clicks
+  FROM
+    `tjbigquery.fact.clicks_201712*` c
+  JOIN
+    experiment
+  ON
+    c.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = c.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = c.creative_id
+  WHERE
+    o.item_type = 'App'
+    AND o.id NOT IN ('711dfb0e-7b79-4008-9e08-b6e9f59862b6',
+      '6c55db82-cf7e-4c37-9a52-4ee34afb4f18',
+      '2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7')
+    AND path NOT LIKE '%end_card_clicks%'
+    AND c._TABLE_SUFFIX BETWEEN '12'
+    AND '18'
+  GROUP BY
+    1,
+    2),
+  installs AS (
+  SELECT
+    oc.creative_experience,
+    variant,
+    COUNT(1) AS installs
+  FROM
+    `tjbigquery.fact.actions_201712*` a
+  JOIN
+    experiment
+  ON
+    a.udid = experiment.udid
+  JOIN
+    `tjbigquery.meta.primary_secondary_mapping` psm
+  ON
+    psm.secondary_offer_id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offers` o
+  ON
+    o.id = a.offer_id
+  JOIN
+    `tjbigquery.meta.offer_creatives` oc
+  ON
+    oc.creative_id = a.creative_id
+  WHERE
+    o.item_type = 'App'
+    AND o.id NOT IN ('711dfb0e-7b79-4008-9e08-b6e9f59862b6',
+      '6c55db82-cf7e-4c37-9a52-4ee34afb4f18',
+      '2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7')
+    AND a._TABLE_SUFFIX BETWEEN '12'
+    AND '18'
+  GROUP BY
+    1,
+    2)
+SELECT
+  clicks.creative_experience,
+  clicks.variant,
+  clicks.clicks,
+  COALESCE(installs.installs, 0) AS installs,
+  CASE
+    WHEN COALESCE(installs.installs, 0) = 0 THEN 0
+    ELSE ROUND((installs.installs * 100/clicks.clicks), 5)
+  END AS secondary_cvr
+FROM
+  clicks
+LEFT OUTER JOIN
+  installs
+ON
+  clicks.variant = installs.variant
+  AND clicks.creative_experience = installs.creative_experience
+ORDER BY
+  1,
+  2,3
+</code></pre>
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages"
+                class="button big previous">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a></li>
+    
+
+    
+        <li><a href="/2018/01/28/keeping-an-engineering-notebook"
+                class="button big next">Keeping an Engineering Notebook</a></li>
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-28'>
+                January 28, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-05'>
+                January 5, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-18'>
+                November 18, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-07'>
+                November 7, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a>
+              </h3>
+              
+              <time class="published" datetime='2017-10-30'>
+                October 30, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">31</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">4</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/hugo/">Hugo</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/github-pages/">github-pages</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2018
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

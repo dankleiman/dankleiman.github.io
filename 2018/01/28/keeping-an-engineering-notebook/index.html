@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Keeping an Engineering Notebook</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Keeping an Engineering Notebook"/>
+<meta name="twitter:description" content="The best upgrade I&rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.
+
+Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:
+
+    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+
+
+As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&rsquo;s working.
+
+"/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="Keeping an Engineering Notebook" />
+<meta property="og:description" content="The best upgrade I&rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.
+
+Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:
+
+    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+
+
+As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&rsquo;s working.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2018/01/28/keeping-an-engineering-notebook" />
+
+
+
+<meta property="article:published_time" content="2018-01-28T22:52:26-05:00"/>
+<meta property="article:modified_time" content="2018-01-28T22:52:26-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Keeping an Engineering Notebook">
+<meta itemprop="description" content="The best upgrade I&rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.
+
+Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:
+
+    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+
+
+As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&rsquo;s working.
+
+">
+
+
+<meta itemprop="dateModified" content="2018-01-28T22:52:26-05:00" />
+<meta itemprop="wordCount" content="705">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Hugo,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,github-pages,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-28'>
+                                    January 28, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-05'>
+                                    January 5, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-18'>
+                                    November 18, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-07'>
+                                    November 7, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-10-30'>
+                                    October 30, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&text=Keeping%20an%20Engineering%20Notebook&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&description=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2018-01-28'>
+            January 28, 2018</time>
+        <span class="author"></span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&text=Keeping%20an%20Engineering%20Notebook&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&title=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook&description=Keeping%20an%20Engineering%20Notebook" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=%2f2018%2f01%2f28%2fkeeping-an-engineering-notebook" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    <p>The best upgrade I&rsquo;ve made to my workflow in the past year was to start keeping an engineering notebook.</p>
+
+<p>Whenever I start a new project, the first thing I do is create a new section in my engineering notebook. It&rsquo;s really simple. With a tiny script, I generate a dedicated folder for the new project, plus three sub-folders and a README:</p>
+
+<pre><code>    some_new_work
+        |__ notes/
+        |__ data/
+        |__ scripts/
+        |__ README.md
+</code></pre>
+
+<p>As simple as this structure seems, it has had a tremendous impact on my work. In this post, I want to try to unpack why and how I think that&rsquo;s working.</p>
+
+<p></p>
+
+<h2 id="less-scattered-more-focused">Less Scattered, More Focused</h2>
+
+<p>The first thing I&rsquo;ve noticed is that focusing in on the new problem is easier when I know where I&rsquo;m going to put all the files related to that project.</p>
+
+<p>With sections for <strong>notes</strong>, <strong>data</strong>, and <strong>scripts</strong>, pretty much anything I touch has a natural home in a project subfolder. I tend to sketch out rough ideas about a particular part of the problem as a markdown file in the notes section. Then, as I develop some test code, I store it as a snippet in the scripts folder. If the script is a query or I have some backing data in an investigation, I can easily drop it into the data folder.</p>
+
+<p>Not only does having a single folder per project help my workflow during the initial stages of a project, but I can easily come back to the projects months later and find artefacts that are still useful.</p>
+
+<p>By accruing artefacts along the way to solving each problem, I can reproduce any part of the problem/solution and essentially &ldquo;replay&rdquo; my thinking at any point in time.</p>
+
+<p>Having all the evidence in one places has also pushed me to be clearer about individual file names. Each file becomes a valuable piece of an audit trail of how I solved the problem.</p>
+
+<h2 id="rewriting-and-deleting-to-prune-an-idea">Rewriting and Deleting to Prune an Idea</h2>
+
+<p>Initially, I thought the main benefit was going to be that I would declutter my work space and have a somewhat more organized dumping ground for all my files and data.</p>
+
+<p>But I discovered an even greater benefit by continuously organizing my files and folders: I gained more clarity about the problem every time I would rewrite, rename, or remove files from the notebook &ndash; especially the README &ndash; in a process I know think of as &ldquo;pruning the idea.&rdquo;</p>
+
+<p>Especially with thornier problems, I now see that I go through many stages of thinking that I understand the core issue and developing and testing hypothetical solutions. I use the README in this project set-up to keep track of the current state of hypotheses being proven or having been disproved.</p>
+
+<p>Ultimately, I want the README to become a document I can share with my co-workers or other stakeholders in the project, so that&rsquo;s what I&rsquo;m writing towards, polishing it a little at a time as I go.</p>
+
+<p>In contrast, the documents in the <code>notes</code> section are either much more fragmented or are narrowly focused on one aspect of the project. The README pulls the best findings from the notes.</p>
+
+<p>Over time, I shape the README into a high-level explanation of the problem, a narrative about the investigation, and the justification for a solution. For many issues, this ends up being a drop-in PR description for my code changes.</p>
+
+<h2 id="getting-set-up">Getting Set Up</h2>
+
+<p>The script I use to generate new project sections <a href="https://github.com/dankleiman/notebook">lives here on github</a>. As I said before, it&rsquo;s pretty simple. You spin up the same set of subfolders and a README each time.</p>
+
+<p>When you run <code>notebook</code> there are two flags you can optionally pass:</p>
+
+<pre><code>-notepath string
+    Main notebook directory set by env var NOTEPATH (default &quot;.&quot;)
+-section string
+    Name for new section of this notebook (default &quot;new_section&quot;)
+</code></pre>
+
+<p>By default, <code>notebook</code> will look for an environment variable called <code>NOTEPATH</code> that defines your main engineering notebook directory, but you can override this with the <code>notepath</code> flag.</p>
+
+<p>Use the <code>section</code> flag to name the section you are creating in a meaningful way for the new project.</p>
+
+<p>Run:</p>
+
+<pre><code>./notebook -section=new_project &amp;&amp; cd $NOTEPATH/new_project &amp;&amp; ls
+</code></pre>
+
+<p>And you will see your new section ready to be filled up with interesting data, scripts, and notes!</p>
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries"
+                class="button big previous">Use Common Table Expressions for DRYer, Faster Queries</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-28'>
+                January 28, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2018/01/05/use-common-table-expressions-for-dryer-faster-queries">Use Common Table Expressions for DRYer, Faster Queries</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-05'>
+                January 5, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages">Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-18'>
+                November 18, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-07'>
+                November 7, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a>
+              </h3>
+              
+              <time class="published" datetime='2017-10-30'>
+                October 30, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">31</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">4</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/hugo/">Hugo</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/github-pages/">github-pages</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2018
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
