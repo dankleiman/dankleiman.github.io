@@ -2,154 +2,206 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sql on Dan Kleiman</title>
-    <link>/categories/sql/index.xml</link>
+    <link>http://dankleiman.com/categories/sql/index.xml</link>
     <description>Recent content in sql on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/categories/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Use Common Table Expressions for DRYer, Faster Queries</title>
-      <link>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</link>
-      <pubDate>Fri, 05 Jan 2018 12:31:44 -0500</pubDate>
+      <title>3 Ways to Level Up Your SQL as a Software Engineer</title>
+      <link>http://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer</link>
+      <pubDate>Tue, 06 Feb 2018 12:31:44 -0500</pubDate>
       
-      <guid>/2018/01/05/use-common-table-expressions-for-dryer-faster-queries</guid>
-      <description>&lt;p&gt;Getting used to using Common Table Expressions, or CTEs, in my SQL queries has been a major improvement. Using CTEs in complex queries makes them more readable, DRYer, and faster. In this post, I&amp;rsquo;ll lay out a couple of things you can do as a developer to make CTEs part of your go-to SQL toolkit.&lt;/p&gt;
+      <guid>http://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer</guid>
+      <description>&lt;p&gt;If you are a software engineer and you have just enough SQL to write queries that count, sum, average join and maybe sub-select, then I&amp;rsquo;m writing this post for you. If, when you need more complicated analysis or computation, you pull your query results into excel or your favorite scripting language to do more processing, then I have some good news.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a whole lot more you can do right in SQL and it&amp;rsquo;s not too bad to learn how to do it.&lt;/p&gt;
+
+&lt;p&gt;In this post, I&amp;rsquo;m going to cover a few concepts that have recently helped me do more computation, better analysis, and it turns out, more efficient querying&amp;hellip;and I hope they help you too.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;A Common Table Expression is a normal SQL SELECT statement that gets evaluated at the beginning of the query execution and stored as a view, or temporary table, that can be referenced over and over throughout the rest of the query.&lt;/p&gt;
+&lt;h2 id=&#34;dry-up-your-sql-with-common-table-expressions&#34;&gt;DRY up your SQL with Common Table Expressions&lt;/h2&gt;
 
-&lt;h3 id=&#34;cte-funnel-example&#34;&gt;CTE Funnel Example&lt;/h3&gt;
+&lt;p&gt;A Common Table Expression, or CTE, works just like a normal SELECT statement, but it gets evaluated at the beginning of your query and stored as a view, or temporary table, that can be referenced over and over throughout the rest of the query.&lt;/p&gt;
 
-&lt;p&gt;Use a CTE just like you would a variable that stores the output of an expensive calculation.&lt;/p&gt;
+&lt;p&gt;In your code, you wouldn&amp;rsquo;t do the same expensive calculation over and over, right? In your SQL, when you use CTEs, you don&amp;rsquo;t have to either. Especially if you&amp;rsquo;re dealing with large data sets, querying for a small, relevant subset up front and working with those rows as a table is way more efficient.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s start with an example. You are running a split test with two groups of users. Each user is assigned to one variant in the test based on some hashing of their user id. The user id and the test variant are stored in a table of user-test-variant mappings. You want to track the variants of this test through a series of events and put together an event funnel for each group.&lt;/p&gt;
+&lt;p&gt;In fact, not only are CTEs more efficient in a lot of cases, but I&amp;rsquo;ve come to see that having a series of CTEs at the beginning of my query ends up making the main SELECT statement much easier to read. You&amp;rsquo;ve stuffed all the complicated logic into the CTEs and given them meaningful names, so what you end up joining and projecting tend to be much easier to reason about.&lt;/p&gt;
 
-&lt;p&gt;You could write the funnel like this:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;SELECT
-    user_test_mappings.variant,
-    event_one_data.event_name,
-    count(event_one_data.event_name) as  event_one_count,
-    event_two_data.event_name,
-    count(event_two_data.event_name) as  event_two_count,
-    event_one_data.event_name,
-    count(event_one_data.event_name) as  event_one_count
-FROM
-    event_one_data
-LEFT OUTER JOIN
-    event_two_data
-ON
-    event_one_data.user_id = event_two_data.user_id
-JOIN
-    user_test_mappings
-ON
-    event_one_data.user_id = user_test_mappings.user_id
-WHERE
-    user_test_mappings.test_name = &amp;lsquo;funnel_test&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;You are running a split test with two groups of users. Each user is assigned to one variant in the test based on some hashing of their user id. The user id and the test variant are stored in a table of user-test-variant mappings, or our &amp;lsquo;experiment&amp;rsquo; table. You want to track the variants of this test through a series of events and put together an event funnel for each group.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;WITH experiment AS (
   SELECT
-    udid,
-    CASE
-      WHEN experiment_variant = &#39;188bf90d-4dcc-4927-bb4a-572d543e4ea7&#39; THEN &#39;native_app_store&#39;
-      ELSE &#39;legacy&#39;
-    END AS variant
+    user_id,
+    variant
   FROM
-    `tjbigquery.fact.experiment_triggered_201712*`
+    `big_table_of_experiments`
   WHERE
-    experiment = &#39;84970291-da6e-496e-b1b1-a6fde2be505e&#39;
-    AND _TABLE_SUFFIX BETWEEN &#39;12&#39;
-    AND &#39;18&#39;
+    test_id = &#39;123&#39;
 ),
-  clicks AS (
+  event_one AS (
   SELECT
-    oc.creative_experience,
+    important_event,
     variant,
-    COUNT(1) AS clicks
+    COUNT(1) AS count
   FROM
-    `tjbigquery.fact.clicks_201712*` c
+    `big_table_of_events_one` c
   JOIN
     experiment
   ON
-    c.udid = experiment.udid
-  JOIN
-    `tjbigquery.meta.primary_secondary_mapping` psm
-  ON
-    psm.secondary_offer_id = c.offer_id
-  JOIN
-    `tjbigquery.meta.offers` o
-  ON
-    o.id = c.offer_id
-  JOIN
-    `tjbigquery.meta.offer_creatives` oc
-  ON
-    oc.creative_id = c.creative_id
-  WHERE
-    o.item_type = &#39;App&#39;
-    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
-      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
-      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
-    AND path NOT LIKE &#39;%end_card_clicks%&#39;
-    AND c._TABLE_SUFFIX BETWEEN &#39;12&#39;
-    AND &#39;18&#39;
+    c.user_id = experiment.user_id
   GROUP BY
     1,
-    2),
-  installs AS (
+    2
+    ),
+  event_two AS (
   SELECT
-    oc.creative_experience,
+    important_event,
     variant,
-    COUNT(1) AS installs
+    COUNT(1) AS count
   FROM
-    `tjbigquery.fact.actions_201712*` a
+    `big_table_of_events_two` a
   JOIN
     experiment
   ON
-    a.udid = experiment.udid
-  JOIN
-    `tjbigquery.meta.primary_secondary_mapping` psm
-  ON
-    psm.secondary_offer_id = a.offer_id
-  JOIN
-    `tjbigquery.meta.offers` o
-  ON
-    o.id = a.offer_id
-  JOIN
-    `tjbigquery.meta.offer_creatives` oc
-  ON
-    oc.creative_id = a.creative_id
-  WHERE
-    o.item_type = &#39;App&#39;
-    AND o.id NOT IN (&#39;711dfb0e-7b79-4008-9e08-b6e9f59862b6&#39;,
-      &#39;6c55db82-cf7e-4c37-9a52-4ee34afb4f18&#39;,
-      &#39;2bf6d4cb-62d3-4397-86f6-e5bcbf4a03b7&#39;)
-    AND a._TABLE_SUFFIX BETWEEN &#39;12&#39;
-    AND &#39;18&#39;
+    a.user_id = experiment.user_id
   GROUP BY
     1,
     2)
 SELECT
-  clicks.creative_experience,
-  clicks.variant,
-  clicks.clicks,
-  COALESCE(installs.installs, 0) AS installs,
+  event_one.important_event,
+  event_one.variant,
+  event_one.count as first_event,
+  COALESCE(event_two.count, 0) AS second_event,
   CASE
-    WHEN COALESCE(installs.installs, 0) = 0 THEN 0
-    ELSE ROUND((installs.installs * 100/clicks.clicks), 5)
-  END AS secondary_cvr
+    WHEN COALESCE(event_two.count, 0) = 0 THEN 0
+    ELSE ROUND((event_two.count * 100/event_one.count), 5)
+  END AS event_two_conversion_rate
 FROM
-  clicks
+  event_one
 LEFT OUTER JOIN
-  installs
+  event_two
 ON
-  clicks.variant = installs.variant
-  AND clicks.creative_experience = installs.creative_experience
+  event_one.variant = event_two.variant
 ORDER BY
   1,
   2,3
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Read the query above in this order:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Jump down the to SELECT statement at the bottom. Is it easy to explain what the query does overall?&lt;/li&gt;
+&lt;li&gt;Back to the top. For each CTE defined by the WITH some_cte_name AS (simpler SELECT), can you understand the individual building blocks of the query?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If the event tables are really big, doing that left outer join is going to be really expensive. But in this case, we&amp;rsquo;ve already filtered down our data twice: once with each inner join on the specific users we want and once with whatever other criteria we wanted to use a filter in the WHERE clauses in each of the event CTEs (left out in the actual example, but presumably you&amp;rsquo;d have some if you were pulling from a big complicated data source). In the end, the rows you end up joining and projecting are fewer and the query itself is more readable because you&amp;rsquo;ve clearly defined each piece.&lt;/p&gt;
+
+&lt;h2 id=&#34;learn-to-love-over&#34;&gt;Learn to Love OVER()&lt;/h2&gt;
+
+&lt;p&gt;Analytic or window functions can be a really powerful way to do calculations in your queries without having to do any post-processing in code or excel. The other day at work, I was asked to look into the data behind a conversion rate, like the example above, for a series of events, that seemed to be bouncing all over the place with every new day of data we added.&lt;/p&gt;
+
+&lt;p&gt;My first pass at calculating the conversion rate looked something like this. The problem was, we expected to see a uniform rate, even though the number of events changed every day:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+  day,
+  event_one,
+  event_two,
+  ROUND(event_two * 100/event_one,2) as event_cvr,
+FROM
+  event_two_data
+JOIN
+  event_one_data
+ON 
+  event_one_data.day = event_two_data.day
+ORDER BY 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Eventually, what I realized was that, not only had there had been huge swings in the &amp;lsquo;event_one&amp;rsquo; numbers day-over-day, but the typical time between event one and event two spanned multiple days. In other words, you&amp;rsquo;d have a really big numerator in the event_cvr calculation one day, then a really small one the next day, but the denominator was a day or two behind in its corresponding fluctuation.&lt;/p&gt;
+
+&lt;p&gt;The problem was still, I didn&amp;rsquo;t know if it was a day&amp;hellip;or two. The solution was LAG.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how the query evolved to account for the delay between event_one and event_two. Using the LAG() function with a window, I could essentially shift the rows so that for any given day, I could compare event_two numbers to event_one numbers on the same day, the previous day, or the day before that.&lt;/p&gt;
+
+&lt;p&gt;Since the events were happening mostly a day to two days apart, the &amp;ldquo;one_day_cvr&amp;rdquo; and &amp;ldquo;two_day_cvr&amp;rdquo; numbers ended up looking much more uniform.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SELECT
+  day,
+  event_one,
+  event_two,
+  ROUND(event_two * 100/event_one,2) as same_day_cvr,
+  ROUND(event_two * 100/ LAG(event_one,1) OVER(ORDER BY day) ,2) as one_day_cvr,
+  ROUND(event_two * 100/LAG(event_one,2) OVER(ORDER BY day),2) as two_day_cvr
+FROM
+  event_two_data
+JOIN
+  event_one_data
+ON 
+  event_one_data.day = event_two_data.day
+ORDER BY 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can use LAG() to reference previous rows as in the example above, but you can also do other calculations using the OVER() window.&lt;/p&gt;
+
+&lt;p&gt;As an example, let&amp;rsquo;s use a CTE to throw some fake data into BigQuery and ask for a breakdown of counts by color and style, a total of items by style, and the percentage of any given color-style-size combo to the total number of items in that style.&lt;/p&gt;
+
+&lt;p&gt;With a window function, you can ask for all of those breakdowns in a single query:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WITH
+  inventory AS (
+  SELECT &#39;buttons&#39; AS style, &#39;blue&#39; AS color, &#39;large&#39; AS size
+  UNION ALL SELECT &#39;buttons&#39;, &#39;blue&#39;, &#39;small&#39;
+  UNION ALL SELECT &#39;buttons&#39;, &#39;blue&#39;, &#39;small&#39;
+  UNION ALL SELECT &#39;zipper&#39;, &#39;red&#39;, &#39;large&#39;
+  UNION ALL SELECT &#39;zipper&#39;, &#39;blue&#39;, &#39;small&#39;
+  UNION ALL SELECT &#39;zipper&#39;, &#39;green&#39;, &#39;medium&#39;)
+SELECT
+  style,
+  color,
+  size,
+  COUNT(1) AS color_sizes_by_style,
+  COUNT(style) OVER(PARTITION BY style) as total_style,
+  ROUND(COUNT(1) * 100 / COUNT(style) OVER(PARTITION BY style),2) AS percent_of_total_style
+FROM
+  inventory
+GROUP BY 1, 2, 3
+ORDER BY 1, 2, 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In your result set you get the expected count by style, color, and size for each group of items, but now, because of the window function, you&amp;rsquo;ve also been able to do a calculation for each row that uses a different grouping &amp;ndash; in this case a less granular, style-only grouping &amp;ndash; to get a total count from a different set of rows.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://dankleiman.com/img/inventory.png&#34; alt=&#34;Inventory results grouped by style and color-sizes&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The window you get with the OVER() function let&amp;rsquo;s you define your input distinctly from the way you&amp;rsquo;ve defined it in your main query, but then returns a value for each row into the query. Previously, I would have done this with a sub-select or some post-processing, but now I understand how to do computation over multiple data breakdowns as part of a normal query.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m sure the name &amp;ldquo;window function&amp;rdquo; has some other origin, but I like to think of it as giving you a window into other rows in the table that you can reach through and steal data from.&lt;/p&gt;
+
+&lt;p&gt;Check out these &lt;a href=&#34;https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#analytic-functions&#34;&gt;BigQuery docs on Analytic Functions&lt;/a&gt; for deeper explanation and some cool examples.&lt;/p&gt;
+
+&lt;h2 id=&#34;aggregates-are-lies&#34;&gt;Aggregates are Lies&lt;/h2&gt;
+
+&lt;p&gt;Finally, I want to encourage you &lt;strong&gt;to be skeptical of aggregate data&lt;/strong&gt; for two big reasons. First, aggregates are lies &amp;ndash; real, interesting, and accurate data is hidden inside the fluctuations you roll up into your aggregate data. Don&amp;rsquo;t be fooled.&lt;/p&gt;
+
+&lt;p&gt;Second, as you learn to write more complicated queries, you&amp;rsquo;ll be tempted to use your fancy tools right away. Don&amp;rsquo;t do it.&lt;/p&gt;
+
+&lt;p&gt;Any time you&amp;rsquo;re tackling a new query with new data, you should pour over the undisturbed rows to get a feel for what kinds of variations are hidden there.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t have formal rules yet for developing complicate analytics queries, but if I had to put what I think the process looks like into an ordered list today, I would do something like this:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Preview complete rows of the data, not just columns you want to roll up.&lt;/li&gt;
+&lt;li&gt;Do some simple ordering on column values to see ranges and outliers.&lt;/li&gt;
+&lt;li&gt;Do some simple grouping with counts on potentially useful columns to see breakdowns of data.&lt;/li&gt;
+&lt;li&gt;If possible, validate calculations side-by-side with raw data, at least for a sanity check.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Aggregate data tells a lot of important stories, I&amp;rsquo;m not denying that. But you&amp;rsquo;re in an interesting position as a software engineer who can write more analytical SQL. You get to see the resulting data AND the code that generated it.&lt;/p&gt;
+
+&lt;p&gt;Go slow with the data and piece together the specifics as much as possible. That will tell you a lot more about how your code is interacting with the world than looking at rolled-up, averaged, grouped, or otherwised calculated numbers.&lt;/p&gt;</description>
     </item>
     
   </channel>

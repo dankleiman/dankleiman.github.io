@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>creativity on Dan Kleiman</title>
-    <link>/tags/creativity/index.xml</link>
+    <link>http://dankleiman.com/tags/creativity/index.xml</link>
     <description>Recent content in creativity on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/creativity/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/creativity/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Teaching Cycles</title>
-      <link>/2011/01/31/teaching-cycles/</link>
+      <link>http://dankleiman.com/2011/01/31/teaching-cycles/</link>
       <pubDate>Mon, 31 Jan 2011 14:31:55 +0000</pubDate>
       
-      <guid>/2011/01/31/teaching-cycles/</guid>
+      <guid>http://dankleiman.com/2011/01/31/teaching-cycles/</guid>
       <description>&lt;p&gt;I&#39;m coming to another big teaching cycle in Trainerfly and I think this short clip of David Heinemeier Hansson speaking at Stanford&#39;s Entrepreneurship Corner is really useful to frame the mindset:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-574&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;object id=&#34;single&#34; classid=&#34;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&#34; width=&#34;500&#34; height=&#34;302&#34; codebase=&#34;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0&#34;&gt;&lt;param name=&#34;flashvars&#34; value=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34; /&gt;&lt;param name=&#34;src&#34; value=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; /&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34; /&gt;&lt;embed id=&#34;single&#34; type=&#34;application/x-shockwave-flash&#34; width=&#34;500&#34; height=&#34;302&#34; src=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; allowfullscreen=&#34;true&#34; flashvars=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
 &lt;p&gt;I know the point in the clip above is more about a strategy to take when you look at the &#34;big guys&#34;, but I really feel like the alternating cycles of &#34;spending&#34; and &#34;teaching&#34; are relevant here. We just went through a &#34;spending&#34; period where we were building out the technology behind Trainerfly. That was only possible because we went through a &#34;teaching&#34; period initially, where I learned what problems I wanted to solve with a software application.&lt;/p&gt;
@@ -23,11 +23,11 @@
     
     <item>
       <title>Epic Meaning, Sheep Knuckles, and The Institute for the Future</title>
-      <link>/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</link>
+      <link>http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</link>
       <pubDate>Mon, 03 Jan 2011 09:30:01 +0000</pubDate>
       
-      <guid>/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</guid>
-      <description>&lt;img class=&#34;alignleft size-medium wp-image-531&#34; title=&#34;gaming superpowers&#34; src=&#34;/uploads/2011/01/gaming-superpowers-300x207.jpg&#34; alt=&#34;&#34; width=&#34;300&#34; height=&#34;207&#34; /&gt;&lt;p&gt;Jane McGonigal gives a fascinating talk about the &#34;superpowers&#34; cultivated by the game-playing masses (more than 500 million with another billion coming up in the next decade!). Obviously we all have the image of the gamer locked in his mother&#39;s basement, endlessly pawing away at an electronic reward system, like a hamster. McGonigal&#39;s takeaway is a little different though.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-528&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</guid>
+      <description>&lt;img class=&#34;alignleft size-medium wp-image-531&#34; title=&#34;gaming superpowers&#34; src=&#34;http://dankleiman.com/uploads/2011/01/gaming-superpowers-300x207.jpg&#34; alt=&#34;&#34; width=&#34;300&#34; height=&#34;207&#34; /&gt;&lt;p&gt;Jane McGonigal gives a fascinating talk about the &#34;superpowers&#34; cultivated by the game-playing masses (more than 500 million with another billion coming up in the next decade!). Obviously we all have the image of the gamer locked in his mother&#39;s basement, endlessly pawing away at an electronic reward system, like a hamster. McGonigal&#39;s takeaway is a little different though.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-528&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She emphasizes the motivation, inspiration, and social purpose built into game play. I think that&#39;s an interesting take. When I talked to an early pioneer of these games, he said that &#34;we knew they were addictive from the beginning&#34;, but it sounded like the dirty little secret that no one wanted to admit.&lt;/p&gt;
 &lt;p&gt;So, I think the interesting question is whether the virtues of gaming (along the lines of motivation and engagement) can be transferred to real world activity without the addictive over-use that leads to unhealthy, sedentary life. Maybe as technology comes out of the basement and into the palm of your hand more readily, this is becoming a more reasonable goal.&lt;/p&gt;
 &lt;p&gt;Anyway, her talk is definitely worth watching (oh, and the sheep knuckles tie back nicely into Herodotus for a lesson on real world gaming!):&lt;/p&gt;
@@ -37,10 +37,10 @@
     
     <item>
       <title>Make the Most of Phase-Based Activities</title>
-      <link>/2010/12/13/make-the-most-of-phase-based-activities/</link>
+      <link>http://dankleiman.com/2010/12/13/make-the-most-of-phase-based-activities/</link>
       <pubDate>Mon, 13 Dec 2010 13:29:01 +0000</pubDate>
       
-      <guid>/2010/12/13/make-the-most-of-phase-based-activities/</guid>
+      <guid>http://dankleiman.com/2010/12/13/make-the-most-of-phase-based-activities/</guid>
       <description>&lt;p&gt;Check out this talk from 37Signals co-founder Jason Fried at TEDx Midwest, specifically at 5:13 when he starts comparing sleep and work:&lt;/p&gt;
 &lt;p&gt;&lt;object width=&#34;640&#34; height=&#34;385&#34; classid=&#34;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&#34; codebase=&#34;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0&#34;&gt;&lt;param name=&#34;allowFullScreen&#34; value=&#34;true&#34; /&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;always&#34; /&gt;&lt;param name=&#34;src&#34; value=&#34;http://www.youtube.com/v/5XD2kNopsUs?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&#34; /&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34; /&gt;&lt;embed width=&#34;640&#34; height=&#34;385&#34; type=&#34;application/x-shockwave-flash&#34; src=&#34;http://www.youtube.com/v/5XD2kNopsUs?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&#34; allowFullScreen=&#34;true&#34; allowscriptaccess=&#34;always&#34; allowfullscreen=&#34;true&#34; /&gt;&lt;/object&gt;&lt;/p&gt;
 &lt;p&gt;It got me thinking about other &#34;phase-based&#34; activities, like Tai Chi or Qigong practice. Most productive practice happens when you can allow yourself to move through several stages of settling in and keep a continuous practice thread going for an hour or more.&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>site on Dan Kleiman</title>
-    <link>/categories/site/index.xml</link>
+    <link>http://dankleiman.com/categories/site/index.xml</link>
     <description>Recent content in site on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/categories/site/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/categories/site/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>10,000 Views on YouTube</title>
-      <link>/2012/03/09/10000-views-on-youtube/</link>
+      <link>http://dankleiman.com/2012/03/09/10000-views-on-youtube/</link>
       <pubDate>Fri, 09 Mar 2012 07:00:00 +0000</pubDate>
       
-      <guid>/2012/03/09/10000-views-on-youtube/</guid>
+      <guid>http://dankleiman.com/2012/03/09/10000-views-on-youtube/</guid>
       <description>&lt;p&gt;So, by the time this post is published, we should be closing in on 10,000 video views on YouTube. Now, I know that&#39;s not a huge number by internet standards and you can probably scroll through the YouTube sidebar and find individual videos that have more views than the entire &lt;a href=&#34;http://www.youtube.com/user/DKMovementArts&#34;&gt;DKMovementArts channel&lt;/a&gt; put together, but....&lt;br /&gt;
 &lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-3579&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;I Just Wanted to Say &#34;Thank You&#34;&lt;/h2&gt;&lt;br /&gt;
@@ -26,10 +26,10 @@ I don&#39;t care how that number stacks up with&amp;Acirc;  other videos on YouT
     
     <item>
       <title>New Look for 2012 and a Special Announcement</title>
-      <link>/2011/12/29/new-look-for-2012-and-a-special-announcement/</link>
+      <link>http://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</link>
       <pubDate>Thu, 29 Dec 2011 07:30:01 +0000</pubDate>
       
-      <guid>/2011/12/29/new-look-for-2012-and-a-special-announcement/</guid>
+      <guid>http://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</guid>
       <description>&lt;p&gt;Happy New Year, everyone!&lt;/p&gt;
 &lt;p&gt;In the spirit of renewal, new ideas, and new beginnings, we&#39;ve upgraded the look of the site for 2012.&lt;/p&gt;
 &lt;p&gt;I&#39;m sure you&#39;re thinking about new things to bring into your life in the coming year too...and as it just so happens, I have a couple of ideas for you.&lt;/p&gt;
@@ -44,10 +44,10 @@ I don&#39;t care how that number stacks up with&amp;Acirc;  other videos on YouT
     
     <item>
       <title>We&#39;re Moving!</title>
-      <link>/2011/06/23/were-moving/</link>
+      <link>http://dankleiman.com/2011/06/23/were-moving/</link>
       <pubDate>Thu, 23 Jun 2011 09:29:38 +0000</pubDate>
       
-      <guid>/2011/06/23/were-moving/</guid>
+      <guid>http://dankleiman.com/2011/06/23/were-moving/</guid>
       <description>&lt;p&gt;Well, ok, let me explain. I&#39;m moving all of the business-related posts over to &lt;a href=&#34;http://www.trainerfly.com/blog&#34;&gt;the Trainerfly blog&lt;/a&gt;. It seems appropriate to separate writing about the benefits of daily practice from the running of a movement education business at this point. If you are subscribed to the email newsletter here on DanKleiman.com, your weekly updates will still be about chi gung practice, relaxation, and reducing the impact of stress on your life. Don&#39;t worry!&lt;/p&gt;
 &lt;p&gt;If you&#39;ve found the &#34;behind the scenes&#34; look at running Brookline Tai Chi interesting (check out &lt;a href=&#34;http://www.trainerfly.com/2011/06/23/how-brookline-tai-chi-boosts-their-marketing-signal/&#34;&gt;this new post on the Trainerfly blog about BTC marketing strategies&lt;/a&gt;, for example) and you want to know more about my related projects, like Trainerfly, then sign-up here for email updates, delivered weekly, just like you get from DanKleiman.com:&lt;/p&gt;
 &lt;p&gt;&lt;!-- Begin MailChimp Signup Form --&gt;&lt;br /&gt;
@@ -267,10 +267,10 @@ function mce_success_cb(resp){&lt;br /&gt;
     
     <item>
       <title>Mobile-izing Wordpress and Moodle</title>
-      <link>/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
+      <link>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
       <pubDate>Mon, 15 Nov 2010 14:16:19 +0000</pubDate>
       
-      <guid>/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
+      <guid>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
       <description>&lt;p&gt;I spent a fair amount of time today upgrading the site and my phone so that I would have better mobile access to the site on my phone and so that you can too!&lt;/p&gt;
 &lt;p&gt;Here&#39;s what I ended up doing:&lt;/p&gt;
 &lt;ul&gt;
@@ -285,10 +285,10 @@ Overall, I think this was a good step forward, except for the Moodle situation. 
     
     <item>
       <title>Going Mobile</title>
-      <link>/2010/11/15/going-mobile/</link>
+      <link>http://dankleiman.com/2010/11/15/going-mobile/</link>
       <pubDate>Mon, 15 Nov 2010 14:05:42 +0000</pubDate>
       
-      <guid>/2010/11/15/going-mobile/</guid>
+      <guid>http://dankleiman.com/2010/11/15/going-mobile/</guid>
       <description>&lt;p&gt;This is a test post from my phone. I just installed a Wordpress app for Android. I&#39;m also working on upgrading the blog and the noodle site for easy mobile access.&lt;/p&gt;
 &lt;p&gt;EDIT: It looks like it picked up the post tags from my phone, but it missed the category. Also have to edit the post author through the site. But you don&#39;t really care about that, do you?&lt;/p&gt;
 &lt;p&gt;;-)&lt;/p&gt;

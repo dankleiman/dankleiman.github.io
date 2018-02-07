@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>business-tools on Dan Kleiman</title>
-    <link>/tags/business-tools/index.xml</link>
+    <link>http://dankleiman.com/tags/business-tools/index.xml</link>
     <description>Recent content in business-tools on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/business-tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/business-tools/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>User Feedback from Trainerfly Beta</title>
-      <link>/2011/02/20/user-feedback-from-trainerfly-beta/</link>
+      <link>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</link>
       <pubDate>Sun, 20 Feb 2011 08:59:08 +0000</pubDate>
       
-      <guid>/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/estimmel/&#34;&gt;&lt;img class=&#34;alignleft size-full wp-image-633&#34; title=&#34;megaphone&#34; src=&#34;/uploads/2011/02/megaphone.jpg&#34; alt=&#34;megaphone by estimmel&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/a&gt; Over the last month or so, I&#39;ve gotten &lt;a href=&#34;http://www.trainerfly.com/&#34;&gt;Trainerfly&lt;/a&gt; out into people&#39;s hands and I&#39;ve been learning some really interesting lessons. I think it was easy for me to get wrapped up in how I&#39;ve evolved it as a tool in my business over the last two years and lose perspective on how other people might be trying to add it into their business from scratch, with none of that prior history.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-632&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/estimmel/&#34;&gt;&lt;img class=&#34;alignleft size-full wp-image-633&#34; title=&#34;megaphone&#34; src=&#34;http://dankleiman.com/uploads/2011/02/megaphone.jpg&#34; alt=&#34;megaphone by estimmel&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/a&gt; Over the last month or so, I&#39;ve gotten &lt;a href=&#34;http://www.trainerfly.com/&#34;&gt;Trainerfly&lt;/a&gt; out into people&#39;s hands and I&#39;ve been learning some really interesting lessons. I think it was easy for me to get wrapped up in how I&#39;ve evolved it as a tool in my business over the last two years and lose perspective on how other people might be trying to add it into their business from scratch, with none of that prior history.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-632&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Extra Layers&lt;/h2&gt;&lt;br /&gt;
 When you integrate a new business tool, you have a question of layers. In other words, if this is how I normally get something done, will the new tool add new layers of work, or remove them? And if it adds more work, is there another benefit that justifies the additional work. I got some strong feedback in both directions.&lt;/p&gt;
 &lt;p&gt;It was amazingly clarifying for me to see the places where extra layers were not justified. Really specifically, the product is not strong enough right now to replace one-on-one communication if a trainer is using an email/youtube/spreadsheet system to get information to their clients. Why did I think I could compete with mature products from Google and Microsoft? Hahaha.&lt;/p&gt;
@@ -28,10 +28,10 @@ The biggest thing that has been bugging me in the last 12-18 months on my own pe
     
     <item>
       <title>Teaching Cycles</title>
-      <link>/2011/01/31/teaching-cycles/</link>
+      <link>http://dankleiman.com/2011/01/31/teaching-cycles/</link>
       <pubDate>Mon, 31 Jan 2011 14:31:55 +0000</pubDate>
       
-      <guid>/2011/01/31/teaching-cycles/</guid>
+      <guid>http://dankleiman.com/2011/01/31/teaching-cycles/</guid>
       <description>&lt;p&gt;I&#39;m coming to another big teaching cycle in Trainerfly and I think this short clip of David Heinemeier Hansson speaking at Stanford&#39;s Entrepreneurship Corner is really useful to frame the mindset:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-574&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;object id=&#34;single&#34; classid=&#34;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&#34; width=&#34;500&#34; height=&#34;302&#34; codebase=&#34;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0&#34;&gt;&lt;param name=&#34;flashvars&#34; value=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34; /&gt;&lt;param name=&#34;src&#34; value=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; /&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34; /&gt;&lt;embed id=&#34;single&#34; type=&#34;application/x-shockwave-flash&#34; width=&#34;500&#34; height=&#34;302&#34; src=&#34;http://ecorner.stanford.edu/swf/player-ec.swf&#34; allowfullscreen=&#34;true&#34; flashvars=&#34;config=http://ecorner.stanford.edu/embeded_config.xml%3Fmid%3D2361&#34;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
 &lt;p&gt;I know the point in the clip above is more about a strategy to take when you look at the &#34;big guys&#34;, but I really feel like the alternating cycles of &#34;spending&#34; and &#34;teaching&#34; are relevant here. We just went through a &#34;spending&#34; period where we were building out the technology behind Trainerfly. That was only possible because we went through a &#34;teaching&#34; period initially, where I learned what problems I wanted to solve with a software application.&lt;/p&gt;
@@ -41,10 +41,10 @@ The biggest thing that has been bugging me in the last 12-18 months on my own pe
     
     <item>
       <title>Out with the Old....Business Model</title>
-      <link>/2010/12/31/out-with-the-old-business-model/</link>
+      <link>http://dankleiman.com/2010/12/31/out-with-the-old-business-model/</link>
       <pubDate>Fri, 31 Dec 2010 16:38:19 +0000</pubDate>
       
-      <guid>/2010/12/31/out-with-the-old-business-model/</guid>
+      <guid>http://dankleiman.com/2010/12/31/out-with-the-old-business-model/</guid>
       <description>&lt;img class=&#34;alignleft&#34; title=&#34;Exit&#34; src=&#34;http://farm3.static.flickr.com/2245/2089485151_17f142a726_m.jpg&#34; alt=&#34;&#34; width=&#34;240&#34; height=&#34;160&#34; /&gt;&lt;p&gt;It&#39;s the end of the year and it&#39;s time to get out of old habits and mindsets.&lt;/p&gt;
 &lt;p&gt;So, here&#39;s my prediction for the best business model for independent fitness and wellness pros, for the next DECADE. Yeah, I think it&#39;s going to take a few years to unfold, but the groundwork has been laid:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-514&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -64,10 +64,10 @@ Welcome to the professional educator reality.&amp;Acirc;  I believe that the mov
     
     <item>
       <title>Become an Enterprise of One </title>
-      <link>/2010/12/29/become-an-enterprise-of-one/</link>
+      <link>http://dankleiman.com/2010/12/29/become-an-enterprise-of-one/</link>
       <pubDate>Wed, 29 Dec 2010 09:04:12 +0000</pubDate>
       
-      <guid>/2010/12/29/become-an-enterprise-of-one/</guid>
+      <guid>http://dankleiman.com/2010/12/29/become-an-enterprise-of-one/</guid>
       <description>&lt;p&gt;Over at TechCrunch, Stephen Martin lays out his thesis about an interesting turning point for entrepreneurs in this economic climate. I could quote the piece at length, but I think this part is especially important:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;These business mavericks live by a new dynamic of success &amp;acirc;&amp;euro;&#34; unique  individual strengths, expertise and credibility &amp;acirc;&amp;euro;&#34; fueled by today&amp;acirc;&amp;euro;&amp;trade;s  cultural and technological changes. In this new dimension of business  lies the secret to success in our transformed world of commerce. Armed  with a new viewpoint, and the tools to make a difference, these  entrepreneurs run their businesses based on the central principle that  once all of the barriers to entry, transaction costs and other hurdles  are stripped away by technology and cultural changes, an individual&amp;acirc;&amp;euro;&amp;trade;s  strengths and weaknesses are primarily what determine his or her  success.&lt;/blockquote&gt;&lt;br /&gt;
 I&#39;ve been trying to put my finger on something like this for a while and I think he says it really well. It&#39;s cheaper than ever to start a business and run a business because of all the technology small business owners can use to leverage their time.&amp;Acirc;  It&#39;s easier to communicate with lots and lots of people and instead of being buried in the back office, to quote Stephen again, &#34;the opportunities provided by the transformation to an online business  landscape...have left individual strengths, passions and  expertise as the only distinguishing factors remaining in an  individual&amp;acirc;&amp;euro;&amp;trade;s or business&amp;acirc;&amp;euro;&amp;trade; success. Who you are as a person, and your  expertise and passions, are more important than ever. In fact, they  drive your own personal enterprise.&#34;&lt;/p&gt;
@@ -78,10 +78,10 @@ I&#39;ve been trying to put my finger on something like this for a while and I t
     
     <item>
       <title>No Systems? No Raise for You This Year!</title>
-      <link>/2010/12/10/no-systems-no-raise-for-you-this-year/</link>
+      <link>http://dankleiman.com/2010/12/10/no-systems-no-raise-for-you-this-year/</link>
       <pubDate>Fri, 10 Dec 2010 09:50:02 +0000</pubDate>
       
-      <guid>/2010/12/10/no-systems-no-raise-for-you-this-year/</guid>
+      <guid>http://dankleiman.com/2010/12/10/no-systems-no-raise-for-you-this-year/</guid>
       <description>&lt;p&gt;You probably don&#39;t realize it, but there is a good chance you are letting a lot of extra money in your business slip right out of your hands. In fact, if you don&#39;t have good systems in place, I can almost guarantee it. In this post I&#39;ll pull  back the curtain and show you some of the systems I use to keep things running tighter. Specifically, I&#39;m going to tell you about an end of year/new year&#39;s marketing  campaign, targeting my private clients from 2010.&lt;/p&gt;
 &lt;p&gt;But first, think about this problem in a system-less business.&amp;Acirc;  Coming up on the end of the year, I would think,  &#34;Shit, I better start training some more people next year...where can I  turn to find new clients? Should I advertise? Should I call some old clients? Do you think my current clients will pay me twice as much??? Oh my god, what am I going  to do!!!&#34;&lt;/p&gt;
 &lt;p&gt;Ok, so maybe you don&#39;t spiral out of control right  away, but if you have good tracking and good systems going all  along, it&#39;s so much easier. For an independent  movement educator to have simple systems in place (that are really cheap and not that hard to implement), it&#39;s like finding money between the cushions of your couch.&lt;/p&gt;
@@ -102,12 +102,12 @@ This is the smoothest part by far. No need to download a list from one program a
     
     <item>
       <title>Trainerfly Pre-Launch in the Works</title>
-      <link>/2010/11/29/trainerfly-pre-launch-in-the-works/</link>
+      <link>http://dankleiman.com/2010/11/29/trainerfly-pre-launch-in-the-works/</link>
       <pubDate>Mon, 29 Nov 2010 14:21:00 +0000</pubDate>
       
-      <guid>/2010/11/29/trainerfly-pre-launch-in-the-works/</guid>
-      <description>&lt;img class=&#34;alignleft size-full wp-image-368&#34; title=&#34;Trainerfly Logo&#34; src=&#34;/uploads/2010/11/LowerFacebook.jpg&#34; alt=&#34;&#34; width=&#34;280&#34; height=&#34;90&#34; /&gt;&lt;p&gt; I spent a fair amount of time today migrating, connecting, and updating. Over the last month or so, I&#39;ve been building out a wordpress front-end site for Trainerfly. My brother Sam has come through with some awesome illustration, including the logo and characters for the blog tutorials.&lt;/p&gt;
-&lt;p&gt;We had a funny debate about the use of flies on the site and got pretty carried away at one point. It started to look like &#34;Planet of the Flies&#34;. Too much! I&#39;m hoping now the use of flies-in-action conveys just how much Trainerfly software can act &#34;like a fly on the wall of every training session&#34; for you and your clients. &lt;img class=&#34;alignright size-medium wp-image-369&#34; title=&#34;teacher&#34; src=&#34;/uploads/2010/11/teacher-270x300.png&#34; alt=&#34;&#34; width=&#34;270&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2010/11/29/trainerfly-pre-launch-in-the-works/</guid>
+      <description>&lt;img class=&#34;alignleft size-full wp-image-368&#34; title=&#34;Trainerfly Logo&#34; src=&#34;http://dankleiman.com/uploads/2010/11/LowerFacebook.jpg&#34; alt=&#34;&#34; width=&#34;280&#34; height=&#34;90&#34; /&gt;&lt;p&gt; I spent a fair amount of time today migrating, connecting, and updating. Over the last month or so, I&#39;ve been building out a wordpress front-end site for Trainerfly. My brother Sam has come through with some awesome illustration, including the logo and characters for the blog tutorials.&lt;/p&gt;
+&lt;p&gt;We had a funny debate about the use of flies on the site and got pretty carried away at one point. It started to look like &#34;Planet of the Flies&#34;. Too much! I&#39;m hoping now the use of flies-in-action conveys just how much Trainerfly software can act &#34;like a fly on the wall of every training session&#34; for you and your clients. &lt;img class=&#34;alignright size-medium wp-image-369&#34; title=&#34;teacher&#34; src=&#34;http://dankleiman.com/uploads/2010/11/teacher-270x300.png&#34; alt=&#34;&#34; width=&#34;270&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I&#39;m using the flies in karate uniforms to signify different &#34;belt levels&#34; of site users. When trainers start out using the app, they&#39;ll be focusing on &#34;White Belt&#34; stuff like adding clients, updating program info, and sharing resources. As they get more sophisticated, &#34;Blue Belt&#34; users focus on using Trainerfly to build value for their clients, to enhance their learning experience outside of one-on-one training. Finally, I hope to have a group of &#34;Black Belt&#34; trainers eventually, who will work on building new streams of revenue with Trainerfly, that where impossible with just live training.&lt;/p&gt;
 &lt;p&gt;I explain more about the belt system on &lt;a href=&#34;http://www.trainerfly.com/2010/11/21/trainerfly-dojo-belt-levels/&#34; target=&#34;_blank&#34;&gt;the Trainerfly blog&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I&#39;ll post more updates on Trainerfly development progress as I go, but if this kind of thing is of interest to you, sign up for the pre-launch email list &lt;a href=&#34;http://www.trainerfly.com/pricing/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -118,10 +118,10 @@ This is the smoothest part by far. No need to download a list from one program a
     
     <item>
       <title>Can you teach movement online?</title>
-      <link>/2010/11/19/can-you-teach-movement-online/</link>
+      <link>http://dankleiman.com/2010/11/19/can-you-teach-movement-online/</link>
       <pubDate>Fri, 19 Nov 2010 15:44:04 +0000</pubDate>
       
-      <guid>/2010/11/19/can-you-teach-movement-online/</guid>
+      <guid>http://dankleiman.com/2010/11/19/can-you-teach-movement-online/</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;http://dankleiman.com/2010/11/18/learn-qigong-online/&#34;&gt;a recent post&lt;/a&gt;, I asked the question &#34;Can you learn qigong (or any movement art) online?&#34; The answer was a big fat qualified &#34;yes.&#34; I think there is a limited role that online resources can play in your movement education --- even though movement is something best learned through live human interaction.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;So the question for you, as a movement coach, is not whether or not you can teach online, the question is &#34;what is the appropriate way to use online resources in my movement education business?&#34;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I believe that the primary use is not to replace your live teaching, but to reinforce it. Whatever you teach in the classroom, your students will need to see 10 more times before it sinks in. With such limited live time with your students, why not get the next best approximation in front of them as soon as you can. Throw up a video, or a written explanation, and let them reflect on the in-class experience.&lt;/p&gt;
@@ -132,22 +132,22 @@ This is the smoothest part by far. No need to download a list from one program a
     
     <item>
       <title>Trainerfly Backstory: The Moodle Project</title>
-      <link>/2010/11/14/trainerfly-backstory-the-moodle-project/</link>
+      <link>http://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</link>
       <pubDate>Sun, 14 Nov 2010 14:42:33 +0000</pubDate>
       
-      <guid>/2010/11/14/trainerfly-backstory-the-moodle-project/</guid>
+      <guid>http://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</guid>
       <description>&lt;p&gt;&lt;strong&gt;This post is the second in a series I&#39;m doing on the backstory of how I came to develop a web-based software application called Trainerfly. You can read more about it &lt;a href=&#34;http://dankleiman.com/category/trainerfly/&#34;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;For about a year after I decided I need a way to manage all my clients&#39; programs, and share information with them privately, I wrestled with finding the right software. I tried private blogs, but at that time it was tons of work to partition information for each client. I tried creating a private social network for all my clients through &lt;a href=&#34;http://www.ning.com/&#34; target=&#34;_blank&#34;&gt;Ning&lt;/a&gt;, with the idea that I would message people with their individual updates and share videos inside the network, but it never quite had the right feel. Finally, short of building something from scratch, I found Moodle.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.moodle.org&#34;&gt;&lt;img class=&#34;aligncenter size-full wp-image-306&#34; title=&#34;moodle-logo&#34; src=&#34;/uploads/2010/11/moodle-logo.gif&#34; alt=&#34;&#34; width=&#34;200&#34; height=&#34;46&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.moodle.org&#34;&gt;&lt;img class=&#34;aligncenter size-full wp-image-306&#34; title=&#34;moodle-logo&#34; src=&#34;http://dankleiman.com/uploads/2010/11/moodle-logo.gif&#34; alt=&#34;&#34; width=&#34;200&#34; height=&#34;46&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Moodle stands for Modular Object Oriented Dynamic Learning Environment, in case you thought people just randomly came up with names for websites and programs on the internet! Basically, Moodle is an open-source online classroom software and it had everything I needed, including a huge development community, to get my clients set up.&lt;/p&gt;
 &lt;p&gt;Think of a school structure, you have students, courses, and teachers. What I was able to do was create a unique &#34;course&#34; in which I enrolled every client as a &#34;student&#34; and I was the teacher. The nice thing about Moodle is that teachers can do lots of behind the scenes stuff, like editing courses and sharing resources that follow them around the school and most importantly for my needs, control enrollment. That was the element I was missing before. Now, every client could log in and see their program information, inside a course, but they didn&#39;t have access to anyone else&#39;s information. And, I could share the same info over and over again with different clients, with the click of the mouse.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;
-&lt;p style=&#34;text-align: center;&#34;&gt;&lt;img class=&#34;aligncenter size-full wp-image-350&#34; title=&#34;student screen&#34; src=&#34;/uploads/2010/11/student-screen2.jpg&#34; alt=&#34;&#34; width=&#34;732&#34; height=&#34;363&#34; /&gt;&lt;/p&gt;&lt;br /&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&lt;img class=&#34;aligncenter size-full wp-image-350&#34; title=&#34;student screen&#34; src=&#34;http://dankleiman.com/uploads/2010/11/student-screen2.jpg&#34; alt=&#34;&#34; width=&#34;732&#34; height=&#34;363&#34; /&gt;&lt;/p&gt;&lt;br /&gt;
 What you&#39;re looking at above is a screen cap from a typical student program.&amp;Acirc;  After my first session with a new client, I would log in to my Moodle installation on my website and create a new client profile, a new course for them and enroll them in that course. Then, I would write up a recap of what we covered. All together it would take me five minutes to set it up and fill in the details, once the system was set up. Eventually, I was also able to share video of the exercises with them, thanks to an agreement with &lt;a href=&#34;http://www.zhealth.net&#34; target=&#34;_blank&#34;&gt;Z Health&lt;/a&gt; to test this system.&lt;/p&gt;
 &lt;p&gt;After subsequent sessions, I would simply update this program section in their course with new information or new links to video, audio, or other type of files. Some trainers that I set up on this system also began to include interactive pieces, where their clients could write back to them through Moodle. Think of a regular classroom environment, with quizzes and reports and you can image the scope of things Moodle was able to do. In fact, I found it could do too much for what I needed, but more on that below...&lt;/p&gt;
 &lt;p&gt;There was one other huge advantage that I want to point out of having a system like this in place. The typical trainer is juggling 20-30 clients at once throughout their training week. How do they stay organized when everyone has different goals and is working on different material? Well, for me, it became a simple matter of logging in to this system and calling up a particular client&#39;s program -- even if I hadn&#39;t seen them in 3 months, I could pick up right where we left off! Think about the confidence in me and the value they felt when they walked back into the room after a long absence and I could say, &#34;Joe, how&#39;s the right knee doing?&#34;.&lt;/p&gt;
 &lt;p&gt;Here&#39;s part of my program dashboard where I could call up anyone&#39;s program instantly:&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;aligncenter size-large wp-image-309&#34; title=&#34;program screen&#34; src=&#34;/uploads/2010/11/program-screen-1024x640.jpg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;375&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;aligncenter size-large wp-image-309&#34; title=&#34;program screen&#34; src=&#34;http://dankleiman.com/uploads/2010/11/program-screen-1024x640.jpg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;375&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;So, for about a year this was working great with my clients. As I mentioned above, I brought the concept to Z Health and they were interested in sharing this with their whole community of trainers. The next time I went out to Phoenix, I presented what I had been working on to a group of about 30 Z trainers and from there, signed up half a dozen to test the system live with their clients.&lt;/p&gt;
 &lt;p&gt;We&#39;ll talk about the interesting things I learned from this &#34;beta test&#34; soon. Eventually, it led me to seek out someone to build brand new web app, from the ground up, based on the concept we proved in Moodle, but ultimately with a more user-friendly environment and scalable infrastructure. Stay tuned!&lt;/p&gt;
 </description>
@@ -155,10 +155,10 @@ What you&#39;re looking at above is a screen cap from a typical student program.
     
     <item>
       <title>Trainerfly Backstory: The Practice Problem</title>
-      <link>/2010/11/08/trainerfly-backstory-the-practice-problem/</link>
+      <link>http://dankleiman.com/2010/11/08/trainerfly-backstory-the-practice-problem/</link>
       <pubDate>Mon, 08 Nov 2010 08:05:09 +0000</pubDate>
       
-      <guid>/2010/11/08/trainerfly-backstory-the-practice-problem/</guid>
+      <guid>http://dankleiman.com/2010/11/08/trainerfly-backstory-the-practice-problem/</guid>
       <description>&lt;p&gt;I&#39;m sure I&#39;m not alone here. Teachers in all disciples, if they need their students to practice to learn what they are teaching, will relate. I don&#39;t know if &amp;acirc;&amp;euro;&amp;oelig;movement educators&amp;acirc;&amp;euro; have it worse because people tend to think of all movement as &amp;acirc;&amp;euro;&amp;oelig;working out&amp;acirc;&amp;euro; -- something you go and do, not an art you have to practice.&lt;/p&gt;
 &lt;p&gt;In fact, one of my favorite concepts when you are talking about getting really good at something is called &amp;acirc;&amp;euro;&amp;oelig;deliberate practice&amp;acirc;&amp;euro;. Geoff Colvin, explains the elements of deliberate practice in &lt;span style=&#34;text-decoration: underline;&#34;&gt;Talent is Overrated&lt;/span&gt;. &lt;a href=&#34;http://money.cnn.com/magazines/fortune/fortune_archive/2006/10/30/8391794/index.htm&#34; target=&#34;_blank&#34;&gt;Here&#39;s a summary article he wrote on CNNMoney.com&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Trying to implement deliberate practice strategies has been a major shift in how I train myself and that&#39;s another story entirely. As a professional movement educator, though, I had another problem: I most of my clients for one hour a week. Maybe if I&#39;m lucky we meet in a group class setting for 3 or 4 hours a week. How can I extend a practice model to them that involves hours of practice repetition, constant feedback, goal setting, and ever-evolving mental models of the practice in such a short amount of face-to-face time?&lt;/p&gt;

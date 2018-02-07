@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>relaxation on Dan Kleiman</title>
-    <link>/tags/relaxation/index.xml</link>
+    <link>http://dankleiman.com/tags/relaxation/index.xml</link>
     <description>Recent content in relaxation on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/relaxation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/relaxation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Poll: What Does It Feel Like When You Meditate?</title>
-      <link>/2013/05/24/poll-what-does-it-feel-like-when-you-meditate/</link>
+      <link>http://dankleiman.com/2013/05/24/poll-what-does-it-feel-like-when-you-meditate/</link>
       <pubDate>Fri, 24 May 2013 09:58:24 +0000</pubDate>
       
-      <guid>/2013/05/24/poll-what-does-it-feel-like-when-you-meditate/</guid>
-      <description>&lt;img class=&#34;alignleft size-thumbnail wp-image-4629&#34; alt=&#34;help-browser&#34; src=&#34;/uploads/2013/05/help-browser-150x150.png&#34; width=&#34;150&#34; height=&#34;150&#34; /&gt;&lt;p&gt;I was talking to a friend last night about &lt;a title=&#34;Guide to Standing Qigong&#34; href=&#34;http://dankleiman.com/exercises/guide-to-standing-qigong/&#34;&gt;standing qigong&lt;/a&gt; and different &lt;a title=&#34;3 Layers of Neigong Practice and Taoist Meditation with Paul Cavel&#34; href=&#34;http://dankleiman.com/2013/01/29/3-layers-of-neigong-practice-and-taoist-meditation-with-paul-cavel/&#34;&gt;meditation traditions&lt;/a&gt; that we had both tried.&lt;/p&gt;
+      <guid>http://dankleiman.com/2013/05/24/poll-what-does-it-feel-like-when-you-meditate/</guid>
+      <description>&lt;img class=&#34;alignleft size-thumbnail wp-image-4629&#34; alt=&#34;help-browser&#34; src=&#34;http://dankleiman.com/uploads/2013/05/help-browser-150x150.png&#34; width=&#34;150&#34; height=&#34;150&#34; /&gt;&lt;p&gt;I was talking to a friend last night about &lt;a title=&#34;Guide to Standing Qigong&#34; href=&#34;http://dankleiman.com/exercises/guide-to-standing-qigong/&#34;&gt;standing qigong&lt;/a&gt; and different &lt;a title=&#34;3 Layers of Neigong Practice and Taoist Meditation with Paul Cavel&#34; href=&#34;http://dankleiman.com/2013/01/29/3-layers-of-neigong-practice-and-taoist-meditation-with-paul-cavel/&#34;&gt;meditation traditions&lt;/a&gt; that we had both tried.&lt;/p&gt;
 &lt;p&gt;When we say &#34;meditation&#34; in this context, we were including all practices like breathing for relaxation, Tai Chi, qigong, and sitting practices too. Part of what I&#39;d like to hear from you (see below) is how you define &#34;meditation&#34; in a way that&#39;s practical and part of your everyday life.&lt;/p&gt;
 &lt;p&gt;There were many different reasons, on any given day, that we sought out the practice:&lt;/p&gt;
 &lt;ul&gt;
@@ -46,10 +46,10 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
     
     <item>
       <title>&#34;Song&#34; or Relaxation in Tai Chi</title>
-      <link>/2013/04/09/song-or-relaxation-in-tai-chi/</link>
+      <link>http://dankleiman.com/2013/04/09/song-or-relaxation-in-tai-chi/</link>
       <pubDate>Tue, 09 Apr 2013 09:16:06 +0000</pubDate>
       
-      <guid>/2013/04/09/song-or-relaxation-in-tai-chi/</guid>
+      <guid>http://dankleiman.com/2013/04/09/song-or-relaxation-in-tai-chi/</guid>
       <description>&lt;p&gt;The meaning of relaxation in a Tai Chi context is often confused with the same kind of limp, collapsed, let-go feeling you get from flopping on to the couch after a long day.&lt;/p&gt;
 &lt;p&gt;In fact, there&#39;s a very different sense of &#34;song&#34; or relaxation in Tai Chi, which is at once easy and loose, but also energized and alert.&lt;/p&gt;
 &lt;p&gt;In his translator&#39;s introduction to &lt;a href=&#34;http://www.amazon.com/Mastering-Yang-Style-Taijiquan-Zhongwen/dp/1583941525/?tag=dankleiman&#34;&gt;Mastering Yang Style Taijiquan&lt;/a&gt;, Louis Swaim nails the nuance of the concept.&lt;/p&gt;

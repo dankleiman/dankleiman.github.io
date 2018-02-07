@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>launch-academy on Dan Kleiman</title>
-    <link>/categories/launch-academy/index.xml</link>
+    <link>http://dankleiman.com/categories/launch-academy/index.xml</link>
     <description>Recent content in launch-academy on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/categories/launch-academy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/categories/launch-academy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Coding Bootcamp ROI 3 Weeks Later</title>
-      <link>/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
+      <link>http://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
+      <guid>http://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been 3 weeks since I graduated from &lt;a href=&#34;http://www.launchacademy.com&#34;&gt;Launch Academy&lt;/a&gt; and I start work at a new job on Wednesday as a software developer.&lt;/p&gt;
 
 &lt;p&gt;Obviously, I&amp;rsquo;m thrilled with this whirlwind process, and coming off almost ten years in my last job, the pace of all this change is a little hard to grasp.&lt;/p&gt;
@@ -84,7 +84,7 @@
 
 &lt;p&gt;Between live meetings, a google group, and twitter, you can get all kinds of help, recommendations, and keep track of new developments if you want to lurk like I did.&lt;/p&gt;
 
-&lt;p&gt;I &lt;em&gt;thought&lt;/em&gt; I was lucky to be in Boston, but it turns out, I was lucky to find Ruby&amp;hellip;where tons of interested people from all over want to make programming interesting and enjoyable. Case in point: my recent experience at &lt;a href=&#34;/blog/2014/08/03/burlington-ruby-conference-2014/&#34;&gt;Burlington Ruby Conference&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;thought&lt;/em&gt; I was lucky to be in Boston, but it turns out, I was lucky to find Ruby&amp;hellip;where tons of interested people from all over want to make programming interesting and enjoyable. Case in point: my recent experience at &lt;a href=&#34;http://dankleiman.com/blog/2014/08/03/burlington-ruby-conference-2014/&#34;&gt;Burlington Ruby Conference&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;7. Established Network&lt;/strong&gt;&lt;/p&gt;
 
@@ -107,16 +107,16 @@
     
     <item>
       <title>Launching Datastroyer</title>
-      <link>/2014/07/02/launching-datastroyer</link>
+      <link>http://dankleiman.com/2014/07/02/launching-datastroyer</link>
       <pubDate>Wed, 02 Jul 2014 21:29:17 -0400</pubDate>
       
-      <guid>/2014/07/02/launching-datastroyer</guid>
+      <guid>http://dankleiman.com/2014/07/02/launching-datastroyer</guid>
       <description>&lt;p&gt;I&amp;rsquo;m very excited to announce that &lt;a href=&#34;https://github.com/craigmcginley&#34;&gt;Craig McGinley&lt;/a&gt; and I have launched &lt;a href=&#34;http://datastroyer.herokuapp.com/&#34;&gt;Datastroyer&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Datastroyer is our online tool for searching JSON objects and returning the correct path to any value.
 &lt;/p&gt;
 
-&lt;p&gt;Previously, I wrote about the &lt;a href=&#34;/blog/2014/05/25/building-a-learning-tool-for-compound-data-structures/&#34;&gt;challenges of parsing compound data structures&lt;/a&gt;. For someone just learning to code and work with data, one of the biggest challenges was learning to read syntax.&lt;/p&gt;
+&lt;p&gt;Previously, I wrote about the &lt;a href=&#34;http://dankleiman.com/blog/2014/05/25/building-a-learning-tool-for-compound-data-structures/&#34;&gt;challenges of parsing compound data structures&lt;/a&gt;. For someone just learning to code and work with data, one of the biggest challenges was learning to read syntax.&lt;/p&gt;
 
 &lt;p&gt;One particularly challenging &amp;ldquo;reading problem&amp;rdquo; is figuring out how to reference a specific value nested inside a tangle of hashes and arrays. Not knowing how the object is structured, in terms of size, layers of nesting, or type of nested objects initially made this problem really confusing!&lt;/p&gt;
 
@@ -147,10 +147,10 @@
     
     <item>
       <title>Launch Academy: 5 Weeks In or 5 Weeks Left?</title>
-      <link>/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</link>
+      <link>http://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</link>
       <pubDate>Sun, 15 Jun 2014 18:05:41 -0400</pubDate>
       
-      <guid>/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</guid>
+      <guid>http://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</guid>
       <description>
 
 &lt;p&gt;This past week marks the end of Week 5 at Launch Academy.&lt;/p&gt;
@@ -216,10 +216,10 @@
     
     <item>
       <title>Asking Questions: The Holy Grail of OOP</title>
-      <link>/2014/06/08/asking-questions-the-holy-grail-of-oop</link>
+      <link>http://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</link>
       <pubDate>Sun, 08 Jun 2014 20:32:17 -0400</pubDate>
       
-      <guid>/2014/06/08/asking-questions-the-holy-grail-of-oop</guid>
+      <guid>http://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</guid>
       <description>
 
 &lt;p&gt;This week at Launch Academy, we started working on Object Oriented Programming (OOP).&lt;/p&gt;
@@ -311,10 +311,10 @@ end
     
     <item>
       <title>Buying a Mongolian Website for my URL Shortner</title>
-      <link>/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</link>
+      <link>http://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</link>
       <pubDate>Fri, 30 May 2014 09:17:22 -0400</pubDate>
       
-      <guid>/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</guid>
+      <guid>http://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</guid>
       <description>
 
 &lt;p&gt;Ok, so technically I just purchased a Mongolian domain name: &lt;a href=&#34;http://klei.mn&#34;&gt;klei.mn&lt;/a&gt;.&lt;/p&gt;
@@ -521,10 +521,10 @@ end
     
     <item>
       <title>Building a Learning Tool for Compound Data Structures</title>
-      <link>/2014/05/25/building-a-learning-tool-for-compound-data-structures</link>
+      <link>http://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</link>
       <pubDate>Sun, 25 May 2014 09:07:15 -0400</pubDate>
       
-      <guid>/2014/05/25/building-a-learning-tool-for-compound-data-structures</guid>
+      <guid>http://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</guid>
       <description>
 
 &lt;p&gt;One of the most challenging things about learning to work with compound data structures has been reading the nested hashes and arrays and extracting the right set of brackets to use to identify a particular value in your code.
@@ -630,10 +630,10 @@ end
     
     <item>
       <title>Day 10: The Dreams Continue</title>
-      <link>/2014/05/21/day-10-the-dreams-continue</link>
+      <link>http://dankleiman.com/2014/05/21/day-10-the-dreams-continue</link>
       <pubDate>Wed, 21 May 2014 08:02:38 -0400</pubDate>
       
-      <guid>/2014/05/21/day-10-the-dreams-continue</guid>
+      <guid>http://dankleiman.com/2014/05/21/day-10-the-dreams-continue</guid>
       <description>
 
 &lt;p&gt;It happened again.&lt;/p&gt;
@@ -642,7 +642,7 @@ end
 
 &lt;p&gt;I was literally coding in my sleep.&lt;/p&gt;
 
-&lt;p&gt;Remember the &lt;a href=&#34;/blog/2014/05/17/launch-academy-week-1-reflections/&#34;&gt;Tetris Effect&lt;/a&gt;? It&amp;rsquo;s in full effect.&lt;/p&gt;
+&lt;p&gt;Remember the &lt;a href=&#34;http://dankleiman.com/blog/2014/05/17/launch-academy-week-1-reflections/&#34;&gt;Tetris Effect&lt;/a&gt;? It&amp;rsquo;s in full effect.&lt;/p&gt;
 
 &lt;p&gt;But I&amp;rsquo;ve seen this before and once I got over the shock of writing code in my sleep, I got pretty excited. It means some serious learning is going on.
 &lt;!-- more --&gt;&lt;/p&gt;
@@ -677,10 +677,10 @@ end
     
     <item>
       <title>Launch Academy: Week 1 Reflections</title>
-      <link>/2014/05/17/launch-academy-week-1-reflections</link>
+      <link>http://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</link>
       <pubDate>Sat, 17 May 2014 09:32:59 -0400</pubDate>
       
-      <guid>/2014/05/17/launch-academy-week-1-reflections</guid>
+      <guid>http://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</guid>
       <description>
 
 &lt;p&gt;So, all this week, I&amp;rsquo;ve been experiencing the Tetris effect and I&amp;rsquo;ve come to appreciate the beauty, and the painlessness, of learning how to break down a problem.&lt;/p&gt;
@@ -726,10 +726,10 @@ end
     
     <item>
       <title>Reflections on Launch Academy Prep: Balancing Theory and Practice</title>
-      <link>/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</link>
+      <link>http://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</link>
       <pubDate>Mon, 12 May 2014 14:36:53 -0400</pubDate>
       
-      <guid>/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</guid>
+      <guid>http://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</guid>
       <description>&lt;p&gt;Preparing for &lt;a href=&#34;http://www.launchacademy.com&#34;&gt;Launch Academy&lt;/a&gt; while finishing up work as the director &lt;a href=&#34;http://www.brooklinetaichi.org&#34;&gt;Brookline Tai Chi&lt;/a&gt; has been a massive exercise in balancing &amp;ldquo;theory and practice.&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;This explanation from Practical Object-Oriented Design in Ruby by Sandi Metz perfectly captures the difference:&lt;/p&gt;

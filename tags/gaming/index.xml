@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gaming on Dan Kleiman</title>
-    <link>/tags/gaming/index.xml</link>
+    <link>http://dankleiman.com/tags/gaming/index.xml</link>
     <description>Recent content in gaming on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/gaming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/gaming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>March is Going to be Health Month</title>
-      <link>/2011/02/21/march-is-going-to-be-health-month/</link>
+      <link>http://dankleiman.com/2011/02/21/march-is-going-to-be-health-month/</link>
       <pubDate>Mon, 21 Feb 2011 09:40:16 +0000</pubDate>
       
-      <guid>/2011/02/21/march-is-going-to-be-health-month/</guid>
+      <guid>http://dankleiman.com/2011/02/21/march-is-going-to-be-health-month/</guid>
       <description>&lt;p&gt;I&#39;m pretty excited to try this one out. Health Month is a behavior change game where you set rules to follow each month and do daily tracking, with rewards and penalties for how well you follow them. I&#39;m just digging into it, but so far it looks like you can choose &#34;do more of this&#34; or &#34;do less of that&#34;.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-638&#34;&gt;&lt;/a&gt; I like the idea of limiting the scope of the goal to a month (what BJ Fogg calls a &#34;span&#34; behavior instead of a &#34;path&#34; behavior -- and says the key to long term change is focusing on span not path) and the immediate feedback from daily tracking.&lt;/p&gt;
 &lt;p&gt;I&#39;m curious about the reward system, to see if it really is compelling and there also is some kind of social wrinkle where you can help and get help from other players.&lt;/p&gt;
 &lt;p&gt;From the site, here&#39;s how to play:&lt;/p&gt;
@@ -34,11 +34,11 @@ Health Month is all about making small improvements to your health,  one month a
     
     <item>
       <title>Crossfit&#39;s Brilliant use of Game Mechanics</title>
-      <link>/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
+      <link>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
       <pubDate>Tue, 04 Jan 2011 06:51:39 +0000</pubDate>
       
-      <guid>/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;&lt;em&gt; Recently, TechCrunch featured an article about &lt;a href=&#34;http://techcrunch.com/2010/08/25/scvngr-game-mechanics/&#34;&gt;the playdeck they use at SCVNGR&lt;/a&gt; that outlines the mechanics of gameplay. The article cites at TED talk by game designer Jane McGonigal, which I talk about &lt;a href=&#34;/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-538&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;&lt;em&gt; Recently, TechCrunch featured an article about &lt;a href=&#34;http://techcrunch.com/2010/08/25/scvngr-game-mechanics/&#34;&gt;the playdeck they use at SCVNGR&lt;/a&gt; that outlines the mechanics of gameplay. The article cites at TED talk by game designer Jane McGonigal, which I talk about &lt;a href=&#34;http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-538&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I was a little disappointed with McGonigal&#39;s conclusion, because she basically offered up the solution as specially-themed video games to leverage the power of game mechanics, or &#34;gameplay superpowers&#34;, to do good in the real world and incite behavior change. She presented a couple of case studies that her group ran and they showed some carry-over to behaviors later on. That&#39;s fine. I just think there&#39;s potential to go further. I don&#39;t think I was alone either. If you read the TED video comments, lots of people reply with &#34;but my son lives in the basement and only comes out to eat&#34; arguments. Not exactly the thriving social fabric McGonigal presents....&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I couldn&#39;t help think that there are better examples of hybrids between real life behavior and motivation that falls under the game mechanics principles. The example I want to look at today is &lt;a href=&#34;http://www.crossfit.com&#34;&gt;Crossfit&lt;/a&gt;. As a fitness movement, they do an amazing job with this blend. Now, I have to admit I don&#39;t have direct experience with Crossfit, so I&#39;m hoping someone who does will fill in even more detail here.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Game Mechanics Defined&lt;/h2&gt;&lt;br /&gt;

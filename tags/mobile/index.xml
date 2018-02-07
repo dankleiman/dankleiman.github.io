@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mobile on Dan Kleiman</title>
-    <link>/tags/mobile/index.xml</link>
+    <link>http://dankleiman.com/tags/mobile/index.xml</link>
     <description>Recent content in mobile on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mobile-izing Wordpress and Moodle</title>
-      <link>/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
+      <link>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
       <pubDate>Mon, 15 Nov 2010 14:16:19 +0000</pubDate>
       
-      <guid>/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
+      <guid>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
       <description>&lt;p&gt;I spent a fair amount of time today upgrading the site and my phone so that I would have better mobile access to the site on my phone and so that you can too!&lt;/p&gt;
 &lt;p&gt;Here&#39;s what I ended up doing:&lt;/p&gt;
 &lt;ul&gt;
@@ -28,10 +28,10 @@ Overall, I think this was a good step forward, except for the Moodle situation. 
     
     <item>
       <title>Going Mobile</title>
-      <link>/2010/11/15/going-mobile/</link>
+      <link>http://dankleiman.com/2010/11/15/going-mobile/</link>
       <pubDate>Mon, 15 Nov 2010 14:05:42 +0000</pubDate>
       
-      <guid>/2010/11/15/going-mobile/</guid>
+      <guid>http://dankleiman.com/2010/11/15/going-mobile/</guid>
       <description>&lt;p&gt;This is a test post from my phone. I just installed a Wordpress app for Android. I&#39;m also working on upgrading the blog and the noodle site for easy mobile access.&lt;/p&gt;
 &lt;p&gt;EDIT: It looks like it picked up the post tags from my phone, but it missed the category. Also have to edit the post author through the site. But you don&#39;t really care about that, do you?&lt;/p&gt;
 &lt;p&gt;;-)&lt;/p&gt;

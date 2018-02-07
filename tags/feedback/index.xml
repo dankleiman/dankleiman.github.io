@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>feedback on Dan Kleiman</title>
-    <link>/tags/feedback/index.xml</link>
+    <link>http://dankleiman.com/tags/feedback/index.xml</link>
     <description>Recent content in feedback on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/feedback/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/feedback/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>User Feedback from Trainerfly Beta</title>
-      <link>/2011/02/20/user-feedback-from-trainerfly-beta/</link>
+      <link>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</link>
       <pubDate>Sun, 20 Feb 2011 08:59:08 +0000</pubDate>
       
-      <guid>/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/estimmel/&#34;&gt;&lt;img class=&#34;alignleft size-full wp-image-633&#34; title=&#34;megaphone&#34; src=&#34;/uploads/2011/02/megaphone.jpg&#34; alt=&#34;megaphone by estimmel&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/a&gt; Over the last month or so, I&#39;ve gotten &lt;a href=&#34;http://www.trainerfly.com/&#34;&gt;Trainerfly&lt;/a&gt; out into people&#39;s hands and I&#39;ve been learning some really interesting lessons. I think it was easy for me to get wrapped up in how I&#39;ve evolved it as a tool in my business over the last two years and lose perspective on how other people might be trying to add it into their business from scratch, with none of that prior history.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-632&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.flickr.com/photos/estimmel/&#34;&gt;&lt;img class=&#34;alignleft size-full wp-image-633&#34; title=&#34;megaphone&#34; src=&#34;http://dankleiman.com/uploads/2011/02/megaphone.jpg&#34; alt=&#34;megaphone by estimmel&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/a&gt; Over the last month or so, I&#39;ve gotten &lt;a href=&#34;http://www.trainerfly.com/&#34;&gt;Trainerfly&lt;/a&gt; out into people&#39;s hands and I&#39;ve been learning some really interesting lessons. I think it was easy for me to get wrapped up in how I&#39;ve evolved it as a tool in my business over the last two years and lose perspective on how other people might be trying to add it into their business from scratch, with none of that prior history.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-632&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Extra Layers&lt;/h2&gt;&lt;br /&gt;
 When you integrate a new business tool, you have a question of layers. In other words, if this is how I normally get something done, will the new tool add new layers of work, or remove them? And if it adds more work, is there another benefit that justifies the additional work. I got some strong feedback in both directions.&lt;/p&gt;
 &lt;p&gt;It was amazingly clarifying for me to see the places where extra layers were not justified. Really specifically, the product is not strong enough right now to replace one-on-one communication if a trainer is using an email/youtube/spreadsheet system to get information to their clients. Why did I think I could compete with mature products from Google and Microsoft? Hahaha.&lt;/p&gt;

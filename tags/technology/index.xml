@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>technology on Dan Kleiman</title>
-    <link>/tags/technology/index.xml</link>
+    <link>http://dankleiman.com/tags/technology/index.xml</link>
     <description>Recent content in technology on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/technology/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>DIY Home Practice Challenge</title>
-      <link>/2011/06/06/diy-home-practice-challenge/</link>
+      <link>http://dankleiman.com/2011/06/06/diy-home-practice-challenge/</link>
       <pubDate>Mon, 06 Jun 2011 13:19:25 +0000</pubDate>
       
-      <guid>/2011/06/06/diy-home-practice-challenge/</guid>
+      <guid>http://dankleiman.com/2011/06/06/diy-home-practice-challenge/</guid>
       <description>&lt;p&gt;From the recent practice survey we conducted at Brookline Tai Chi and experiments I&#39;ve been running in online learning, it&#39;s become clearer and clearer to me that most people need some external motivation when they are learning a new skill. That&#39;s not a judgment about willpower and motivation, it actually says more about the way we are wired for survival. &lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-1523&#34;&gt;&lt;/a&gt;In Z Health, we always talk about the way that the nervous system is at once the most plastic system -- it can adapt to lots of different changes -- and also the most stable. The stability of the nervous system is a good thing from a survival and energy management point of view -- it doesn&#39;t cost you a lot of cognitive energy to get through your day if you run on habit. In that sense, the plasticity of the nervous system -- your ability to change and learn new things -- has to deal with the inertia of stability in your nervous system. When we are trying to learn new behaviors and forge new habits, these two things can be at odds.&lt;/p&gt;
 &lt;p&gt;What I&#39;ve seen and heard from my tai chi students, is that a little bit of external motivation goes a long way to spark the small changes you need to make on a daily basis to put new behavior in place. Last week, one of my students said:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;It was liberating to think that 5 minutes of tai chi practice meant I could make progress, because until I thought about it that way, I avoided practice, assuming it was going to take 30 minutes or more.&lt;/blockquote&gt;&lt;br /&gt;
@@ -38,20 +38,20 @@ I know those failures might sound obvious, and you should pick something pretty 
     
     <item>
       <title>Cross-Posted from Trainerfly: Launching an Online Course</title>
-      <link>/2011/04/21/cross-posted-from-trainerfly-launching-an-online-course/</link>
+      <link>http://dankleiman.com/2011/04/21/cross-posted-from-trainerfly-launching-an-online-course/</link>
       <pubDate>Thu, 21 Apr 2011 10:36:23 +0000</pubDate>
       
-      <guid>/2011/04/21/cross-posted-from-trainerfly-launching-an-online-course/</guid>
+      <guid>http://dankleiman.com/2011/04/21/cross-posted-from-trainerfly-launching-an-online-course/</guid>
       <description>&lt;p&gt;Check out &lt;a href=&#34;http://www.trainerfly.com/2011/04/11/how-i-launched-my-first-online-course/&#34; target=&#34;_blank&#34;&gt;this post from the Trainerfly blog&lt;/a&gt;. I talk to teachers and trainers all the time who want move beyond their live events, but the number of steps it takes, and the technology required to make it work seem overwhelming. Hopefully, I&#39;ve made a little dent in that perception!&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>xkcd: Let Go</title>
-      <link>/2011/02/23/xkcd-let-go/</link>
+      <link>http://dankleiman.com/2011/02/23/xkcd-let-go/</link>
       <pubDate>Wed, 23 Feb 2011 08:43:16 +0000</pubDate>
       
-      <guid>/2011/02/23/xkcd-let-go/</guid>
+      <guid>http://dankleiman.com/2011/02/23/xkcd-let-go/</guid>
       <description>&lt;p&gt;Be sure to mouse over for the original title text from the comic (Thanks, Nate!).&lt;/p&gt;
 &lt;p style=&#34;text-align: center;&#34;&gt;&lt;a href=&#34;http://xkcd.com/862/&#34;&gt;&lt;img class=&#34;aligncenter&#34; title=&#34;After years of trying various methods, I broke this habit by pitting my impatience against my laziness. I decoupled the action and the neurological reward by setting up a simple 30-second delay I had to wait through, in which I couldn&#39;t do anything else, before any new page or chat client would load (and only allowed one to run at once). The urge to check all those sites magically vanished--and my &#39;productive&#39; computer use was unaffected.&#34; src=&#34;http://imgs.xkcd.com/comics/let_go.png&#34; alt=&#34;&#34; width=&#34;518&#34; height=&#34;166&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
 </description>
@@ -59,10 +59,10 @@ I know those failures might sound obvious, and you should pick something pretty 
     
     <item>
       <title>Simplicity, Persuasion and Technology</title>
-      <link>/2011/01/20/simplicity-persuasion-and-technology/</link>
+      <link>http://dankleiman.com/2011/01/20/simplicity-persuasion-and-technology/</link>
       <pubDate>Thu, 20 Jan 2011 08:37:29 +0000</pubDate>
       
-      <guid>/2011/01/20/simplicity-persuasion-and-technology/</guid>
+      <guid>http://dankleiman.com/2011/01/20/simplicity-persuasion-and-technology/</guid>
       <description>&lt;p&gt;I&#39;ve been reading/watching a lot of BJ Fogg&#39;s work lately. He studies &lt;a href=&#34;http://captology.stanford.edu/&#34;&gt;the persuasive power of technology for positive behavior change&lt;/a&gt;. You&#39;ll recognize my interest here if you read some of my recent posts on game design mechanics and the potential to integrate technology into real world learning. &lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-557&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;(Check out his &lt;a href=&#34;http://www.youtube.com/bjfogg&#34;&gt;Youtube channel&lt;/a&gt; for some shorter videos that explain facets of his work &#34;in 60 seconds&#34;)&lt;/p&gt;
 &lt;p&gt;Here&#39;s Dr. Fogg on simplicity:&lt;/p&gt;
@@ -75,11 +75,11 @@ I know those failures might sound obvious, and you should pick something pretty 
     
     <item>
       <title>Crossfit&#39;s Brilliant use of Game Mechanics</title>
-      <link>/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
+      <link>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
       <pubDate>Tue, 04 Jan 2011 06:51:39 +0000</pubDate>
       
-      <guid>/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;&lt;em&gt; Recently, TechCrunch featured an article about &lt;a href=&#34;http://techcrunch.com/2010/08/25/scvngr-game-mechanics/&#34;&gt;the playdeck they use at SCVNGR&lt;/a&gt; that outlines the mechanics of gameplay. The article cites at TED talk by game designer Jane McGonigal, which I talk about &lt;a href=&#34;/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-538&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;&lt;em&gt; Recently, TechCrunch featured an article about &lt;a href=&#34;http://techcrunch.com/2010/08/25/scvngr-game-mechanics/&#34;&gt;the playdeck they use at SCVNGR&lt;/a&gt; that outlines the mechanics of gameplay. The article cites at TED talk by game designer Jane McGonigal, which I talk about &lt;a href=&#34;http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-538&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I was a little disappointed with McGonigal&#39;s conclusion, because she basically offered up the solution as specially-themed video games to leverage the power of game mechanics, or &#34;gameplay superpowers&#34;, to do good in the real world and incite behavior change. She presented a couple of case studies that her group ran and they showed some carry-over to behaviors later on. That&#39;s fine. I just think there&#39;s potential to go further. I don&#39;t think I was alone either. If you read the TED video comments, lots of people reply with &#34;but my son lives in the basement and only comes out to eat&#34; arguments. Not exactly the thriving social fabric McGonigal presents....&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;I couldn&#39;t help think that there are better examples of hybrids between real life behavior and motivation that falls under the game mechanics principles. The example I want to look at today is &lt;a href=&#34;http://www.crossfit.com&#34;&gt;Crossfit&lt;/a&gt;. As a fitness movement, they do an amazing job with this blend. Now, I have to admit I don&#39;t have direct experience with Crossfit, so I&#39;m hoping someone who does will fill in even more detail here.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Game Mechanics Defined&lt;/h2&gt;&lt;br /&gt;
@@ -108,11 +108,11 @@ These underlying mechanics add up to create what McGonigal refers to as the &#34
     
     <item>
       <title>Epic Meaning, Sheep Knuckles, and The Institute for the Future</title>
-      <link>/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</link>
+      <link>http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</link>
       <pubDate>Mon, 03 Jan 2011 09:30:01 +0000</pubDate>
       
-      <guid>/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</guid>
-      <description>&lt;img class=&#34;alignleft size-medium wp-image-531&#34; title=&#34;gaming superpowers&#34; src=&#34;/uploads/2011/01/gaming-superpowers-300x207.jpg&#34; alt=&#34;&#34; width=&#34;300&#34; height=&#34;207&#34; /&gt;&lt;p&gt;Jane McGonigal gives a fascinating talk about the &#34;superpowers&#34; cultivated by the game-playing masses (more than 500 million with another billion coming up in the next decade!). Obviously we all have the image of the gamer locked in his mother&#39;s basement, endlessly pawing away at an electronic reward system, like a hamster. McGonigal&#39;s takeaway is a little different though.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-528&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/01/03/epic-meaning-sheep-knuckles-and-the-institute-for-the-future/</guid>
+      <description>&lt;img class=&#34;alignleft size-medium wp-image-531&#34; title=&#34;gaming superpowers&#34; src=&#34;http://dankleiman.com/uploads/2011/01/gaming-superpowers-300x207.jpg&#34; alt=&#34;&#34; width=&#34;300&#34; height=&#34;207&#34; /&gt;&lt;p&gt;Jane McGonigal gives a fascinating talk about the &#34;superpowers&#34; cultivated by the game-playing masses (more than 500 million with another billion coming up in the next decade!). Obviously we all have the image of the gamer locked in his mother&#39;s basement, endlessly pawing away at an electronic reward system, like a hamster. McGonigal&#39;s takeaway is a little different though.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-528&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She emphasizes the motivation, inspiration, and social purpose built into game play. I think that&#39;s an interesting take. When I talked to an early pioneer of these games, he said that &#34;we knew they were addictive from the beginning&#34;, but it sounded like the dirty little secret that no one wanted to admit.&lt;/p&gt;
 &lt;p&gt;So, I think the interesting question is whether the virtues of gaming (along the lines of motivation and engagement) can be transferred to real world activity without the addictive over-use that leads to unhealthy, sedentary life. Maybe as technology comes out of the basement and into the palm of your hand more readily, this is becoming a more reasonable goal.&lt;/p&gt;
 &lt;p&gt;Anyway, her talk is definitely worth watching (oh, and the sheep knuckles tie back nicely into Herodotus for a lesson on real world gaming!):&lt;/p&gt;
@@ -122,10 +122,10 @@ These underlying mechanics add up to create what McGonigal refers to as the &#34
     
     <item>
       <title>Out with the Old....Business Model</title>
-      <link>/2010/12/31/out-with-the-old-business-model/</link>
+      <link>http://dankleiman.com/2010/12/31/out-with-the-old-business-model/</link>
       <pubDate>Fri, 31 Dec 2010 16:38:19 +0000</pubDate>
       
-      <guid>/2010/12/31/out-with-the-old-business-model/</guid>
+      <guid>http://dankleiman.com/2010/12/31/out-with-the-old-business-model/</guid>
       <description>&lt;img class=&#34;alignleft&#34; title=&#34;Exit&#34; src=&#34;http://farm3.static.flickr.com/2245/2089485151_17f142a726_m.jpg&#34; alt=&#34;&#34; width=&#34;240&#34; height=&#34;160&#34; /&gt;&lt;p&gt;It&#39;s the end of the year and it&#39;s time to get out of old habits and mindsets.&lt;/p&gt;
 &lt;p&gt;So, here&#39;s my prediction for the best business model for independent fitness and wellness pros, for the next DECADE. Yeah, I think it&#39;s going to take a few years to unfold, but the groundwork has been laid:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-514&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -145,18 +145,18 @@ Welcome to the professional educator reality.&amp;Acirc;  I believe that the mov
     
     <item>
       <title>Hybrid Business Thought Experiment</title>
-      <link>/2010/12/29/hybrid-business-thought-experiment/</link>
+      <link>http://dankleiman.com/2010/12/29/hybrid-business-thought-experiment/</link>
       <pubDate>Wed, 29 Dec 2010 19:35:43 +0000</pubDate>
       
-      <guid>/2010/12/29/hybrid-business-thought-experiment/</guid>
-      <description>&lt;p&gt;I&#39;m working strictly on a hunch here, but I think there&#39;s a connection between the sentiment I tried to express &lt;a href=&#34;/2010/12/03/technology-and-all-that-heavenly-glory/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; about not getting lost in the bells and whistles of technology, and &lt;a href=&#34;http://techcrunch.com/2010/12/24/hybrid-startup/&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt; about &#34;hybrid businesses&#34;.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-501&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2010/12/29/hybrid-business-thought-experiment/</guid>
+      <description>&lt;p&gt;I&#39;m working strictly on a hunch here, but I think there&#39;s a connection between the sentiment I tried to express &lt;a href=&#34;http://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; about not getting lost in the bells and whistles of technology, and &lt;a href=&#34;http://techcrunch.com/2010/12/24/hybrid-startup/&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt; about &#34;hybrid businesses&#34;.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-501&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;One Foot in the Virtual World, One Foot in the Real World&lt;/h2&gt;&lt;br /&gt;
 According to&amp;Acirc;  the author, Glenn Kelman, a hybrid business has &#34;one foot in the virtual world and one foot in the real world.&#34; However, &#34;this isn&amp;acirc;&amp;euro;&amp;trade;t&amp;Acirc; the old &amp;acirc;&amp;euro;&amp;oelig;clicks-and-mortar&amp;acirc;&amp;euro; concept from the 1990s,  which put web glitter on an old-school business, building Walmart.com  for Walmart. A hybrid business is built entirely from scratch, to be  innovative in its online technology and its real-world operations.&#34;&lt;/p&gt;
 &lt;p&gt;I&#39;m trying to envision how to adapt &lt;a href=&#34;http://www.brooklinetaichi.org&#34; target=&#34;_blank&#34;&gt;Brookline Tai Chi&lt;/a&gt; to the hybrid model or see how &lt;a href=&#34;http://www.trainerfly.com/&#34; target=&#34;_blank&#34;&gt;Trainerfly&lt;/a&gt; fundamentally addresses this shift.&amp;Acirc;  Here are some thoughts along those lines:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Right now, BTC is definitely in the &#34;clicks and mortar&#34; mindset. The purpose of the website is to tell people about classes and when they take place.&lt;/li&gt;
 &lt;li&gt;Trainerfly could fall into the same trap by simply mirroring the live training sessions, as a &#34;back-up copy&#34; of what happened in real life.&lt;/li&gt;
-&lt;li&gt;Some of the more interesting possibilities I&#39;ve been exploring with Trainerfly and online learning have allowed me to open up live teaching &lt;a href=&#34;/2010/12/17/new-video-for-tai-chi-group/&#34; target=&#34;_blank&#34;&gt;to people outside of my usual geographic reach&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Some of the more interesting possibilities I&#39;ve been exploring with Trainerfly and online learning have allowed me to open up live teaching &lt;a href=&#34;http://dankleiman.com/2010/12/17/new-video-for-tai-chi-group/&#34; target=&#34;_blank&#34;&gt;to people outside of my usual geographic reach&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;The value proposition for trainers and their clients might be better in a hybrid.&lt;/li&gt;&lt;br /&gt;
 &lt;/ul&gt;&lt;/p&gt;
 &lt;h2&gt;Impact on Your Value Proposition&lt;/h2&gt;&lt;br /&gt;
@@ -167,16 +167,16 @@ This last point deserves some illustration: think of the last time you or a frie
 &lt;h2&gt;Shifting Your Teaching Model&lt;/h2&gt;&lt;br /&gt;
 The shift toward a hybrid business model is critically important for independent movement educators. We are constrained by one major factor: our limited teaching time. The problem is that you develop a body of knowledge that is vastly bigger than the mechanism for sharing it, one-on-one time with a client. Your students/clients can&#39;t absorb everything you put out in a live training session, but what if the hybrid model makes your knowledge more easily digestible? What if you can share all the information you&#39;ve refined a little bit at a time, in a way that decouples the actual sharing from your live time with clients? I think the hybrid model lies in that direction....&lt;/p&gt;
 &lt;p&gt;After reading Kelman&#39;s article, I&#39;m more and more convinced that this is the way to go for movement educators. I&#39;ve already tried to articulate what I&#39;ll now think of as &#34;hybrid strategies&#34; &lt;a href=&#34;http://www.trainerfly.com/earn-an-extra-10000-this-year/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;On a related note, check out the &lt;a href=&#34;/2010/12/29/become-an-enterprise-of-one/&#34;&gt;&#34;Enterprise of One&#34; &lt;/a&gt;theory here. It&#39;s the crumbling barriers of entry to business technology that are making all of this possible.&lt;/p&gt;
+&lt;p&gt;On a related note, check out the &lt;a href=&#34;http://dankleiman.com/2010/12/29/become-an-enterprise-of-one/&#34;&gt;&#34;Enterprise of One&#34; &lt;/a&gt;theory here. It&#39;s the crumbling barriers of entry to business technology that are making all of this possible.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Become an Enterprise of One </title>
-      <link>/2010/12/29/become-an-enterprise-of-one/</link>
+      <link>http://dankleiman.com/2010/12/29/become-an-enterprise-of-one/</link>
       <pubDate>Wed, 29 Dec 2010 09:04:12 +0000</pubDate>
       
-      <guid>/2010/12/29/become-an-enterprise-of-one/</guid>
+      <guid>http://dankleiman.com/2010/12/29/become-an-enterprise-of-one/</guid>
       <description>&lt;p&gt;Over at TechCrunch, Stephen Martin lays out his thesis about an interesting turning point for entrepreneurs in this economic climate. I could quote the piece at length, but I think this part is especially important:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;These business mavericks live by a new dynamic of success &amp;acirc;&amp;euro;&#34; unique  individual strengths, expertise and credibility &amp;acirc;&amp;euro;&#34; fueled by today&amp;acirc;&amp;euro;&amp;trade;s  cultural and technological changes. In this new dimension of business  lies the secret to success in our transformed world of commerce. Armed  with a new viewpoint, and the tools to make a difference, these  entrepreneurs run their businesses based on the central principle that  once all of the barriers to entry, transaction costs and other hurdles  are stripped away by technology and cultural changes, an individual&amp;acirc;&amp;euro;&amp;trade;s  strengths and weaknesses are primarily what determine his or her  success.&lt;/blockquote&gt;&lt;br /&gt;
 I&#39;ve been trying to put my finger on something like this for a while and I think he says it really well. It&#39;s cheaper than ever to start a business and run a business because of all the technology small business owners can use to leverage their time.&amp;Acirc;  It&#39;s easier to communicate with lots and lots of people and instead of being buried in the back office, to quote Stephen again, &#34;the opportunities provided by the transformation to an online business  landscape...have left individual strengths, passions and  expertise as the only distinguishing factors remaining in an  individual&amp;acirc;&amp;euro;&amp;trade;s or business&amp;acirc;&amp;euro;&amp;trade; success. Who you are as a person, and your  expertise and passions, are more important than ever. In fact, they  drive your own personal enterprise.&#34;&lt;/p&gt;
@@ -187,14 +187,14 @@ I&#39;ve been trying to put my finger on something like this for a while and I t
     
     <item>
       <title>Turning the Wheel</title>
-      <link>/2010/12/14/turning-the-wheel/</link>
+      <link>http://dankleiman.com/2010/12/14/turning-the-wheel/</link>
       <pubDate>Tue, 14 Dec 2010 08:54:16 +0000</pubDate>
       
-      <guid>/2010/12/14/turning-the-wheel/</guid>
+      <guid>http://dankleiman.com/2010/12/14/turning-the-wheel/</guid>
       <description>&lt;p&gt;Claude Hopkins, in &lt;span style=&#34;text-decoration: underline;&#34;&gt;Scientific Advertising&lt;/span&gt;:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;A Rapid stream ran by the writer&#39;s boyhood home. The stream turned a wooden wheel and the wheel ran a mill. Under that primitive method, all but a fraction of the streams&#39; potentiality went to waste.&lt;/p&gt;
 &lt;p&gt;Then someone applied scientific methods to that stream -- put in a turbine and dynamos. Now, with no more water, no more power, it runs a large manufacturing plant.&lt;/blockquote&gt;&lt;br /&gt;
-&lt;img class=&#34;size-full wp-image-470 alignleft&#34; title=&#34;falls&#34; src=&#34;/uploads/2010/12/4121005703_2898edb080_m.jpg&#34; alt=&#34;&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt; I love the image of harnessing more power from natural resources through better systems. Obviously, we&#39;re still taking about making a small business really churn, not powering a city from a hydro-electric plant, but the lesson is clear. If you&#39;re not using good systems in your small business, you&#39;re wasting potential.&lt;/p&gt;
+&lt;img class=&#34;size-full wp-image-470 alignleft&#34; title=&#34;falls&#34; src=&#34;http://dankleiman.com/uploads/2010/12/4121005703_2898edb080_m.jpg&#34; alt=&#34;&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt; I love the image of harnessing more power from natural resources through better systems. Obviously, we&#39;re still taking about making a small business really churn, not powering a city from a hydro-electric plant, but the lesson is clear. If you&#39;re not using good systems in your small business, you&#39;re wasting potential.&lt;/p&gt;
 &lt;p&gt;Now, I&#39;d like to have it both ways, because the other part of the image that is so striking to me is the miller with the old wooden wheel. Every movement education professional that I know is really a craftsperson at heart. I just know there&#39;s a balance, though, between your craft and your business supporting a lifestyle you&#39;d like to live. That&#39;s what we&#39;re striving to find.&lt;/p&gt;
 &lt;p&gt;Image courtesy of &lt;a href=&#34;http://www.flickr.com/photos/d-kav/&#34; target=&#34;_blank&#34;&gt;DaveKav&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -202,10 +202,10 @@ I&#39;ve been trying to put my finger on something like this for a while and I t
     
     <item>
       <title>Technology and All that Heavenly Glory</title>
-      <link>/2010/12/03/technology-and-all-that-heavenly-glory/</link>
+      <link>http://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</link>
       <pubDate>Fri, 03 Dec 2010 09:31:33 +0000</pubDate>
       
-      <guid>/2010/12/03/technology-and-all-that-heavenly-glory/</guid>
+      <guid>http://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</guid>
       <description>&lt;p&gt;In the process of building and launching &lt;a href=&#34;http://www.trainerfly.com/&#34; target=&#34;_blank&#34;&gt;Trainerfly&lt;/a&gt;, I&#39;ve tried to keep the wisdom of Bruce Lee in mind:&lt;/p&gt;
 &lt;p&gt;&lt;object width=&#34;480&#34; height=&#34;385&#34; classid=&#34;clsid:d27cdb6e-ae6d-11cf-96b8-444553540000&#34; codebase=&#34;http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0&#34;&gt;&lt;param name=&#34;allowFullScreen&#34; value=&#34;true&#34; /&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;always&#34; /&gt;&lt;param name=&#34;src&#34; value=&#34;http://www.youtube.com/v/sDW6vkuqGLg?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&#34; /&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34; /&gt;&lt;embed width=&#34;480&#34; height=&#34;385&#34; type=&#34;application/x-shockwave-flash&#34; src=&#34;http://www.youtube.com/v/sDW6vkuqGLg?fs=1&amp;amp;hl=en_US&amp;amp;rel=0&#34; allowFullScreen=&#34;true&#34; allowscriptaccess=&#34;always&#34; allowfullscreen=&#34;true&#34; /&gt;&lt;/object&gt;&lt;/p&gt;
 &lt;p&gt;Too many people are &#34;looking at the finger&#34; when they think of technology. What&#39;s the point of lightning fast communication and access to an abundance of information? It has to come back to people communicating. Otherwise, it just doesn&#39;t mean a thing.&lt;/p&gt;

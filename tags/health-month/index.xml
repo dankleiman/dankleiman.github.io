@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>health-month on Dan Kleiman</title>
-    <link>/tags/health-month/index.xml</link>
+    <link>http://dankleiman.com/tags/health-month/index.xml</link>
     <description>Recent content in health-month on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/tags/health-month/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dankleiman.com/tags/health-month/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Health Month Wrap-Up</title>
-      <link>/2011/03/29/health-month-wrap-up/</link>
+      <link>http://dankleiman.com/2011/03/29/health-month-wrap-up/</link>
       <pubDate>Tue, 29 Mar 2011 14:48:03 +0000</pubDate>
       
-      <guid>/2011/03/29/health-month-wrap-up/</guid>
+      <guid>http://dankleiman.com/2011/03/29/health-month-wrap-up/</guid>
       <description>&lt;p&gt;As March comes to an end, I&#39;m wrapping up playing &lt;a href=&#34;http://healthmonth.com&#34;&gt;Health Month&lt;/a&gt;, an online game that helps you integrate new habits and change behavior. Here&#39;s my review of Health Month and a recap of what I experienced. I have to say, I don&#39;t think I really explored it to the fullest, but there were a couple of things I really liked about it and a couple of things I didn&#39;t connect with in the design.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-789&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;First, what didn&#39;t really work for me, then what I really like about this tool.&lt;/p&gt;
 &lt;h2&gt;The Point System&lt;/h2&gt;&lt;br /&gt;
@@ -37,10 +37,10 @@ There was something that really clicked for me about formulating my Health Month
     
     <item>
       <title>My Rules Are Lame</title>
-      <link>/2011/03/07/my-rules-are-lame/</link>
+      <link>http://dankleiman.com/2011/03/07/my-rules-are-lame/</link>
       <pubDate>Mon, 07 Mar 2011 08:54:21 +0000</pubDate>
       
-      <guid>/2011/03/07/my-rules-are-lame/</guid>
+      <guid>http://dankleiman.com/2011/03/07/my-rules-are-lame/</guid>
       <description>&lt;p&gt;So, with one week of &lt;a href=&#34;http://healthmonth.com/&#34; target=&#34;_blank&#34;&gt;Health Month&lt;/a&gt; under my belt, I think one thing is clear: I picked some pretty lame rules for March! I mean, they&#39;re pretty plain and looking at some of the other options, I definitely could have picked something more interesting. I chose:&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-680&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bring lunch to work 3x per week&lt;/li&gt;
@@ -56,21 +56,21 @@ I picked those rules initially because I thought they would be easy to track and
     
     <item>
       <title>Signing the Contract</title>
-      <link>/2011/03/04/signing-the-contract/</link>
+      <link>http://dankleiman.com/2011/03/04/signing-the-contract/</link>
       <pubDate>Fri, 04 Mar 2011 08:38:28 +0000</pubDate>
       
-      <guid>/2011/03/04/signing-the-contract/</guid>
-      <description>&lt;p&gt;&lt;img class=&#34;alignleft size-full wp-image-674&#34; title=&#34;Commitment&#34; src=&#34;/uploads/2011/03/Commitment.bmp&#34; alt=&#34;&#34; width=&#34;550&#34; height=&#34;413&#34; /&gt;&lt;/p&gt;
+      <guid>http://dankleiman.com/2011/03/04/signing-the-contract/</guid>
+      <description>&lt;p&gt;&lt;img class=&#34;alignleft size-full wp-image-674&#34; title=&#34;Commitment&#34; src=&#34;http://dankleiman.com/uploads/2011/03/Commitment.bmp&#34; alt=&#34;&#34; width=&#34;550&#34; height=&#34;413&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Part of playing Health Month is signing a contract to commit to follow your rules....and I was really surprised when I did it! &lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-672&#34;&gt;&lt;/a&gt;One of the things I&#39;m thinking about while playing is how this is different from simply tracking what you eat, when you work out, and even setting goals in other areas. I didn&#39;t think it was going to be a big deal to actually sign this commitment, but it was. I have to say, I got a little nervous before I clicked on my name there. How many electronic signatures or license agreements do you sign online all the time? But this felt just a little bit different and I think that&#39;s an ingenious feature!&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>March is Going to be Health Month</title>
-      <link>/2011/02/21/march-is-going-to-be-health-month/</link>
+      <link>http://dankleiman.com/2011/02/21/march-is-going-to-be-health-month/</link>
       <pubDate>Mon, 21 Feb 2011 09:40:16 +0000</pubDate>
       
-      <guid>/2011/02/21/march-is-going-to-be-health-month/</guid>
+      <guid>http://dankleiman.com/2011/02/21/march-is-going-to-be-health-month/</guid>
       <description>&lt;p&gt;I&#39;m pretty excited to try this one out. Health Month is a behavior change game where you set rules to follow each month and do daily tracking, with rewards and penalties for how well you follow them. I&#39;m just digging into it, but so far it looks like you can choose &#34;do more of this&#34; or &#34;do less of that&#34;.&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;a id=&#34;more-638&#34;&gt;&lt;/a&gt; I like the idea of limiting the scope of the goal to a month (what BJ Fogg calls a &#34;span&#34; behavior instead of a &#34;path&#34; behavior -- and says the key to long term change is focusing on span not path) and the immediate feedback from daily tracking.&lt;/p&gt;
 &lt;p&gt;I&#39;m curious about the reward system, to see if it really is compelling and there also is some kind of social wrinkle where you can help and get help from other players.&lt;/p&gt;
 &lt;p&gt;From the site, here&#39;s how to play:&lt;/p&gt;
