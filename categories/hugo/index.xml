@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+&lt;?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hugo on Dan Kleiman</title>
-    <link>/categories/hugo/index.xml</link>
-    <description>Recent content in hugo on Dan Kleiman</description>
+    <title>Dan Kleiman</title>
+    <link>http://dankleiman.com/index.xml</link>
+    <description>Recent content on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Feb 2018 12:31:44 -0500</lastBuildDate>
+    <atom:link href="http://dankleiman.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Generating a 40,000 Page Site with BigQuery, Hugo and Github Pages</title>
-      <link>/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages</link>
-      <pubDate>Sat, 18 Nov 2017 14:38:49 -0500</pubDate>
-      
-      <guid>/2017/11/18/generating-a-40000-page-site-with-bigquery-hugo-and-github-pages</guid>
-      <description>
-
-&lt;p&gt;Recently, I&amp;rsquo;ve been poking at Reddit datasets on &lt;a href=&#34;/categories/bigquery&#34;&gt;BigQuery&lt;/a&gt; and consolidating the &lt;a href=&#34;/categories/code&#34;&gt;code&lt;/a&gt; and &lt;a href=&#34;/categories/tai-chi&#34;&gt;Tai Chi&lt;/a&gt; sections of this site onto a single Hugo site, hosted on Github Pages.&lt;/p&gt;
-
-&lt;p&gt;So I thought, why not come up with a small project that combines them? Well, 40,000 pages later, I sure came up with something.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/img/too_many_files.png&#34; alt=&#34;Too many files makes Github sad&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Oops!&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;ll look at when went wrong or wasn&amp;rsquo;t exactly convenient about this approach, but first, let&amp;rsquo;s talk about the what the project is and its three main pieces.&lt;/p&gt;
-
-&lt;h2 id=&#34;crosslinking-subreddits-on-reddit&#34;&gt;Crosslinking Subreddits on Reddit&lt;/h2&gt;
-
-&lt;p&gt;I had been exploring &lt;a href=&#34;https://bigquery.cloud.google.com/table/fh-bigquery:reddit_comments.2017_10?tab=preview&#34;&gt;this Reddit comment data&lt;/a&gt;, which includes the actual comment body and which subreddit it was posted in. After a while scrolling through comments, I started thinking about&lt;/p&gt;
-</description>
+      <title>hugo</title>
+      <link>/categories/hugo/index.xml</link>
+      <pubDate>Tue, 06 Feb 2018 12:31:44 -0500</pubDate>
+      <guid>/categories/hugo/index.xml</guid>
+      <description></description>
     </item>
-    
-  </channel>
-</rss>

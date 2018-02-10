@@ -6,7 +6,7 @@
     <description>Recent content in octopress on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dankleiman.com/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Learning more about Octopress</title>
@@ -14,8 +14,7 @@
       <pubDate>Wed, 19 Mar 2014 18:46:22 -0400</pubDate>
       
       <guid>http://dankleiman.com/2014/03/19/learning-more-about-octopress</guid>
-      <description>&lt;p&gt;Just running through a test post again to go over the process and remind myself how this works!&lt;/p&gt;
-</description>
+      <description>Just running through a test post again to go over the process and remind myself how this works!</description>
     </item>
     
     <item>
@@ -24,25 +23,9 @@
       <pubDate>Tue, 18 Mar 2014 21:28:17 -0400</pubDate>
       
       <guid>http://dankleiman.com/2014/03/18/whoa-octopress</guid>
-      <description>
-
-&lt;p&gt;So, I just launched this new blog using Octopress.&lt;/p&gt;
-
-&lt;p&gt;Here are the steps I followed:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/setup/&#34;&gt;Basics&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/blogging/&#34;&gt;How to Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/&#34;&gt;Deploying on Github&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I need to dig into the &lt;a href=&#34;http://octopress.org/docs/configuring/&#34;&gt;configuration stuff&lt;/a&gt; a little more.
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;writing-this-post-in-markdown&#34;&gt;Writing This Post in Markdown&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;m learning how to write this in &lt;a href=&#34;http://http://daringfireball.net/projects/markdown/basics&#34;&gt;Markdown&lt;/a&gt; which is also pretty new to me. Right now it feels like a lazy version of html, so we&amp;rsquo;ll see what&amp;rsquo;s it like as I get used to it.&lt;/p&gt;
-</description>
+      <description>So, I just launched this new blog using Octopress.
+Here are the steps I followed:
+ Basics How to Blog Deploying on Github  I need to dig into the configuration stuff a little more. Writing This Post in Markdown I&amp;rsquo;m learning how to write this in Markdown which is also pretty new to me. Right now it feels like a lazy version of html, so we&amp;rsquo;ll see what&amp;rsquo;s it like as I get used to it.</description>
     </item>
     
   </channel>

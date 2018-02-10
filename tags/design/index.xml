@@ -6,7 +6,7 @@
     <description>Recent content in design on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dankleiman.com/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/design/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Trainerfly Characters</title>
@@ -14,9 +14,7 @@
       <pubDate>Sat, 20 Nov 2010 05:18:37 +0000</pubDate>
       
       <guid>http://dankleiman.com/2010/11/20/trainerfly-characters/</guid>
-      <description>&lt;p&gt;Check out this draft of a character I&#39;m going to feature on the Trainerfly blog (my brother Sam is doing the design work):&lt;/p&gt;
-&lt;p&gt;&lt;img class=&#34;aligncenter size-large wp-image-359&#34; title=&#34;master&#34; src=&#34;http://dankleiman.com/uploads/2010/11/master-971x1024.jpg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;632&#34; /&gt;&lt;/p&gt;
-</description>
+      <description>Check out this draft of a character I&#39;m going to feature on the Trainerfly blog (my brother Sam is doing the design work):</description>
     </item>
     
   </channel>
