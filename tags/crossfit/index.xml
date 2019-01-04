@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>crossfit on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/crossfit/index.xml</link>
+    <link>https://dankleiman.com/tags/crossfit/index.xml</link>
     <description>Recent content in crossfit on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Crossfit&#39;s Brilliant use of Game Mechanics</title>
-      <link>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
+      <link>https://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</link>
       <pubDate>Tue, 04 Jan 2011 06:51:39 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
+      <guid>https://dankleiman.com/2011/01/04/crossfits-brilliant-use-of-game-mechanics/</guid>
       <description>Background: Recently, TechCrunch featured an article about the playdeck they use at SCVNGR that outlines the mechanics of gameplay. The article cites at TED talk by game designer Jane McGonigal, which I talk about here.
 I was a little disappointed with McGonigal&#39;s conclusion, because she basically offered up the solution as specially-themed video games to leverage the power of game mechanics, or &#34;gameplay superpowers&#34;, to do good in the real world and incite behavior change.</description>
     </item>

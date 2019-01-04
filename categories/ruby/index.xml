@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruby on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/ruby/index.xml</link>
+    <link>https://dankleiman.com/categories/ruby/index.xml</link>
     <description>Recent content in ruby on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,20 +10,20 @@
     
     <item>
       <title>Nice Try, NilClass</title>
-      <link>http://dankleiman.com/2016/04/10/nice-try-nilclass</link>
+      <link>https://dankleiman.com/2016/04/10/nice-try-nilclass</link>
       <pubDate>Sun, 10 Apr 2016 07:13:27 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2016/04/10/nice-try-nilclass</guid>
+      <guid>https://dankleiman.com/2016/04/10/nice-try-nilclass</guid>
       <description>I love that feeling when a new concept starts to come together in your mind and you can point to all the converging sources of insight.
 Right now, I can&amp;rsquo;t tell if I&amp;rsquo;m fooling myself, hiding some logic, or making my code more readable with this particular concept, but when I put together these three pieces of information, I think I start to see something emerge. I&amp;rsquo;ve been inspired to do some more digging into these kinds of questions lately thanks to the awesome new Ruby Book Club Podcast.</description>
     </item>
     
     <item>
       <title>Burlington Ruby Conference 2014</title>
-      <link>http://dankleiman.com/2014/08/03/burlington-ruby-conference-2014</link>
+      <link>https://dankleiman.com/2014/08/03/burlington-ruby-conference-2014</link>
       <pubDate>Sun, 03 Aug 2014 06:24:53 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/08/03/burlington-ruby-conference-2014</guid>
+      <guid>https://dankleiman.com/2014/08/03/burlington-ruby-conference-2014</guid>
       <description>It&amp;rsquo;s 6:23 on Sunday morning, day 2 at Burlington Ruby, so I thought I&amp;rsquo;d take a few minutes and recap some of what I saw and learned yesterday.
 Everyone keeps talking about what an amazing community we have in the Ruby world and I guess I&amp;rsquo;m spoiled since I don&amp;rsquo;t have any other software communities to compare it to, but I can tell you that every talk has been thoughtful, curious, and in different ways caring: caring about the future of the language, caring about other people&amp;rsquo;s growth and development, and caring even about novel, smarter, and more refined approaches to getting things done.</description>
     </item>

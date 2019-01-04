@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bruce-lee on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/bruce-lee/index.xml</link>
+    <link>https://dankleiman.com/tags/bruce-lee/index.xml</link>
     <description>Recent content in bruce-lee on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Technology and All that Heavenly Glory</title>
-      <link>http://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</link>
+      <link>https://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</link>
       <pubDate>Fri, 03 Dec 2010 09:31:33 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</guid>
+      <guid>https://dankleiman.com/2010/12/03/technology-and-all-that-heavenly-glory/</guid>
       <description>In the process of building and launching Trainerfly, I&#39;ve tried to keep the wisdom of Bruce Lee in mind:
 
 Too many people are &#34;looking at the finger&#34; when they think of technology. What&#39;s the point of lightning fast communication and access to an abundance of information? It has to come back to people communicating. Otherwise, it just doesn&#39;t mean a thing.

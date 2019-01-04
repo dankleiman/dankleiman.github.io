@@ -1,0 +1,2044 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Stop Writing SQL Backwards</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Stop Writing SQL Backwards"/>
+<meta name="twitter:description" content="How many times have you started off building a complicated analytical SQL query like this?
+SELECT . . . . uh??? . . SELECT * FROM . . . SELECT . . .  And you get stuck trying to figure out exactly what you want to select. You&rsquo;re thinking about averages, group by&rsquo;s, the order of your results or some change you want to see over time and the query editor is just sitting there, taunting you, because in SQL, you have to know up front what you want to select into your final results."/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="Stop Writing SQL Backwards" />
+<meta property="og:description" content="How many times have you started off building a complicated analytical SQL query like this?
+SELECT . . . . uh??? . . SELECT * FROM . . . SELECT . . .  And you get stuck trying to figure out exactly what you want to select. You&rsquo;re thinking about averages, group by&rsquo;s, the order of your results or some change you want to see over time and the query editor is just sitting there, taunting you, because in SQL, you have to know up front what you want to select into your final results." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards" />
+
+
+
+<meta property="article:published_time" content="2019-01-02T09:21:26-05:00"/>
+<meta property="article:modified_time" content="2019-01-02T09:21:26-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Stop Writing SQL Backwards">
+<meta itemprop="description" content="How many times have you started off building a complicated analytical SQL query like this?
+SELECT . . . . uh??? . . SELECT * FROM . . . SELECT . . .  And you get stuck trying to figure out exactly what you want to select. You&rsquo;re thinking about averages, group by&rsquo;s, the order of your results or some change you want to see over time and the query editor is just sitting there, taunting you, because in SQL, you have to know up front what you want to select into your final results.">
+
+
+<meta itemprop="dateModified" content="2019-01-02T09:21:26-05:00" />
+<meta itemprop="wordCount" content="4343">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/main.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="https://dankleiman.com/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards">Stop Writing SQL Backwards</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-01-02'>
+                                    January 2, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-02-06'>
+                                    February 6, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-28'>
+                                    January 28, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-11-07'>
+                                    November 7, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2017-10-30'>
+                                    October 30, 2017</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&text=Stop%20Writing%20SQL%20Backwards&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&description=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards">Stop Writing SQL Backwards</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-01-02'>
+            January 2, 2019</time>
+        <span class="author"></span>
+        
+            <p>21 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&text=Stop%20Writing%20SQL%20Backwards&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&title=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards&description=Stop%20Writing%20SQL%20Backwards" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f01%2f02%2fstop-writing-sql-backwards" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    
+
+<p>How many times have you started off building a complicated analytical SQL query like this?</p>
+
+<pre><code>SELECT
+.
+.
+.
+.
+uh???
+.
+.
+SELECT
+*
+FROM
+.
+.
+.
+SELECT
+.
+.
+.
+</code></pre>
+
+<p>And you get stuck trying to figure out exactly what you want to select. You&rsquo;re thinking about averages, group by&rsquo;s, the order of your results or some change you want to see over time and the query editor is just sitting there, taunting you, because in SQL, <em>you have to know up front</em> what you want to select into your final results.</p>
+
+<p>It&rsquo;s paralyzing&hellip;but if you keep reading, you&rsquo;re going to know why it&rsquo;s happening and you&rsquo;ll never freeze up at a SELECT statement again.</p>
+
+<h2 id="you-are-writing-your-queries-backwards">You Are Writing Your Queries Backwards</h2>
+
+<p>Any time you start with a SELECT statement and you&rsquo;re attempting to summarize complicated data, you&rsquo;re starting off backwards.</p>
+
+<p>SQL is a descriptive language. Every time you write an analytical SQL query, you are attempting to <strong>describe the underlying data</strong> in your tables. If you&rsquo;re coming from a typical programming background, this is really different than how declarative or imperative programming languages work. Yes, there are SQL tools for transforming data that start looking and feeling like other types of programming with loops and control flow and all that, but here I&rsquo;m just talking about summarizing, analyzing, and transforming data to get insight into the underlying meaning of it.</p>
+
+<p>Every time you reach for your SELECT statement first, you&rsquo;re going to feel shaky because you haven&rsquo;t explored the foundation of the data you&rsquo;re trying to explain. Not only is uncertainty an stumbling block for composing the query, but later on, if you were wrong about any of your initial assumptions, you end up with invalid conclusions in your summary data.</p>
+
+<p>Instead, treat the SELECT statement like a summary of your findings.</p>
+
+<p>Could you summarize a book for someone if you never even opened a page? Or read a chapter? Trying to fill in your SELECT statement first is like writing your book report sentence by sentence, as you finish reading each chapter. I guess you could do that&hellip;but you&rsquo;re sure to miss the big picture and probably a lot of interconnected insights if you don&rsquo;t wait until you&rsquo;ve read the whole book.</p>
+
+<h2 id="build-your-query-chapter-by-chapter">Build Your Query Chapter by Chapter</h2>
+
+<p>Let&rsquo;s work through an example to put this idea into practice. Suppose we have a group of students who take a quiz in class every day. You want to track their progress by seeing how their quiz scores are changing over time and you&rsquo;ve decided that looking at the change in their rolling two-week average is the best way to measure that change.</p>
+
+<p>Before you read this post, you might be tempted to sit down and write:</p>
+
+<pre><code>SELECT
+  student.first_name,
+  student.last_name,
+  avg(quiz.score),
+.
+.
+.
+wait...how do I limit the average for the last two weeks....and get one score per day...
+</code></pre>
+
+<p>And now we&rsquo;re frozen in the SELECT statement again.</p>
+
+<p>No! We said that approach was backwards. So how do we reverse the query-writing process? At first this might feel really basic and slow and painful, but building chapter by chapter is how you read any book, right?</p>
+
+<p>(You can follow along in your own Postgres database using <a href="https://gist.github.com/postgres/8c196769fa8b11c6c5aa12ae79ff9c60">this seed file to generate the dataset </a> we&rsquo;ll use throughout the example.)</p>
+
+<h3 id="an-important-point-about-actually-writing-sql">An Important Point About Actually Writing SQL</h3>
+
+<p>SQL is fragile!</p>
+
+<p>When you crack open a blank editor and start composing a new query, one misplaced function or statement, can make the whole query collapse in on itself. And you might not even realize it until it&rsquo;s too late. You can get three or four steps through tweaking and editing your query and suddenly find out that you&rsquo;ve grouped your data wrong or changed the way a subquery does some calculation and all your results are skewed.</p>
+
+<p>If you&rsquo;ve just been changing your main query, then it can be really hard to unwind the steps. That&rsquo;s why I recommend a very simple interative approach to building your queries.</p>
+
+<ol>
+<li>Start with a simple query</li>
+<li>Run it against your database</li>
+<li>Check the results</li>
+<li>Looking good?</li>
+<li>Copy the working query and paste it below itself</li>
+<li>Make one small change to the copy of your working query</li>
+<li>Repeat steps 2 - 6 until you have the data you want</li>
+</ol>
+
+<p>If you build queries up step-by-step like this, you can easily move forward and back in time, both to check your query logic and sanity check the data. That&rsquo;s what we&rsquo;re about to do to solve this analytics problem.</p>
+
+<h3 id="get-oriented">Get Oriented</h3>
+
+<p>Now back to our students and quizzes example&hellip;</p>
+
+<p>Let&rsquo;s start by writing some simple orientation queries so we know more about our data set. There are basically two ways to get oriented: <strong>by schema</strong> and <strong>by the shape of the data</strong>.</p>
+
+<p>Exploring the schema gives you a sense for what tables we will use, what&rsquo;s in each table, and how they are related.</p>
+
+<p>By schema:</p>
+
+<pre><code>postgres=# \dt
+                List of relations
+ Schema |      Name       |   Type   |   Owner    
+--------+-----------------+----------+------------
+ public | quiz_results    | table    | postgres
+ public | quizzes         | table    | postgres
+ public | students        | table    | postgres
+(3 rows)
+</code></pre>
+
+<p>Students:</p>
+
+<pre><code>postgres=# \d students
+                           Table &quot;public.students&quot;
+   Column   |  Type   |                       Modifiers                       
+------------+---------+-------------------------------------------------------
+ id         | integer | not null default nextval('students_id_seq'::regclass)
+ first_name | text    | 
+ last_name  | text    | 
+Indexes:
+    &quot;students_pkey&quot; PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE &quot;quiz_results&quot; CONSTRAINT &quot;quiz_results_student_id_fkey&quot; FOREIGN KEY (student_id) REFERENCES students(id)
+</code></pre>
+
+<p>Quizzes:</p>
+
+<pre><code>
+postgres=# \d quizzes
+                           Table &quot;public.quizzes&quot;
+  Column   |  Type   |                      Modifiers                       
+-----------+---------+------------------------------------------------------
+ id        | integer | not null default nextval('quizzes_id_seq'::regclass)
+ quiz_date | date    | 
+ topic     | text    | 
+Indexes:
+    &quot;quizzes_pkey&quot; PRIMARY KEY, btree (id)
+</code></pre>
+
+<p>Quiz Results:</p>
+
+<pre><code>postgres=# \d quiz_results 
+        Table &quot;public.quiz_results&quot;
+   Column   |       Type       | Modifiers 
+------------+------------------+-----------
+ quiz_id    | integer          | 
+ student_id | integer          | 
+ score      | double precision | 
+Foreign-key constraints:
+    &quot;quiz_results_student_id_fkey&quot; FOREIGN KEY (student_id) REFERENCES students(id)
+</code></pre>
+
+<p>If you&rsquo;re ever worked on a large, legacy code base or with a complicated data set, I&rsquo;m sure you&rsquo;ve seen the limits of this type of exploration. Old, unused columns still show up in legacy schemas. Sparsely populated tables show up just as clearly in a schema as the most heavily used tables. It&rsquo;s a bit like looking at a map of a country with just the city and state boundaries (schema view) vs looking at a map that shows population density or traffic patterns at rush hour(data-shape view).</p>
+
+<p>To understand the shape of the data, ask questions like, how many students are there?</p>
+
+<pre><code>postgres=# SELECT count(*) FROM students;
+ count 
+-------
+   100
+(1 row)
+
+examp
+</code></pre>
+
+<p>How many quizzes are there?</p>
+
+<pre><code>postgres=# SELECT count(*) FROM quizzes;
+ count 
+-------
+    91
+(1 row)
+</code></pre>
+
+<p>Has every student taken every quiz?</p>
+
+<pre><code>postgres=# SELECT count(*) FROM quiz_results;
+ count 
+-------
+  6940
+(1 row
+</code></pre>
+
+<p>Hmmm, we would have 9100 quiz results if 100 students had taken each of 91 quizzes. Are we dealing with student absences? Or is there some other pattern in the shape of the data? At this point, missing quiz results won&rsquo;t necessarily impact our ability to answer the question (moving two-week average score per student), but we should understand the shape of the data we&rsquo;re describing.</p>
+
+<p>Sometimes you get lucky and a single GROUP BY will reveal significant results that explain the missing quiz results, but it looks like that&rsquo;s not the case here.</p>
+
+<pre><code>postgres=# SELECT student_id, count(1) as count FROM quiz_results GROUP BY student_id ORDER BY count DESC;
+
+ student_id | count 
+------------+-------
+         24 |    91
+          8 |    91
+         11 |    91
+         16 |    91
+         39 |    91
+          3 |    91
+         47 |    91
+         14 |    91
+         46 |    91
+         48 |    91
+         17 |    91
+         28 |    91
+         36 |    91
+         15 |    91
+         .
+         .
+         .
+</code></pre>
+
+<p>If the pattern doesn&rsquo;t reveal itself at the top-level, you can group the counts themselves, to see if there&rsquo;s a pattern to the distribution of quizzes taken per student.</p>
+
+<p>To write the query, we make our &ldquo;quizzes per student&rdquo; query a subquery that we can select from and basically repeat the group by and count approach.</p>
+
+<p>That query looks like this:</p>
+
+<pre><code>SELECT
+  quizzes,
+  count(1) as count
+FROM (
+  SELECT student_id, count(1) as quizzes FROM quiz_results GROUP BY student_id
+) r
+GROUP BY quizzes
+ORDER BY count DESC;
+</code></pre>
+
+<p>And now we get a much more intelligble result:</p>
+
+<pre><code> quizzes | count 
+---------+-------
+      91 |    49
+      61 |    30
+      31 |    21
+(3 rows)
+</code></pre>
+
+<p>Which tells us that about half the students did take all 91 quizzes, 30 took 61 and the last 21 students only took 31 quizzes. With clean groupings like this, there&rsquo;s probably some kind of cohort-level reason for the number. In other words, if missing quizzes were due to student absences, you&rsquo;d expect to see a wider range in &ldquo;number of quizzes per student&rdquo; because the count of absences per student would likely have more variation.</p>
+
+<p>If you really wanted to keep poking at the data, you&rsquo;d have one other nice entry point: date.</p>
+
+<p>Here&rsquo;s our distribution of quiz results by date:</p>
+
+<pre><code>SELECT
+  quiz_date as quiz_date,
+  count(1) as results
+FROM
+  quiz_results qr
+JOIN
+  quizzes q
+ON
+  qr.quiz_id = q.id
+GROUP BY quiz_date
+ORDER BY quiz_date DESC;
+</code></pre>
+
+<p>I&rsquo;m not going to put all 91 results here, but if you&rsquo;re following along and run the query, you&rsquo;ll see a pattern that explains the &ldquo;quizzes per student&rdquo; data, namely, a new group of students joined every month and everyone who was participating at the time took every quiz.</p>
+
+<p>So:</p>
+
+<pre><code>quiz_date  | results 
+------------+---------
+ 2018-12-31 |     100
+ 2018-12-30 |     100
+ 2018-12-29 |     100
+ 2018-12-28 |     100
+ 2018-12-27 |     100
+ 2018-12-26 |     100
+ 2018-12-25 |     100
+ 2018-12-24 |     100
+ .
+ .
+ .
+ 2018-11-09 |      79
+ 2018-11-08 |      79
+ 2018-11-07 |      79
+ 2018-11-06 |      79
+ 2018-11-05 |      79
+ 2018-11-04 |      79
+ 2018-11-03 |      79
+ 2018-11-02 |      79
+ 2018-11-01 |      79
+ .
+ .
+ .
+ 2018-10-06 |      49
+ 2018-10-05 |      49
+ 2018-10-04 |      49
+ 2018-10-03 |      49
+ 2018-10-02 |      49
+(91 rows)
+</code></pre>
+
+<p>Even building up this example, I played with half a dozen different ways to poke at the data and get a feel for its shape. I hope that&rsquo;s what you take away from this section more than anything else: <strong>simple, exploratory queries help you get the shape of a data set and build your intuition about the correctness of your query results, which really comes in handy when you try to draw complicated conclusions about the data later on.</strong></p>
+
+<h3 id="get-specific">Get Specific</h3>
+
+<p>Once you have a feel for the quiz results we&rsquo;re working with, the next thing to do is take a very specific example all the way from start to finish.</p>
+
+<p>We want to build up a specific case where we look at:</p>
+
+<ul>
+<li>one student&rsquo;s scores</li>
+<li>the average of all those scores</li>
+<li>the average of all those scores for multiple two-week periods</li>
+</ul>
+
+<p>With these specific results, we can check the summary data in the more complicated case of calculating the moving two-week average for all students and be confident that we&rsquo;ve done our summary calculation correctly.</p>
+
+<p>First, pick a student:</p>
+
+<pre><code>SELECT * FROM quiz_results WHERE student_id = 2
+</code></pre>
+
+<p>Wait, that&rsquo;s not going to give us rich enough data to build intuition about what&rsquo;s happening in the data, is it? Let&rsquo;s spend a little more time joining onto the student and quiz tables to inflate our normalized data:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+ORDER BY q.quiz_date
+</code></pre>
+
+<p>Which gives us the much more readable:</p>
+
+<pre><code> quiz_date  | first_name | last_name | score 
+------------+------------+-----------+-------
+ 2018-10-02 | Bernadette | Stanton   |    72
+ 2018-10-03 | Bernadette | Stanton   |  98.2
+ 2018-10-04 | Bernadette | Stanton   |    93
+ 2018-10-05 | Bernadette | Stanton   |  82.4
+ 2018-10-06 | Bernadette | Stanton   |  87.6
+ 2018-10-07 | Bernadette | Stanton   |  73.4
+ 2018-10-08 | Bernadette | Stanton   |  81.1
+ 2018-10-09 | Bernadette | Stanton   |  79.9
+ 2018-10-10 | Bernadette | Stanton   |  83.9
+ 2018-10-11 | Bernadette | Stanton   |  76.9
+ 2018-10-12 | Bernadette | Stanton   |  86.8
+ 2018-10-13 | Bernadette | Stanton   |  86.5
+ 2018-10-14 | Bernadette | Stanton   |  73.2
+ 2018-10-15 | Bernadette | Stanton   |  82.2
+</code></pre>
+
+<p>If we calculate the average across all scores for Bernadette, our data collapses down to a single value:</p>
+
+<pre><code>SELECT
+  first_name,
+  last_name,
+  AVG(score) as average
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+GROUP BY first_name, last_name
+
+ first_name | last_name |     average      
+------------+-----------+------------------
+ Bernadette | Stanton   | 86.6978021978022
+(1 row)
+</code></pre>
+
+<p>Maybe that&rsquo;s useful? We could add a two-week date range and find her current two-week average.</p>
+
+<p>First, verify that&rsquo;s we&rsquo;re capturing the correct time range in the WHERE clause:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+  AND quiz_date &lt;= '2018-12-31'::timestamp
+  AND quiz_date &gt; '2018-12-31'::timestamp - '2 weeks'::interval
+ORDER BY quiz_date
+
+ quiz_date  | first_name | last_name | score 
+------------+------------+-----------+-------
+ 2018-12-18 | Bernadette | Stanton   |    99
+ 2018-12-19 | Bernadette | Stanton   |  97.9
+ 2018-12-20 | Bernadette | Stanton   |  75.2
+ 2018-12-21 | Bernadette | Stanton   |  97.9
+ 2018-12-22 | Bernadette | Stanton   |  89.6
+ 2018-12-23 | Bernadette | Stanton   |  85.4
+ 2018-12-24 | Bernadette | Stanton   |  80.4
+ 2018-12-25 | Bernadette | Stanton   |  91.8
+ 2018-12-26 | Bernadette | Stanton   |  88.2
+ 2018-12-27 | Bernadette | Stanton   |  97.2
+ 2018-12-28 | Bernadette | Stanton   |  96.6
+ 2018-12-29 | Bernadette | Stanton   |  91.4
+ 2018-12-30 | Bernadette | Stanton   |  81.5
+ 2018-12-31 | Bernadette | Stanton   |  85.6
+(14 rows)
+</code></pre>
+
+<p>And now calculate the average for those 14 quizzes:</p>
+
+<pre><code>SELECT
+  first_name,
+  last_name,
+  AVG(score) as average
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+  AND quiz_date &lt;= '2018-12-31'::timestamp
+  AND quiz_date &gt; '2018-12-31'::timestamp - '2 weeks'::interval
+GROUP BY first_name, last_name
+
+ first_name | last_name |     average      
+------------+-----------+------------------
+ Bernadette | Stanton   | 89.8357142857143
+(1 row)
+</code></pre>
+
+<p>One more for reference:</p>
+
+<pre><code>SELECT
+  first_name,
+  last_name,
+  AVG(score) as average
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+  AND quiz_date &lt;= '2018-12-31'::timestamp - '2 weeks'::interval
+  AND quiz_date &gt; '2018-12-31'::timestamp - '4 weeks'::interval
+GROUP BY first_name, last_name
+
+ first_name | last_name |     average      
+------------+-----------+------------------
+ Bernadette | Stanton   | 88.5142857142857
+(1 row)
+</code></pre>
+
+<p>This next step is going to feel like a little bit of SQL magic, but there is a key concept that lets us combine the last two queries (and more) into a single function call: <a href="https://www.postgresql.org/docs/9.1/tutorial-window.html">window functions</a>. Window functions in SQL allow you to perform an aggregation (e.g. COUNT, SUM, AVG, etc) over a paritcular <em>window</em> of data that is a subset of the total data you are scanning in a single query.</p>
+
+<p>With a window function, instead of one query for each two week period, where the &ldquo;window&rdquo; is specified in the where clause, we can calculate all the moving averages in a single query. We can specify the range of time within the magical window function and get a two-week average for each row of data, i.e. each quiz date in our result set.</p>
+
+<p>Here&rsquo;s an example of a window function, ROW_NUMBER, that illustrates the windowing clearly. ROW_NUMBER assigns a row number based on the framing clause in the OVER statment, which here is just <code>ORDER BY quiz_date</code>.</p>
+
+<p>So we end up with:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score,
+  ROW_NUMBER() OVER(ORDER BY quiz_date) as quiz_number
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+ORDER BY q.quiz_date
+
+ quiz_date  | first_name | last_name | score | quiz_number 
+------------+------------+-----------+-------+-------------
+ 2018-10-02 | Bernadette | Stanton   |    72 |           1
+ 2018-10-03 | Bernadette | Stanton   |  98.2 |           2
+ 2018-10-04 | Bernadette | Stanton   |    93 |           3
+ 2018-10-05 | Bernadette | Stanton   |  82.4 |           4
+ 2018-10-06 | Bernadette | Stanton   |  87.6 |           5
+ 2018-10-07 | Bernadette | Stanton   |  73.4 |           6
+ 2018-10-08 | Bernadette | Stanton   |  81.1 |           7
+ 2018-10-09 | Bernadette | Stanton   |  79.9 |           8
+ 2018-10-10 | Bernadette | Stanton   |  83.9 |           9
+ 2018-10-11 | Bernadette | Stanton   |  76.9 |          10
+</code></pre>
+
+<p>All we&rsquo;re doing is giving an incrementing integer to each quiz result, based on the quiz date. You can see that the earlierst quiz gets number 1, then 2,3,4, etc.</p>
+
+<p>It starts to look more magical when we apply the same concept to the average:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score,
+  AVG(score) OVER(ORDER BY quiz_date) as average_score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+ORDER BY q.quiz_date
+LIMIT 10
+
+ quiz_date  | first_name | last_name | score |   average_score  
+------------+------------+-----------+-------+------------------
+ 2018-10-02 | Bernadette | Stanton   |    72 |               72
+ 2018-10-03 | Bernadette | Stanton   |  98.2 |             85.1
+ 2018-10-04 | Bernadette | Stanton   |    93 | 87.7333333333333
+ 2018-10-05 | Bernadette | Stanton   |  82.4 |             86.4
+ 2018-10-06 | Bernadette | Stanton   |  87.6 |            86.64
+ 2018-10-07 | Bernadette | Stanton   |  73.4 | 84.4333333333333
+ 2018-10-08 | Bernadette | Stanton   |  81.1 | 83.9571428571429
+ 2018-10-09 | Bernadette | Stanton   |  79.9 |            83.45
+ 2018-10-10 | Bernadette | Stanton   |  83.9 |             83.5
+ 2018-10-11 | Bernadette | Stanton   |  76.9 |            82.84
+(10 rows)
+</code></pre>
+
+<p>If you check the first 4 rows, you can see that the averages we&rsquo;re getting back are the cumulative averages of each new quiz and the preceding quizzes:</p>
+
+<pre><code>postgres=# select(72 +98.2)/2 as average_score;
+     average_score   
+---------------------
+ 85.1000000000000000
+(1 row)
+
+postgres=# select (72 + 98.2 + 93) / 3 as average_score;
+     average_score   
+---------------------
+ 87.7333333333333333
+(1 row)
+
+postgres=# select (72 + 98.2 + 93 + 82.4) / 4 as average_score;
+     average_score   
+---------------------
+ 86.4000000000000000
+(1 row)
+</code></pre>
+
+<p>There&rsquo;s one more concept we need to add here, which might not be obivous from our last query. We need to define a boundary around which rows get included in the average calculation. Since we&rsquo;re aiming to get to the two-week average, we want to only include the preceding two weeks in the average score each day (or for the first two weeks, as many quizzes are available up to and including the current day).</p>
+
+<p>Window functions do indeed <a href="https://www.postgresql.org/docs/9.1/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS">allow us to specific the range or rows we query over</a>.</p>
+
+<p>Check out this slight tweek, adding <code>ROWS 2 PRECIDING</code> to the OVER statement:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score,
+  AVG(score) OVER(ORDER BY quiz_date ROWS 2 PRECEDING) as average_score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+ORDER BY q.quiz_date
+LIMIT 10
+</code></pre>
+
+<p>Which returns:</p>
+
+<pre><code> quiz_date  | first_name | last_name | score |  average_score   
+------------+------------+-----------+-------+------------------
+ 2018-10-02 | Bernadette | Stanton   |    72 |               72
+ 2018-10-03 | Bernadette | Stanton   |  98.2 |             85.1
+ 2018-10-04 | Bernadette | Stanton   |    93 | 87.7333333333333
+ 2018-10-05 | Bernadette | Stanton   |  82.4 |             91.2
+ 2018-10-06 | Bernadette | Stanton   |  87.6 | 87.6666666666667
+ 2018-10-07 | Bernadette | Stanton   |  73.4 | 81.1333333333333
+ 2018-10-08 | Bernadette | Stanton   |  81.1 |             80.7
+ 2018-10-09 | Bernadette | Stanton   |  79.9 | 78.1333333333333
+ 2018-10-10 | Bernadette | Stanton   |  83.9 | 81.6333333333333
+ 2018-10-11 | Bernadette | Stanton   |  76.9 | 80.2333333333333
+(10 rows)
+</code></pre>
+
+<p>Our results for 2018-10-05 are different now. Last time we got 86.4 and now we have 91.2. If you calculate out the averages, you can see that we are now adding 3 numbers  (current row + 2 preceding) instead of 4 (all preceding), when we didn&rsquo;t specify which rows to use:</p>
+
+<pre><code>postgres=# select (82.4 +93 +98.2 + 72) / 4 as average_score;
+    average_score    
+---------------------
+ 86.4000000000000000
+(1 row)
+
+postgres=# select (82.4 +93 +98.2) / 3 as average_score;
+    average_score    
+---------------------
+ 91.2000000000000000
+(1 row)
+</code></pre>
+
+<p><strong>This is a perfect example of a small, easy-to-miss, but important detail. If you just apply the formula to the aggregate results instead of taking the time to look at the expanded row data, you might never see the calculation change.</strong></p>
+
+<p>Now that we know how to apply the window function correctly, we can build our final query for the specific case.</p>
+
+<p>First, make three small changes:</p>
+
+<ol>
+<li>add <code>ROWS 13 PRECEDING</code> to get two-week average</li>
+<li>round the averages for easy of reading</li>
+<li>change the order of the display results (which is independent of over in the frame clause, so we can calculate and display rows with different sort orders)</li>
+</ol>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score,
+  ROUND(AVG(score) OVER(ORDER BY quiz_date ROWS 13 PRECEDING)::numeric, 2) as average_score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+WHERE
+  s.id = 2
+ORDER BY q.quiz_date DESC
+
+ quiz_date  | first_name | last_name | score | average_score 
+------------+------------+-----------+-------+---------------
+ 2018-12-31 | Bernadette | Stanton   |  85.6 |         89.84
+ 2018-12-30 | Bernadette | Stanton   |  81.5 |         90.69
+ 2018-12-29 | Bernadette | Stanton   |  91.4 |         90.79
+ 2018-12-28 | Bernadette | Stanton   |  96.6 |         91.10
+ 2018-12-27 | Bernadette | Stanton   |  97.2 |         89.44
+ 2018-12-26 | Bernadette | Stanton   |  88.2 |         89.19
+ 2018-12-25 | Bernadette | Stanton   |  91.8 |         88.55
+ 2018-12-24 | Bernadette | Stanton   |  80.4 |         88.33
+ 2018-12-23 | Bernadette | Stanton   |  85.4 |         88.11
+ 2018-12-22 | Bernadette | Stanton   |  89.6 |         89.00
+ 2018-12-21 | Bernadette | Stanton   |  97.9 |         88.98
+ 2018-12-20 | Bernadette | Stanton   |  75.2 |         88.94
+ 2018-12-19 | Bernadette | Stanton   |  97.9 |         90.69
+ 2018-12-18 | Bernadette | Stanton   |    99 |         89.71
+ 2018-12-17 | Bernadette | Stanton   |  97.5 |         88.51
+</code></pre>
+
+<p>Compare the average scores for 2018-12-31 and 2018-12-17 to the ones we calculated manually at the beginning of this section. They match!</p>
+
+<h3 id="summarize-your-findings">Summarize Your Findings</h3>
+
+<p>Now that we are confident about calculating our moving two-week average for one student, we can generalize to all students&hellip;probably.</p>
+
+<p>Let&rsquo;s try removing <code>WHERE s.id = 2</code>:</p>
+
+<pre><code>SELECT
+  quiz_date,
+  first_name,
+  last_name,
+  score,
+  ROUND(AVG(score) OVER(ORDER BY quiz_date ROWS 13 PRECEDING)::numeric, 2) as average_score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+ORDER BY q.quiz_date DESC
+
+ quiz_date  | first_name |  last_name  | score | average_score 
+------------+------------+-------------+-------+---------------
+ 2018-12-31 | Bernadette | Stanton     |  85.6 |         83.91
+ 2018-12-31 | Claudie    | Turner      |  89.5 |         85.05
+ 2018-12-31 | Karson     | Bergstrom   |    85 |         85.52
+ 2018-12-31 | Libbie     | Farrell     |    83 |         86.35
+ 2018-12-31 | Eliezer    | Bruen       |  74.9 |         85.95
+ 2018-12-31 | Constantin | Walker      |  98.2 |         85.92
+ 2018-12-31 | Luisa      | Altenwerth  |  90.2 |         84.09
+ 2018-12-31 | Rebeca     | Welch       |  84.3 |         83.26
+ 2018-12-31 | Deonte     | Leffler     |  91.8 |         83.89
+ 2018-12-31 | Gilbert    | Wiegand     |  91.2 |         82.74
+ 2018-12-31 | Kathlyn    | Emmerich    |  81.6 |         82.83
+ 2018-12-31 | Jimmy      | Kemmer      |  97.4 |         82.88
+ 2018-12-31 | Rosemarie  | Schmeler    |  73.4 |         81.68
+ 2018-12-31 | Elissa     | Schroeder   |  77.4 |         82.96
+ 2018-12-31 | Maribel    | Lakin       |  72.8 |         82.62
+ 2018-12-31 | Loraine    | Koss        |  96.1 |         83.70
+ 2018-12-31 | Gladyce    | Rath        |  96.6 |         83.13
+ 2018-12-31 | Princess   | Bechtelar   |  77.4 |         81.71
+ 2018-12-31 | Niko       | MacGyver    |  74.5 |         81.57
+ 2018-12-31 | Buster     | Hagenes     |  72.6 |         83.10
+ 2018-12-31 | Eunice     | Trantow     |  78.6 |         84.78
+</code></pre>
+
+<p>That looks like kind of a mess! You can see that Bernadette&rsquo;s 2018-12-31 is wrong.</p>
+
+<p>To fix this summary calculation, we need one more key window function concept: PARTITION BY. We can partition the data so that we can do calculations for each student individually, just like we did for Bernadette, but all at once.</p>
+
+<pre><code>SELECT
+  quiz_date,
+  student_id,
+  first_name,
+  last_name,
+  score,
+  ROUND(AVG(score) OVER(PARTITION BY student_id ORDER BY quiz_date ROWS 13 PRECEDING)::numeric, 2) as average_score
+FROM
+  quiz_results r
+JOIN
+  students s
+ON
+  r.student_id = s.id
+JOIN
+  quizzes q
+ON
+  r.quiz_id = q.id
+ORDER BY student_id, quiz_date DESC
+
+ quiz_date  | student_id | first_name |  last_name  | score | average_score 
+------------+------------+------------+-------------+-------+---------------
+ 2018-12-31 |          2 | Bernadette | Stanton     |  85.6 |         89.84
+ 2018-12-30 |          2 | Bernadette | Stanton     |  81.5 |         90.69
+ 2018-12-29 |          2 | Bernadette | Stanton     |  91.4 |         90.79
+ 2018-12-28 |          2 | Bernadette | Stanton     |  96.6 |         91.10
+ 2018-12-27 |          2 | Bernadette | Stanton     |  97.2 |         89.44
+ 2018-12-26 |          2 | Bernadette | Stanton     |  88.2 |         89.19
+ 2018-12-25 |          2 | Bernadette | Stanton     |  91.8 |         88.55
+ 2018-12-24 |          2 | Bernadette | Stanton     |  80.4 |         88.33
+ 2018-12-23 |          2 | Bernadette | Stanton     |  85.4 |         88.11
+ 2018-12-22 |          2 | Bernadette | Stanton     |  89.6 |         89.00
+ 2018-12-21 |          2 | Bernadette | Stanton     |  97.9 |         88.98
+ 2018-12-20 |          2 | Bernadette | Stanton     |  75.2 |         88.94
+ 2018-12-19 |          2 | Bernadette | Stanton     |  97.9 |         90.69
+ 2018-12-18 |          2 | Bernadette | Stanton     |    99 |         89.71
+ 2018-12-17 |          2 | Bernadette | Stanton     |  97.5 |         88.51
+</code></pre>
+
+<p>We made three changes to the query:</p>
+
+<ol>
+<li>add student_id, which we know is unique, so that we can cleanly group scores by student</li>
+<li>add <code>PARTITION BY student_id</code> in the window function</li>
+<li>and <code>ORDER BY student_id</code> so we can see Bernadette&rsquo;s results (which are now correct again)</li>
+</ol>
+
+<p>For completeness, I would probaby run through specific averages for one more student and then check their results in the final aggregate, but we seem to be heading in the right direction.</p>
+
+<h2 id="one-more-time-step-by-step">One More Time: Step-by-Step</h2>
+
+<p>Thanks for following along through this example!</p>
+
+<p>I know building queries up section-by-section like this probably seems tedious. It can definitely feel that way at times, but this approach has saved me from making small mistakes so many times that I&rsquo;m convinced it&rsquo;s worth it.</p>
+
+<p>Just to say it again, the step-by-step approach to building complicated analytical SQL queries is:</p>
+
+<ol>
+<li>Start with a simple query</li>
+<li>Run it against your database</li>
+<li>Check the results</li>
+<li>Looking good?</li>
+<li>Copy the working query and paste it below itself</li>
+<li>Make one small change to the copy of your working query</li>
+<li>Repeat steps 2 - 6 until you have the data you want</li>
+</ol>
+
+<p>If you follow those steps, you&rsquo;ll have proof that your data adds up and you&rsquo;ll have a much stronger feel for what&rsquo;s inside your tables.</p>
+
+<p>Try it! Let me know how it goes&hellip;</p>
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer"
+                class="button big previous">3 Ways to Level Up Your SQL as a Software Engineer</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards">Stop Writing SQL Backwards</a>
+              </h3>
+              
+              <time class="published" datetime='2019-01-02'>
+                January 2, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a>
+              </h3>
+              
+              <time class="published" datetime='2018-02-06'>
+                February 6, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-28'>
+                January 28, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
+              </h3>
+              
+              <time class="published" datetime='2017-11-07'>
+                November 7, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a>
+              </h3>
+              
+              <time class="published" datetime='2017-10-30'>
+                October 30, 2017
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">31</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="https://dankleiman.com/js/util.js"></script>
+      <script src="https://dankleiman.com/js/main.js"></script>
+      <script src="https://dankleiman.com/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

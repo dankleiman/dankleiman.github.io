@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>railsconf on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/railsconf/index.xml</link>
+    <link>https://dankleiman.com/categories/railsconf/index.xml</link>
     <description>Recent content in railsconf on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>10 of My Favorite Talks from RailsConf 2015</title>
-      <link>http://dankleiman.com/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</link>
+      <link>https://dankleiman.com/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</link>
       <pubDate>Wed, 29 Apr 2015 20:47:31 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</guid>
+      <guid>https://dankleiman.com/2015/04/29/10-of-my-favorite-talks-from-railsconf-2015</guid>
       <description>&lt;p&gt;RailsConf 2015 was a blast. There were talks on a such a wide range of topics, that I wanted to capture some of my favorites here.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;rsquo;s my Top 10 Countdown from the conference:&lt;/p&gt;

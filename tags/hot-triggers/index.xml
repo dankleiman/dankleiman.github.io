@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hot-triggers on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/hot-triggers/index.xml</link>
+    <link>https://dankleiman.com/tags/hot-triggers/index.xml</link>
     <description>Recent content in hot-triggers on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Building Better Practice Tools</title>
-      <link>http://dankleiman.com/2011/05/16/building-better-practice-tools/</link>
+      <link>https://dankleiman.com/2011/05/16/building-better-practice-tools/</link>
       <pubDate>Mon, 16 May 2011 09:20:57 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/05/16/building-better-practice-tools/</guid>
+      <guid>https://dankleiman.com/2011/05/16/building-better-practice-tools/</guid>
       <description>I&#39;m running a little experiment right now at Brookline Tai Chi to see if we can help our students develop better home practice habits. Specifically, I&#39;m experimenting with self-reporting and automated reminders to spark daily practice sessions outside of class.
 Now, when I talk to other people in our international tai chi community, I realize what a powerful practice aid Brookline Tai Chi already is. What I mean is, the bricks-and-mortar experience of coming to the school and being around other people removes so many barriers people have to doing tai chi.</description>
     </item>

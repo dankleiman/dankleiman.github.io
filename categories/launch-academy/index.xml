@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>launch-academy on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/launch-academy/index.xml</link>
+    <link>https://dankleiman.com/categories/launch-academy/index.xml</link>
     <description>Recent content in launch-academy on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Coding Bootcamp ROI 3 Weeks Later</title>
-      <link>http://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
+      <link>https://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
+      <guid>https://dankleiman.com/2014/08/11/coding-bootcamp-roi-3-weeks-later</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been 3 weeks since I graduated from &lt;a href=&#34;http://www.launchacademy.com&#34;&gt;Launch Academy&lt;/a&gt; and I start work at a new job on Wednesday as a software developer.&lt;/p&gt;
 
 &lt;p&gt;Obviously, I&amp;rsquo;m thrilled with this whirlwind process, and coming off almost ten years in my last job, the pace of all this change is a little hard to grasp.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Launching Datastroyer</title>
-      <link>http://dankleiman.com/2014/07/02/launching-datastroyer</link>
+      <link>https://dankleiman.com/2014/07/02/launching-datastroyer</link>
       <pubDate>Wed, 02 Jul 2014 21:29:17 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/07/02/launching-datastroyer</guid>
+      <guid>https://dankleiman.com/2014/07/02/launching-datastroyer</guid>
       <description>&lt;p&gt;I&amp;rsquo;m very excited to announce that &lt;a href=&#34;https://github.com/craigmcginley&#34;&gt;Craig McGinley&lt;/a&gt; and I have launched &lt;a href=&#34;http://datastroyer.herokuapp.com/&#34;&gt;Datastroyer&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Datastroyer is our online tool for searching JSON objects and returning the correct path to any value.
@@ -37,10 +37,10 @@
     
     <item>
       <title>Launch Academy: 5 Weeks In or 5 Weeks Left?</title>
-      <link>http://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</link>
+      <link>https://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</link>
       <pubDate>Sun, 15 Jun 2014 18:05:41 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</guid>
+      <guid>https://dankleiman.com/2014/06/15/launch-academy-5-weeks-in-or-5-weeks-left</guid>
       <description>This past week marks the end of Week 5 at Launch Academy.
 My head hurts a little bit when I try to give a quick summary of all we&amp;rsquo;ve worked on. There&amp;rsquo;s so much!
 At the same time, I see the runway towards the end of the program getting shorter and shorter&amp;hellip;
@@ -49,10 +49,10 @@ So are we 5 weeks in? Or do we only have 5 weeks left? Immersive Learning in the
     
     <item>
       <title>Asking Questions: The Holy Grail of OOP</title>
-      <link>http://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</link>
+      <link>https://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</link>
       <pubDate>Sun, 08 Jun 2014 20:32:17 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</guid>
+      <guid>https://dankleiman.com/2014/06/08/asking-questions-the-holy-grail-of-oop</guid>
       <description>This week at Launch Academy, we started working on Object Oriented Programming (OOP).
 We&amp;rsquo;ve been guided by the conceptual model that objects, which can have state and defined behavoirs, respond to methods the same way that you would respond to a question.
 Of course, a week of asking my objects questions made me think of this:
@@ -61,10 +61,10 @@ Of course, a week of asking my objects questions made me think of this:
     
     <item>
       <title>Buying a Mongolian Website for my URL Shortner</title>
-      <link>http://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</link>
+      <link>https://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</link>
       <pubDate>Fri, 30 May 2014 09:17:22 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</guid>
+      <guid>https://dankleiman.com/2014/05/30/buying-a-mongolian-website-for-my-url-shortner</guid>
       <description>Ok, so technically I just purchased a Mongolian domain name: klei.mn.
 Why, you might be wondering? This week at Launch Academy we&amp;rsquo;ve been building Sinatra applications with simple databases (Redis and Postgres) and deploying them to Heroku.
 One of the extra-credit projects was to build a url shortner and I thought it would be cool to hook mine up to a customized domain, kind of like a vanity plate for your car.</description>
@@ -72,20 +72,20 @@ One of the extra-credit projects was to build a url shortner and I thought it wo
     
     <item>
       <title>Building a Learning Tool for Compound Data Structures</title>
-      <link>http://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</link>
+      <link>https://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</link>
       <pubDate>Sun, 25 May 2014 09:07:15 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</guid>
+      <guid>https://dankleiman.com/2014/05/25/building-a-learning-tool-for-compound-data-structures</guid>
       <description>One of the most challenging things about learning to work with compound data structures has been reading the nested hashes and arrays and extracting the right set of brackets to use to identify a particular value in your code. For example:
 movie = { title: &#39;The Nutty Professor&#39;, cast: [ { name: &#39;Eddie Murphy&#39;, characters: [ &#39;Sherman Klump&#39;, &#39;Buddy Love&#39;, &#39;Lance Perkins&#39;, &#39;Papa Klump&#39;, &#39;Mama Klump&#39;, &#39;Grandma Klump&#39;, &#39;Ernie Klump&#39; ] }, { name: &#39;Jada Pinkett Smith&#39;, characters: [ &#39;Carla Purty&#39; ] } ] }  If I want to find a character, I have to reference an array inside a hash inside an array inside a hash&amp;hellip;I think.</description>
     </item>
     
     <item>
       <title>Day 10: The Dreams Continue</title>
-      <link>http://dankleiman.com/2014/05/21/day-10-the-dreams-continue</link>
+      <link>https://dankleiman.com/2014/05/21/day-10-the-dreams-continue</link>
       <pubDate>Wed, 21 May 2014 08:02:38 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/05/21/day-10-the-dreams-continue</guid>
+      <guid>https://dankleiman.com/2014/05/21/day-10-the-dreams-continue</guid>
       <description>It happened again.
 At 5:00am this morning I woke myself up&amp;hellip;.talking through a solution to a coding problem I had at the end of the day yesterday.
 I was literally coding in my sleep.
@@ -95,10 +95,10 @@ But I&amp;rsquo;ve seen this before and once I got over the shock of writing cod
     
     <item>
       <title>Launch Academy: Week 1 Reflections</title>
-      <link>http://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</link>
+      <link>https://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</link>
       <pubDate>Sat, 17 May 2014 09:32:59 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</guid>
+      <guid>https://dankleiman.com/2014/05/17/launch-academy-week-1-reflections</guid>
       <description>So, all this week, I&amp;rsquo;ve been experiencing the Tetris effect and I&amp;rsquo;ve come to appreciate the beauty, and the painlessness, of learning how to break down a problem.
 Let me explain&amp;hellip;.
 The Tetris Effect According to the study from Harvard Medical School, games like Tetris can reveal the way our brain integrates new information.
@@ -107,10 +107,10 @@ In fact, the game Tetris has proved to be just that. Robert Stickgold and his co
     
     <item>
       <title>Reflections on Launch Academy Prep: Balancing Theory and Practice</title>
-      <link>http://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</link>
+      <link>https://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</link>
       <pubDate>Mon, 12 May 2014 14:36:53 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</guid>
+      <guid>https://dankleiman.com/2014/05/12/reflections-on-launch-academy-prep-balancing-theory-and-practice</guid>
       <description>Preparing for Launch Academy while finishing up work as the director Brookline Tai Chi has been a massive exercise in balancing &amp;ldquo;theory and practice.&amp;rdquo;
 This explanation from Practical Object-Oriented Design in Ruby by Sandi Metz perfectly captures the difference:
  What is the difference between theory and practice? In theory, there is none. If theory were practice you could learn the rules of OOD, apply them consistently, and create perfect code from this day forward; your work here would be done.</description>

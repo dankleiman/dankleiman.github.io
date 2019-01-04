@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>feedback on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/feedback/index.xml</link>
+    <link>https://dankleiman.com/tags/feedback/index.xml</link>
     <description>Recent content in feedback on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>User Feedback from Trainerfly Beta</title>
-      <link>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</link>
+      <link>https://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</link>
       <pubDate>Sun, 20 Feb 2011 08:59:08 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
+      <guid>https://dankleiman.com/2011/02/20/user-feedback-from-trainerfly-beta/</guid>
       <description>Over the last month or so, I&#39;ve gotten Trainerfly out into people&#39;s hands and I&#39;ve been learning some really interesting lessons. I think it was easy for me to get wrapped up in how I&#39;ve evolved it as a tool in my business over the last two years and lose perspective on how other people might be trying to add it into their business from scratch, with none of that prior history.</description>
     </item>
     

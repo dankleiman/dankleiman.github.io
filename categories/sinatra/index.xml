@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sinatra on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/sinatra/index.xml</link>
+    <link>https://dankleiman.com/categories/sinatra/index.xml</link>
     <description>Recent content in sinatra on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>The Race to Hello World: Rails vs. Sinatra</title>
-      <link>http://dankleiman.com/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</link>
+      <link>https://dankleiman.com/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</link>
       <pubDate>Mon, 23 Jun 2014 08:11:28 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</guid>
+      <guid>https://dankleiman.com/2014/06/23/the-race-to-hello-world-rails-vs.-sinatra</guid>
       <description>Earlier, I explained how I built my personalized url shortner in Sinatra.
 This past week, we&amp;rsquo;ve been spinning up demo apps in Rails instead, so I wanted to walk through a little comparison of the two frameworks.
 As one of our instructors said, &amp;ldquo;Sinatra is like a stripped-down muscle car and Rails is like an RV.&amp;rdquo;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bigquery on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/bigquery/index.xml</link>
+    <link>https://dankleiman.com/categories/bigquery/index.xml</link>
     <description>Recent content in bigquery on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,11 +10,11 @@
     
     <item>
       <title>More Efficient Solutions to the Top N per Group Problem</title>
-      <link>http://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</link>
+      <link>https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</link>
       <pubDate>Tue, 07 Nov 2017 20:46:05 -0500</pubDate>
       
-      <guid>http://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</guid>
-      <description>&lt;p&gt;In my last post, I tried to tackle getting &lt;a href=&#34;http://dankleiman.com/blog/2017/10/30/top-n-per-group-in-bigquery/&#34;&gt;the Top N Results per Group&lt;/a&gt; from a BigQuery dataset.&lt;/p&gt;
+      <guid>https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem</guid>
+      <description>&lt;p&gt;In my last post, I tried to tackle getting &lt;a href=&#34;https://dankleiman.com/blog/2017/10/30/top-n-per-group-in-bigquery/&#34;&gt;the Top N Results per Group&lt;/a&gt; from a BigQuery dataset.&lt;/p&gt;
 
 &lt;p&gt;When I tweeted out the post, I got some great feedback and suggestions for more efficient ways to get the same results, so in this post I want to try to understand &lt;em&gt;why&lt;/em&gt; the alternatives are more efficient.&lt;/p&gt;
 
@@ -23,11 +23,11 @@
     
     <item>
       <title>Top N Per Group in BigQuery</title>
-      <link>http://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery</link>
+      <link>https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery</link>
       <pubDate>Mon, 30 Oct 2017 19:29:32 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery</guid>
-      <description>&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; After I posted this initially, I got some &lt;a href=&#34;https://twitter.com/Dan_Kleiman/status/925921880397287425&#34;&gt;great&lt;/a&gt; &lt;a href=&#34;https://www.reddit.com/r/bigquery/comments/7aecfe/top_n_per_group_in_bigquery/&#34;&gt;feedback&lt;/a&gt;, so I wrote a follow-up post &lt;a href=&#34;http://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery</guid>
+      <description>&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; After I posted this initially, I got some &lt;a href=&#34;https://twitter.com/Dan_Kleiman/status/925921880397287425&#34;&gt;great&lt;/a&gt; &lt;a href=&#34;https://www.reddit.com/r/bigquery/comments/7aecfe/top_n_per_group_in_bigquery/&#34;&gt;feedback&lt;/a&gt;, so I wrote a follow-up post &lt;a href=&#34;https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;In this post, we are going to explore a strategy for collecting the &lt;strong&gt;Top N results per Group&lt;/strong&gt; over a mixed dataset, all in a single query.&lt;/p&gt;
 
@@ -42,10 +42,10 @@
     
     <item>
       <title>Don&#39;t Blow Your BigQuery Budget on Unknown Data!</title>
-      <link>http://dankleiman.com/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
+      <link>https://dankleiman.com/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</link>
       <pubDate>Fri, 06 Oct 2017 14:55:37 -0400</pubDate>
       
-      <guid>http://dankleiman.com/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
+      <guid>https://dankleiman.com/2017/10/06/dont-blow-your-bigquery-budget-on-unknown-data</guid>
       <description>&lt;p&gt;It&amp;rsquo;s easy to blow your BigQuery budget when you are exploring a new data set. Because you&amp;rsquo;re billed for the amount of data scanned, not the ultimate result set, when you don&amp;rsquo;t know what you&amp;rsquo;re looking  for, you can end up with wasteful queries.&lt;/p&gt;
 
 &lt;p&gt;In this post, I&amp;rsquo;m going to share some tips for more efficiently scanning data in BigQuery when you don&amp;rsquo;t quite know what you need.

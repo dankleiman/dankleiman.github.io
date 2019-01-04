@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>switch on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/switch/index.xml</link>
+    <link>https://dankleiman.com/tags/switch/index.xml</link>
     <description>Recent content in switch on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Health Month Wrap-Up</title>
-      <link>http://dankleiman.com/2011/03/29/health-month-wrap-up/</link>
+      <link>https://dankleiman.com/2011/03/29/health-month-wrap-up/</link>
       <pubDate>Tue, 29 Mar 2011 14:48:03 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/03/29/health-month-wrap-up/</guid>
+      <guid>https://dankleiman.com/2011/03/29/health-month-wrap-up/</guid>
       <description>As March comes to an end, I&#39;m wrapping up playing Health Month, an online game that helps you integrate new habits and change behavior. Here&#39;s my review of Health Month and a recap of what I experienced. I have to say, I don&#39;t think I really explored it to the fullest, but there were a couple of things I really liked about it and a couple of things I didn&#39;t connect with in the design.</description>
     </item>
     

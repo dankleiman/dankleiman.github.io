@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>design on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/design/index.xml</link>
+    <link>https://dankleiman.com/tags/design/index.xml</link>
     <description>Recent content in design on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Trainerfly Characters</title>
-      <link>http://dankleiman.com/2010/11/20/trainerfly-characters/</link>
+      <link>https://dankleiman.com/2010/11/20/trainerfly-characters/</link>
       <pubDate>Sat, 20 Nov 2010 05:18:37 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/20/trainerfly-characters/</guid>
+      <guid>https://dankleiman.com/2010/11/20/trainerfly-characters/</guid>
       <description>Check out this draft of a character I&#39;m going to feature on the Trainerfly blog (my brother Sam is doing the design work):</description>
     </item>
     

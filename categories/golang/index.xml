@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/golang/index.xml</link>
+    <link>https://dankleiman.com/categories/golang/index.xml</link>
     <description>Recent content in golang on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,21 +10,21 @@
     
     <item>
       <title>GoBridge with Bill Kennedy</title>
-      <link>http://dankleiman.com/2017/02/12/gobridge-with-bill-kennedy</link>
+      <link>https://dankleiman.com/2017/02/12/gobridge-with-bill-kennedy</link>
       <pubDate>Sun, 12 Feb 2017 15:18:04 -0500</pubDate>
       
-      <guid>http://dankleiman.com/2017/02/12/gobridge-with-bill-kennedy</guid>
-      <description>&lt;p&gt;Last weekend, I had the chance to volunteer at a GoBridge event taught by Bill Kennedy of Ardan Labs. I&amp;rsquo;m trying to make &lt;a href=&#34;http://dankleiman.com/blog/2016/12/29/my-5-strategies-for-learning-go-in-2017/&#34;&gt;2017 my year of learning Go&lt;/a&gt;, so helping out at the event felt like a natural extension and a great way to connect with more people in the Go community.&lt;/p&gt;
+      <guid>https://dankleiman.com/2017/02/12/gobridge-with-bill-kennedy</guid>
+      <description>&lt;p&gt;Last weekend, I had the chance to volunteer at a GoBridge event taught by Bill Kennedy of Ardan Labs. I&amp;rsquo;m trying to make &lt;a href=&#34;https://dankleiman.com/blog/2016/12/29/my-5-strategies-for-learning-go-in-2017/&#34;&gt;2017 my year of learning Go&lt;/a&gt;, so helping out at the event felt like a natural extension and a great way to connect with more people in the Go community.&lt;/p&gt;
 
 &lt;p&gt;Going in with Ruby as my first language, I braced myself for static typing and wanted concurrent programming to bend my brain, but that&amp;rsquo;s not really what happened at all.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>My 5 Strategies for Learning Go in 2017</title>
-      <link>http://dankleiman.com/2016/12/29/my-5-strategies-for-learning-go-in-2017</link>
+      <link>https://dankleiman.com/2016/12/29/my-5-strategies-for-learning-go-in-2017</link>
       <pubDate>Thu, 29 Dec 2016 09:29:22 -0500</pubDate>
       
-      <guid>http://dankleiman.com/2016/12/29/my-5-strategies-for-learning-go-in-2017</guid>
+      <guid>https://dankleiman.com/2016/12/29/my-5-strategies-for-learning-go-in-2017</guid>
       <description>&lt;p&gt;Over the past couple of years, one thing I&amp;rsquo;ve become more and more aware of is the unease and uncertainty of diving into a new project. Not matter what the new X is, I find I always go through the same set of uncomfortable feelings on my initial approach.&lt;/p&gt;
 
 &lt;p&gt;Now, though, I&amp;rsquo;m starting to become familiar enough with this process that &amp;ndash; even though the discomfort doesn&amp;rsquo;t go away in the initial learning stages &amp;ndash; I can embrace it, coexist with it, and forge ahead in learning, because of the strategies I&amp;rsquo;m going to lay out here.&lt;/p&gt;</description>

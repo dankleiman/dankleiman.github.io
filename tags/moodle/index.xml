@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>moodle on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/moodle/index.xml</link>
+    <link>https://dankleiman.com/tags/moodle/index.xml</link>
     <description>Recent content in moodle on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,20 +10,20 @@
     
     <item>
       <title>New Video for Tai Chi Group</title>
-      <link>http://dankleiman.com/2010/12/17/new-video-for-tai-chi-group/</link>
+      <link>https://dankleiman.com/2010/12/17/new-video-for-tai-chi-group/</link>
       <pubDate>Fri, 17 Dec 2010 09:17:44 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/12/17/new-video-for-tai-chi-group/</guid>
+      <guid>https://dankleiman.com/2010/12/17/new-video-for-tai-chi-group/</guid>
       <description>Here&#39;s a sneak peek at some online learning support I&#39;m doing with a Tai Chi group in Farmington, Maine. I went up a couple weeks ago to teach an afternoon workshop and this was the practice set we did by the end.
 The workshop participants also have access to a private Q&amp;amp;A forum, so as they practice between now and the next live training, I can give them feedback. I&#39;ll probably add some new videos as we go to answer any questions that come up.</description>
     </item>
     
     <item>
       <title>Learn Qigong Online?</title>
-      <link>http://dankleiman.com/2010/11/18/learn-qigong-online/</link>
+      <link>https://dankleiman.com/2010/11/18/learn-qigong-online/</link>
       <pubDate>Thu, 18 Nov 2010 06:16:07 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/18/learn-qigong-online/</guid>
+      <guid>https://dankleiman.com/2010/11/18/learn-qigong-online/</guid>
       <description>Can you learn qigong, or any movement art, online? This is a burning question for me right now. My immediate reaction is &#34;NO!&#34;. However, I believe there is a significant role for supplemental online material in the overall learning process, even for movement arts.
 Here&#39;s why it&#39;s a bad idea to learn movement online:
  Learning movement is a kinesthetic experience, not a visual one -- you have to feel where you are in space and you certainly can&#39;t get that from staring at a screen You need feedback -- when you are learning something new, you need refinement and guidance, usually hands-on Some things need to be felt on another person -- we get into this all the time with more subtle qigong principles and there is no way around feeling what&#39;s going on in the instructor&#39;s body to learn what you are trying to do in your own</description>
@@ -31,10 +31,10 @@ Here&#39;s why it&#39;s a bad idea to learn movement online:
     
     <item>
       <title>Mobile-izing Wordpress and Moodle</title>
-      <link>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
+      <link>https://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
       <pubDate>Mon, 15 Nov 2010 14:16:19 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
+      <guid>https://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
       <description>I spent a fair amount of time today upgrading the site and my phone so that I would have better mobile access to the site on my phone and so that you can too!
 Here&#39;s what I ended up doing:
  Adding the MobilePress plugin to DanKleiman.com, so that the site adapts to your mobile browser Installing the Wordpress app on my Droid, so that I can update the site from my phone Installing Moodle for Mobiles, which is &#34;</description>
@@ -42,10 +42,10 @@ Here&#39;s what I ended up doing:
     
     <item>
       <title>Going Mobile</title>
-      <link>http://dankleiman.com/2010/11/15/going-mobile/</link>
+      <link>https://dankleiman.com/2010/11/15/going-mobile/</link>
       <pubDate>Mon, 15 Nov 2010 14:05:42 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/15/going-mobile/</guid>
+      <guid>https://dankleiman.com/2010/11/15/going-mobile/</guid>
       <description>This is a test post from my phone. I just installed a Wordpress app for Android. I&#39;m also working on upgrading the blog and the noodle site for easy mobile access.
 EDIT: It looks like it picked up the post tags from my phone, but it missed the category. Also have to edit the post author through the site. But you don&#39;t really care about that, do you?
 ;-)</description>
@@ -53,10 +53,10 @@ EDIT: It looks like it picked up the post tags from my phone, but it missed the 
     
     <item>
       <title>Trainerfly Backstory: The Moodle Project</title>
-      <link>http://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</link>
+      <link>https://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</link>
       <pubDate>Sun, 14 Nov 2010 14:42:33 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</guid>
+      <guid>https://dankleiman.com/2010/11/14/trainerfly-backstory-the-moodle-project/</guid>
       <description>This post is the second in a series I&#39;m doing on the backstory of how I came to develop a web-based software application called Trainerfly. You can read more about it here.
 For about a year after I decided I need a way to manage all my clients&#39; programs, and share information with them privately, I wrestled with finding the right software. I tried private blogs, but at that time it was tons of work to partition information for each client.</description>
     </item>

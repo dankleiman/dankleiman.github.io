@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>problem-solving on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/problem-solving/index.xml</link>
+    <link>https://dankleiman.com/tags/problem-solving/index.xml</link>
     <description>Recent content in problem-solving on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>The Yin and Yang of Problem Solving</title>
-      <link>http://dankleiman.com/2013/11/08/the-yin-and-yang-of-problem-solving/</link>
+      <link>https://dankleiman.com/2013/11/08/the-yin-and-yang-of-problem-solving/</link>
       <pubDate>Fri, 08 Nov 2013 09:46:58 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2013/11/08/the-yin-and-yang-of-problem-solving/</guid>
+      <guid>https://dankleiman.com/2013/11/08/the-yin-and-yang-of-problem-solving/</guid>
       <description>You know how you can be banging your head against a wall, trying to figure something out?
 Then, you sleep on it, take a shower, or go for a walk and suddenly a solution pops into your head.
 Have you ever wondered why this happens or how it works? So have I...and I don&#39;t know HOW it works, but I do know that we are practicing the exact same skill in qigong.</description>

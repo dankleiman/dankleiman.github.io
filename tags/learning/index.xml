@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>learning on Dan Kleiman</title>
-    <link>http://dankleiman.com/tags/learning/index.xml</link>
+    <link>https://dankleiman.com/tags/learning/index.xml</link>
     <description>Recent content in learning on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Gratitude for Immersive Learning</title>
-      <link>http://dankleiman.com/2014/04/18/gratitude-for-immersive-learning/</link>
+      <link>https://dankleiman.com/2014/04/18/gratitude-for-immersive-learning/</link>
       <pubDate>Fri, 18 Apr 2014 09:33:25 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2014/04/18/gratitude-for-immersive-learning/</guid>
+      <guid>https://dankleiman.com/2014/04/18/gratitude-for-immersive-learning/</guid>
       <description>Last night I taught my last two weekly classes at Brookline Tai Chi.
 Next month, I&#39;ll be diving into a new intensive learning experience, building software applications and learning about the web from a depth I&#39;ve only poked at up until now.
 (I have some really cool stuff planned for Immersion Week too, so I&#39;m not quite done yet!)

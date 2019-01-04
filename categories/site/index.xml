@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>site on Dan Kleiman</title>
-    <link>http://dankleiman.com/categories/site/index.xml</link>
+    <link>https://dankleiman.com/categories/site/index.xml</link>
     <description>Recent content in site on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>10,000 Views on YouTube</title>
-      <link>http://dankleiman.com/2012/03/09/10000-views-on-youtube/</link>
+      <link>https://dankleiman.com/2012/03/09/10000-views-on-youtube/</link>
       <pubDate>Fri, 09 Mar 2012 07:00:00 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2012/03/09/10000-views-on-youtube/</guid>
+      <guid>https://dankleiman.com/2012/03/09/10000-views-on-youtube/</guid>
       <description>So, by the time this post is published, we should be closing in on 10,000 video views on YouTube. Now, I know that&#39;s not a huge number by internet standards and you can probably scroll through the YouTube sidebar and find individual videos that have more views than the entire DKMovementArts channel put together, but....
 
 I Just Wanted to Say &#34;Thank You&#34;
@@ -22,10 +22,10 @@ I don&#39;t care how that number stacks up with&amp;Acirc; other videos on YouTu
     
     <item>
       <title>New Look for 2012 and a Special Announcement</title>
-      <link>http://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</link>
+      <link>https://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</link>
       <pubDate>Thu, 29 Dec 2011 07:30:01 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</guid>
+      <guid>https://dankleiman.com/2011/12/29/new-look-for-2012-and-a-special-announcement/</guid>
       <description>Happy New Year, everyone!
 In the spirit of renewal, new ideas, and new beginnings, we&#39;ve upgraded the look of the site for 2012.
 I&#39;m sure you&#39;re thinking about new things to bring into your life in the coming year too...and as it just so happens, I have a couple of ideas for you.
@@ -34,19 +34,19 @@ Tune in next week for a special announcement that you won&#39;t want to miss if 
     
     <item>
       <title>We&#39;re Moving!</title>
-      <link>http://dankleiman.com/2011/06/23/were-moving/</link>
+      <link>https://dankleiman.com/2011/06/23/were-moving/</link>
       <pubDate>Thu, 23 Jun 2011 09:29:38 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2011/06/23/were-moving/</guid>
+      <guid>https://dankleiman.com/2011/06/23/were-moving/</guid>
       <description>Well, ok, let me explain. I&#39;m moving all of the business-related posts over to the Trainerfly blog. It seems appropriate to separate writing about the benefits of daily practice from the running of a movement education business at this point. If you are subscribed to the email newsletter here on DanKleiman.com, your weekly updates will still be about chi gung practice, relaxation, and reducing the impact of stress on your life.</description>
     </item>
     
     <item>
       <title>Mobile-izing Wordpress and Moodle</title>
-      <link>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
+      <link>https://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</link>
       <pubDate>Mon, 15 Nov 2010 14:16:19 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
+      <guid>https://dankleiman.com/2010/11/15/mobile-izing-wordpress-and-moodle/</guid>
       <description>I spent a fair amount of time today upgrading the site and my phone so that I would have better mobile access to the site on my phone and so that you can too!
 Here&#39;s what I ended up doing:
  Adding the MobilePress plugin to DanKleiman.com, so that the site adapts to your mobile browser Installing the Wordpress app on my Droid, so that I can update the site from my phone Installing Moodle for Mobiles, which is &#34;</description>
@@ -54,10 +54,10 @@ Here&#39;s what I ended up doing:
     
     <item>
       <title>Going Mobile</title>
-      <link>http://dankleiman.com/2010/11/15/going-mobile/</link>
+      <link>https://dankleiman.com/2010/11/15/going-mobile/</link>
       <pubDate>Mon, 15 Nov 2010 14:05:42 +0000</pubDate>
       
-      <guid>http://dankleiman.com/2010/11/15/going-mobile/</guid>
+      <guid>https://dankleiman.com/2010/11/15/going-mobile/</guid>
       <description>This is a test post from my phone. I just installed a Wordpress app for Android. I&#39;m also working on upgrading the blog and the noodle site for easy mobile access.
 EDIT: It looks like it picked up the post tags from my phone, but it missed the category. Also have to edit the post author through the site. But you don&#39;t really care about that, do you?
 ;-)</description>
