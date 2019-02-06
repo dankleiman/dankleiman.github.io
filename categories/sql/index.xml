@@ -9,6 +9,16 @@
     <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Seed Data for Your WIP SQL Queries</title>
+      <link>https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries</link>
+      <pubDate>Tue, 05 Feb 2019 20:41:59 -0500</pubDate>
+      
+      <guid>https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries</guid>
+      <description>In my last post, I wrote about steps you can take to make writing complicated queries more manageable. One aspect that I didn&amp;rsquo;t cover in that post is how to set sample data to work with during the writing process. Assuming you&amp;rsquo;re not working directly in your production database as you test out new queries (right? right?? right???), you need some way to work on your new ideas.
+In this post, I want to share some tips and tricks for creating reliable, reproduceable test data to help you develop new ideas in SQL.</description>
+    </item>
+    
+    <item>
       <title>Stop Writing SQL Backwards</title>
       <link>https://dankleiman.com/2019/01/02/stop-writing-sql-backwards</link>
       <pubDate>Wed, 02 Jan 2019 09:21:26 -0500</pubDate>
