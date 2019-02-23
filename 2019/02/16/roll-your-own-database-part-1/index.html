@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Roll Your Own Database: Part 1</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Roll Your Own Database: Part 1"/>
+<meta name="twitter:description" content="Warning: This post is NSFW. In this series, we are going to build a really, really simple database management system that you should by no means use in a production work environment.
+Here&rsquo;s the experiment:
+ Start with a naive implementation of a database &ndash; read and write from a local csv file Reach for all the normal features we use every day: basic CRUD, aggregate queries, complex joins Realize that our basic implementation falls short Look at how these problems are solved in modern systems  Think of the whole series as one giant experiment in Cunningham&rsquo;s Law: &ldquo;the best way to get the right answer on the internet is not to ask a question; it&rsquo;s to post the wrong answer."/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="Roll Your Own Database: Part 1" />
+<meta property="og:description" content="Warning: This post is NSFW. In this series, we are going to build a really, really simple database management system that you should by no means use in a production work environment.
+Here&rsquo;s the experiment:
+ Start with a naive implementation of a database &ndash; read and write from a local csv file Reach for all the normal features we use every day: basic CRUD, aggregate queries, complex joins Realize that our basic implementation falls short Look at how these problems are solved in modern systems  Think of the whole series as one giant experiment in Cunningham&rsquo;s Law: &ldquo;the best way to get the right answer on the internet is not to ask a question; it&rsquo;s to post the wrong answer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1" />
+
+
+
+<meta property="article:published_time" content="2019-02-16T11:31:03-05:00"/>
+<meta property="article:modified_time" content="2019-02-16T11:31:03-05:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Roll Your Own Database: Part 1">
+<meta itemprop="description" content="Warning: This post is NSFW. In this series, we are going to build a really, really simple database management system that you should by no means use in a production work environment.
+Here&rsquo;s the experiment:
+ Start with a naive implementation of a database &ndash; read and write from a local csv file Reach for all the normal features we use every day: basic CRUD, aggregate queries, complex joins Realize that our basic implementation falls short Look at how these problems are solved in modern systems  Think of the whole series as one giant experiment in Cunningham&rsquo;s Law: &ldquo;the best way to get the right answer on the internet is not to ask a question; it&rsquo;s to post the wrong answer.">
+
+
+<meta itemprop="dateModified" content="2019-02-16T11:31:03-05:00" />
+<meta itemprop="wordCount" content="1751">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/main.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="https://dankleiman.com/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-16'>
+                                    February 16, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-05'>
+                                    February 5, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards">Stop Writing SQL Backwards</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-01-02'>
+                                    January 2, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-02-06'>
+                                    February 6, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2018-01-28'>
+                                    January 28, 2018</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&text=Roll%20Your%20Own%20Database%3a%20Part%201&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&description=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-02-16'>
+            February 16, 2019</time>
+        <span class="author"></span>
+        
+            <p>9 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&text=Roll%20Your%20Own%20Database%3a%20Part%201&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&title=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1&description=Roll%20Your%20Own%20Database%3a%20Part%201" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f02%2f16%2froll-your-own-database-part-1" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    
+
+<p><strong>Warning: This post is NSFW. In this series, we are going to build a really, really simple database management system that you should by no means use in a production work environment.</strong></p>
+
+<p>Here&rsquo;s the experiment:</p>
+
+<ul>
+<li>Start with a naive implementation of a database &ndash; read and write from a local csv file</li>
+<li>Reach for all the normal features we use every day: basic CRUD, aggregate queries, complex joins</li>
+<li>Realize that our basic implementation falls short</li>
+<li>Look at how these problems are solved in modern systems</li>
+</ul>
+
+<p>Think of the whole series as one giant experiment in <a href="https://meta.wikimedia.org/wiki/Cunningham%27s_Law">Cunningham&rsquo;s Law</a>: &ldquo;the best way to get the right answer on the internet is not to ask a question; it&rsquo;s to post the wrong answer.&rdquo;</p>
+
+<p>We&rsquo;re not setting out to be wrong here, but instead, by taking a really basic implementation as our starting point, we want to realize over and over again how the simplistic solution is lacking. Is it inefficient? Difficult to work with? Does it fall down on a basic use case we should support?</p>
+
+<p>We&rsquo;re going to keep a running list of nice-to-have features each time we bump up against something that doesn&rsquo;t work and follow-up with a solution to that problem in a later part of the series. We&rsquo;re aiming for as many &ldquo;oh, so that&rsquo;s why they do that&rdquo; moments as possible, where we realize how or why modern database management systems are implemented the way they are.</p>
+
+<p>If that sounds good to you, let&rsquo;s go!</p>
+
+<h2 id="a-flat-file-database">A Flat File Database</h2>
+
+<p>We&rsquo;re going to start with a single CSV file as our data source. Browsing Kaggle for datasets, I picked <a href="https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results/version/2">one with Olympic atheletes and their events over time</a>. You can visit the site and download the file if you want to follow along.</p>
+
+<p>The data in the file looks like this:</p>
+
+<pre><code>&quot;ID&quot;,&quot;Name&quot;,&quot;Sex&quot;,&quot;Age&quot;,&quot;Height&quot;,&quot;Weight&quot;,&quot;Team&quot;,&quot;NOC&quot;,&quot;Games&quot;,&quot;Year&quot;,&quot;Season&quot;,&quot;City&quot;,&quot;Sport&quot;,&quot;Event&quot;,&quot;Medal&quot;
+&quot;1&quot;,&quot;A Dijiang&quot;,&quot;M&quot;,24,180,80,&quot;China&quot;,&quot;CHN&quot;,&quot;1992 Summer&quot;,1992,&quot;Summer&quot;,&quot;Barcelona&quot;,&quot;Basketball&quot;,&quot;Basketball Men's Basketball&quot;,NA
+&quot;2&quot;,&quot;A Lamusi&quot;,&quot;M&quot;,23,170,60,&quot;China&quot;,&quot;CHN&quot;,&quot;2012 Summer&quot;,2012,&quot;Summer&quot;,&quot;London&quot;,&quot;Judo&quot;,&quot;Judo Men's Extra-Lightweight&quot;,NA
+&quot;3&quot;,&quot;Gunnar Nielsen Aaby&quot;,&quot;M&quot;,24,NA,NA,&quot;Denmark&quot;,&quot;DEN&quot;,&quot;1920 Summer&quot;,1920,&quot;Summer&quot;,&quot;Antwerpen&quot;,&quot;Football&quot;,&quot;Football Men's Football&quot;,NA
+&quot;4&quot;,&quot;Edgar Lindenau Aabye&quot;,&quot;M&quot;,34,NA,NA,&quot;Denmark/Sweden&quot;,&quot;DEN&quot;,&quot;1900 Summer&quot;,1900,&quot;Summer&quot;,&quot;Paris&quot;,&quot;Tug-Of-War&quot;,&quot;Tug-Of-War Men's Tug-Of-War&quot;,&quot;Gold&quot;
+&quot;5&quot;,&quot;Christine Jacoba Aaftink&quot;,&quot;F&quot;,21,185,82,&quot;Netherlands&quot;,&quot;NED&quot;,&quot;1988 Winter&quot;,1988,&quot;Winter&quot;,&quot;Calgary&quot;,&quot;Speed Skating&quot;,&quot;Speed Skating Women's 500 metres&quot;,NA
+&quot;5&quot;,&quot;Christine Jacoba Aaftink&quot;,&quot;F&quot;,21,185,82,&quot;Netherlands&quot;,&quot;NED&quot;,&quot;1988 Winter&quot;,1988,&quot;Winter&quot;,&quot;Calgary&quot;,&quot;Speed Skating&quot;,&quot;Speed Skating Women's 1,000 metres&quot;,NA
+&quot;5&quot;,&quot;Christine Jacoba Aaftink&quot;,&quot;F&quot;,25,185,82,&quot;Netherlands&quot;,&quot;NED&quot;,&quot;1992 Winter&quot;,1992,&quot;Winter&quot;,&quot;Albertville&quot;,&quot;Speed Skating&quot;,&quot;Speed Skating Women's 500 metres&quot;,NA
+&quot;5&quot;,&quot;Christine Jacoba Aaftink&quot;,&quot;F&quot;,25,185,82,&quot;Netherlands&quot;,&quot;NED&quot;,&quot;1992 Winter&quot;,1992,&quot;Winter&quot;,&quot;Albertville&quot;,&quot;Speed Skating&quot;,&quot;Speed Skating Women's 1,000 metres&quot;,NA
+&quot;5&quot;,&quot;Christine Jacoba Aaftink&quot;,&quot;F&quot;,27,185,82,&quot;Netherlands&quot;,&quot;NED&quot;,&quot;1994 Winter&quot;,1994,&quot;Winter&quot;,&quot;Lillehammer&quot;,&quot;Speed Skating&quot;,&quot;Speed Skating Women's 500 metres&quot;,NA
+</code></pre>
+
+<p>From these columns, we can ask questions like &ldquo;who was on the Men&rsquo;s Basketball Team for China in the 1992 Summer Olympics?&rdquo; or &ldquo;what city was that in?&rdquo; or &ldquo;who has the most Speed Skating medals of all time?&rdquo;.</p>
+
+<h2 id="asking-questions-of-the-database">Asking Questions of the Database</h2>
+
+<p>If you want to ask these questions, what do you have to do? You need to be able to read the data in the file, the filter it, sort it, group it and display it.</p>
+
+<p>First, let&rsquo;s build a simple ruby wrapper for our file system commands to read data, where our new <code>FlatDB</code> class is initialized with a file path to the csv file. When we read the data, we get an array of <code>CSV::Row</code> objects back:</p>
+
+<pre><code>require 'csv'
+
+
+class FlatDB
+  attr_accessor :path, :columns
+
+  def initialize(path)
+    self.path = path
+  end
+
+  def read()
+    rows = []
+    CSV.parse(File.read(self.path), headers: true).each do |row|
+        rows &lt;&lt; row
+    end
+    rows
+  end
+end
+</code></pre>
+
+<p>See? We&rsquo;re already making assumptions about how we want to handle data once we pull it out of the database. We&rsquo;re jumping right over reading lines of text to starting to structure our data in a way that will probably be more useful for the things we want to do later. For example, a <code>CSV::Row</code> gives us access to <code>headers</code>, which look a lot like our future column names. The <code>fields</code> could become our row values.</p>
+
+<p>You can probably also see our first limitation when it comes to asking the database for data, right? <strong>With this implementation you&rsquo;re going to get back all the data every time!</strong></p>
+
+<p>And if your inclination is then to say, &ldquo;we should be able to ask for a filtered subset of the data&rdquo;, you&rsquo;ve opened up the question of whose job it is to make those decisions and do that subsetting work. What are the trade-offs of an implementation where we get back all the data and our &ldquo;application&rdquo; does the filtering work versus one where our database exposes a query language that allows the application to ask for more specific subsets of data?</p>
+
+<p>In later parts of this series we&rsquo;re going to develop a query language, but for now, let&rsquo;s throw some basic filters on and see where that gets us:</p>
+
+<pre><code>require 'csv'
+
+
+class FlatDB
+  attr_accessor :path, :columns
+
+  def initialize(path)
+    self.path = path
+    self.columns = data.headers()
+  end
+
+  def data
+    CSV.parse(File.read(self.path), headers: true)
+  end
+
+  def read(filters={})
+    rows = []
+    data.each do |row|
+      if filters.empty? || filters.all? { |col, value| row[col.to_s] == value }
+        rows &lt;&lt; row
+      end
+    end
+    rows
+  end
+end
+</code></pre>
+
+<p>Now we&rsquo;ve moved a couple of things around in order to expose a <code>filters</code> argument to our <code>read</code> method. We have to give our <code>FlatDB</code> instance the ability to tell whoever is using it (let&rsquo;s just refer to this as our &ldquo;application&rdquo; vs our &ldquo;database&rdquo; going forward) what they can filter on. So now the instance has a <code>columns</code> attribute that reads the headers out of the data when we initialize the <code>FlatDB</code> instance.</p>
+
+<pre><code>irb(main):002:0&gt; f = FlatDB.new('data/athlete_events.csv')
+=&gt; #&lt;FlatDB:0x007f867b9eb570 @path=&quot;data/athlete_events.csv&quot;, @columns=[&quot;ID&quot;, &quot;Name&quot;, &quot;Sex&quot;, &quot;Age&quot;, &quot;Height&quot;, &quot;Weight&quot;, &quot;Team&quot;, &quot;NOC&quot;, &quot;Games&quot;, &quot;Year&quot;, &quot;Season&quot;, &quot;City&quot;, &quot;Sport&quot;, &quot;Event&quot;, &quot;Medal&quot;]&gt;
+irb(main):003:0&gt; f.columns
+=&gt; [&quot;ID&quot;, &quot;Name&quot;, &quot;Sex&quot;, &quot;Age&quot;, &quot;Height&quot;, &quot;Weight&quot;, &quot;Team&quot;, &quot;NOC&quot;, &quot;Games&quot;, &quot;Year&quot;, &quot;Season&quot;, &quot;City&quot;, &quot;Sport&quot;, &quot;Event&quot;, &quot;Medal&quot;]
+</code></pre>
+
+<p>Exposing the columns helps you construct a filter for a more specific read query.</p>
+
+<p>So who was on the Chinese Men&rsquo;s Basketball Team in Barcelona? Now we can get closer to that answer:</p>
+
+<pre><code>irb(main):040:0&gt; f = FlatDB.new('data/athlete_events.csv')
+irb(main):041:0&gt; filters = {:Team=&gt;&quot;China&quot;, :Year=&gt;&quot;1992&quot;, :City=&gt;&quot;Barcelona&quot;, :Event=&gt;&quot;Basketball Men's Basketball&quot;}
+=&gt; {:Year=&gt;1992, :City=&gt;&quot;Barcelona&quot;, :NOC=&gt;&quot;CHN&quot;, :Sport=&gt;&quot;Basketball Men's Basketball&quot;}
+irb(main):042:0&gt; rows = f.read(filters)
+irb(main):043:0&gt; rows.each { |row| puts row[&quot;Name&quot;] }
+A Dijiang
+Gong Xiaobin
+Hu Weidong
+Li Chunjiang
+Ma Jian
+Shan Tao
+Song Ligang
+Sun Fengwu
+Sun Jun
+Wang Zhidan
+Wu Qinglong
+Zhang Yongjun
+</code></pre>
+
+<p>Great! Because we knew exactly what we wanted to ask for, we can write a filter that finds exactly what we want and we can pull out any attribute we want, e.g. <code>Name</code>, after we get the results back from the database.</p>
+
+<h2 id="what-if-you-don-t-know">What If You Don&rsquo;t Know</h2>
+
+<p>If you don&rsquo;t know what you want ask or are just trying to explore the data, this method is going to be pretty painful and slow. Every time you try to refine your filters, you&rsquo;re rescanning the data, i.e. re-reading the file.</p>
+
+<p>Would it be faster to read everything into memory when you initialize the database? Maybe&hellip;it depends on the data and how much you need to read and re-read, right?</p>
+
+<p>If you wanted to load all your file data into memory at once, you could do something like this:</p>
+
+<pre><code>require 'csv'
+
+
+class FlatDB
+  attr_accessor :path, :columns, :data
+
+  def initialize(path)
+    self.path = path
+    self.columns = data.headers()
+    self.data = data
+    
+    self.columns.each do |colname|
+      self.class.send(:define_method, colname.downcase.to_sym) { self.data.by_col()[colname]}
+    end
+  end
+
+  def data
+    CSV.parse(File.read(self.path), headers: true)
+  end
+
+  def read(filters={})
+    rows = []
+    self.data.each do |row|
+      if filters.empty? || filters.all? { |col, value| row[col.to_s] == value }
+        rows &lt;&lt; row
+      end
+    end
+    rows
+  end
+end
+</code></pre>
+
+<p>Notice, we also did something dangerous in the name of more convenient exploration by dynamically generating reader methods for each column in our database.</p>
+
+<pre><code>self.columns.each do |colname|
+  self.class.send(:define_method, colname.downcase.to_sym) { self.data.by_col()[colname]}
+end
+</code></pre>
+
+<p>With no idea what the column names are and no way to sanitize allowed values, this is a bad idea. It&rsquo;s ok, though, we already said this whole thing was NSFW.</p>
+
+<p>Ruby&rsquo;s <code>CSV::Table</code> has a <code>by_col</code> mode that allows us to pull a whole column, which is what this means: <code>self.data.by_col()[colname]</code>. It&rsquo;s easier to understand this data with dynamic methods that pull slices of that data for us.</p>
+
+<p>So we can look at all the <code>Name</code> values in the database to get a feel for what we want to find.</p>
+
+<pre><code>irb(main):037:0&gt; f.name
+=&gt; [&quot;A Dijiang&quot;, &quot;A Lamusi&quot;, &quot;Gunnar Nielsen Aaby&quot;, &quot;Edgar Lindenau Aabye&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Christine Jacoba Aaftink&quot;, &quot;Per Knut Aaland&quot;, &quot;Per Knut Aaland&quot;, &quot;Per Knut Aaland&quot;, &quot;Per Knut Aaland&quot;, &quot;Per Knut Aaland&quot;, &quot;Per Knut Aaland....]
+</code></pre>
+
+<p>Even so, with these two changes we&rsquo;ve made in the name of convenient data access, we see just how much we&rsquo;re fighting with our data storage choice (the csv file) in our application logic and how limited we are when it comes to exploring the data. For every new access pattern, we need to write new and more convenient access methods, all due to the inflexibility of our query language.</p>
+
+<p>Now I am feeling highly motivated to get something SQL-like in place to make querying more flexible. That&rsquo;s coming up later in the series, though!</p>
+
+<h2 id="the-rest-of-the-crud">The Rest of the CRUD</h2>
+
+<p>For completeness, we can add &ldquo;create&rdquo;, &ldquo;update&rdquo;, and &ldquo;delete&rdquo; functions as well, but I bet you can guess how we will still be constrained by our expensive and slow file reading design:</p>
+
+<pre><code>require 'csv'
+require 'fileutils'
+
+class FlatDB
+  attr_accessor :path, :columns
+  TEMP_PATH = 'tmp/data.csv'
+
+  def initialize(path)
+    self.path = path
+    self.columns = data.headers()
+  end
+
+  def data
+    CSV.parse(File.read(self.path), headers: true)
+  end
+
+  def create(data_to_insert={})
+    fields = []
+    self.columns.each do |column_key|
+      fields &lt;&lt; data_to_insert[column_key.to_sym]
+    end
+    CSV.open(self.path, 'a') do |csv|
+      csv &lt;&lt; CSV::Row.new(self.columns, fields)
+    end
+  end
+
+  def read(filters={})
+    rows = []
+    data.each do |row|
+      if filters.empty? || filters.all? { |col, value| row[col.to_s] == value }
+        rows &lt;&lt; row
+      end
+    end
+    rows
+  end
+
+  def update(old_fields, new_fields)
+    CSV.open(TEMP_PATH, 'w') do |csv|
+      csv &lt;&lt; self.columns
+      data.each do |row|
+        if row.fields == old_fields
+          csv &lt;&lt; new_fields
+        else
+          csv &lt;&lt; row.fields
+        end
+      end
+    end
+    
+    FileUtils.mv(TEMP_PATH, self.path)
+  end
+
+  def delete(target_row)
+    CSV.open(TEMP_PATH, 'w') do |csv|
+      csv &lt;&lt; self.columns
+      data.each do |row|
+        unless row.fields == target_row
+          csv &lt;&lt; row.fields
+        end
+      end
+    end
+    
+    FileUtils.mv(TEMP_PATH, self.path)
+  end
+end
+</code></pre>
+
+<p>While &ldquo;creating&rdquo; new data is just appending to our data file, when we want to update something, we have to find it -&gt; update the row -&gt; re-write the whole file -&gt; replace the old file with the new file.</p>
+
+<p>If only we could update a row directly! (Coming soon&hellip;)</p>
+
+<h2 id="our-feature-list">Our Feature List</h2>
+
+<p>By working through our initial implementation in part one, we&rsquo;ve uncovered some pain. Going forward, it would be nice to have:</p>
+
+<ul>
+<li>a lighter way to load data</li>
+<li>a more flexible query language</li>
+<li>a more efficient update/delete approach</li>
+</ul>
+
+<p>Stay tuned for the rest of this series where we&rsquo;ll either figure out how to do the things on our list or add to it because we realize there&rsquo;s more we don&rsquo;t know about implementing a database management system.</p>
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries"
+                class="button big previous">Seed Data for Your WIP SQL Queries</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-16'>
+                February 16, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-05'>
+                February 5, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/01/02/stop-writing-sql-backwards">Stop Writing SQL Backwards</a>
+              </h3>
+              
+              <time class="published" datetime='2019-01-02'>
+                January 2, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a>
+              </h3>
+              
+              <time class="published" datetime='2018-02-06'>
+                February 6, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2018/01/28/keeping-an-engineering-notebook">Keeping an Engineering Notebook</a>
+              </h3>
+              
+              <time class="published" datetime='2018-01-28'>
+                January 28, 2018
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">4</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="https://dankleiman.com/js/util.js"></script>
+      <script src="https://dankleiman.com/js/main.js"></script>
+      <script src="https://dankleiman.com/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

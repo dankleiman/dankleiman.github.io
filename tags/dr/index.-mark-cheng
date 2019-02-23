@@ -209,6 +209,18 @@ ga('send', 'pageview');
                 
                         <article class="mini-post">
                             <header>
+                                <h3><a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-16'>
+                                    February 16, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
                                 <h3><a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a></h3>
                                 
                                 <time class="published" datetime=
@@ -250,18 +262,6 @@ ga('send', 'pageview');
                                 <time class="published" datetime=
                                     '2018-01-28'>
                                     January 28, 2018</time>
-                            </header>
-                            
-
-                        </article>
-                
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2017-11-07'>
-                                    November 7, 2017</time>
                             </header>
                             
 
@@ -564,6 +564,20 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
           <article class="mini-post">
             <header>
               <h3>
+                <a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-16'>
+                February 16, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
                 <a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a>
               </h3>
               
@@ -611,20 +625,6 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
               
               <time class="published" datetime='2018-01-28'>
                 January 28, 2018
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="https://dankleiman.com/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem">More Efficient Solutions to the Top N per Group Problem</a>
-              </h3>
-              
-              <time class="published" datetime='2017-11-07'>
-                November 7, 2017
               </time>
             </header>
             
@@ -684,7 +684,7 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
           <article>
             <header>
               
-                <a href="/categories/movement-practice/">Movement Practice</a>
+                <a href="/categories/code/">Code</a>
                 <span style="float:right;">33</span>
               
             </header>
@@ -695,8 +695,8 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
           <article>
             <header>
               
-                <a href="/categories/code/">Code</a>
-                <span style="float:right;">32</span>
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
               
             </header>
           </article>
@@ -816,6 +816,17 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
           <article>
             <header>
               
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">4</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
                 <a href="/categories/bigquery/">BigQuery</a>
                 <span style="float:right;">3</span>
               
@@ -828,17 +839,6 @@ Now he&rsquo;s going to explain his thinking behind developing a project, called
             <header>
               
                 <a href="/categories/energy-arts/">Energy Arts</a>
-                <span style="float:right;">3</span>
-              
-            </header>
-          </article>
-        </p>
-        
-        <p>
-          <article>
-            <header>
-              
-                <a href="/categories/sql/">SQL</a>
                 <span style="float:right;">3</span>
               
             </header>
