@@ -6,8 +6,21 @@
     <description>Recent content in Post on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Feb 2019 11:31:03 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 19:40:40 -0400</lastBuildDate>
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Quick Tip: Present Cleaner Results with Custom Ordering</title>
+      <link>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</link>
+      <pubDate>Fri, 30 Aug 2019 19:40:40 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</guid>
+      <description>&lt;p&gt;Usually, when you add an &lt;code&gt;ORDER BY&lt;/code&gt; clause to your SQL query, you want to sort by your columns&amp;rsquo; values.&lt;/p&gt;
+
+&lt;p&gt;To track the top 10 cryptocurrencies by price over the last 90 days, for example, you would write a query like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Roll Your Own Database: Part 1</title>
@@ -189,21 +202,6 @@ Right now, I can&amp;rsquo;t tell if I&amp;rsquo;m fooling myself, hiding some l
       <description>&lt;p&gt;So, I&amp;rsquo;ve decided to migrate my &lt;a href=&#34;http://dankleiman.com&#34;&gt;Tai Chi site at dankleiman.com&lt;/a&gt; from Wordpress to a new static site using Jekyll.&lt;/p&gt;
 
 &lt;p&gt;Since I haven&amp;rsquo;t posted there in almost two years, but I get a steady stream of new subscribers who want to learn about Tai Chi, qigong, and meditation, I thought it would be good to give the 300+ pages and posts a more evergreen feel.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>I Hate Voicemail: Straight to SMS with Twilio</title>
-      <link>https://dankleiman.com/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</link>
-      <pubDate>Tue, 15 Sep 2015 08:02:19 -0400</pubDate>
-      
-      <guid>https://dankleiman.com/2015/09/15/i-hate-voicemail-straight-to-sms-with-twilio</guid>
-      <description>&lt;p&gt;I hate checking my voicemail. I hate the nagging voicemail icon on my phone that won&amp;rsquo;t be dismissed unless I actually check my voicemail. I hate how listening to a voicemail, capturing relevant information from it, and calling someone back breaks up the normal flow of how I communicate with people all day long: asynchronously, via written communication like email or text.&lt;/p&gt;
-
-&lt;p&gt;These days, when I want to talk to someone, we plan a time to talk and that&amp;rsquo;s fine. But some people still call and leave me a black-box-of-a-voicemail that I have to wade into.&lt;/p&gt;
-
-&lt;p&gt;I needed some way to cut voicemail out of my life&amp;hellip;so I hooked up a Twilio app to handle it for me.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

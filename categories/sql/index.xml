@@ -9,6 +9,19 @@
     <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SQL Quick Tip: Present Cleaner Results with Custom Ordering</title>
+      <link>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</link>
+      <pubDate>Fri, 30 Aug 2019 19:40:40 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</guid>
+      <description>&lt;p&gt;Usually, when you add an &lt;code&gt;ORDER BY&lt;/code&gt; clause to your SQL query, you want to sort by your columns&amp;rsquo; values.&lt;/p&gt;
+
+&lt;p&gt;To track the top 10 cryptocurrencies by price over the last 90 days, for example, you would write a query like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Roll Your Own Database: Part 1</title>
       <link>https://dankleiman.com/2019/02/16/roll-your-own-database-part-1</link>
       <pubDate>Sat, 16 Feb 2019 11:31:03 -0500</pubDate>

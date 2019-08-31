@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</loc>
+    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dankleiman.com/2019/02/16/roll-your-own-database-part-1</loc>
     <lastmod>2019-02-16T11:31:03-05:00</lastmod>
   </url>
@@ -2295,7 +2300,7 @@
   
   <url>
     <loc>https://dankleiman.com/</loc>
-    <lastmod>2019-02-16T11:31:03-05:00</lastmod>
+    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2311,7 +2316,7 @@
   
   <url>
     <loc>https://dankleiman.com/post/</loc>
-    <lastmod>2019-02-16T11:31:03-05:00</lastmod>
+    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2494,7 +2499,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/code/</loc>
-    <lastmod>2019-02-16T11:31:03-05:00</lastmod>
+    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2613,14 +2618,14 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/energy-arts/</loc>
-    <lastmod>2011-02-17T09:11:10+00:00</lastmod>
+    <loc>https://dankleiman.com/tags/energy-arts/</loc>
+    <lastmod>2013-10-31T11:44:02+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/energy-arts/</loc>
-    <lastmod>2013-10-31T11:44:02+00:00</lastmod>
+    <loc>https://dankleiman.com/categories/energy-arts/</loc>
+    <lastmod>2011-02-17T09:11:10+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2805,14 +2810,14 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/inner-form/</loc>
-    <lastmod>2012-03-19T10:00:00+00:00</lastmod>
+    <loc>https://dankleiman.com/tags/inner-form/</loc>
+    <lastmod>2011-11-21T08:14:02+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/inner-form/</loc>
-    <lastmod>2011-11-21T08:14:02+00:00</lastmod>
+    <loc>https://dankleiman.com/categories/inner-form/</loc>
+    <lastmod>2012-03-19T10:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2883,14 +2888,14 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/learning/</loc>
-    <lastmod>2014-03-20T08:59:31-04:00</lastmod>
+    <loc>https://dankleiman.com/tags/learning/</loc>
+    <lastmod>2014-04-18T09:33:25+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/learning/</loc>
-    <lastmod>2014-04-18T09:33:25+00:00</lastmod>
+    <loc>https://dankleiman.com/categories/learning/</loc>
+    <lastmod>2014-03-20T08:59:31-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2943,14 +2948,14 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/meditation/</loc>
-    <lastmod>2013-05-29T11:57:43+00:00</lastmod>
+    <loc>https://dankleiman.com/tags/meditation/</loc>
+    <lastmod>2013-06-07T08:59:30+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/meditation/</loc>
-    <lastmod>2013-06-07T08:59:30+00:00</lastmod>
+    <loc>https://dankleiman.com/categories/meditation/</loc>
+    <lastmod>2013-05-29T11:57:43+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3141,13 +3146,13 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/qigong/</loc>
+    <loc>https://dankleiman.com/tags/qigong/</loc>
     <lastmod>2014-05-06T11:52:13+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/qigong/</loc>
+    <loc>https://dankleiman.com/categories/qigong/</loc>
     <lastmod>2014-05-06T11:52:13+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -3328,7 +3333,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/sql/</loc>
-    <lastmod>2019-02-16T11:31:03-05:00</lastmod>
+    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3405,14 +3410,14 @@
   </url>
   
   <url>
-    <loc>https://dankleiman.com/categories/tai-chi/</loc>
-    <lastmod>2014-04-01T18:11:40+00:00</lastmod>
+    <loc>https://dankleiman.com/tags/tai-chi/</loc>
+    <lastmod>2014-05-02T09:08:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dankleiman.com/tags/tai-chi/</loc>
-    <lastmod>2014-05-02T09:08:00+00:00</lastmod>
+    <loc>https://dankleiman.com/categories/tai-chi/</loc>
+    <lastmod>2014-04-01T18:11:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
