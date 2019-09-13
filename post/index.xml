@@ -6,8 +6,23 @@
     <description>Recent content in Post on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2019 19:40:40 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 21:57:02 -0400</lastBuildDate>
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Quick Tip: Guarantee Rows for Every Date in Your Report</title>
+      <link>https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report</link>
+      <pubDate>Thu, 12 Sep 2019 21:57:02 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report</guid>
+      <description>&lt;p&gt;When you are reporting on metrics over time, sometimes your data will have missing entries on certain days.&lt;/p&gt;
+
+&lt;p&gt;In these cases, it&amp;rsquo;s useful to be able to ensure that every date shows up in your report, regardless of whether or not there is a metric in the dataset for that date.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s use daily user logins to a website for a reporting metric to illustrate how you solve this problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>SQL Quick Tip: Present Cleaner Results with Custom Ordering</title>
@@ -189,19 +204,6 @@ Right now, I can&amp;rsquo;t tell if I&amp;rsquo;m fooling myself, hiding some l
 &lt;p&gt;Instead, this post and the others in the series will be more like, &amp;ldquo;here&amp;rsquo;s the order I wish I had done things in&amp;rdquo; or &amp;ldquo;here&amp;rsquo;s everything I ended up needing to pull together to get stuff working&amp;rdquo;. I hope it helps you and saves you time if you ever decide to do a similar migration from a self-hosted Wordpress install to Jekyll.&lt;/p&gt;
 
 &lt;p&gt;So here we go&amp;hellip;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Migrating from Wordpress to Jekyll</title>
-      <link>https://dankleiman.com/2016/03/09/migrating-from-wordpress-to-jekyll</link>
-      <pubDate>Wed, 09 Mar 2016 13:09:18 -0500</pubDate>
-      
-      <guid>https://dankleiman.com/2016/03/09/migrating-from-wordpress-to-jekyll</guid>
-      <description>&lt;p&gt;So, I&amp;rsquo;ve decided to migrate my &lt;a href=&#34;http://dankleiman.com&#34;&gt;Tai Chi site at dankleiman.com&lt;/a&gt; from Wordpress to a new static site using Jekyll.&lt;/p&gt;
-
-&lt;p&gt;Since I haven&amp;rsquo;t posted there in almost two years, but I get a steady stream of new subscribers who want to learn about Tai Chi, qigong, and meditation, I thought it would be good to give the 300+ pages and posts a more evergreen feel.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

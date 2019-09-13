@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report</loc>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering</loc>
     <lastmod>2019-08-30T19:40:40-04:00</lastmod>
   </url>
@@ -2300,7 +2305,7 @@
   
   <url>
     <loc>https://dankleiman.com/</loc>
-    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2316,7 +2321,7 @@
   
   <url>
     <loc>https://dankleiman.com/post/</loc>
-    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2499,7 +2504,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/code/</loc>
-    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3188,6 +3193,12 @@
   </url>
   
   <url>
+    <loc>https://dankleiman.com/categories/quick-tip/</loc>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dankleiman.com/categories/rails/</loc>
     <lastmod>2016-09-24T06:05:49-04:00</lastmod>
     <priority>0</priority>
@@ -3333,7 +3344,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/sql/</loc>
-    <lastmod>2019-08-30T19:40:40-04:00</lastmod>
+    <lastmod>2019-09-12T21:57:02-04:00</lastmod>
     <priority>0</priority>
   </url>
   

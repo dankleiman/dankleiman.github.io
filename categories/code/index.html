@@ -37,7 +37,7 @@
 
 
 
-<meta property="article:modified_time" content="2019-08-30T19:40:40-04:00"/>
+<meta property="article:modified_time" content="2019-09-12T21:57:02-04:00"/>
 
 
 
@@ -211,6 +211,18 @@ ga('send', 'pageview');
                 
                         <article class="mini-post">
                             <header>
+                                <h3><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-09-12'>
+                                    September 12, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
                                 <h3><a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a></h3>
                                 
                                 <time class="published" datetime=
@@ -257,18 +269,6 @@ ga('send', 'pageview');
 
                         </article>
                 
-                        <article class="mini-post">
-                            <header>
-                                <h3><a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a></h3>
-                                
-                                <time class="published" datetime=
-                                    '2018-02-06'>
-                                    February 6, 2018</time>
-                            </header>
-                            
-
-                        </article>
-                
 
                 
                     <a href=
@@ -288,6 +288,81 @@ ga('send', 'pageview');
     <div id="main">
         <h1>code</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-09-12'>
+            September 12, 2019</time>
+        <span class="author"></span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>When you are reporting on metrics over time, sometimes your data will have missing entries on certain days.</p>
+
+<p>In these cases, it&rsquo;s useful to be able to ensure that every date shows up in your report, regardless of whether or not there is a metric in the dataset for that date.</p>
+
+<p>Let&rsquo;s use daily user logins to a website for a reporting metric to illustrate how you solve this problem.</p>
+
+<p></p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+        <li><a href='/categories/quick-tip'>Quick Tip</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -353,6 +428,8 @@ ga('send', 'pageview');
         <li><a href='/categories/code'>Code</a></li>
     
         <li><a href='/categories/sql'>SQL</a></li>
+    
+        <li><a href='/categories/quick-tip'>Quick Tip</a></li>
     
 </ul>
 
@@ -787,83 +864,6 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery">Top N Per Group in BigQuery</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-
-        <time class="published"
-            datetime='2017-10-30'>
-            October 30, 2017</time>
-        <span class="author"></span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p><strong>EDIT:</strong> After I posted this initially, I got some <a href="https://twitter.com/Dan_Kleiman/status/925921880397287425">great</a> <a href="https://www.reddit.com/r/bigquery/comments/7aecfe/top_n_per_group_in_bigquery/">feedback</a>, so I wrote a follow-up post <a href="/2017/11/07/more-efficient-solutions-to-the-top-n-per-group-problem/">here</a>.</p>
-
-<p>In this post, we are going to explore a strategy for collecting the <strong>Top N results per Group</strong> over a mixed dataset, all in a single query.</p>
-
-<p>I stumbled onto this solution the other day, mostly driven by the fear that I was re-scanning my BigQuery data too often. At the time, the only way I knew how to look at a Top 10 list of a subset of the data was to add a <code>WHERE</code> clause limiting the whole data set to a single group and combine with <code>ORDER BY</code> and <code>LIMIT</code> clauses.</p>
-
-<p>For each group, I would just modify the <code>WHERE</code> clause, rescan all the data, and get new results. I thought there had to be an easier way to get the same ordered subset for any particular group in the data, all at once.</p>
-
-<p>It turns out, there is a much more efficient way to solve this problem.</p>
-
-<p></p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://dankleiman.com/2017/10/30/top-n-per-group-in-bigquery" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-                        <i class="fa fa-sitemap">&nbsp;</i>
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/code'>Code</a></li>
-    
-        <li><a href='/categories/bigquery'>BigQuery</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1010,6 +1010,20 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
           <article class="mini-post">
             <header>
               <h3>
+                <a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a>
+              </h3>
+              
+              <time class="published" datetime='2019-09-12'>
+                September 12, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
                 <a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a>
               </h3>
               
@@ -1057,20 +1071,6 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
               
               <time class="published" datetime='2019-01-02'>
                 January 2, 2019
-              </time>
-            </header>
-            
-
-          </article>
-        
-          <article class="mini-post">
-            <header>
-              <h3>
-                <a href="https://dankleiman.com/2018/02/06/3-ways-to-level-up-your-sql-as-a-software-engineer">3 Ways to Level Up Your SQL as a Software Engineer</a>
-              </h3>
-              
-              <time class="published" datetime='2018-02-06'>
-                February 6, 2018
               </time>
             </header>
             
@@ -1131,7 +1131,7 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
             <header>
               
                 <a href="/categories/code/">Code</a>
-                <span style="float:right;">34</span>
+                <span style="float:right;">35</span>
               
             </header>
           </article>
@@ -1218,6 +1218,17 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
           <article>
             <header>
               
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">6</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
                 <a href="/categories/btc/">BTC</a>
                 <span style="float:right;">5</span>
               
@@ -1230,17 +1241,6 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
             <header>
               
                 <a href="/categories/events/">Events</a>
-                <span style="float:right;">5</span>
-              
-            </header>
-          </article>
-        </p>
-        
-        <p>
-          <article>
-            <header>
-              
-                <a href="/categories/sql/">SQL</a>
                 <span style="float:right;">5</span>
               
             </header>
@@ -1318,6 +1318,17 @@ SELECT &hellip; . uh??? . . SELECT * FROM &hellip; SELECT &hellip;  And you get 
             <header>
               
                 <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/quick-tip/">Quick Tip</a>
                 <span style="float:right;">2</span>
               
             </header>
