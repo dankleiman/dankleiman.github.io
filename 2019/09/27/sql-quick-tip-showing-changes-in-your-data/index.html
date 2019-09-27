@@ -1,0 +1,1542 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>SQL Quick Tip: Showing Changes in Your Data</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="SQL Quick Tip: Showing Changes in Your Data"/>
+<meta name="twitter:description" content="In this tip, we want to look at a concise way to shows changes in your data.
+I tend to think of this type of problem as a going from &ldquo;finding&rdquo; data to &ldquo;describing&rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &ldquo;find&rdquo; data. When you calculate aggregates of that data using functions like MAX, MIN, SUM, or AVG, you are now &ldquo;describing&rdquo; the data."/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="SQL Quick Tip: Showing Changes in Your Data" />
+<meta property="og:description" content="In this tip, we want to look at a concise way to shows changes in your data.
+I tend to think of this type of problem as a going from &ldquo;finding&rdquo; data to &ldquo;describing&rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &ldquo;find&rdquo; data. When you calculate aggregates of that data using functions like MAX, MIN, SUM, or AVG, you are now &ldquo;describing&rdquo; the data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data" />
+
+
+
+<meta property="article:published_time" content="2019-09-27T00:00:00-04:00"/>
+<meta property="article:modified_time" content="2019-09-27T00:00:00-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="SQL Quick Tip: Showing Changes in Your Data">
+<meta itemprop="description" content="In this tip, we want to look at a concise way to shows changes in your data.
+I tend to think of this type of problem as a going from &ldquo;finding&rdquo; data to &ldquo;describing&rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &ldquo;find&rdquo; data. When you calculate aggregates of that data using functions like MAX, MIN, SUM, or AVG, you are now &ldquo;describing&rdquo; the data.">
+
+
+<meta itemprop="dateModified" content="2019-09-27T00:00:00-04:00" />
+<meta itemprop="wordCount" content="1870">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Quick Tip,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/main.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="https://dankleiman.com/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data">SQL Quick Tip: Showing Changes in Your Data</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-09-27'>
+                                    September 27, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-09-12'>
+                                    September 12, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-08-30'>
+                                    August 30, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-16'>
+                                    February 16, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-05'>
+                                    February 5, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&text=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&description=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data">SQL Quick Tip: Showing Changes in Your Data</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-09-27'>
+            September 27, 2019</time>
+        <span class="author"></span>
+        
+            <p>9 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&text=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&title=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data&description=SQL%20Quick%20Tip%3a%20Showing%20Changes%20in%20Your%20Data" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f09%2f27%2fsql-quick-tip-showing-changes-in-your-data" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    
+
+<p>In this tip, we want to look at a concise way to shows changes in your data.</p>
+
+<p>I tend to think of this type of problem as a going from &ldquo;finding&rdquo; data to &ldquo;describing&rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &ldquo;find&rdquo; data. When you calculate aggregates of that data using functions like <code>MAX</code>, <code>MIN</code>, <code>SUM</code>, or <code>AVG</code>, you are now &ldquo;describing&rdquo; the data.</p>
+
+<p>In this post we&rsquo;re going to introduce describing the data by showing <strong>how one value changes over time</strong>. In other words, you&rsquo;ll be able to answer questions like how much did today&rsquo;s value change from yesterday&rsquo;s?</p>
+
+<!--more -->
+
+<h2 id="get-a-baseline-using-aggregates">Get a Baseline Using Aggregates</h2>
+
+<p>We&rsquo;ll start with a table called <code>daily_metrics</code>. There is a create script <a href="https://gist.github.com/dankleiman/297dc0198691b781974ae8e81e40b20c">here</a> if you want to follow along in your own database.</p>
+
+<p>First, we&rsquo;ll do an orientation query to see what&rsquo;s in the table:</p>
+
+<pre><code>SELECT
+  metric,
+  MIN(date) as first_metric,
+  MAX(date) as last_metric,
+  ROUND(AVG(count),2) as avg_value,
+  COUNT(metric) as total_entries
+FROM daily_metrics
+GROUP BY metric
+ORDER BY metric;
+</code></pre>
+
+<p>Which gives us back:</p>
+
+<pre><code> metric | first_metric | last_metric | avg_value | total_entries 
+--------+--------------+-------------+-----------+---------------
+ A      | 2019-09-01   | 2019-09-07  |    221.71 |             7
+ B      | 2019-09-01   | 2019-09-07  |    149.71 |             7
+(2 rows)
+</code></pre>
+
+<p><a href="/2019/01/02/stop-writing-sql-backwards/">As I&rsquo;ve written before</a>, writing complicated SQL is really about layering information. At each step in the query-writing process, you want to convince yourself that the data you are returning is still correct.</p>
+
+<p>Now that we know our table contains multiple metrics, we can focus in on a single metric to make the query writing process easier.</p>
+
+<p>Let&rsquo;s zoom in on Metric A:</p>
+
+<pre><code>SELECT
+  *
+FROM daily_metrics
+WHERE metric = 'A'
+ORDER BY date;
+</code></pre>
+
+<pre><code>    date    | metric | count 
+------------+--------+-------
+ 2019-09-01 | A      |   115
+ 2019-09-02 | A      |    98
+ 2019-09-03 | A      |   268
+ 2019-09-04 | A      |   451
+ 2019-09-05 | A      |   239
+ 2019-09-06 | A      |    75
+ 2019-09-07 | A      |   306
+(7 rows)
+</code></pre>
+
+<p>For day-over-day change, you can see that some days the count goes up and some days it goes down. At this point, you might export the data and manipulate it in a spreadsheet, but SQL does give you the tools to work with the changing values directly.</p>
+
+<p>If we want to capture change between values, we need the right mental model for the table and row structure we&rsquo;re working with, relative to the functions we&rsquo;ll use to calculate over the row values.</p>
+
+<p>In SQL, this is a &ldquo;window&rdquo;. If you are used to thinking of query results as a table made up of rows, then a window over that table is a particular sub-set of those rows and values.</p>
+
+<p>Have you ever made a rectangle with the thumbs and index fingers on both of your hands, squinted, and looked around the room through that rectangle? That&rsquo;s kind of what SQL window functions are doing to your data.</p>
+
+<p><img src='/img/2-row-change.png' alt='Capture change between row values' height=25% width=25%></p>
+
+<p>I highly recommend <a href="https://mjk.space/advanced-sql-window-functions/">this post</a> if you want to go deeper on window functions.</p>
+
+<h2 id="find-previous-row-values-with-lag">Find Previous Row Values with LAG</h2>
+
+<p>To get a feel for how a window function works, we&rsquo;ll use <code>LAG</code>. As you can probably guess, <code>LAG</code> looks &ldquo;back&rdquo; a row in your data and grabs the column value you specify.</p>
+
+<p>So this:</p>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER() as previous_count
+FROM daily_metrics
+WHERE metric = 'A'
+ORDER BY date;
+</code></pre>
+
+<p>The query above should return the previous <code>count</code> for each row. Does it?</p>
+
+<pre><code>    date    | metric | count | previous_count 
+------------+--------+-------+----------------
+ 2019-09-01 | A      |   115 |             75
+ 2019-09-02 | A      |    98 |               
+ 2019-09-03 | A      |   268 |            451
+ 2019-09-04 | A      |   451 |            239
+ 2019-09-05 | A      |   239 |             98
+ 2019-09-06 | A      |    75 |            268
+ 2019-09-07 | A      |   306 |            115
+(7 rows)
+</code></pre>
+
+<p>Maybe? <code>LAG</code> might have done what I said it was going to do, but from the way we ran the experiment, it&rsquo;s kind of hard to tell.</p>
+
+<p>There&rsquo;s one crucial missing piece on the query above: <code>OVER()</code>. SQL gives us a ton of control over how to define the window and it happens in the <code>OVER()</code> clause. We didn&rsquo;t define it at all, so we basically said &ldquo;give us the previous count&rdquo; without out specifying previous <em>to what</em>.</p>
+
+<p>Let&rsquo;s try ordering by date inside the <code>OVER</code> clause (we&rsquo;ll also order the final results by date for readability):</p>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER(ORDER BY date) as previous_count
+FROM daily_metrics
+WHERE metric = 'A'
+ORDER BY date
+</code></pre>
+
+<p>Now we have:</p>
+
+<pre><code>    date    | metric | count | previous_count 
+------------+--------+-------+----------------
+ 2019-09-01 | A      |   115 |               
+ 2019-09-02 | A      |    98 |            115
+ 2019-09-03 | A      |   268 |             98
+ 2019-09-04 | A      |   451 |            268
+ 2019-09-05 | A      |   239 |            451
+ 2019-09-06 | A      |    75 |            239
+ 2019-09-07 | A      |   306 |             75
+(7 rows)
+</code></pre>
+
+<p>Where almost every row has it&rsquo;s previous <code>count</code> column value in the <code>previous_count</code> column:</p>
+
+<p><img src='/img/lag-with-order.png' alt='LAG with an ordered window' height=50% width=50%></p>
+
+<p>I don&rsquo;t know you if you&rsquo;re convinced, but that&rsquo;s about as far as I usually go to convince myself I know how a piece of my query works. Now I&rsquo;m confident that we can start calculating changes in values.</p>
+
+<h2 id="calculate-change">Calculate Change</h2>
+
+<p>Let&rsquo;s do a simple &ldquo;current minus previous&rdquo; operation to express change day-over day:</p>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER(ORDER BY date) as previous_count,
+  count - LAG(count) OVER(ORDER BY date) as change
+FROM daily_metrics as mc
+WHERE metric = 'A'
+ORDER BY date
+</code></pre>
+
+<p>Instead of just showing the change, I like to keep count and previous count around for reference, to check that the math actually works:</p>
+
+<pre><code>    date    | metric | count | previous_count | change 
+------------+--------+-------+----------------+--------
+ 2019-09-01 | A      |   115 |                |       
+ 2019-09-02 | A      |    98 |            115 |    -17
+ 2019-09-03 | A      |   268 |             98 |    170
+ 2019-09-04 | A      |   451 |            268 |    183
+ 2019-09-05 | A      |   239 |            451 |   -212
+ 2019-09-06 | A      |    75 |            239 |   -164
+ 2019-09-07 | A      |   306 |             75 |    231
+(7 rows)
+</code></pre>
+
+<p><img src='https://media.giphy.com/media/XreQmk7ETCak0/giphy.gif'></p>
+
+<h2 id="extend-to-all-metrics">Extend to All Metrics</h2>
+
+<p>At this point, feeling confident, we can remove our filter on Metric A and it should just work for all metrics, right???</p>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER(ORDER BY date) as previous_count,
+  count - LAG(count) OVER(ORDER BY date) as change
+FROM daily_metrics as mc
+ORDER BY date
+</code></pre>
+
+<p>Uh oh, mixing metrics gives us mess of rows and we can&rsquo;t easily tell which row is treated as previous, just based on date order. Our calculations look off!</p>
+
+<pre><code>    date    | metric | count | previous_count | change 
+------------+--------+-------+----------------+--------
+ 2019-09-01 | A      |   115 |             38 |     77
+ 2019-09-01 | B      |    38 |                |       
+ 2019-09-02 | A      |    98 |             14 |     84
+ 2019-09-02 | B      |    14 |            115 |   -101
+ 2019-09-03 | B      |    77 |            268 |   -191
+ 2019-09-03 | A      |   268 |             98 |    170
+ 2019-09-04 | B      |   203 |            451 |   -248
+ 2019-09-04 | A      |   451 |             77 |    374
+ 2019-09-05 | B      |   251 |            239 |     12
+ 2019-09-05 | A      |   239 |            203 |     36
+ 2019-09-06 | B      |   300 |             75 |    225
+ 2019-09-06 | A      |    75 |            251 |   -176
+ 2019-09-07 | A      |   306 |            165 |    141
+ 2019-09-07 | B      |   165 |            300 |   -135
+(14 rows)
+</code></pre>
+
+<p>What if we order by metric and date inside the window?</p>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER(ORDER BY metric, date) as previous_count,
+  count - LAG(count) OVER(ORDER BY metric, date) as change
+FROM daily_metrics as mc
+ORDER BY metric, date
+</code></pre>
+
+<p>Almost! There&rsquo;s one problem row in the results below:</p>
+
+<pre><code>    date    | metric | count | previous_count | change 
+------------+--------+-------+----------------+--------
+ 2019-09-01 | A      |   115 |                |       
+ 2019-09-02 | A      |    98 |            115 |    -17
+ 2019-09-03 | A      |   268 |             98 |    170
+ 2019-09-04 | A      |   451 |            268 |    183
+ 2019-09-05 | A      |   239 |            451 |   -212
+ 2019-09-06 | A      |    75 |            239 |   -164
+ 2019-09-07 | A      |   306 |             75 |    231
+ 2019-09-01 | B      |    38 |            306 |   -268
+ 2019-09-02 | B      |    14 |             38 |    -24
+ 2019-09-03 | B      |    77 |             14 |     63
+ 2019-09-04 | B      |   203 |             77 |    126
+ 2019-09-05 | B      |   251 |            203 |     48
+ 2019-09-06 | B      |   300 |            251 |     49
+ 2019-09-07 | B      |   165 |            300 |   -135
+(14 rows)
+</code></pre>
+
+<p>Can you spot it? We sorted by metric, then date in our lag function and did the same in the final results, so you have a date-ordered set of Metric A, then a date-ordered set of Metric B, but look at the first Metric B row:</p>
+
+<p><img src='/img/mixed-metrics.png' alt='Metrics with no partition' height=50% width=50%></p>
+
+<p>The first Metric B row has a previous count that was the last Metric A row. That&rsquo;s not accurate, is it? The 9/7/2019 value for Metric A does not precede the 9/1/2019 value for Metric B, but if we rely on order alone, that&rsquo;s how the data gets calculated.</p>
+
+<p>Fortunately there is another element of a window function that gives us full control of our subsets of data: <code>PARTITION BY</code>.</p>
+
+<h2 id="define-a-partition-for-more-control-over-grouping">Define a Partition for More Control over Grouping</h2>
+
+<pre><code>SELECT
+  date,
+  metric,
+  count,
+  LAG(count) OVER(PARTITION BY metric ORDER BY date) as previous_count,
+  count - LAG(count) OVER(PARTITION BY metric ORDER BY date) as change
+FROM daily_metrics as mc
+ORDER BY metric, date
+</code></pre>
+
+<p>Now the first Metric B has a null previous count, just like the first row of Metric A:</p>
+
+<pre><code>    date    | metric | count | previous_count | change 
+------------+--------+-------+----------------+--------
+ 2019-09-01 | A      |   115 |                |       
+ 2019-09-02 | A      |    98 |            115 |    -17
+ 2019-09-03 | A      |   268 |             98 |    170
+ 2019-09-04 | A      |   451 |            268 |    183
+ 2019-09-05 | A      |   239 |            451 |   -212
+ 2019-09-06 | A      |    75 |            239 |   -164
+ 2019-09-07 | A      |   306 |             75 |    231
+ 2019-09-01 | B      |    38 |                |       
+ 2019-09-02 | B      |    14 |             38 |    -24
+ 2019-09-03 | B      |    77 |             14 |     63
+ 2019-09-04 | B      |   203 |             77 |    126
+ 2019-09-05 | B      |   251 |            203 |     48
+ 2019-09-06 | B      |   300 |            251 |     49
+ 2019-09-07 | B      |   165 |            300 |   -135
+(14 rows)
+</code></pre>
+
+<p>The lag function gets applied to each partition, which we&rsquo;ve been able to define here - kind of like a <code>GROUP BY metric</code> expression without actually doing the <code>GROUP BY</code> &ndash; independently of the other partition or groups of rows.</p>
+
+<h2 id="do-more-with-windows">Do More with Windows</h2>
+
+<p>While the <code>LAG</code> function and its opposite <code>LEAD</code> are kind of special cases, you can extend this idea to a lot of other functions that are useful for group-isolated calculations.</p>
+
+<p>Any time you are trying to describe something about an individual row along with something about the group that row belongs to, use a window function.</p>
+
+<p>For example:</p>
+
+<ul>
+<li>Each student&rsquo;s latest test score and their average for the year</li>
+<li>Every athlete&rsquo;s height next to the height of the tallest player on each team</li>
+<li>The last time you spotted each bird species in your bird watching journal next to an entry for each bird</li>
+</ul>
+
+<p>For a more window function fun, <a href="https://twitter.com/b0rk/status/1176527353633234950?s=12">check out these exercises from Julia Evans</a>.</p>
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+        <li><a href='/categories/quick-tip'>Quick Tip</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report"
+                class="button big previous">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data">SQL Quick Tip: Showing Changes in Your Data</a>
+              </h3>
+              
+              <time class="published" datetime='2019-09-27'>
+                September 27, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a>
+              </h3>
+              
+              <time class="published" datetime='2019-09-12'>
+                September 12, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a>
+              </h3>
+              
+              <time class="published" datetime='2019-08-30'>
+                August 30, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-16'>
+                February 16, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/02/05/seed-data-for-your-wip-sql-queries">Seed Data for Your WIP SQL Queries</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-05'>
+                February 5, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">36</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">7</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/quick-tip/">Quick Tip</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="https://dankleiman.com/js/util.js"></script>
+      <script src="https://dankleiman.com/js/main.js"></script>
+      <script src="https://dankleiman.com/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

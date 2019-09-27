@@ -9,6 +9,16 @@
     <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SQL Quick Tip: Showing Changes in Your Data</title>
+      <link>https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data</link>
+      <pubDate>Fri, 27 Sep 2019 00:00:00 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data</guid>
+      <description>In this tip, we want to look at a concise way to shows changes in your data.
+I tend to think of this type of problem as a going from &amp;ldquo;finding&amp;rdquo; data to &amp;ldquo;describing&amp;rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &amp;ldquo;find&amp;rdquo; data. When you calculate aggregates of that data using functions like MAX, MIN, SUM, or AVG, you are now &amp;ldquo;describing&amp;rdquo; the data.</description>
+    </item>
+    
+    <item>
       <title>SQL Quick Tip: Guarantee Rows for Every Date in Your Report</title>
       <link>https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report</link>
       <pubDate>Thu, 12 Sep 2019 21:57:02 -0400</pubDate>

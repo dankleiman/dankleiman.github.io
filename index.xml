@@ -6,8 +6,18 @@
     <description>Recent content in Dan Kleiman on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Sep 2019 21:57:02 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 27 Sep 2019 00:00:00 -0400</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Quick Tip: Showing Changes in Your Data</title>
+      <link>https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data</link>
+      <pubDate>Fri, 27 Sep 2019 00:00:00 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data</guid>
+      <description>In this tip, we want to look at a concise way to shows changes in your data.
+I tend to think of this type of problem as a going from &amp;ldquo;finding&amp;rdquo; data to &amp;ldquo;describing&amp;rdquo; data. For example, if you know how to get every value for a user in the database for the last 30 days, then you can &amp;ldquo;find&amp;rdquo; data. When you calculate aggregates of that data using functions like MAX, MIN, SUM, or AVG, you are now &amp;ldquo;describing&amp;rdquo; the data.</description>
+    </item>
     
     <item>
       <title>SQL Quick Tip: Guarantee Rows for Every Date in Your Report</title>
@@ -189,23 +199,6 @@ Before I go into the exercises, though, I want to send a huge thank you to Ali N
       <guid>https://dankleiman.com/2016/04/10/nice-try-nilclass</guid>
       <description>I love that feeling when a new concept starts to come together in your mind and you can point to all the converging sources of insight.
 Right now, I can&amp;rsquo;t tell if I&amp;rsquo;m fooling myself, hiding some logic, or making my code more readable with this particular concept, but when I put together these three pieces of information, I think I start to see something emerge. I&amp;rsquo;ve been inspired to do some more digging into these kinds of questions lately thanks to the awesome new Ruby Book Club Podcast.</description>
-    </item>
-    
-    <item>
-      <title>Migrating Posts and Pages from Wordpress to Jekyll</title>
-      <link>https://dankleiman.com/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</link>
-      <pubDate>Fri, 11 Mar 2016 13:55:15 -0500</pubDate>
-      
-      <guid>https://dankleiman.com/2016/03/11/migrating-posts-and-pages-from-wordpress-to-jekyll</guid>
-      <description>&lt;p&gt;&lt;em&gt;This is Part 1 in a series on &lt;a href=&#34;https://dankleiman.com/blog/2016/03/09/migrating-from-wordpress-to-jekyll/&#34;&gt;Migrating from Wordpress to Jekyll&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The documentation for &lt;a href=&#34;https://jekyllrb.com/docs/quickstart/&#34;&gt;getting started with Jekyll&lt;/a&gt; is great. I&amp;rsquo;m not going to rehash everything that&amp;rsquo;s covered there.&lt;/p&gt;
-
-&lt;p&gt;Instead, this post and the others in the series will be more like, &amp;ldquo;here&amp;rsquo;s the order I wish I had done things in&amp;rdquo; or &amp;ldquo;here&amp;rsquo;s everything I ended up needing to pull together to get stuff working&amp;rdquo;. I hope it helps you and saves you time if you ever decide to do a similar migration from a self-hosted Wordpress install to Jekyll.&lt;/p&gt;
-
-&lt;p&gt;So here we go&amp;hellip;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
