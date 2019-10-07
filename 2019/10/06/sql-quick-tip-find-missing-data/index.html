@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>SQL Quick Tip: Find Missing Data</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.19-DEV" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="Tai Chi, Code, and Whatever from Dan Kleiman">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="SQL Quick Tip: Find Missing Data"/>
+<meta name="twitter:description" content="Whenever you have two sets of data and you need to find the entries that are in your first set, but not in your second set, use this pattern.
+Let&rsquo;s say you have an application that tracks user sign-ups separately for user sign-ins. You might be interested in knowing which users have signed up, but never signed in.
+Postgres makes it easy to mock up some sample data so we can work through this use case."/>
+<meta name="twitter:site" content="@Dan_Kleiman"/>
+
+
+        <meta property="og:title" content="SQL Quick Tip: Find Missing Data" />
+<meta property="og:description" content="Whenever you have two sets of data and you need to find the entries that are in your first set, but not in your second set, use this pattern.
+Let&rsquo;s say you have an application that tracks user sign-ups separately for user sign-ins. You might be interested in knowing which users have signed up, but never signed in.
+Postgres makes it easy to mock up some sample data so we can work through this use case." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data" />
+
+
+
+<meta property="article:published_time" content="2019-10-06T21:54:42-04:00"/>
+<meta property="article:modified_time" content="2019-10-06T21:54:42-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="SQL Quick Tip: Find Missing Data">
+<meta itemprop="description" content="Whenever you have two sets of data and you need to find the entries that are in your first set, but not in your second set, use this pattern.
+Let&rsquo;s say you have an application that tracks user sign-ups separately for user sign-ins. You might be interested in knowing which users have signed up, but never signed in.
+Postgres makes it easy to mock up some sample data so we can work through this use case.">
+
+
+<meta itemprop="dateModified" content="2019-10-06T21:54:42-04:00" />
+<meta itemprop="wordCount" content="1728">
+
+
+
+<meta itemprop="keywords" content="BTC,BigQuery,Code,Courses and Events,Energy Arts,Events,Golang,Inner Form,Launch Academy,Learning,Meditation,Movement Practice,Octopress,Practice People,Practice Tip,Psychology,Qigong,Quick Tip,Rails,RailsConf,Ruby,SQL,Security,Sinatra,Site,Small Business,Static Sites,Tai Chi,Trainerfly,Twilio,Xing Yi,1000 True Fans,5 Elements,An,BC,BJ Fogg,Ba Gua,Balance,Behavior Change,Bend the Bow,Bill Ryan,Breathing,Breathing Exercise,Breathing For Relaxation,Brookline Tai Chi,Bruce Frantzis,Bruce Lee,Business Tools,Cathy Kerr,Central Equilibrium,Cheng Man Ching,Chi,Chicago Tai Chi,Chinese Medicine,Cloud Hands,Conflict Resolution,Creativity,Crossfit,DPH,Daily Practice,David-Dorian Ross,Deliberate Practice,Design,Diaphragmatic Breathing,Don Ethan Miller,Dorothy Fitzer,Dr. Mark Cheng,Dragon and Tiger,Elephant Wrestling,Energies,Energy,Energy Arts,Energy Gates Dissolving Series,Enterprise of One,Entrepreneurship,Exercise Mp3,Eyes,Fall Prevention,Favorite Quotes,Feedback,Feng Zhiqiang,Five Movement Centers,Foundations of Relaxation,Fuzhong Li,Gaming,Gods Playing in the Clouds,Harvard Medical School,Harvard Medical School Guide,Health Month,Heath Brothers,Heaven and Earth,Hot Triggers,Immersion,Inc. Magazine,Inner Form,Inner Game of Tennis,Instructor Training,Intrinsic Motivation,Intuition,Isaac Kamins,Jane McGonigal,Ji,Josh Kaufman,Learning Tai Chi,Lee Scheele,Leverage,Lu,Marriage of Heaven and Earth,Master Wang Hao Da,Medicine,Meditate,Meditation,Meditation Practice,Mobile,Mobility,Moodle,Motivation,Myth of the Overworked Creative,Online Learning,Opening and Closing,Pain,Paul Cavel,Peng,Perfect Practice,Personal MBA,Personal Practice,Peter Wayne,Posture,Product Launch,Productivity,Pulsing,Push Hands,Qi,Qigong,Qigong Breathing,Qigong Practice,Qigong Radio,Qigong Youtube,Quantity,Ramit Sethi,Rhythm,Robert Tangora,Running a school,San Ti,Seasonal Practice,Sitting Practice,Spinal Qigong,Spiraling Energy Body,Spiritual Practice,Standing Qigong,Standing Series,Stanford,State of the Art,Stretch,Swing,Swings,Switch,Systems,T&#39;ai Chi Ch&#39;uan,T&#39;ai Chi for Health and Happiness,TED talks,Tai Chi,Tai Chi Classics,Tai Chi Equipment Training,Tai Chi Mastery Program,Tai Chi Postures,Tai Chi Practice,Tai Chi Principles,Tai Chi Research,Tai Chi Teacher,Taoist Arts,TechCrunch,Technology,The Tools,Tony Schwartz,Traditional Chinese Medicine,Trainerfly Backstory,Travel,Vancouver,Vision,Visual Training,Week,Wordpress,Wu Jianquan,Wu Short Form Instructor Training 2011,Yoga,Your Practice,Z Health,alignments,anxiety,case study,chi gung,depression,dissolving,energy gates,energy management,fear,feet,flexibility,four points,joint mobility,kwa,learning,mind,neigong,practice,practice tips,problem solving,relaxation,rooting,seminars,sinking,small business marketing,song,spine,standing,stress,teaching,twisting,xingyi,yin and yang,zhong ding," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/main.css">
+            <link rel="stylesheet" href="https://dankleiman.com/css/add-on.css">
+        
+
+        
+            
+                
+            
+        
+
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-19970008-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="https://dankleiman.com/">post</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/post/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                            <i class="fa fa-sitemap">&nbsp;</i>Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="https://dankleiman.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                <i class="fa fa-sitemap">&nbsp;</i>Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data">SQL Quick Tip: Find Missing Data</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-10-06'>
+                                    October 6, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data">SQL Quick Tip: Showing Changes in Your Data</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-09-27'>
+                                    September 27, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-09-12'>
+                                    September 12, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-08-30'>
+                                    August 30, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-02-16'>
+                                    February 16, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /post/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&text=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&description=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data">SQL Quick Tip: Find Missing Data</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-10-06'>
+            October 6, 2019</time>
+        <span class="author"></span>
+        
+            <p>9 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+<li>
+  <a href="//twitter.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&text=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data&via=Dan_Kleiman" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//plus.google.com/share?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//reddit.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&title=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data&description=SQL%20Quick%20Tip%3a%20Find%20Missing%20Data" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fdankleiman.com%2f2019%2f10%2f06%2fsql-quick-tip-find-missing-data" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+      </ul>
+    </section>
+  
+
+  
+
+  <div id="content">
+    
+
+<p>Whenever you have two sets of data and you need to find the entries that are in your first set, but not in your second set, use this pattern.</p>
+
+<p>Let&rsquo;s say you have an application that tracks user sign-ups separately for user sign-ins. You might be interested in knowing which users have signed up, but never signed in.</p>
+
+<!-- more -->
+
+<p>Postgres makes it easy to mock up some sample data so we can work through this use case.</p>
+
+<p>First, create a series of sign-ups:</p>
+
+<pre><code>
+CREATE TABLE sign_ups AS (
+    SELECT 'User ' || generate_series(1,5) as username, '2019-01-01' as date
+);
+
+postgres=# SELECT *  FROM sign_ups;
+ username |    date    
+----------+------------
+ User 1   | 2019-01-01
+ User 2   | 2019-01-01
+ User 3   | 2019-01-01
+ User 4   | 2019-01-01
+ User 5   | 2019-01-01
+(5 rows)
+
+</code></pre>
+
+<p>I stole that string concatenation techique <a href="https://codeburst.io/craft-up-practice-data-sets-with-the-postgresql-generate-series-function-9abd183ca7a1">from this post</a> which has some other cool data generation ideas in it too.</p>
+
+<p>Now we&rsquo;ll do a series of sign-ins over the subsequent days, but only for users 1,2, and 3.</p>
+
+<pre><code>
+CREATE TABLE sign_ins AS (
+  SELECT *
+  FROM (
+    SELECT generate_series('2019-01-02', '2019-01-04', '1 day'::interval) as date
+  ) d 
+  CROSS JOIN
+  (
+    SELECT 'User ' || generate_series(1,3) as username
+  ) m
+);
+
+SELECT username, date FROM sign_ins ORDER BY username, date;
+
+ username |          date          
+----------+------------------------
+ User 1   | 2019-01-02 00:00:00-05
+ User 1   | 2019-01-03 00:00:00-05
+ User 1   | 2019-01-04 00:00:00-05
+ User 2   | 2019-01-02 00:00:00-05
+ User 2   | 2019-01-03 00:00:00-05
+ User 2   | 2019-01-04 00:00:00-05
+ User 3   | 2019-01-02 00:00:00-05
+ User 3   | 2019-01-03 00:00:00-05
+ User 3   | 2019-01-04 00:00:00-05
+(9 rows)
+
+</code></pre>
+
+<p>We know our result should be that users 4 and 5 never signed in.</p>
+
+<h2 id="give-me-everything-except">Give Me Everything EXCEPT&hellip;</h2>
+
+<p>There is a way to write this query that almost looks exactly how you&rsquo;d phrase it in plain English, &ldquo;Give me everything from table 1, except what&rsquo;s in table 2&rdquo;:</p>
+
+<pre><code>SELECT username FROM sign_ups
+EXCEPT
+SELECT username FROM sign_ins GROUP BY username;
+
+ username 
+----------
+ User 5
+ User 4
+(2 rows)
+
+</code></pre>
+
+<p>In this case, the <code>EXCEPT</code> query is pretty readable, and with our sample data, pretty fast.</p>
+
+<p>But there is an alternate way to solve this problem that will be powerful to know and often more performant.</p>
+
+<h2 id="anti-join-your-tables">Anti Join Your Tables</h2>
+
+<p>The second way to get the missing data combines a <code>LEFT OUTER JOIN</code> and a <code>WHERE</code> clause into something called an &ldquo;Anti Join.&rdquo;</p>
+
+<p>We use the <code>LEFT OUTER JOIN</code> on our sign-ups table &ndash; which means we want to potentially include all rows from the sign-ups table, but then we do something tricky with the <code>WHERE</code> clause:</p>
+
+<pre><code>
+SELECT
+  su.username
+FROM
+  (
+    SELECT username FROM sign_ups
+  ) su
+LEFT OUTER JOIN
+  (
+    SELECT username FROM sign_ins GROUP BY username
+  ) si
+ON
+  su.username = si.username
+WHERE
+  si.username IS NULL;
+
+ username 
+----------
+ User 4
+ User 5
+(2 rows)
+
+</code></pre>
+
+<p>Here we&rsquo;re saying <code>WHERE si.username IS NULL</code> which means we are asking for anything in the sign-ups table that does not have a matching row in the sign-ins table.</p>
+
+<p>Our final result is the same, but it will be easier to visualize what is going on if we project the full set of values from both tables, before the special <code>WHERE</code> filter is applied.</p>
+
+<p>Running the previous query without the filter, just a regular <code>LEFT OUTER JOIN</code>:</p>
+
+<pre><code>
+SELECT
+  su.username as sign_up_username,
+  si.username as sign_in_username
+FROM
+  (
+    SELECT username FROM sign_ups
+  ) su
+LEFT OUTER JOIN
+  (
+    SELECT username FROM sign_ins GROUP BY username
+  ) si
+ON
+  su.username = si.username
+
+</code></pre>
+
+<p>You can see more clearly where the missing data is now:</p>
+
+<p><img src='/img/missing_rows.png' alt='Highlight missing row values' height=40% width=40%></p>
+
+<p>We have 5 users who have signed up, but only 3 who have signed in, meaning 3 rows from the sign-ins table will have username values and 2 rows from the sign-ins table, which show up here in the <code>sign_in_username</code> column, will have null values.</p>
+
+<p>When we go back and add <code>WHERE si.username IS NULL</code> to our <code>LEFT OUTER JOIN</code>, we are explictly asking for just the null rows.</p>
+
+<h2 id="which-query-is-better">Which Query is Better?</h2>
+
+<p>SQL is considered a &ldquo;declarative&rdquo; programming language, which basically means you tell the query engine what you want and you don&rsquo;t care how it gets it for you. Most of the time this is a fine arrangement.</p>
+
+<p>However, if you have two different queries and you really want to know whether the query engine will treat them differently, in Postgres you can just ask. You can see the query plan by running <code>EXPLAIN ANALYZE</code>.</p>
+
+<p>Initially, I picked the example data for this post to be readable, so it was easy to reason about missing rows. I didn&rsquo;t think there was any performace difference between the two solutions.</p>
+
+<p>But then I tried the queries on larger tables:</p>
+
+<pre><code>
+CREATE TABLE sign_ups_big AS (
+    SELECT 'User ' || generate_series(1,100000) as username, '2019-01-01' as date
+);
+
+CREATE TABLE sign_ins_big AS (
+  SELECT *
+  FROM (
+    SELECT generate_series('2019-01-02', '2019-01-04', '1 day'::interval) as date
+  ) d 
+  CROSS JOIN
+  (
+    SELECT 'User ' || generate_series(1,900) as username
+  ) m
+);
+
+</code></pre>
+
+<p>Was there a difference with 2,700 sign-ins against 100,000 sign-ups? Yes!</p>
+
+<p>Here is the query plan for the <code>EXCEPT</code> version:</p>
+
+<pre><code>EXPLAIN ANALYZE SELECT username FROM sign_ups_big
+EXCEPT
+SELECT username FROM sign_ins_big GROUP BY username
+
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ SetOp Except  (cost=13853.33..14357.83 rows=100000 width=36) (actual time=2315.169..2380.763 rows=99100 loops=1)
+   -&gt;  Sort  (cost=13853.33..14105.58 rows=100900 width=36) (actual time=2315.156..2360.786 rows=100900 loops=1)
+         Sort Key: &quot;*SELECT* 1&quot;.username
+         Sort Method: external merge  Disk: 2576kB
+         -&gt;  Append  (cost=0.00..2705.75 rows=100900 width=36) (actual time=0.010..38.108 rows=100900 loops=1)
+               -&gt;  Subquery Scan on &quot;*SELECT* 1&quot;  (cost=0.00..2637.00 rows=100000 width=14) (actual time=0.010..26.048 rows=100000 loops=1)
+                     -&gt;  Seq Scan on sign_ups_big  (cost=0.00..1637.00 rows=100000 width=10) (actual time=0.009..12.738 rows=100000 loops=1)
+               -&gt;  Subquery Scan on &quot;*SELECT* 2&quot;  (cost=50.75..68.75 rows=900 width=12) (actual time=0.797..1.082 rows=900 loops=1)
+                     -&gt;  HashAggregate  (cost=50.75..59.75 rows=900 width=8) (actual time=0.797..0.948 rows=900 loops=1)
+                           Group Key: sign_ins_big.username
+                           -&gt;  Seq Scan on sign_ins_big  (cost=0.00..44.00 rows=2700 width=8) (actual time=0.008..0.237 rows=2700 loops=1)
+ Planning time: 0.162 ms
+ Execution time: 2389.068 ms
+(13 rows)
+
+</code></pre>
+
+<p>Compared to the <code>LEFT OUTER JOIN</code>:</p>
+
+<pre><code>
+EXPLAIN ANALYZE SELECT
+  su.username
+FROM
+  (
+    SELECT username FROM sign_ups_big
+  ) su
+LEFT OUTER JOIN
+  (
+    SELECT username FROM sign_ins_big GROUP BY username
+  ) si
+ON
+  su.username = si.username
+WHERE
+  si.username IS NULL;
+  
+                                                          QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Hash Anti Join  (cost=80.00..8098.25 rows=50000 width=10) (actual time=1.431..28.122 rows=99100 loops=1)
+   Hash Cond: (sign_ups_big.username = sign_ins_big.username)
+   -&gt;  Seq Scan on sign_ups_big  (cost=0.00..1637.00 rows=100000 width=10) (actual time=0.007..9.029 rows=100000 loops=1)
+   -&gt;  Hash  (cost=68.75..68.75 rows=900 width=8) (actual time=1.157..1.157 rows=900 loops=1)
+         Buckets: 1024  Batches: 1  Memory Usage: 44kB
+         -&gt;  HashAggregate  (cost=50.75..59.75 rows=900 width=8) (actual time=0.865..0.992 rows=900 loops=1)
+               Group Key: sign_ins_big.username
+               -&gt;  Seq Scan on sign_ins_big  (cost=0.00..44.00 rows=2700 width=8) (actual time=0.005..0.255 rows=2700 loops=1)
+ Planning time: 0.088 ms
+ Execution time: 33.975 ms
+(10 rows)
+
+</code></pre>
+
+<p><code>Execution time: 2389.068 ms</code> for the <code>EXCEPT</code> query vs. <code>Execution time: 33.975 ms</code> for the Anti Join.</p>
+
+<p>Now, reading query plans is an art unto itself and I refer you to <a href="https://www.depesz.com/2013/04/16/explaining-the-unexplainable/">depesz</a> for further reading if you really want to go deep.</p>
+
+<p>All you need to know right now is that query plans make sense when you read them from the bottom up and from the most indented to the least. What you see on the first line is the last thing to happen, but it&rsquo;s what the planner is driving towards, so it&rsquo;s useful to call it out right away.</p>
+
+<p>In our two examples, we&rsquo;re ultimately solving the problem with a <code>SetOp Except</code> in the <code>EXCEPT</code> query and <code>Hash Anti Join</code> in the <code>LEFT OUTER JOIN</code> query.</p>
+
+<p>You can see the steps we will take to get to the <code>SetOp Except</code>, by reading through the arrows in the query plan. Remember they get executed bottom to top, so we are going to:</p>
+
+<ul>
+<li>Scan each table from the subqueries (grouping the data from the sign-ins table by username)</li>
+<li>Append the rows from the scans to one big list</li>
+<li>Sort everything in the big list</li>
+<li>Perform the except operation</li>
+</ul>
+
+<p>It turns out, building a sorted list and removing duplicates is slow when you have as many rows as we now have in the large tables!</p>
+
+<h2 id="but-what-does-it-cost">But What Does it Cost?</h2>
+
+<p>Another way to read the plans that clues you in to performance is to look at the &ldquo;cost&rdquo; on each line. Cost here represents &ldquo;work&rdquo; for the database engine, not exactly time, but I&rsquo;ve started to think of all the cost metrics through a relay race analogy. For example, when you see <code>cost=0.00..44.00</code>, the 0 means the runner can start at the beginning of the race, i.e. query execution, and will be running until 44.</p>
+
+<p>As a side note that might ruin the analogy, both sequential scans in both queries start at the same time. Operations can have the same initial cost, i.e. start the race at the same time, whenever they can be performed independent of each other. In the <code>EXCEPT</code> query, the Append operation also starts from 0, since the row data can be appended to our giant yet-to-be-sorted list as soon as we start reading from the tables. Contrast that to the HashAggregate operation that happens above the scan of <code>sign_ins_big</code>. This is the <code>GROUP BY</code> operation, which only happens at 50.75, once all the to-be-grouped data is scanned.</p>
+
+<p>In the <code>LEFT OUTER JOIN</code> query plan, we have <code>Hash Anti Join (cost=80.00..8098.25</code>, which means the final step can&rsquo;t start until 80 and will run until 8098.25. Compare that to the final step in the <code>EXCEPT</code> query,<code>SetOp Except  (cost=13853.33..14357.83</code>. We see a much longer wait time until the last runner can go and a longer run for the last runner &ndash; both clues to what we already looked at &ndash; adding all the rows together and sorting them to figure out what to exclude is expensive.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<p>It&rsquo;s tempting to want to draw conclusions about which operations you should always use based on this one example, but I want you to reserve permanent judgement if you can.</p>
+
+<p>Instead, whenever you find yourself with a coin-toss about which query to use, run <code>EXPLAIN ANALYZE</code> and use it as a chance to dig into the underlying mechanics a little more. You will either confirm your intuitions about performance, or find a surprising thread you can pull to go learn something new. That, in my opinion, is the best way to build your skills up over time.</p>
+
+<p>While I think the <code>EXCEPT</code> example here is easy to understand because the query is so straightforward to write, you will find more cases where the Anti Join pattern, or something like it, helps you solve a SQL problem. Get that <code>LEFT OUTER JOIN...WHERE...IS NULL</code> pattern into your muscle memory!</p>
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+                        <i class="fa fa-sitemap">&nbsp;</i>
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/code'>Code</a></li>
+    
+        <li><a href='/categories/sql'>SQL</a></li>
+    
+        <li><a href='/categories/quick-tip'>Quick Tip</a></li>
+    
+</ul>
+
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data"
+                class="button big previous">SQL Quick Tip: Showing Changes in Your Data</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/headshot.jpg" class="intro-circle" width="150" alt="Dan Kleiman" /></a>
+      
+    
+    
+      <header>
+        <h2>Dan Kleiman</h2>
+        <p>Posts about code and work and some tai chi archives too</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  
+    <section id="mini-bio">
+        <div id='mc_embed_signup'><form action='https://dankleiman.us1.list-manage.com/subscribe/post?u=0e4a1aa488d23c693881caeec&amp;id=99d1412a0b' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate><div id='mc_embed_signup_scroll'><h2>Stay up to date via email</h2><div class='mc-field-group'><label for='mce-EMAIL'>Your Email Address</label><input type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'></div><div id='mce-responses' class='clear'><div class='response' id='mce-error-response' style='display:none'></div><div class='response' id='mce-success-response' style='display:none'></div></div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style='position: absolute; left: -5000px;' aria-hidden='true'><input type='text' name='b_0e4a1aa488d23c693881caeec_99d1412a0b' tabindex='-1' value=''></div><div class='clear'><input type='submit' value='Subscribe' name='subscribe' id='mc-embedded-subscribe' class='button'></div></div></form></div>
+    </section>
+  
+
+  
+  <section id="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data">SQL Quick Tip: Find Missing Data</a>
+              </h3>
+              
+              <time class="published" datetime='2019-10-06'>
+                October 6, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data">SQL Quick Tip: Showing Changes in Your Data</a>
+              </h3>
+              
+              <time class="published" datetime='2019-09-27'>
+                September 27, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/09/12/sql-quick-tip-guarantee-rows-for-every-date-in-your-report">SQL Quick Tip: Guarantee Rows for Every Date in Your Report</a>
+              </h3>
+              
+              <time class="published" datetime='2019-09-12'>
+                September 12, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/08/30/sql-quick-tip-present-cleaner-results-with-custom-ordering">SQL Quick Tip: Present Cleaner Results with Custom Ordering</a>
+              </h3>
+              
+              <time class="published" datetime='2019-08-30'>
+                August 30, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="https://dankleiman.com/2019/02/16/roll-your-own-database-part-1">Roll Your Own Database: Part 1</a>
+              </h3>
+              
+              <time class="published" datetime='2019-02-16'>
+                February 16, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /post/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/tai-chi/">Tai Chi</a>
+                <span style="float:right;">85</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/qigong/">Qigong</a>
+                <span style="float:right;">74</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/code/">Code</a>
+                <span style="float:right;">37</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/movement-practice/">Movement Practice</a>
+                <span style="float:right;">33</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/small-business/">Small Business</a>
+                <span style="float:right;">21</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/inner-form/">Inner Form</a>
+                <span style="float:right;">14</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-people/">Practice People</a>
+                <span style="float:right;">12</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/practice-tip/">Practice Tip</a>
+                <span style="float:right;">10</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/launch-academy/">Launch Academy</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/psychology/">Psychology</a>
+                <span style="float:right;">9</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sql/">SQL</a>
+                <span style="float:right;">8</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/btc/">BTC</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/events/">Events</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/site/">Site</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/trainerfly/">Trainerfly</a>
+                <span style="float:right;">5</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/quick-tip/">Quick Tip</a>
+                <span style="float:right;">4</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/bigquery/">BigQuery</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/energy-arts/">Energy Arts</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/twilio/">Twilio</a>
+                <span style="float:right;">3</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/golang/">Golang</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/octopress/">Octopress</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/rails/">Rails</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/ruby/">Ruby</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/static-sites/">Static Sites</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/courses-and-events/">Courses and Events</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/learning/">Learning</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/meditation/">Meditation</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/railsconf/">RailsConf</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/security/">Security</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/sinatra/">Sinatra</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/xing-yi/">Xing Yi</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+      <ul class="icons">
+        
+          <li>
+            <a href="" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        
+        
+  <li><a href="//github.com/dankleiman" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/dlkleiman" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//reddit.com/user/upalready" target="_blank" title="Reddit" class="fa fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/Dan_Kleiman" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="mailto:info@dankleiman.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Dan Kleiman
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="https://dankleiman.com/js/util.js"></script>
+      <script src="https://dankleiman.com/js/main.js"></script>
+      <script src="https://dankleiman.com/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

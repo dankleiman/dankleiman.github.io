@@ -9,6 +9,17 @@
     <atom:link href="/categories/quick-tip/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SQL Quick Tip: Find Missing Data</title>
+      <link>https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data</link>
+      <pubDate>Sun, 06 Oct 2019 21:54:42 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data</guid>
+      <description>Whenever you have two sets of data and you need to find the entries that are in your first set, but not in your second set, use this pattern.
+Let&amp;rsquo;s say you have an application that tracks user sign-ups separately for user sign-ins. You might be interested in knowing which users have signed up, but never signed in.
+Postgres makes it easy to mock up some sample data so we can work through this use case.</description>
+    </item>
+    
+    <item>
       <title>SQL Quick Tip: Showing Changes in Your Data</title>
       <link>https://dankleiman.com/2019/09/27/sql-quick-tip-showing-changes-in-your-data</link>
       <pubDate>Fri, 27 Sep 2019 00:00:00 -0400</pubDate>
