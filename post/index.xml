@@ -6,8 +6,20 @@
     <description>Recent content in Post on Dan Kleiman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Oct 2019 21:54:42 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 07:30:37 -0400</lastBuildDate>
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Quick Tip: Find the Latest Record for Each Member of a Group</title>
+      <link>https://dankleiman.com/2019/10/12/sql-quick-tip-find-the-latest-record-for-each-member-of-a-group</link>
+      <pubDate>Sat, 12 Oct 2019 07:30:37 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/10/12/sql-quick-tip-find-the-latest-record-for-each-member-of-a-group</guid>
+      <description>In this post, we&amp;rsquo;re going to look at a techinque for finding the lastest full record for each member of a group.
+Now, it might not be obvious why this is an annoying problem, but I see people back into having this problem from two different directions.
+First, you know how to find the MAX date for each member in a group:
+ metric | latest_metric --------+------------------------ A | 2019-04-30 00:00:00-04 B | 2019-05-08 00:00:00-04 C | 2019-05-08 00:00:00-04 D | 2019-05-08 00:00:00-04 E | 2019-05-08 00:00:00-04 F | 2019-05-08 00:00:00-04 (6 rows)  But you need additional column data from the same row as that most recent date.</description>
+    </item>
     
     <item>
       <title>SQL Quick Tip: Find Missing Data</title>
@@ -190,16 +202,6 @@ SELECT . . . . uh??? . . SELECT * FROM . . . SELECT . . .  And you get stuck try
       <description>&lt;p&gt;Over the past couple of years, one thing I&amp;rsquo;ve become more and more aware of is the unease and uncertainty of diving into a new project. Not matter what the new X is, I find I always go through the same set of uncomfortable feelings on my initial approach.&lt;/p&gt;
 
 &lt;p&gt;Now, though, I&amp;rsquo;m starting to become familiar enough with this process that &amp;ndash; even though the discomfort doesn&amp;rsquo;t go away in the initial learning stages &amp;ndash; I can embrace it, coexist with it, and forge ahead in learning, because of the strategies I&amp;rsquo;m going to lay out here.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Rails Security Exercises from Bearclaw</title>
-      <link>https://dankleiman.com/2016/09/24/rails-security-exercises-from-bearclaw</link>
-      <pubDate>Sat, 24 Sep 2016 06:05:49 -0400</pubDate>
-      
-      <guid>https://dankleiman.com/2016/09/24/rails-security-exercises-from-bearclaw</guid>
-      <description>In this post, I&amp;rsquo;m going to tell you what I learned doing a series of Rails security exercises developed by Bearclaw, a Rails security consultancy.
-Before I go into the exercises, though, I want to send a huge thank you to Ali Najaf, founder of Bearclaw. What I&amp;rsquo;ve learned here is due to the thoughtfulness of the exercises he&amp;rsquo;s put together and his willingness to try something new by sharing them with me.</description>
     </item>
     
   </channel>

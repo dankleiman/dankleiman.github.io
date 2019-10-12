@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dankleiman.com/2019/10/12/sql-quick-tip-find-the-latest-record-for-each-member-of-a-group</loc>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dankleiman.com/2019/10/06/sql-quick-tip-find-missing-data</loc>
     <lastmod>2019-10-06T21:54:42-04:00</lastmod>
   </url>
@@ -2315,7 +2320,7 @@
   
   <url>
     <loc>https://dankleiman.com/</loc>
-    <lastmod>2019-10-06T21:54:42-04:00</lastmod>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2331,7 +2336,7 @@
   
   <url>
     <loc>https://dankleiman.com/post/</loc>
-    <lastmod>2019-10-06T21:54:42-04:00</lastmod>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2514,7 +2519,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/code/</loc>
-    <lastmod>2019-10-06T21:54:42-04:00</lastmod>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3204,7 +3209,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/quick-tip/</loc>
-    <lastmod>2019-10-06T21:54:42-04:00</lastmod>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3354,7 +3359,7 @@
   
   <url>
     <loc>https://dankleiman.com/categories/sql/</loc>
-    <lastmod>2019-10-06T21:54:42-04:00</lastmod>
+    <lastmod>2019-10-12T07:30:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
