@@ -9,6 +9,18 @@
     <atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>SQL Quick Tip: Deduping Data with Row Number</title>
+      <link>https://dankleiman.com/2019/10/20/sql-quick-tip-deduping-data-with-row-number</link>
+      <pubDate>Sun, 20 Oct 2019 07:43:13 -0400</pubDate>
+      
+      <guid>https://dankleiman.com/2019/10/20/sql-quick-tip-deduping-data-with-row-number</guid>
+      <description>Sometimes when you are inspecting data, you come across duplicates that shouldn&amp;rsquo;t exist.
+Here&amp;rsquo;s a an easy way to remove duplicate rows using the ROW_NUMBER function.
+In a previous post about using ROW_NUMBER to find the latest record for each member in a group, I set up some sample data with this statement:
+CREATE TABLE metrics AS ( SELECT date, CASE WHEN n &amp;gt; random() * 2 and n &amp;lt; random() * 4 THEN &#39;A&#39; WHEN n &amp;gt; random() * 2 and n &amp;lt; random() * 4 THEN &#39;B&#39; WHEN n &amp;gt; random() * 4 and n &amp;lt; random() * 6 THEN &#39;C&#39; WHEN n &amp;gt; random() * 6 and n &amp;lt; random() * 8 THEN &#39;D&#39; WHEN n &amp;gt; random() * 8 and n &amp;lt; random() * 10 THEN &#39;E&#39; ELSE &#39;F&#39; END as metric, round(random() * 1000) as value FROM generate_series(1,11,1) as n JOIN ( SELECT day + interval &#39;1 day&#39; * round(random()*100) as date FROM generate_series(&#39;2019-01-01&#39;, &#39;2019-01-31&#39;, interval &#39;1 day&#39;) day ) d ON true );  While that statement is a great way to get a bunch of random sample data to play with, there is no guarantee that the values or the dates will be unique.</description>
+    </item>
+    
+    <item>
       <title>SQL Quick Tip: Find the Latest Record for Each Member of a Group</title>
       <link>https://dankleiman.com/2019/10/12/sql-quick-tip-find-the-latest-record-for-each-member-of-a-group</link>
       <pubDate>Sat, 12 Oct 2019 07:30:37 -0400</pubDate>
